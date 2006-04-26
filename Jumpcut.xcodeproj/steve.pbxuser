@@ -1,0 +1,69 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeBuildStyle = 4A9504CCFFE6A4B311CA0CBA /* Debug */;
+		activeExecutable = AABE484A09FF1CC800A6A239 /* Jumpcut */;
+		activeTarget = 8D1107260486CEB800E47090 /* Jumpcut */;
+		codeSenseManager = AABE485209FF1CE600A6A239 /* Code sense */;
+		executables = (
+			AABE484A09FF1CC800A6A239 /* Jumpcut */,
+		);
+		perUserDictionary = {
+			PBXPerProjectTemplateStateSaveDate = 167713992;
+			PBXWorkspaceStateSaveDate = 167713992;
+		};
+		sourceControlManager = AABE485109FF1CE600A6A239 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8D1107260486CEB800E47090 /* Jumpcut */ = {
+		activeExec = 0;
+		executables = (
+			AABE484A09FF1CC800A6A239 /* Jumpcut */,
+		);
+	};
+	8D1107310486CEB800E47090 /* Info.plist */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {712, 428}}";
+			sepNavSelRange = "{704, 0}";
+			sepNavVisRect = "{{0, 0}, {712, 428}}";
+			sepNavWindowFrame = "{{84, 253}, {751, 557}}";
+		};
+	};
+	AABE484A09FF1CC800A6A239 /* Jumpcut */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Jumpcut;
+		sourceDirectories = (
+		);
+	};
+	AABE485109FF1CE600A6A239 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	AABE485209FF1CE600A6A239 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}
