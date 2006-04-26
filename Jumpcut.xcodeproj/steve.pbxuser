@@ -1,10 +1,21 @@
 // !$*UTF8*$!
 {
+	089C165DFE840E0CC02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {712, 428}}";
+			sepNavSelRange = "{92, 0}";
+			sepNavVisRect = "{{0, 0}, {712, 428}}";
+			sepNavWindowFrame = "{{107, 232}, {751, 557}}";
+		};
+	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeBuildStyle = 4A9504CCFFE6A4B311CA0CBA /* Debug */;
 		activeExecutable = AABE484A09FF1CC800A6A239 /* Jumpcut */;
 		activeTarget = 8D1107260486CEB800E47090 /* Jumpcut */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* Jumpcut */,
+		);
 		codeSenseManager = AABE485209FF1CE600A6A239 /* Code sense */;
 		executables = (
 			AABE484A09FF1CC800A6A239 /* Jumpcut */,
@@ -44,6 +55,7 @@
 		customDataFormattersEnabled = 1;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
 		enableDebugStr = 1;
 		environmentEntries = (
 		);
