@@ -14,6 +14,10 @@
 		AABE486809FF1DF800A6A239 /* BezelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486309FF1DF800A6A239 /* BezelWindow.m */; };
 		AABE486909FF1DF800A6A239 /* RoundRecTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486509FF1DF800A6A239 /* RoundRecTextField.m */; };
 		AABE486A09FF1DF800A6A239 /* RoundRecBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486709FF1DF800A6A239 /* RoundRecBezierPath.m */; };
+		AABE48FA09FF203400A6A239 /* ShortcutRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE48F309FF203300A6A239 /* ShortcutRecorder.m */; };
+		AABE48FB09FF203400A6A239 /* ShortcutRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE48F509FF203300A6A239 /* ShortcutRecorderCell.m */; };
+		AABE48FC09FF203400A6A239 /* NSBezierPathAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE48F709FF203300A6A239 /* NSBezierPathAdditions.m */; };
+		AABE48FD09FF203400A6A239 /* CTGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE48F909FF203300A6A239 /* CTGradient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
@@ -48,6 +52,14 @@
 		AABE486509FF1DF800A6A239 /* RoundRecTextField.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RoundRecTextField.m; sourceTree = "<group>"; };
 		AABE486609FF1DF800A6A239 /* RoundRecBezierPath.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RoundRecBezierPath.h; sourceTree = "<group>"; };
 		AABE486709FF1DF800A6A239 /* RoundRecBezierPath.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RoundRecBezierPath.m; sourceTree = "<group>"; };
+		AABE48F209FF203300A6A239 /* ShortcutRecorder.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ShortcutRecorder.h; sourceTree = "<group>"; };
+		AABE48F309FF203300A6A239 /* ShortcutRecorder.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = ShortcutRecorder.m; sourceTree = "<group>"; };
+		AABE48F409FF203300A6A239 /* ShortcutRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ShortcutRecorderCell.h; sourceTree = "<group>"; };
+		AABE48F509FF203300A6A239 /* ShortcutRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = ShortcutRecorderCell.m; sourceTree = "<group>"; };
+		AABE48F609FF203300A6A239 /* NSBezierPathAdditions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NSBezierPathAdditions.h; sourceTree = "<group>"; };
+		AABE48F709FF203300A6A239 /* NSBezierPathAdditions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NSBezierPathAdditions.m; sourceTree = "<group>"; };
+		AABE48F809FF203300A6A239 /* CTGradient.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CTGradient.h; sourceTree = "<group>"; };
+		AABE48F909FF203300A6A239 /* CTGradient.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CTGradient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +83,7 @@
 				AABE486509FF1DF800A6A239 /* RoundRecTextField.m */,
 				AABE486609FF1DF800A6A239 /* RoundRecBezierPath.h */,
 				AABE486709FF1DF800A6A239 /* RoundRecBezierPath.m */,
+				AABE48F109FF203300A6A239 /* ShortcutRecorder */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -141,6 +154,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AABE48F109FF203300A6A239 /* ShortcutRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				AABE48F209FF203300A6A239 /* ShortcutRecorder.h */,
+				AABE48F309FF203300A6A239 /* ShortcutRecorder.m */,
+				AABE48F409FF203300A6A239 /* ShortcutRecorderCell.h */,
+				AABE48F509FF203300A6A239 /* ShortcutRecorderCell.m */,
+				AABE48F609FF203300A6A239 /* NSBezierPathAdditions.h */,
+				AABE48F709FF203300A6A239 /* NSBezierPathAdditions.m */,
+				AABE48F809FF203300A6A239 /* CTGradient.h */,
+				AABE48F909FF203300A6A239 /* CTGradient.m */,
+			);
+			name = ShortcutRecorder;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -206,6 +234,10 @@
 				AABE486809FF1DF800A6A239 /* BezelWindow.m in Sources */,
 				AABE486909FF1DF800A6A239 /* RoundRecTextField.m in Sources */,
 				AABE486A09FF1DF800A6A239 /* RoundRecBezierPath.m in Sources */,
+				AABE48FA09FF203400A6A239 /* ShortcutRecorder.m in Sources */,
+				AABE48FB09FF203400A6A239 /* ShortcutRecorderCell.m in Sources */,
+				AABE48FC09FF203400A6A239 /* NSBezierPathAdditions.m in Sources */,
+				AABE48FD09FF203400A6A239 /* CTGradient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
