@@ -18,6 +18,15 @@
 		AABE48FB09FF203400A6A239 /* ShortcutRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE48F509FF203300A6A239 /* ShortcutRecorderCell.m */; };
 		AABE48FC09FF203400A6A239 /* NSBezierPathAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE48F709FF203300A6A239 /* NSBezierPathAdditions.m */; };
 		AABE48FD09FF203400A6A239 /* CTGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE48F909FF203300A6A239 /* CTGradient.m */; };
+		AABE493309FF21BE00A6A239 /* PTHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE492909FF21BE00A6A239 /* PTHotKey.m */; };
+		AABE493409FF21BE00A6A239 /* PTHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE492B09FF21BE00A6A239 /* PTHotKeyCenter.m */; };
+		AABE493509FF21BE00A6A239 /* PTKeyBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE492D09FF21BE00A6A239 /* PTKeyBroadcaster.m */; };
+		AABE493609FF21BE00A6A239 /* PTKeyCodeTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE492F09FF21BE00A6A239 /* PTKeyCodeTranslator.m */; };
+		AABE493709FF21BE00A6A239 /* PTKeyCombo.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE493109FF21BE00A6A239 /* PTKeyCombo.m */; };
+		AABE496A09FF227E00A6A239 /* JumpcutClipping.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE496409FF227E00A6A239 /* JumpcutClipping.m */; };
+		AABE496B09FF227E00A6A239 /* JumpcutStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE496609FF227E00A6A239 /* JumpcutStore.m */; };
+		AABE496C09FF227E00A6A239 /* MatchesModifiersEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE496809FF227E00A6A239 /* MatchesModifiersEvent.m */; };
+		AABE497C09FF9CD000A6A239 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE497B09FF9CD000A6A239 /* AppController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
@@ -60,6 +69,24 @@
 		AABE48F709FF203300A6A239 /* NSBezierPathAdditions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NSBezierPathAdditions.m; sourceTree = "<group>"; };
 		AABE48F809FF203300A6A239 /* CTGradient.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CTGradient.h; sourceTree = "<group>"; };
 		AABE48F909FF203300A6A239 /* CTGradient.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CTGradient.m; sourceTree = "<group>"; };
+		AABE492809FF21BE00A6A239 /* PTHotKey.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PTHotKey.h; path = src/PTHotKey.h; sourceTree = "<group>"; };
+		AABE492909FF21BE00A6A239 /* PTHotKey.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = PTHotKey.m; path = src/PTHotKey.m; sourceTree = "<group>"; };
+		AABE492A09FF21BE00A6A239 /* PTHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PTHotKeyCenter.h; path = src/PTHotKeyCenter.h; sourceTree = "<group>"; };
+		AABE492B09FF21BE00A6A239 /* PTHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = PTHotKeyCenter.m; path = src/PTHotKeyCenter.m; sourceTree = "<group>"; };
+		AABE492C09FF21BE00A6A239 /* PTKeyBroadcaster.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PTKeyBroadcaster.h; path = src/PTKeyBroadcaster.h; sourceTree = "<group>"; };
+		AABE492D09FF21BE00A6A239 /* PTKeyBroadcaster.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = PTKeyBroadcaster.m; path = src/PTKeyBroadcaster.m; sourceTree = "<group>"; };
+		AABE492E09FF21BE00A6A239 /* PTKeyCodeTranslator.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PTKeyCodeTranslator.h; path = src/PTKeyCodeTranslator.h; sourceTree = "<group>"; };
+		AABE492F09FF21BE00A6A239 /* PTKeyCodeTranslator.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = PTKeyCodeTranslator.m; path = src/PTKeyCodeTranslator.m; sourceTree = "<group>"; };
+		AABE493009FF21BE00A6A239 /* PTKeyCombo.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PTKeyCombo.h; path = src/PTKeyCombo.h; sourceTree = "<group>"; };
+		AABE493109FF21BE00A6A239 /* PTKeyCombo.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = PTKeyCombo.m; path = src/PTKeyCombo.m; sourceTree = "<group>"; };
+		AABE496309FF227E00A6A239 /* JumpcutClipping.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = JumpcutClipping.h; sourceTree = "<group>"; };
+		AABE496409FF227E00A6A239 /* JumpcutClipping.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = JumpcutClipping.m; sourceTree = "<group>"; };
+		AABE496509FF227E00A6A239 /* JumpcutStore.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = JumpcutStore.h; sourceTree = "<group>"; };
+		AABE496609FF227E00A6A239 /* JumpcutStore.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = JumpcutStore.m; sourceTree = "<group>"; };
+		AABE496709FF227E00A6A239 /* MatchesModifiersEvent.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MatchesModifiersEvent.h; sourceTree = "<group>"; };
+		AABE496809FF227E00A6A239 /* MatchesModifiersEvent.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = MatchesModifiersEvent.m; sourceTree = "<group>"; };
+		AABE497A09FF9CD000A6A239 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		AABE497B09FF9CD000A6A239 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +104,11 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				AABE486209FF1DF800A6A239 /* BezelWindow.h */,
-				AABE486309FF1DF800A6A239 /* BezelWindow.m */,
-				AABE486409FF1DF800A6A239 /* RoundRecTextField.h */,
-				AABE486509FF1DF800A6A239 /* RoundRecTextField.m */,
-				AABE486609FF1DF800A6A239 /* RoundRecBezierPath.h */,
-				AABE486709FF1DF800A6A239 /* RoundRecBezierPath.m */,
+				AABE497A09FF9CD000A6A239 /* AppController.h */,
+				AABE497B09FF9CD000A6A239 /* AppController.m */,
+				AABE496009FF227E00A6A239 /* JumpcutEngine */,
+				AABE491909FF214900A6A239 /* UI */,
+				AABE492609FF21BE00A6A239 /* PTHotKeysLib */,
 				AABE48F109FF203300A6A239 /* ShortcutRecorder */,
 			);
 			name = Classes;
@@ -169,6 +195,49 @@
 			name = ShortcutRecorder;
 			sourceTree = "<group>";
 		};
+		AABE491909FF214900A6A239 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AABE486209FF1DF800A6A239 /* BezelWindow.h */,
+				AABE486309FF1DF800A6A239 /* BezelWindow.m */,
+				AABE486409FF1DF800A6A239 /* RoundRecTextField.h */,
+				AABE486509FF1DF800A6A239 /* RoundRecTextField.m */,
+				AABE486609FF1DF800A6A239 /* RoundRecBezierPath.h */,
+				AABE486709FF1DF800A6A239 /* RoundRecBezierPath.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		AABE492609FF21BE00A6A239 /* PTHotKeysLib */ = {
+			isa = PBXGroup;
+			children = (
+				AABE492809FF21BE00A6A239 /* PTHotKey.h */,
+				AABE492909FF21BE00A6A239 /* PTHotKey.m */,
+				AABE492A09FF21BE00A6A239 /* PTHotKeyCenter.h */,
+				AABE492B09FF21BE00A6A239 /* PTHotKeyCenter.m */,
+				AABE492C09FF21BE00A6A239 /* PTKeyBroadcaster.h */,
+				AABE492D09FF21BE00A6A239 /* PTKeyBroadcaster.m */,
+				AABE492E09FF21BE00A6A239 /* PTKeyCodeTranslator.h */,
+				AABE492F09FF21BE00A6A239 /* PTKeyCodeTranslator.m */,
+				AABE493009FF21BE00A6A239 /* PTKeyCombo.h */,
+				AABE493109FF21BE00A6A239 /* PTKeyCombo.m */,
+			);
+			path = PTHotKeysLib;
+			sourceTree = "<group>";
+		};
+		AABE496009FF227E00A6A239 /* JumpcutEngine */ = {
+			isa = PBXGroup;
+			children = (
+				AABE496309FF227E00A6A239 /* JumpcutClipping.h */,
+				AABE496409FF227E00A6A239 /* JumpcutClipping.m */,
+				AABE496509FF227E00A6A239 /* JumpcutStore.h */,
+				AABE496609FF227E00A6A239 /* JumpcutStore.m */,
+				AABE496709FF227E00A6A239 /* MatchesModifiersEvent.h */,
+				AABE496809FF227E00A6A239 /* MatchesModifiersEvent.m */,
+			);
+			name = JumpcutEngine;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -238,6 +307,15 @@
 				AABE48FB09FF203400A6A239 /* ShortcutRecorderCell.m in Sources */,
 				AABE48FC09FF203400A6A239 /* NSBezierPathAdditions.m in Sources */,
 				AABE48FD09FF203400A6A239 /* CTGradient.m in Sources */,
+				AABE493309FF21BE00A6A239 /* PTHotKey.m in Sources */,
+				AABE493409FF21BE00A6A239 /* PTHotKeyCenter.m in Sources */,
+				AABE493509FF21BE00A6A239 /* PTKeyBroadcaster.m in Sources */,
+				AABE493609FF21BE00A6A239 /* PTKeyCodeTranslator.m in Sources */,
+				AABE493709FF21BE00A6A239 /* PTKeyCombo.m in Sources */,
+				AABE496A09FF227E00A6A239 /* JumpcutClipping.m in Sources */,
+				AABE496B09FF227E00A6A239 /* JumpcutStore.m in Sources */,
+				AABE496C09FF227E00A6A239 /* MatchesModifiersEvent.m in Sources */,
+				AABE497C09FF9CD000A6A239 /* AppController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -40,7 +40,6 @@
 		[textField setDrawsBackground:YES];
 		[textField setBordered:NO];
 		[textField setAlignment:NSCenterTextAlignment];
-		[textField setStringValue:@"The way we set up our retains and releases results in a particular behavior. This behavior is that the previous path drawn will be cleared the next time we click and drag the mouse. You can juggle things around a bit to never clear the path and to always add elements to the path, or you might come up with something else."];
 		[self setInitialFirstResponder:textField];
 		return self;
 	}
@@ -55,6 +54,19 @@
 - (void)setTitle:(NSString *)newTitle
 {
 	title = newTitle;
+}
+
+- (NSString *)text
+{
+	return bezelText;
+}
+
+- (void)setText:(NSString *)newText
+{
+	[newText retain];
+	[bezelText release];
+	bezelText = newText;
+	[textField setStringValue:bezelText];
 }
 
 - (void)setFrame:(NSRect)frameRect display:(BOOL)displayFlag animate:(BOOL)animationFlag

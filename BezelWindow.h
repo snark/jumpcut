@@ -15,6 +15,7 @@
 
 @interface BezelWindow : NSWindow {
 	NSString *title;
+	NSString *bezelText;
 	RoundRecTextField *textField;
 	id delegate;
 }
