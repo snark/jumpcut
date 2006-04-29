@@ -25,9 +25,8 @@
 		AABE493709FF21BE00A6A239 /* PTKeyCombo.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE493109FF21BE00A6A239 /* PTKeyCombo.m */; };
 		AABE496A09FF227E00A6A239 /* JumpcutClipping.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE496409FF227E00A6A239 /* JumpcutClipping.m */; };
 		AABE496B09FF227E00A6A239 /* JumpcutStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE496609FF227E00A6A239 /* JumpcutStore.m */; };
-		AABE496C09FF227E00A6A239 /* MatchesModifiersEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE496809FF227E00A6A239 /* MatchesModifiersEvent.m */; };
 		AABE497C09FF9CD000A6A239 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE497B09FF9CD000A6A239 /* AppController.m */; };
-		AABE4B9C0A02F6D300A6A239 /* Preferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = AABE4B9B0A02F6D300A6A239 /* Preferences.nib */; };
+		AAECDC210A03BAEC007D377A /* UKPrefsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = AAECDC200A03BAEC007D377A /* UKPrefsPanel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
@@ -84,11 +83,10 @@
 		AABE496409FF227E00A6A239 /* JumpcutClipping.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = JumpcutClipping.m; sourceTree = "<group>"; };
 		AABE496509FF227E00A6A239 /* JumpcutStore.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = JumpcutStore.h; sourceTree = "<group>"; };
 		AABE496609FF227E00A6A239 /* JumpcutStore.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = JumpcutStore.m; sourceTree = "<group>"; };
-		AABE496709FF227E00A6A239 /* MatchesModifiersEvent.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MatchesModifiersEvent.h; sourceTree = "<group>"; };
-		AABE496809FF227E00A6A239 /* MatchesModifiersEvent.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = MatchesModifiersEvent.m; sourceTree = "<group>"; };
 		AABE497A09FF9CD000A6A239 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		AABE497B09FF9CD000A6A239 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
-		AABE4B9B0A02F6D300A6A239 /* Preferences.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = Preferences.nib; sourceTree = "<group>"; };
+		AAECDC1F0A03BAEC007D377A /* UKPrefsPanel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKPrefsPanel.h; path = ../../Snapback/UKPrefsPanel.h; sourceTree = SOURCE_ROOT; };
+		AAECDC200A03BAEC007D377A /* UKPrefsPanel.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKPrefsPanel.m; path = ../../Snapback/UKPrefsPanel.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +148,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				AABE4B9B0A02F6D300A6A239 /* Preferences.nib */,
 			);
 			name = Jumpcut;
 			sourceTree = "<group>";
@@ -235,8 +232,8 @@
 				AABE496409FF227E00A6A239 /* JumpcutClipping.m */,
 				AABE496509FF227E00A6A239 /* JumpcutStore.h */,
 				AABE496609FF227E00A6A239 /* JumpcutStore.m */,
-				AABE496709FF227E00A6A239 /* MatchesModifiersEvent.h */,
-				AABE496809FF227E00A6A239 /* MatchesModifiersEvent.m */,
+				AAECDC1F0A03BAEC007D377A /* UKPrefsPanel.h */,
+				AAECDC200A03BAEC007D377A /* UKPrefsPanel.m */,
 			);
 			name = JumpcutEngine;
 			sourceTree = "<group>";
@@ -292,7 +289,6 @@
 			files = (
 				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
-				AABE4B9C0A02F6D300A6A239 /* Preferences.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,8 +314,8 @@
 				AABE493709FF21BE00A6A239 /* PTKeyCombo.m in Sources */,
 				AABE496A09FF227E00A6A239 /* JumpcutClipping.m in Sources */,
 				AABE496B09FF227E00A6A239 /* JumpcutStore.m in Sources */,
-				AABE496C09FF227E00A6A239 /* MatchesModifiersEvent.m in Sources */,
 				AABE497C09FF9CD000A6A239 /* AppController.m in Sources */,
+				AAECDC210A03BAEC007D377A /* UKPrefsPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,10 +1,16 @@
 {
     IBClasses = (
         {
-            ACTIONS = {dummyHide = id; dummyShow = id; toggleMainHotKey = id; }; 
+            ACTIONS = {
+                addClipToPasteboardFromMenu = id; 
+                dummyHide = id; 
+                dummyShow = id; 
+                showPreferencePanel = id; 
+                toggleMainHotKey = id; 
+            }; 
             CLASS = AppController; 
             LANGUAGE = ObjC; 
-            OUTLETS = {jcMenu = NSMenu; mainRecorder = ShortcutRecorder; }; 
+            OUTLETS = {jcMenu = NSMenu; mainRecorder = ShortcutRecorder; prefsPanel = NSPanel; }; 
             SUPERCLASS = NSObject; 
         }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
