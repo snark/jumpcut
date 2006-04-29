@@ -27,6 +27,11 @@
 		AABE496B09FF227E00A6A239 /* JumpcutStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE496609FF227E00A6A239 /* JumpcutStore.m */; };
 		AABE497C09FF9CD000A6A239 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE497B09FF9CD000A6A239 /* AppController.m */; };
 		AAECDC210A03BAEC007D377A /* UKPrefsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = AAECDC200A03BAEC007D377A /* UKPrefsPanel.m */; };
+		AAECDC800A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */; };
+		AAECDC920A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDC910A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff */; };
+		AAECDDC70A03DCC5007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */; };
+		AAECDE430A03E746007D377A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAECDE300A03E746007D377A /* Sparkle.framework */; };
+		AAECDE460A03E78A007D377A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAECDE300A03E746007D377A /* Sparkle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
@@ -43,6 +48,19 @@
 			name = Release;
 		};
 /* End PBXBuildStyle section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AAECDE440A03E75C007D377A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AAECDE460A03E78A007D377A /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -87,6 +105,10 @@
 		AABE497B09FF9CD000A6A239 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		AAECDC1F0A03BAEC007D377A /* UKPrefsPanel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKPrefsPanel.h; path = ../../Snapback/UKPrefsPanel.h; sourceTree = SOURCE_ROOT; };
 		AAECDC200A03BAEC007D377A /* UKPrefsPanel.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKPrefsPanel.m; path = ../../Snapback/UKPrefsPanel.m; sourceTree = SOURCE_ROOT; };
+		AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.hotkey.tiff; sourceTree = "<group>"; };
+		AAECDC910A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = net.sf.jumpcut.preferences.general.tiff; path = ../../Snapback/net.sf.jumpcut.preferences.general.tiff; sourceTree = SOURCE_ROOT; };
+		AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.acknowledgements.tiff; sourceTree = "<group>"; };
+		AAECDE300A03E746007D377A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				AAECDE430A03E746007D377A /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +131,7 @@
 				AABE497B09FF9CD000A6A239 /* AppController.m */,
 				AABE496009FF227E00A6A239 /* JumpcutEngine */,
 				AABE491909FF214900A6A239 /* UI */,
+				AAECDC8B0A03C9DC007D377A /* UKPrefsPanel */,
 				AABE492609FF21BE00A6A239 /* PTHotKeysLib */,
 				AABE48F109FF203300A6A239 /* ShortcutRecorder */,
 			);
@@ -117,6 +141,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAECDE300A03E746007D377A /* Sparkle.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -164,6 +189,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */,
+				AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */,
+				AAECDC910A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
@@ -232,10 +260,17 @@
 				AABE496409FF227E00A6A239 /* JumpcutClipping.m */,
 				AABE496509FF227E00A6A239 /* JumpcutStore.h */,
 				AABE496609FF227E00A6A239 /* JumpcutStore.m */,
+			);
+			name = JumpcutEngine;
+			sourceTree = "<group>";
+		};
+		AAECDC8B0A03C9DC007D377A /* UKPrefsPanel */ = {
+			isa = PBXGroup;
+			children = (
 				AAECDC1F0A03BAEC007D377A /* UKPrefsPanel.h */,
 				AAECDC200A03BAEC007D377A /* UKPrefsPanel.m */,
 			);
-			name = JumpcutEngine;
+			name = UKPrefsPanel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +283,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				AAECDE440A03E75C007D377A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -289,6 +325,9 @@
 			files = (
 				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				AAECDC800A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */,
+				AAECDC920A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff in Resources */,
+				AAECDDC70A03DCC5007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +384,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS)",
+					"$(SRCROOT)",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -363,6 +406,10 @@
 				ARCHS = (
 					ppc,
 					i386,
+				);
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS)",
+					"$(SRCROOT)",
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
