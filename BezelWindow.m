@@ -30,9 +30,9 @@
 		[self setHasShadow:NO];
 		[self setMovableByWindowBackground:NO];
 		[self setBackgroundColor:[self sizedBezelBackgroundWithRadius:25.0 withAlpha:0.25]];
-		float textHeight = 128;
-		NSRect textFrame = NSMakeRect(12, 12, [self frame].size.width - 24, textHeight);
-		textField = [[[RoundRecTextField alloc] initWithFrame:textFrame] retain];
+		float lineHeight = 16;
+		NSRect textFrame = NSMakeRect(12, 12, [self frame].size.width - 24, 6 * lineHeight);
+		textField = [[RoundRecTextField alloc] initWithFrame:textFrame];
 		[[self contentView] addSubview:textField];
 		[textField setEditable:NO];
 		[textField setTextColor:[NSColor whiteColor]];
@@ -40,6 +40,15 @@
 		[textField setDrawsBackground:YES];
 		[textField setBordered:NO];
 		[textField setAlignment:NSCenterTextAlignment];
+		NSRect charFrame = NSMakeRect(([self frame].size.width - (2 * lineHeight)) / 2, 120, 2 * lineHeight, 2 * lineHeight);
+		charField = [[RoundRecTextField alloc] initWithFrame:charFrame];
+		[[self contentView] addSubview:charField];
+		[charField setEditable:NO];
+		[charField setTextColor:[NSColor whiteColor]];
+		[charField setBackgroundColor:[NSColor colorWithCalibratedWhite:0.1 alpha:.45]];
+		[charField setDrawsBackground:YES];
+		[charField setBordered:NO];
+		[charField setAlignment:NSCenterTextAlignment];
 		[self setInitialFirstResponder:textField];
 		return self;
 	}
@@ -53,12 +62,22 @@
 
 - (void)setTitle:(NSString *)newTitle
 {
+	[newTitle retain];
+	[title release];
 	title = newTitle;
 }
 
 - (NSString *)text
 {
 	return bezelText;
+}
+
+- (void)setCharString:(NSString *)newChar
+{
+	[newChar retain];
+	[charString release];
+	charString = newChar;
+	[charField setStringValue:charString];
 }
 
 - (void)setText:(NSString *)newText

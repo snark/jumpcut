@@ -65,6 +65,9 @@
 	// sbc
 	jcDisplayNum = 15;
 
+	// Stack position starts @ 0 by default
+	stackPosition = 0;
+	
 	NSLog(@"Jumpcut running: init complete.");
 		
     [super init];
@@ -86,9 +89,35 @@
 {
 	if ( ! isBezelPinned )
 	{
-		[self hideBezel];
+		if ( [clippingStore jcListCount] > stackPosition ) {
+			[self addClipToPasteboardFromCount:stackPosition];
+			[self performSelector:@selector(hideApp) withObject:nil afterDelay:0.2];
+			[self performSelector:@selector(fakeCommandV) withObject:nil afterDelay:0.2];
+		} else {
+			[self performSelector:@selector(hideApp) withObject:nil afterDelay:0.2];
+		}
 	}
 }
+
+-(void)fakeCommandV
+	/*" +fakeCommandV synthesizes keyboard events for Cmd-v Paste 
+	shortcut. "*/ 
+	// Code from a Mark Mason post to Cocoadev-l
+	// What are the flaws in this approach?
+	//  We don't know whether we can really accept the paste
+	//  We have no way of judging whether it's gone through
+	//  Simulating keypresses could have oddball consequences (for instance, if something else was trapping control v)
+	//  Not all apps may take Command-V as a paste command (xemacs, for instance?)
+	// Some sort of AE-based (or System Events-based, or service-based) paste would be preferable in many circumstances.
+	// On the other hand, this doesn't require scripting support, should work for Carbon, etc.
+	// Ideally, in the future, we will be able to tell from what environment JC was passed the trigger
+	// and have different behavior from each.
+{ 
+	CGPostKeyboardEvent( (CGCharCode)0, (CGKeyCode)55, true ); // Command down
+	CGPostKeyboardEvent( (CGCharCode)'v', (CGKeyCode)9, true ); // V down 
+	CGPostKeyboardEvent( (CGCharCode)'v', (CGKeyCode)9, false ); //  V up 
+	CGPostKeyboardEvent( (CGCharCode)0, (CGKeyCode)55, false ); // Command up
+} 
 
 -(void)pollPB:(NSTimer *)timer
 {
@@ -107,20 +136,8 @@
 					&&  ! [pbCount isEqualTo:pbBlockCount] ) {
                     [clippingStore addClipping:contents
 										ofType:type	];
-					/* Okay, here's where we need to decide what to do when something is pasted:
-					From the beginning, JC tracked the last item pasted, but this proved to be a giant pain in actual use.
-					However, that stickiness may be useful in certain circumstances. 0.6 or a later 0.5 version will
-					provide an option of some kind for users to choose what they track.
-					Options seem like they can be
-					Last Selected (default)
-					[popup setTrackingInt:0] on copy, [popup setTrackingInt:foo] on paste
-					Last Pasted
-					[popup moveTrackingInt:1 withBounce:YES] on copy, [popup setTrackingInt:foo] on paste
-					Track downwards/Track upwards
-					NC on copy; [popup moveTrackingInt:1/-1 withBounce:YES] on paste
-					Last Copied
-					[popup setTrackingInt:0] on copy, NC on paste
-					*/
+//					The below tracks our position down down down... Maybe as an option?
+//					if ( [clippingStore jcListCount] > 1 ) stackPosition++;
 					stackPosition = 0;
                     [self updateMenu];
                     if ( [savePreference isEqualToString:@"onChange"] ) {
@@ -140,9 +157,38 @@
 	// AppControl should only be getting these directly from bezel via delegation
 	if ( [theEvent type] == NSKeyDown )
 	{
-		int scratch;
-		NSString *pressedKey = [theEvent charactersIgnoringModifiers];
-		NSLog(@"Pressed: %@", pressedKey);
+		unichar pressed = [[theEvent characters] characterAtIndex:0];
+		switch ( pressed ) {
+			case NSUpArrowFunctionKey: 
+			case NSLeftArrowFunctionKey: 
+				// We don't need to check to see if the positions above still exist
+				// since we're coming from a valid stackPosition -- 
+				// however, we'll need to make sure that we check the stackPosition's
+				// validity whenever we delete a clipping (or multiple clippings).
+				stackPosition--; if ( stackPosition < 0 ) stackPosition = 0;
+				[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+				[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+				break;
+			case NSDownArrowFunctionKey: 
+			case NSRightArrowFunctionKey:
+				stackPosition++;
+				if ( [clippingStore jcListCount] > stackPosition ) {
+					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+				} else {
+					stackPosition--;
+				}
+				break;
+			case NSBackspaceCharacter: NSLog(@"Backspace pressed"); break;
+            case NSDeleteCharacter: NSLog(@"Delete pressed"); break;
+            case NSDeleteFunctionKey: NSLog(@"Delete pressed"); break;
+			case 0x1B:
+				[self hideApp];
+				break;
+            default: // It's not a navigation/application-defined thing, so let's figure out what it is.
+				NSLog(@"%d", pressed);
+				break;
+		}		
 	}
 }
 
@@ -164,6 +210,10 @@
 
 - (void) showBezel
 {
+	if ( [clippingStore jcListCount] > 0 && [clippingStore jcListCount] > stackPosition ) {
+		[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+		[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+	} 
 	[bezel makeKeyAndOrderFront:nil];
 	isBezelDisplayed = YES;
 }
@@ -171,21 +221,14 @@
 - (void) hideBezel
 {
 	[bezel orderOut:nil];
+	[bezel setCharString:@""];
 	isBezelDisplayed = NO;
 }
 
-- (IBAction)dummyShow:(id)sender
+-(void)hideApp
 {
-	[self showBezel];
-	isBezelPinned = YES;
-	return;
-}
-
-- (IBAction)dummyHide:(id)sender
-{
-	[self hideBezel];
-	isBezelPinned = NO;
-	return;
+    [self hideBezel];
+	[NSApp hide:self];
 }
 
 - (void) applicationWillResignActive:(NSApplication *)app; {
@@ -200,7 +243,13 @@
 		[NSApp activateIgnoringOtherApps:YES];
 		[self showBezel];
 	} else {
-		NSLog(@"Hotkey pressed, bezel already active.");
+		stackPosition++;
+		if ( [clippingStore jcListCount] > stackPosition ) {
+			[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+			[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+		} else {
+			stackPosition--;
+		}
 	}
 }
 

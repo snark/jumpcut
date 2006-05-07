@@ -14,9 +14,11 @@
 
 
 @interface BezelWindow : NSWindow {
+	NSString *charString; // Slightly misleading, as this can be longer than one character
 	NSString *title;
 	NSString *bezelText;
 	RoundRecTextField *textField;
+	RoundRecTextField *charField;
 	id delegate;
 }
 
@@ -25,6 +27,9 @@
 
 - (NSString *)title;
 - (void)setTitle:(NSString *)newTitle;
+- (NSString *)text;
+- (void)setText:(NSString *)newText;
+- (void)setCharString:(NSString *)newChar;
 
 - (id)delegate;
 - (void)setDelegate:(id)newDelegate;

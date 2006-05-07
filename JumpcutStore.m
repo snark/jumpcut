@@ -124,7 +124,11 @@
 
 -(NSString *) clippingContentsAtPosition:(int)index
 {
-    return [NSString stringWithString:[[jcList objectAtIndex:index] contents]];
+	if ( index >= [jcList count] ) {
+		return nil;
+	} else {
+		return [NSString stringWithString:[[jcList objectAtIndex:index] contents]];
+	}
 }
 
 -(NSString *) clippingDisplayStringAtPosition:(int)index
