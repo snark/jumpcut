@@ -49,31 +49,32 @@
 }
 
 // Basic functionality
--(void)pollPB:(NSTimer *)timer;
--(BOOL)addClipToPasteboardFromCount:(int)indexInt;
--(void)setPBBlockCount:(NSNumber *)newPBBlockCount;
+-(void) pollPB:(NSTimer *)timer;
+-(BOOL) addClipToPasteboardFromCount:(int)indexInt;
+-(void) setPBBlockCount:(NSNumber *)newPBBlockCount;
 -(void) hideApp;
+-(void) pasteFromStack;
 -(void) fakeCommandV;
 // Stack related
 -(BOOL) isValidClippingNumber:(NSNumber *)number;
--(NSString *)clippingStringWithCount:(int)count;
+-(NSString *) clippingStringWithCount:(int)count;
 // Save and load
 -(void) saveEngine;
 -(void) loadEngineFromPList;
 
 // Hotkey related
-- (IBAction)toggleMainHotKey:(id)sender;
-- (void)hitMainHotKey:(PTHotKey *)hotKey;
+-(IBAction)toggleMainHotKey:(id)sender;
+-(void)hitMainHotKey:(PTHotKey *)hotKey;
 
 // Bezel related
-- (void)showBezel;
-- (void)hideBezel;
-- (void)processBezelKeyDown:(NSEvent *)theEvent;
-- (void)metaKeysReleased;
+-(void) showBezel;
+-(void) hideBezel;
+-(void) processBezelKeyDown:(NSEvent *)theEvent;
+-(void) metaKeysReleased;
 
 // Menu related
-- (void)updateMenu;
--(IBAction)addClipToPasteboardFromMenu:(id)sender;
+-(void) updateMenu;
+-(IBAction) processMenuClippingSelection:(id)sender;
 
 
 @end

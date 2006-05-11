@@ -11,6 +11,8 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		AA058DC70A10512100DB7366 /* UKPrefsPanel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA058DC50A10512100DB7366 /* UKPrefsPanel.h */; };
+		AA058DC80A10512100DB7366 /* UKPrefsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA058DC60A10512100DB7366 /* UKPrefsPanel.m */; };
 		AABE486809FF1DF800A6A239 /* BezelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486309FF1DF800A6A239 /* BezelWindow.m */; };
 		AABE486909FF1DF800A6A239 /* RoundRecTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486509FF1DF800A6A239 /* RoundRecTextField.m */; };
 		AABE486A09FF1DF800A6A239 /* RoundRecBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486709FF1DF800A6A239 /* RoundRecBezierPath.m */; };
@@ -26,7 +28,6 @@
 		AABE496A09FF227E00A6A239 /* JumpcutClipping.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE496409FF227E00A6A239 /* JumpcutClipping.m */; };
 		AABE496B09FF227E00A6A239 /* JumpcutStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE496609FF227E00A6A239 /* JumpcutStore.m */; };
 		AABE497C09FF9CD000A6A239 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE497B09FF9CD000A6A239 /* AppController.m */; };
-		AAECDC210A03BAEC007D377A /* UKPrefsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = AAECDC200A03BAEC007D377A /* UKPrefsPanel.m */; };
 		AAECDC800A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */; };
 		AAECDC920A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDC910A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff */; };
 		AAECDDC70A03DCC5007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */; };
@@ -57,6 +58,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				AAECDE460A03E78A007D377A /* Sparkle.framework in CopyFiles */,
+				AA058DC70A10512100DB7366 /* UKPrefsPanel.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +75,8 @@
 		32CA4F630368D1EE00C91783 /* Jumpcut_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jumpcut_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Jumpcut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumpcut.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA058DC50A10512100DB7366 /* UKPrefsPanel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UKPrefsPanel.h; sourceTree = "<group>"; };
+		AA058DC60A10512100DB7366 /* UKPrefsPanel.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = UKPrefsPanel.m; sourceTree = "<group>"; };
 		AABE486209FF1DF800A6A239 /* BezelWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BezelWindow.h; sourceTree = "<group>"; };
 		AABE486309FF1DF800A6A239 /* BezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = BezelWindow.m; sourceTree = "<group>"; };
 		AABE486409FF1DF800A6A239 /* RoundRecTextField.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RoundRecTextField.h; sourceTree = "<group>"; };
@@ -103,8 +107,6 @@
 		AABE496609FF227E00A6A239 /* JumpcutStore.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = JumpcutStore.m; sourceTree = "<group>"; };
 		AABE497A09FF9CD000A6A239 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		AABE497B09FF9CD000A6A239 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
-		AAECDC1F0A03BAEC007D377A /* UKPrefsPanel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKPrefsPanel.h; path = ../../Snapback/UKPrefsPanel.h; sourceTree = SOURCE_ROOT; };
-		AAECDC200A03BAEC007D377A /* UKPrefsPanel.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKPrefsPanel.m; path = ../../Snapback/UKPrefsPanel.m; sourceTree = SOURCE_ROOT; };
 		AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.hotkey.tiff; sourceTree = "<group>"; };
 		AAECDC910A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = net.sf.jumpcut.preferences.general.tiff; path = ../../Snapback/net.sf.jumpcut.preferences.general.tiff; sourceTree = SOURCE_ROOT; };
 		AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.acknowledgements.tiff; sourceTree = "<group>"; };
@@ -267,8 +269,8 @@
 		AAECDC8B0A03C9DC007D377A /* UKPrefsPanel */ = {
 			isa = PBXGroup;
 			children = (
-				AAECDC1F0A03BAEC007D377A /* UKPrefsPanel.h */,
-				AAECDC200A03BAEC007D377A /* UKPrefsPanel.m */,
+				AA058DC50A10512100DB7366 /* UKPrefsPanel.h */,
+				AA058DC60A10512100DB7366 /* UKPrefsPanel.m */,
 			);
 			name = UKPrefsPanel;
 			sourceTree = "<group>";
@@ -354,7 +356,7 @@
 				AABE496A09FF227E00A6A239 /* JumpcutClipping.m in Sources */,
 				AABE496B09FF227E00A6A239 /* JumpcutStore.m in Sources */,
 				AABE497C09FF9CD000A6A239 /* AppController.m in Sources */,
-				AAECDC210A03BAEC007D377A /* UKPrefsPanel.m in Sources */,
+				AA058DC80A10512100DB7366 /* UKPrefsPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

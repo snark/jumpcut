@@ -84,18 +84,21 @@
     }
 }
 
+- (void)pasteFromStack
+{
+	if ( [clippingStore jcListCount] > stackPosition ) {
+		[self addClipToPasteboardFromCount:stackPosition];
+		[self performSelector:@selector(hideApp) withObject:nil afterDelay:0.2];
+		[self performSelector:@selector(fakeCommandV) withObject:nil afterDelay:0.2];
+	} else {
+		[self performSelector:@selector(hideApp) withObject:nil afterDelay:0.2];
+	}
+}
 
 - (void)metaKeysReleased
 {
-	if ( ! isBezelPinned )
-	{
-		if ( [clippingStore jcListCount] > stackPosition ) {
-			[self addClipToPasteboardFromCount:stackPosition];
-			[self performSelector:@selector(hideApp) withObject:nil afterDelay:0.2];
-			[self performSelector:@selector(fakeCommandV) withObject:nil afterDelay:0.2];
-		} else {
-			[self performSelector:@selector(hideApp) withObject:nil afterDelay:0.2];
-		}
+	if ( ! isBezelPinned ) {
+		[self pasteFromStack];
 	}
 }
 
@@ -146,7 +149,7 @@
                 }
             }
         } else {
-            NSLog(@"Contents: Non-string");
+            // NSLog(@"Contents: Non-string");
         }
     }
 	
@@ -178,6 +181,9 @@
 				} else {
 					stackPosition--;
 				}
+				break;
+			case 0x3: case 0xD:
+				[self pasteFromStack];
 				break;
 			case NSBackspaceCharacter: NSLog(@"Backspace pressed"); break;
             case NSDeleteCharacter: NSLog(@"Delete pressed"); break;
@@ -228,6 +234,7 @@
 -(void)hideApp
 {
     [self hideBezel];
+	isBezelPinned = NO;
 	[NSApp hide:self];
 }
 
@@ -241,6 +248,9 @@
 {
 	if ( ! isBezelDisplayed ) {
 		[NSApp activateIgnoringOtherApps:YES];
+		if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"stickyBezel"] ) {
+			isBezelPinned = YES;
+		}
 		[self showBezel];
 	} else {
 		stackPosition++;
@@ -257,7 +267,6 @@
 {
 	if (mainHotKey != nil)
 	{
-		NSLog(@"Unregistering.");
 		[[PTHotKeyCenter sharedCenter] unregisterHotKey:mainHotKey];
 		[mainHotKey release];
 		mainHotKey = nil;
@@ -293,7 +302,7 @@
 	
     while( pbMenuTitle = [clipEnumerator nextObject] ) {
         item = [[NSMenuItem alloc] initWithTitle:pbMenuTitle
-										  action:@selector(addClipToPasteboardFromMenu:)
+										  action:@selector(processMenuClippingSelection:)
 								   keyEquivalent:@""];
         [item setTarget:self];
         [item setEnabled:YES];
@@ -303,10 +312,14 @@
 	} 
 }
 
--(IBAction)addClipToPasteboardFromMenu:(id)sender
+-(IBAction)processMenuClippingSelection:(id)sender
 {
     int index=[[sender menu] indexOfItem:sender];
     [self addClipToPasteboardFromCount:index];
+	if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"menuSelectionPastes"] ) {
+		[self performSelector:@selector(hideApp) withObject:nil];
+		[self performSelector:@selector(fakeCommandV) withObject:nil afterDelay:0.2];
+	}
 }
 
 -(BOOL) isValidClippingNumber:(NSNumber *)number {
@@ -399,7 +412,7 @@
     }
 	
     saveDict = [NSMutableDictionary dictionaryWithCapacity:3];
-    [saveDict setObject:@"0.5a" forKey:@"version"];
+    [saveDict setObject:@"0.60a" forKey:@"version"];
     [saveDict setObject:[NSNumber numberWithInt:[[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"]]
                  forKey:@"rememberNum"];
     [saveDict setObject:[NSNumber numberWithInt:[[NSUserDefaults standardUserDefaults] integerForKey:@"displayLen"]]
