@@ -55,10 +55,11 @@
 -(void) hideApp;
 -(void) pasteFromStack;
 -(void) fakeCommandV;
-// Stack related
+-(IBAction)clearClippingList:(id)sender;
+	// Stack related
 -(BOOL) isValidClippingNumber:(NSNumber *)number;
 -(NSString *) clippingStringWithCount:(int)count;
-// Save and load
+	// Save and load
 -(void) saveEngine;
 -(void) loadEngineFromPList;
 

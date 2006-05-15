@@ -12,6 +12,10 @@
 #import "PTHotKey.h"
 #import "PTHotKeyCenter.h"
 
+#define _REMEMBER 25
+#define _DISPLAY 15
+#define _DISPLENGTH 40
+
 @implementation AppController
 
 - (void)awakeFromNib
@@ -28,14 +32,13 @@
 											   defer:NO];
 	[bezel setDelegate:self];
 	// Initialize the JumpcutStore
-    clippingStore = [[JumpcutStore alloc] initRemembering:25
-											   displaying:40
-										withDisplayLength:40];
+    clippingStore = [[JumpcutStore alloc] initRemembering:_REMEMBER
+											   displaying:_DISPLAY
+										withDisplayLength:_DISPLENGTH];
 	// Create our pasteboard interface
     jcPasteboard = [NSPasteboard generalPasteboard];
     [jcPasteboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:nil];
     pbCount = [[NSNumber numberWithInt:[jcPasteboard changeCount]] retain];
-    NSLog(@"Starting changeCount: %d", [pbCount intValue]);
 
 	// Build the statusbar menu
     statusItem = [[[NSStatusBar systemStatusBar]
@@ -47,7 +50,9 @@
 	
     // If our preferences indicate that we are saving, load the dictionary from the saved plist
     // and use it to get everything set up.
-    [self loadEngineFromPList];
+	if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 1 ) {
+		[self loadEngineFromPList];
+	}
 	
 	// Build our listener timer
     pollPBTimer = [[NSTimer scheduledTimerWithTimeInterval:(1.0)
@@ -59,11 +64,6 @@
     // Finish up
     pbBlockCount = [[NSNumber numberWithInt:0] retain];
     [pollPBTimer fire];
-
-	// Forcing this to a value just to get it working
-	// until the preferences are up.
-	// sbc
-	jcDisplayNum = 15;
 
 	// Stack position starts @ 0 by default
 	stackPosition = 0;
@@ -137,13 +137,14 @@
             } else {
 				if (( [clippingStore jcListCount] == 0 || ! [contents isEqualToString:[clippingStore clippingContentsAtPosition:0]])
 					&&  ! [pbCount isEqualTo:pbBlockCount] ) {
+//					NSLog(@"New pbCount: %@, pbBlockCount: %@", pbCount, pbBlockCount);
                     [clippingStore addClipping:contents
 										ofType:type	];
 //					The below tracks our position down down down... Maybe as an option?
 //					if ( [clippingStore jcListCount] > 1 ) stackPosition++;
 					stackPosition = 0;
                     [self updateMenu];
-                    if ( [savePreference isEqualToString:@"onChange"] ) {
+					if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 2 ) {
                         [self saveEngine];
                     }
                 }
@@ -282,12 +283,30 @@
 	[[PTHotKeyCenter sharedCenter] registerHotKey:mainHotKey];
 }
 
+-(IBAction)clearClippingList:(id)sender {
+    int choice;
+	
+	[NSApp activateIgnoringOtherApps:YES];
+    choice = NSRunAlertPanel(@"Clear Clipping List", 
+							 @"Do you want to clear all recent clippings?",
+							 @"Clear", @"Cancel", nil);
+	
+    // on clear, zap the list and redraw the menu
+    if ( choice == NSAlertDefaultReturn ) {
+        [clippingStore clearList];
+        [self updateMenu];
+		if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 1 ) {
+			[self saveEngine];
+		}
+    }
+}
+
 - (void)updateMenu {
     int passedSeparator = 0;
     NSMenuItem *oldItem;
     NSMenuItem *item;
     NSString *pbMenuTitle;
-    NSArray *returnedDisplayStrings = [clippingStore previousDisplayStrings:jcDisplayNum];
+    NSArray *returnedDisplayStrings = [clippingStore previousDisplayStrings:_DISPLAY];
     NSEnumerator *menuEnumerator = [[jcMenu itemArray] reverseObjectEnumerator];
     NSEnumerator *clipEnumerator = [returnedDisplayStrings reverseObjectEnumerator];
 	
@@ -299,6 +318,7 @@
             [jcMenu removeItem:oldItem];
         }
     }
+	
 	
     while( pbMenuTitle = [clipEnumerator nextObject] ) {
         item = [[NSMenuItem alloc] initWithTitle:pbMenuTitle
@@ -371,19 +391,20 @@
     NSArray *savedJCList;
 	NSRange loadRange;
 	int rangeCap;
-	
-    if ( loadDict != nil ) {
+	if ( loadDict != nil ) {
         savedJCList = [loadDict objectForKey:@"jcList"];
         if ( [savedJCList isKindOfClass:[NSArray class]] ) {
 			// There's probably a nicer way to prevent the range from going out of bounds, but this works.
-			rangeCap = [savedJCList count] < [[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"] ? [savedJCList count] : [[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"];
+			rangeCap = [savedJCList count] < _REMEMBER ? [savedJCList count] : _REMEMBER;
 			loadRange = NSMakeRange(0, rangeCap);
 			enumerator = [[savedJCList subarrayWithRange:loadRange] reverseObjectEnumerator];
 			while ( aSavedClipping = [enumerator nextObject] ) {
 				[clippingStore addClipping:[aSavedClipping objectForKey:@"Contents"]
 									ofType:[aSavedClipping objectForKey:@"Type"]];
             }
-        }
+        } else {
+			NSLog(@"Not array");
+		}
         NSLog(@"Contents loaded from file.");
         [self updateMenu];
         [loadDict release];
@@ -413,11 +434,11 @@
 	
     saveDict = [NSMutableDictionary dictionaryWithCapacity:3];
     [saveDict setObject:@"0.60a" forKey:@"version"];
-    [saveDict setObject:[NSNumber numberWithInt:[[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"]]
+    [saveDict setObject:[NSNumber numberWithInt:_REMEMBER]
                  forKey:@"rememberNum"];
-    [saveDict setObject:[NSNumber numberWithInt:[[NSUserDefaults standardUserDefaults] integerForKey:@"displayLen"]]
+    [saveDict setObject:[NSNumber numberWithInt:_DISPLENGTH]
                  forKey:@"displayLen"];
-    [saveDict setObject:[NSNumber numberWithInt:[[NSUserDefaults standardUserDefaults] integerForKey:@"displayNum"]]
+    [saveDict setObject:[NSNumber numberWithInt:_DISPLAY]
                  forKey:@"displayNum"];
     for ( i = 0 ; i < [clippingStore jcListCount]; i++) {
 		[jcListArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -468,7 +489,7 @@
     // if we wanted to cancel, we would:
     //   return NSTerminateLater;
     // That might be useful for us at some point.
-    if ( [savePreference isEqualToString:@"onExit"] ) {
+	if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 1 ) {
         [self saveEngine];
     }
     return NSTerminateNow;

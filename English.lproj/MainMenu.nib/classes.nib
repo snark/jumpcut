@@ -2,10 +2,8 @@
     IBClasses = (
         {
             ACTIONS = {
-                addClipToPasteboardFromMenu = id; 
-                dummyHide = id; 
-                dummyShow = id; 
-                showPreferencePanel = id; 
+                clearClippingList = id; 
+                processMenuClippingSelection = id; 
                 toggleMainHotKey = id; 
             }; 
             CLASS = AppController; 
