@@ -45,7 +45,7 @@
     NSNumber *pbBlockCount;
     //Preferences
     int jcDisplayNum;
-    NSString *savePreference;
+	BOOL issuedRememberResizeWarning;
 }
 
 // Basic functionality
@@ -77,5 +77,9 @@
 -(void) updateMenu;
 -(IBAction) processMenuClippingSelection:(id)sender;
 
+// Preference related
+-(IBAction) showPreferencePanel:(id)sender;
+-(IBAction) setRememberNumPref:(id)sender;
+-(IBAction) setDisplayNumPref:(id)sender;
 
 @end

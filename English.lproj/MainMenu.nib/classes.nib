@@ -4,6 +4,9 @@
             ACTIONS = {
                 clearClippingList = id; 
                 processMenuClippingSelection = id; 
+                setDisplayNumPref = id; 
+                setRememberNumPref = id; 
+                showPreferencePanel = id; 
                 toggleMainHotKey = id; 
             }; 
             CLASS = AppController; 

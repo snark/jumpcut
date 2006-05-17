@@ -12,7 +12,6 @@
 #import "PTHotKey.h"
 #import "PTHotKeyCenter.h"
 
-#define _REMEMBER 25
 #define _DISPLAY 15
 #define _DISPLENGTH 40
 
@@ -32,8 +31,8 @@
 											   defer:NO];
 	[bezel setDelegate:self];
 	// Initialize the JumpcutStore
-    clippingStore = [[JumpcutStore alloc] initRemembering:_REMEMBER
-											   displaying:_DISPLAY
+    clippingStore = [[JumpcutStore alloc] initRemembering:[[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"]
+											   displaying:[[NSUserDefaults standardUserDefaults] integerForKey:@"displayNum"]
 										withDisplayLength:_DISPLENGTH];
 	// Create our pasteboard interface
     jcPasteboard = [NSPasteboard generalPasteboard];
@@ -73,15 +72,50 @@
     [super init];
 }
 
+-(IBAction) setRememberNumPref:(id)sender
+{
+	int choice;
+	int newRemember = [sender intValue];
+	if ( newRemember < [clippingStore jcListCount] &&
+		 ! issuedRememberResizeWarning &&
+		 ! [[NSUserDefaults standardUserDefaults] boolForKey:@"stifleRememberResizeWarning"]
+		 ) {
+		choice = NSRunAlertPanel(@"Resize Stack", 
+								 @"Resizing the stack to a value below its present size will cause clippings to be lost.",
+								 @"Resize", @"Cancel", @"Don't Warn Me Again");
+		if ( choice == NSAlertAlternateReturn ) {
+			[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:[clippingStore jcListCount]]
+													 forKey:@"rememberNum"];
+			[self updateMenu];
+			NSLog(@"Alternate - %d", [clippingStore jcListCount]);
+			return;
+		} else if ( choice == NSAlertOtherReturn ) {
+			NSLog(@"Other");
+			[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES]
+													 forKey:@"stifleRememberResizeWarning"];
+		} else {
+			issuedRememberResizeWarning = YES;
+		}
+	}
+	if ( newRemember < [[NSUserDefaults standardUserDefaults] integerForKey:@"displayNum"] ) {
+		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:newRemember]
+												 forKey:@"displayNum"];
+	}
+	[clippingStore setRememberNum:newRemember];
+	[self updateMenu];
+}
+
+-(IBAction) setDisplayNumPref:(id)sender
+{
+	[self updateMenu];
+}
+
 -(IBAction) showPreferencePanel:(id)sender
 {
-    if ( ![prefsPanel isVisible] ) {
-		[NSApp activateIgnoringOtherApps: YES];
-        [prefsPanel makeKeyAndOrderFront:self];
-    } else {
-		[NSApp activateIgnoringOtherApps: YES];
-        [prefsPanel makeKeyAndOrderFront:self];
-    }
+//    if ( ![prefsPanel isVisible] ) {
+	[NSApp activateIgnoringOtherApps: YES];
+	[prefsPanel makeKeyAndOrderFront:self];
+	issuedRememberResizeWarning = NO;
 }
 
 - (void)pasteFromStack
@@ -306,7 +340,7 @@
     NSMenuItem *oldItem;
     NSMenuItem *item;
     NSString *pbMenuTitle;
-    NSArray *returnedDisplayStrings = [clippingStore previousDisplayStrings:_DISPLAY];
+    NSArray *returnedDisplayStrings = [clippingStore previousDisplayStrings:[[NSUserDefaults standardUserDefaults] integerForKey:@"displayNum"]];
     NSEnumerator *menuEnumerator = [[jcMenu itemArray] reverseObjectEnumerator];
     NSEnumerator *clipEnumerator = [returnedDisplayStrings reverseObjectEnumerator];
 	
@@ -395,7 +429,7 @@
         savedJCList = [loadDict objectForKey:@"jcList"];
         if ( [savedJCList isKindOfClass:[NSArray class]] ) {
 			// There's probably a nicer way to prevent the range from going out of bounds, but this works.
-			rangeCap = [savedJCList count] < _REMEMBER ? [savedJCList count] : _REMEMBER;
+			rangeCap = [savedJCList count] < [[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"] ? [savedJCList count] : [[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"];
 			loadRange = NSMakeRange(0, rangeCap);
 			enumerator = [[savedJCList subarrayWithRange:loadRange] reverseObjectEnumerator];
 			while ( aSavedClipping = [enumerator nextObject] ) {
@@ -434,11 +468,11 @@
 	
     saveDict = [NSMutableDictionary dictionaryWithCapacity:3];
     [saveDict setObject:@"0.60a" forKey:@"version"];
-    [saveDict setObject:[NSNumber numberWithInt:_REMEMBER]
+    [saveDict setObject:[NSNumber numberWithInt:[[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"]]
                  forKey:@"rememberNum"];
     [saveDict setObject:[NSNumber numberWithInt:_DISPLENGTH]
                  forKey:@"displayLen"];
-    [saveDict setObject:[NSNumber numberWithInt:_DISPLAY]
+    [saveDict setObject:[NSNumber numberWithInt:[[NSUserDefaults standardUserDefaults] integerForKey:@"displayNum"]]
                  forKey:@"displayNum"];
     for ( i = 0 ; i < [clippingStore jcListCount]; i++) {
 		[jcListArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:

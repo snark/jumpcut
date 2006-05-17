@@ -86,7 +86,9 @@
 {
     if ( nowRemembering  > 0 ) {
         jcRememberNum = nowRemembering;
-        NSLog(@"Remembering %d.", jcRememberNum);
+		while ( [jcList count] > jcRememberNum ) {
+			[jcList removeObjectAtIndex:jcRememberNum];
+		}
     }
 }
 
