@@ -199,13 +199,11 @@
 		switch ( pressed ) {
 			case NSUpArrowFunctionKey: 
 			case NSLeftArrowFunctionKey: 
-				// We don't need to check to see if the positions above still exist
-				// since we're coming from a valid stackPosition -- 
-				// however, we'll need to make sure that we check the stackPosition's
-				// validity whenever we delete a clipping (or multiple clippings).
 				stackPosition--; if ( stackPosition < 0 ) stackPosition = 0;
-				[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
-				[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+				if ( [clippingStore jcListCount] > stackPosition ) {
+					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+				}
 				break;
 			case NSDownArrowFunctionKey: 
 			case NSRightArrowFunctionKey:
@@ -217,12 +215,40 @@
 					stackPosition--;
 				}
 				break;
-			case 0x3: case 0xD:
-				[self pasteFromStack];
+            case NSHomeFunctionKey:
+				if ( [clippingStore jcListCount] > 0 ) {
+					stackPosition = 0;
+					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+				}
+				break;
+            case NSEndFunctionKey:
+				if ( [clippingStore jcListCount] > 0 ) {
+					stackPosition = [clippingStore jcListCount] - 1;
+					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+				}
+				break;
+            case NSPageUpFunctionKey:
+				if ( [clippingStore jcListCount] > 0 ) {
+					stackPosition = stackPosition - 5; if ( stackPosition < 0 ) stackPosition = 0;
+					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+				}
+				break;
+			case NSPageDownFunctionKey:
+				if ( [clippingStore jcListCount] > 0 ) {
+					stackPosition = stackPosition + 5; if ( stackPosition > [clippingStore jcListCount] ) stackPosition = [clippingStore jcListCount] - 1;
+					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+				}
 				break;
 			case NSBackspaceCharacter: NSLog(@"Backspace pressed"); break;
             case NSDeleteCharacter: NSLog(@"Delete pressed"); break;
             case NSDeleteFunctionKey: NSLog(@"Delete pressed"); break;
+			case 0x3: case 0xD: // Enter or Return
+				[self pasteFromStack];
+				break;
 			case 0x1B:
 				[self hideApp];
 				break;
@@ -239,8 +265,8 @@
 	mainHotKey = [[PTHotKey alloc] initWithIdentifier:@"mainHotKey"
 											   keyCombo:[PTKeyCombo keyComboWithKeyCode:[mainRecorder keyCombo].code
 																			  modifiers:[mainRecorder cocoaToCarbonFlags: [mainRecorder keyCombo].flags]]];
-	mainHotkeyModifiers = [mainRecorder cocoaToCarbonFlags:[mainRecorder keyCombo].flags];
-	NSLog(@"Hotkey modifiers: %d", mainHotkeyModifiers);
+	// mainHotkeyModifiers = [mainRecorder cocoaToCarbonFlags:[mainRecorder keyCombo].flags];
+	// NSLog(@"Hotkey modifiers: %d", mainHotkeyModifiers);
 	[mainHotKey setName: @"Activate Bezel HotKey"]; //This is typically used by PTKeyComboPanel
 	[mainHotKey setTarget: self];
 	[mainHotKey setAction: @selector( hitMainHotKey: ) ];
@@ -332,6 +358,7 @@
 		if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 1 ) {
 			[self saveEngine];
 		}
+		[bezel setText:@""];
     }
 }
 
@@ -467,7 +494,7 @@
     }
 	
     saveDict = [NSMutableDictionary dictionaryWithCapacity:3];
-    [saveDict setObject:@"0.60a" forKey:@"version"];
+    [saveDict setObject:@"0.6" forKey:@"version"];
     [saveDict setObject:[NSNumber numberWithInt:[[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"]]
                  forKey:@"rememberNum"];
     [saveDict setObject:[NSNumber numberWithInt:_DISPLENGTH]
@@ -486,7 +513,7 @@
     [saveDict setObject:jcListArray forKey:@"jcList"];
 	
     if ( [saveDict writeToFile:[path stringByAppendingString:@"/JCEngine.save"] atomically:true] ) {
-		NSLog(@"Engine contents saved.");
+		// NSLog(@"Engine contents saved.");
     } else {
 		NSLog(@"Engine contents NOT saved.");
     }

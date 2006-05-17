@@ -33,6 +33,7 @@
 		AAECDDC70A03DCC5007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */; };
 		AAECDE430A03E746007D377A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAECDE300A03E746007D377A /* Sparkle.framework */; };
 		AAECDE460A03E78A007D377A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAECDE300A03E746007D377A /* Sparkle.framework */; };
+		AAFAC7620A1B5EA300DC6025 /* jumpcut.icns in Resources */ = {isa = PBXBuildFile; fileRef = AAFAC7610A1B5EA300DC6025 /* jumpcut.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
@@ -111,6 +112,7 @@
 		AAECDC910A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = net.sf.jumpcut.preferences.general.tiff; path = ../../Snapback/net.sf.jumpcut.preferences.general.tiff; sourceTree = SOURCE_ROOT; };
 		AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.acknowledgements.tiff; sourceTree = "<group>"; };
 		AAECDE300A03E746007D377A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		AAFAC7610A1B5EA300DC6025 /* jumpcut.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = jumpcut.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AAFAC7610A1B5EA300DC6025 /* jumpcut.icns */,
 				AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */,
 				AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */,
 				AAECDC910A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff */,
@@ -330,6 +333,7 @@
 				AAECDC800A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */,
 				AAECDC920A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff in Resources */,
 				AAECDDC70A03DCC5007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff in Resources */,
+				AAFAC7620A1B5EA300DC6025 /* jumpcut.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +439,10 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
