@@ -242,11 +242,18 @@
 
 - (void)processBezelKeyDown:(NSEvent *)theEvent
 {
+	int newStackPosition;
 	// AppControl should only be getting these directly from bezel via delegation
 	if ( [theEvent type] == NSKeyDown )
 	{
 		unichar pressed = [[theEvent characters] characterAtIndex:0];
 		switch ( pressed ) {
+			case 0x1B:
+				[self hideApp];
+				break;
+			case 0x3: case 0xD: // Enter or Return
+				[self pasteFromStack];
+				break;
 			case NSUpArrowFunctionKey: 
 			case NSLeftArrowFunctionKey: 
 				stackPosition--; if ( stackPosition < 0 ) stackPosition = 0;
@@ -293,14 +300,18 @@
 					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
 				}
 				break;
-			case NSBackspaceCharacter: NSLog(@"Backspace pressed"); break;
-            case NSDeleteCharacter: NSLog(@"Delete pressed"); break;
-            case NSDeleteFunctionKey: NSLog(@"Delete pressed"); break;
-			case 0x3: case 0xD: // Enter or Return
-				[self pasteFromStack];
-				break;
-			case 0x1B:
-				[self hideApp];
+			case NSBackspaceCharacter: break;
+            case NSDeleteCharacter: break;
+            case NSDeleteFunctionKey: break;
+			case 0x30: case 0x31: case 0x32: case 0x33: case 0x34: 				// Numeral 
+			case 0x35: case 0x36: case 0x37: case 0x38: case 0x39:
+				// We'll currently ignore the possibility that the user wants to do something with shift.
+				newStackPosition = pressed == 0x30 ? 9 : [[NSString stringWithCharacters:&pressed length:1] intValue] - 1;
+				if ( [clippingStore jcListCount] >= newStackPosition ) {
+					stackPosition = newStackPosition;
+					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+				}
 				break;
             default: // It's not a navigation/application-defined thing, so let's figure out what it is.
 				NSLog(@"%d", pressed);
