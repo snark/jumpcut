@@ -34,6 +34,7 @@
 		AAECDE430A03E746007D377A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAECDE300A03E746007D377A /* Sparkle.framework */; };
 		AAECDE460A03E78A007D377A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAECDE300A03E746007D377A /* Sparkle.framework */; };
 		AAFAC7620A1B5EA300DC6025 /* jumpcut.icns in Resources */ = {isa = PBXBuildFile; fileRef = AAFAC7610A1B5EA300DC6025 /* jumpcut.icns */; };
+		AAFAC85F0A1BD9DD00DC6025 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
@@ -113,6 +114,7 @@
 		AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.acknowledgements.tiff; sourceTree = "<group>"; };
 		AAECDE300A03E746007D377A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		AAFAC7610A1B5EA300DC6025 /* jumpcut.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = jumpcut.icns; sourceTree = "<group>"; };
+		AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				AAECDE430A03E746007D377A /* Sparkle.framework in Frameworks */,
+				AAFAC85F0A1BD9DD00DC6025 /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +148,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */,
 				AAECDE300A03E746007D377A /* Sparkle.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
@@ -422,6 +426,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Jumpcut;
+				STRIP_INSTALLED_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

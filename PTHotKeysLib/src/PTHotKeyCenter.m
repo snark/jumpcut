@@ -95,7 +95,6 @@ static id _sharedHotKeyCenter = nil;
 		[mHotKeys setObject: hotKey forKey: key];
 
 	[self _updateEventHandler];
-	NSLog(@"Registered.");
 	return YES;
 }
 
@@ -118,7 +117,6 @@ static id _sharedHotKeyCenter = nil;
 	[mHotKeys removeObjectForKey: key];
 	
 	[self _updateEventHandler];
-	NSLog(@"Unregistered.");
 	//See that? Completely ignored
 }
 

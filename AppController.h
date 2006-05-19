@@ -44,6 +44,7 @@
     //stores PasteboardCount for internal Jumpcut pasteboard actions so they don't trigger any events
     NSNumber *pbBlockCount;
     //Preferences
+	NSDictionary *standardPreferences;
     int jcDisplayNum;
 	BOOL issuedRememberResizeWarning;
 }
@@ -64,6 +65,7 @@
 -(void) loadEngineFromPList;
 
 // Hotkey related
+-(void)shortcutRecorder:(ShortcutRecorder *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo;
 -(IBAction)toggleMainHotKey:(id)sender;
 -(void)hitMainHotKey:(PTHotKey *)hotKey;
 

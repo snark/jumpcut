@@ -11,14 +11,65 @@
 #import "AppController.h"
 #import "PTHotKey.h"
 #import "PTHotKeyCenter.h"
+#import "ShortcutRecorderCell.h"
 
-#define _DISPLAY 15
 #define _DISPLENGTH 40
 
 @implementation AppController
 
 - (void)awakeFromNib
 {
+	if ( ! [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] || [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] < 0.6  ) {
+		// Let's try to transfer smoothly from previous versions
+		if ( [[NSUserDefaults standardUserDefaults] stringForKey:@"savePreference"] ) {
+			if ( [[[NSUserDefaults standardUserDefaults] stringForKey:@"savePreference"] isEqualToString:@"onChange"] ) {
+				[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:2]
+														 forKey:@"savePreference"];
+			} else if ( [[[NSUserDefaults standardUserDefaults] stringForKey:@"savePreference"] isEqualToString:@"onExit"] ) {
+				[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:1]
+														 forKey:@"savePreference"];
+			} else {
+				[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:1]
+														 forKey:@"savePreference"];
+			}
+		}
+		// end our preference updater
+		[mainRecorder setKeyCombo:SRMakeKeyCombo(9, 786432)];
+	}
+	[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithFloat:0.6]
+											 forKey:@"lastRun"];
+	// If we don't have preferences defined, let's set some default values:
+	standardPreferences = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:15],
+		@"displayNum",
+		[NSNumber numberWithInt:40],
+		@"rememberNum",
+		[NSNumber numberWithInt:1],
+		@"savePreference",
+		[NSNumber numberWithBool:YES],
+		@"menuSelectionPastes",
+//		[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:9], @"keyCode", [NSNumber numberWithInt:786432], @"modifierFlags", nil],
+//		@"ShortcutRecorder mainHotkey",
+		nil];
+	if ( ! [[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"] ) {
+		 [[NSUserDefaults standardUserDefaults] setValue:[standardPreferences objectForKey:@"rememberNum"]
+												  forKey:@"rememberNum"];
+	 }
+	 if ( ! [[NSUserDefaults standardUserDefaults] integerForKey:@"displayNum"] ) {
+		 [[NSUserDefaults standardUserDefaults] setValue:[standardPreferences objectForKey:@"displayNum"]
+												  forKey:@"displayNum"];
+	 }
+	 if ( ! [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] ) {
+		 [[NSUserDefaults standardUserDefaults] setValue:[standardPreferences objectForKey:@"savePreference"]
+												  forKey:@"savePreference"];
+	 }
+	 if ( ! [[NSUserDefaults standardUserDefaults] boolForKey:@"menuSelectionPastes"] ) {
+		 [[NSUserDefaults standardUserDefaults] setValue:[standardPreferences objectForKey:@"menuSelectionPastes"]
+												  forKey:@"menuSelectionPastes"];
+	 }
+	 // Initialize the JumpcutStore
+	 clippingStore = [[JumpcutStore alloc] initRemembering:[[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"]
+												displaying:[[NSUserDefaults standardUserDefaults] integerForKey:@"displayNum"]
+										 withDisplayLength:_DISPLENGTH];
 	// Set up the bezel window
     NSSize windowSize = NSMakeSize(325.0, 325.0);
     NSSize screenSize = [[NSScreen mainScreen] frame].size;
@@ -30,9 +81,9 @@
 											 backing:NSBackingStoreBuffered
 											   defer:NO];
 	[bezel setDelegate:self];
-	// Initialize the JumpcutStore
-    clippingStore = [[JumpcutStore alloc] initRemembering:[[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"]
-											   displaying:[[NSUserDefaults standardUserDefaults] integerForKey:@"displayNum"]
+
+    clippingStore = [[JumpcutStore alloc] initRemembering:40
+											   displaying:15
 										withDisplayLength:_DISPLENGTH];
 	// Create our pasteboard interface
     jcPasteboard = [NSPasteboard generalPasteboard];
@@ -52,7 +103,6 @@
 	if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 1 ) {
 		[self loadEngineFromPList];
 	}
-	
 	// Build our listener timer
     pollPBTimer = [[NSTimer scheduledTimerWithTimeInterval:(1.0)
 													target:self
