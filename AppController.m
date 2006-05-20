@@ -295,7 +295,7 @@
 				break;
 			case NSPageDownFunctionKey:
 				if ( [clippingStore jcListCount] > 0 ) {
-					stackPosition = stackPosition + 10; if ( stackPosition > [clippingStore jcListCount] ) stackPosition = [clippingStore jcListCount] - 1;
+					stackPosition = stackPosition + 10; if ( stackPosition >= [clippingStore jcListCount] ) stackPosition = [clippingStore jcListCount] - 1;
 					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
 					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
 				}

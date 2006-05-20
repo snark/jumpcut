@@ -20,6 +20,7 @@
 	NSImage				*icon;
 	RoundRecTextField	*textField;
 	RoundRecTextField	*charField;
+	NSImageView			*iconView;
 	id					delegate;
 }
 
