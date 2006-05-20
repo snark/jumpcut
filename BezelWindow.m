@@ -31,7 +31,7 @@
 		[self setMovableByWindowBackground:NO];
 		[self setBackgroundColor:[self sizedBezelBackgroundWithRadius:25.0 withAlpha:0.25]];
 		float lineHeight = 16;
-		NSRect textFrame = NSMakeRect(12, 12, [self frame].size.width - 24, 6 * lineHeight);
+		NSRect textFrame = NSMakeRect(12, 12, [self frame].size.width - 24, 8 * lineHeight);
 		textField = [[RoundRecTextField alloc] initWithFrame:textFrame];
 		[[self contentView] addSubview:textField];
 		[textField setEditable:NO];
@@ -40,7 +40,7 @@
 		[textField setDrawsBackground:YES];
 		[textField setBordered:NO];
 		[textField setAlignment:NSCenterTextAlignment];
-		NSRect charFrame = NSMakeRect(([self frame].size.width - (2 * lineHeight)) / 2, 120, 2 * lineHeight, 2 * lineHeight);
+		NSRect charFrame = NSMakeRect(([self frame].size.width - (2 * lineHeight)) / 2, 150, 2 * lineHeight, 2 * lineHeight);
 		charField = [[RoundRecTextField alloc] initWithFrame:charFrame];
 		[[self contentView] addSubview:charField];
 		[charField setEditable:NO];
@@ -50,6 +50,13 @@
 		[charField setBordered:NO];
 		[charField setAlignment:NSCenterTextAlignment];
 		[self setInitialFirstResponder:textField];
+		icon = [NSImage imageNamed:@"ghost_scissors_small.png"];
+		if ( [icon isValid] ) {
+			NSRect iconFrame = NSMakeRect( ([self frame].size.width - [icon size].width) / 2, [self frame].size.height - [icon size].height - 24, [icon size].width, [icon size].height);
+			NSImageView *iconView = [[NSImageView alloc] initWithFrame:iconFrame];
+			[iconView setImage:icon];
+			[[self contentView] addSubview:iconView];
+		}
 		return self;
 	}
 	return nil;
@@ -119,6 +126,10 @@
 - (void)dealloc
 {
 	[textField release];
+	[charField release];
+	if ( [icon isValid] ) {
+		[iconView release];
+	}
 	[super dealloc];
 }
 

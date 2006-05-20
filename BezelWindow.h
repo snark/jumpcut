@@ -14,12 +14,13 @@
 
 
 @interface BezelWindow : NSWindow {
-	NSString *charString; // Slightly misleading, as this can be longer than one character
-	NSString *title;
-	NSString *bezelText;
-	RoundRecTextField *textField;
-	RoundRecTextField *charField;
-	id delegate;
+	NSString			*charString; // Slightly misleading, as this can be longer than one character
+	NSString			*title;
+	NSString			*bezelText;
+	NSImage				*icon;
+	RoundRecTextField	*textField;
+	RoundRecTextField	*charField;
+	id					delegate;
 }
 
 - (NSColor *)roundedBackgroundWithRect:(NSRect)bgRect withRadius:(float)radius withAlpha:(float)alpha;

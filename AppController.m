@@ -288,14 +288,14 @@
 				break;
             case NSPageUpFunctionKey:
 				if ( [clippingStore jcListCount] > 0 ) {
-					stackPosition = stackPosition - 5; if ( stackPosition < 0 ) stackPosition = 0;
+					stackPosition = stackPosition - 10; if ( stackPosition < 0 ) stackPosition = 0;
 					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
 					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
 				}
 				break;
 			case NSPageDownFunctionKey:
 				if ( [clippingStore jcListCount] > 0 ) {
-					stackPosition = stackPosition + 5; if ( stackPosition > [clippingStore jcListCount] ) stackPosition = [clippingStore jcListCount] - 1;
+					stackPosition = stackPosition + 10; if ( stackPosition > [clippingStore jcListCount] ) stackPosition = [clippingStore jcListCount] - 1;
 					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
 					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
 				}
@@ -306,6 +306,7 @@
 			case 0x30: case 0x31: case 0x32: case 0x33: case 0x34: 				// Numeral 
 			case 0x35: case 0x36: case 0x37: case 0x38: case 0x39:
 				// We'll currently ignore the possibility that the user wants to do something with shift.
+				// First, let's set the new stack count to "10" if the user pressed "0"
 				newStackPosition = pressed == 0x30 ? 9 : [[NSString stringWithCharacters:&pressed length:1] intValue] - 1;
 				if ( [clippingStore jcListCount] >= newStackPosition ) {
 					stackPosition = newStackPosition;
@@ -313,8 +314,8 @@
 					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
 				}
 				break;
-            default: // It's not a navigation/application-defined thing, so let's figure out what it is.
-				NSLog(@"%d", pressed);
+            default: // It's not a navigation/application-defined thing, so let's figure out what to do with it.
+				// NSLog(@"%d", pressed);
 				break;
 		}		
 	}
