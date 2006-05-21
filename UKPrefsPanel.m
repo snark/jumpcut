@@ -139,7 +139,7 @@ Tab identifier  -	Image file name and toolbar item identifier.
     // Set up toolbar properties: Allow customization, give a default display mode, and remember state in user defaults 
     [toolbar setAllowsUserCustomization: YES];
     [toolbar setAutosavesConfiguration: YES];
-    [toolbar setDisplayMode: NSToolbarDisplayModeIconOnly];
+    [toolbar setDisplayMode: NSToolbarDisplayModeIconAndLabel];
 	
 	// Set up item list based on Tab View:
 	itemCount = [tabView numberOfTabViewItems];
@@ -151,7 +151,6 @@ Tab identifier  -	Image file name and toolbar item identifier.
 		NSTabViewItem*		theItem = [tabView tabViewItemAtIndex:x];
 		NSString*			theIdentifier = [theItem identifier];
 		NSString*			theLabel = [theItem label];
-		
 		[itemsList setObject:theLabel forKey:theIdentifier];
 	}
     
@@ -171,6 +170,12 @@ Tab identifier  -	Image file name and toolbar item identifier.
 	if( [toolbar respondsToSelector: @selector(setSelectedItemIdentifier:)] )
 		[toolbar setSelectedItemIdentifier: [currPage identifier]];
 #endif
+
+	// Jam in a flexible space to seperate out our acknowledgements tab
+	// sbc
+	int foo = [[toolbar items] count] - 1;
+	[toolbar insertItemWithItemIdentifier:NSToolbarFlexibleSpaceItemIdentifier atIndex:foo];
+
 }
 
 
