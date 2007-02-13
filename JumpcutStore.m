@@ -42,7 +42,6 @@
 {
     [super init];
     jcList = [[NSMutableArray alloc] init];
-    NSLog(@"Jumpcut engine initialized.");
     [self setRememberNum:nowRemembering];
     [self setDisplayNum:nowDisplaying];
     [self setDisplayLen:displayLength];
@@ -96,7 +95,6 @@
 {
     if ( nowDisplaying > 0 ) {
         jcDisplayNum = nowDisplaying;
-        NSLog(@"Displaying %d.", jcDisplayNum);
     }
 }
 
@@ -110,7 +108,6 @@
         while ( aClipping = [listEnum nextObject] ) {
             [aClipping setDisplayLength:newDisplayLength];
         }
-        NSLog(@"Display length %d.", jcDisplayLen);
     }
 }
 
@@ -190,7 +187,6 @@
 
 -(void) dealloc
 {
-    NSLog(@"JumpcutStore released.");
     // Free preferences
     jcRememberNum = 0;
     jcDisplayNum = 0;

@@ -43,15 +43,11 @@ Classes:
 	IBOutlet NSTabView*		tabView;			///< The tabless tab-view that we're a switcher for.
 	NSMutableDictionary*	itemsList;			///< Auto-generated from tab view's items.
 	NSString*				baseWindowName;		///< Auto-fetched at awakeFromNib time. We append a colon and the name of the current page to the actual window title.
-	NSString*				autosaveName;		///< Identifier used for saving toolbar state and current selected page of prefs window.
 }
 
 /// Mutator for specifying the tab view: (you should just hook this up in IB)
 -(void)			setTabView: (NSTabView*)tv;
 -(NSTabView*)   tabView;							///< Accessor for tab view containing the different pref panes.
-
--(void)			setAutosaveName: (NSString*)name;
--(NSString*)	autosaveName;
 
 	// Action for hooking up this object and the menu item:
 -(IBAction)		orderFrontPrefsPanel: (id)sender;

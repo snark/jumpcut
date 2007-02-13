@@ -137,12 +137,12 @@ static const CGFunctionCallbacks _CTLinearGradientFunction = { 0, &linearEvaluat
   CTGradientElement color1;
   CTGradientElement color2;
   
-  [[begin colorUsingColorSpaceName:@"NSCalibratedRGBColorSpace"] getRed:&color1.red
+  [[begin colorUsingColorSpaceName:NSCalibratedRGBColorSpace] getRed:&color1.red
 																  green:&color1.green
            														   blue:&color1.blue
 		  														  alpha:&color1.alpha];
   
-  [[end   colorUsingColorSpaceName:@"NSCalibratedRGBColorSpace"] getRed:&color2.red
+  [[end   colorUsingColorSpaceName:NSCalibratedRGBColorSpace] getRed:&color2.red
 																  green:&color2.green
            														   blue:&color2.blue
 		  														  alpha:&color2.alpha];
@@ -370,7 +370,7 @@ static const CGFunctionCallbacks _CTLinearGradientFunction = { 0, &linearEvaluat
   CTGradientElement newGradientElement;
   
   //put the components of color into the newGradientElement - must make sure it is a RGB color (not Gray or CMYK) 
-  [[color colorUsingColorSpaceName:@"NSCalibratedRGBColorSpace"] getRed:&newGradientElement.red
+  [[color colorUsingColorSpaceName:NSCalibratedRGBColorSpace] getRed:&newGradientElement.red
 																  green:&newGradientElement.green
            														   blue:&newGradientElement.blue
 		  														  alpha:&newGradientElement.alpha];
@@ -401,7 +401,7 @@ static const CGFunctionCallbacks _CTLinearGradientFunction = { 0, &linearEvaluat
   CTGradientElement removedElement = [newGradient removeElementAtIndex:index];
   
   if(isnan(removedElement.position))
-	[NSException raise:NSRangeException format:@"-[%@ removeColorStopAtIndex:]: index (%i) beyond bounds", [self class], index];
+	[NSException raise:NSRangeException format:@"-[%@ removeColorStopAtIndex:]: index (%d) beyond bounds", [self class], index];
   
   return [newGradient autorelease];
   }
@@ -421,7 +421,7 @@ static const CGFunctionCallbacks _CTLinearGradientFunction = { 0, &linearEvaluat
 									  blue:element->blue
 									 alpha:element->alpha];
   
-  [NSException raise:NSRangeException format:@"-[%@ removeColorStopAtIndex:]: index (%i) beyond bounds", [self class], index];
+  [NSException raise:NSRangeException format:@"-[%@ removeColorStopAtIndex:]: index (%d) beyond bounds", [self class], index];
   
   return nil;
   }
@@ -510,7 +510,6 @@ static const CGFunctionCallbacks _CTLinearGradientFunction = { 0, &linearEvaluat
   //Calls to CoreGraphics
   CGContextRef currentContext = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
   CGContextSaveGState(currentContext);
-	  // The commented out line is the proper way to do it in 10.4 -- sbc
 	  CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
 	  //CGColorSpaceRef colorspace  = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
 	  CGShadingRef    myCGShading = CGShadingCreateAxial(colorspace, startPoint, endPoint, gradientFunction, false, false);
@@ -540,9 +539,8 @@ static const CGFunctionCallbacks _CTLinearGradientFunction = { 0, &linearEvaluat
   //Calls to CoreGraphics
   CGContextRef currentContext = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
   CGContextSaveGState(currentContext);
-//		The commented-out line is the correct way to do this in 10.4 -- sbc
 	  CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
-//	  CGColorSpaceRef colorspace  = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
+	  //CGColorSpaceRef colorspace  = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
 	  CGShadingRef    myCGShading = CGShadingCreateRadial(colorspace, startPoint, startRadius, endPoint, endRadius, gradientFunction, true, true);
 	  
 	  CGContextClipToRect (currentContext , *(CGRect *)&rect);
@@ -585,7 +583,12 @@ static const CGFunctionCallbacks _CTLinearGradientFunction = { 0, &linearEvaluat
 - (CTGradientElement)removeElementAtIndex:(unsigned)index
   {
   CTGradientElement removedElement;
-  
+	removedElement.red = 0.0;
+	removedElement.green = 0.0;
+	removedElement.blue = 0.0;
+	removedElement.alpha = 0.0;
+	removedElement.position = NAN;
+	removedElement.nextElement = NULL;
   if(elementList != nil)
 	{
 	if(index == 0)
@@ -625,7 +628,12 @@ static const CGFunctionCallbacks _CTLinearGradientFunction = { 0, &linearEvaluat
 - (CTGradientElement)removeElementAtPosition:(float)position
   {
   CTGradientElement removedElement;
-  
+	removedElement.red = 0.0;
+	removedElement.green = 0.0;
+	removedElement.blue = 0.0;
+	removedElement.alpha = 0.0;
+	removedElement.position = NAN;
+	removedElement.nextElement = NULL;
   if(elementList != nil)
 	{
 	if(elementList->position == position)
@@ -762,3 +770,4 @@ void linearEvaluation (void *info, const float *in, float *out)
   }
 
 @end
+

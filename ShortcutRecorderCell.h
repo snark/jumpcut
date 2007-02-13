@@ -22,7 +22,7 @@ typedef struct _KeyCombo {
 	signed short code; // -1 for no code
 } KeyCombo;
 
-static KeyCombo SRMakeKeyCombo(signed short code, unsigned int flags) {
+FOUNDATION_STATIC_INLINE KeyCombo SRMakeKeyCombo(signed short code, unsigned int flags) {
 	KeyCombo kc;
 	kc.code = code;
 	kc.flags = flags;

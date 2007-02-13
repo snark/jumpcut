@@ -57,6 +57,7 @@
 -(void) pasteFromStack;
 -(void) fakeCommandV;
 -(IBAction)clearClippingList:(id)sender;
+
 	// Stack related
 -(BOOL) isValidClippingNumber:(NSNumber *)number;
 -(NSString *) clippingStringWithCount:(int)count;
@@ -66,7 +67,6 @@
 
 // Hotkey related
 -(void)shortcutRecorder:(ShortcutRecorder *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo;
--(IBAction)toggleMainHotKey:(id)sender;
 -(void)hitMainHotKey:(PTHotKey *)hotKey;
 
 // Bezel related
@@ -83,5 +83,8 @@
 -(IBAction) showPreferencePanel:(id)sender;
 -(IBAction) setRememberNumPref:(id)sender;
 -(IBAction) setDisplayNumPref:(id)sender;
+-(IBAction) setBezelAlpha:(id)sender;
+-(IBAction) switchMenuIcon:(id)sender;
+-(IBAction) toggleLoadOnStartup:(id)sender;
 
 @end

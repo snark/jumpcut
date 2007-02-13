@@ -12,64 +12,91 @@
 #import "PTHotKey.h"
 #import "PTHotKeyCenter.h"
 #import "ShortcutRecorderCell.h"
+#import "UKLoginItemRegistry.h"
+
 
 #define _DISPLENGTH 40
 
 @implementation AppController
 
-- (void)awakeFromNib
+- (void)init
 {
 	if ( ! [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] || [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] < 0.6  ) {
-		// Let's try to transfer smoothly from previous versions
-		if ( [[NSUserDefaults standardUserDefaults] stringForKey:@"savePreference"] ) {
-			if ( [[[NSUserDefaults standardUserDefaults] stringForKey:@"savePreference"] isEqualToString:@"onChange"] ) {
-				[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:2]
-														 forKey:@"savePreference"];
-			} else if ( [[[NSUserDefaults standardUserDefaults] stringForKey:@"savePreference"] isEqualToString:@"onExit"] ) {
-				[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:1]
-														 forKey:@"savePreference"];
-			} else {
-				[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:1]
-														 forKey:@"savePreference"];
-			}
-		}
-		// end our preference updater
+		// A decent starting value for the main hotkey is control-option-V
 		[mainRecorder setKeyCombo:SRMakeKeyCombo(9, 786432)];
-	}
-	[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithFloat:0.6]
-											 forKey:@"lastRun"];
+		
+		// Something we'd really like is to transfer over info from 0.5x if we can get at it --
+		if ( [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] ) {
+			// We need to pull out the relevant objects and stuff them in as proper preferences for the net.sf.Jumpcut domain
+			if ( [[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"displayNum"] != nil )
+			{
+				[[NSUserDefaults standardUserDefaults] setValue:[ [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"displayNum"]
+														 forKey:@"displayNum"];
+			}
+			if ( [[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"savePreference"] != nil )
+			{
+				if ( [[[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"savePreference"] isEqual:@"onChange"] )
+				{
+					[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:2]
+															 forKey:@"savePreference"];
+				} 
+				else if ( [[[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"savePreference"] isEqual:@"onExit"] )
+				{
+					[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:1]
+															 forKey:@"savePreference"];
+				}
+				else
+				{
+					[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:0]
+															 forKey:@"savePreference"];
+				} // End save preference test
+			} // End savePreference test
+		} // End if/then that deals with 0.5x preferences
+	} // End new-to-version check
 	// If we don't have preferences defined, let's set some default values:
-	standardPreferences = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:15],
+	[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
+		[NSNumber numberWithInt:15],
 		@"displayNum",
 		[NSNumber numberWithInt:40],
 		@"rememberNum",
 		[NSNumber numberWithInt:1],
 		@"savePreference",
+		[NSNumber numberWithInt:0],
+		@"menuIcon",
+		[NSNumber numberWithFloat:.25],
+		@"bezelAlpha",
+		[NSNumber numberWithBool:NO],
+		@"stickyBezel",
+		[NSNumber numberWithBool:NO],
+		@"launchOnStartup",
 		[NSNumber numberWithBool:YES],
 		@"menuSelectionPastes",
-//		[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:9], @"keyCode", [NSNumber numberWithInt:786432], @"modifierFlags", nil],
-//		@"ShortcutRecorder mainHotkey",
-		nil];
-	if ( ! [[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"] ) {
-		 [[NSUserDefaults standardUserDefaults] setValue:[standardPreferences objectForKey:@"rememberNum"]
-												  forKey:@"rememberNum"];
-	 }
-	 if ( ! [[NSUserDefaults standardUserDefaults] integerForKey:@"displayNum"] ) {
-		 [[NSUserDefaults standardUserDefaults] setValue:[standardPreferences objectForKey:@"displayNum"]
-												  forKey:@"displayNum"];
-	 }
-	 if ( ! [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] ) {
-		 [[NSUserDefaults standardUserDefaults] setValue:[standardPreferences objectForKey:@"savePreference"]
-												  forKey:@"savePreference"];
-	 }
-	 if ( ! [[NSUserDefaults standardUserDefaults] boolForKey:@"menuSelectionPastes"] ) {
-		 [[NSUserDefaults standardUserDefaults] setValue:[standardPreferences objectForKey:@"menuSelectionPastes"]
-												  forKey:@"menuSelectionPastes"];
-	 }
-	 // Initialize the JumpcutStore
-	 clippingStore = [[JumpcutStore alloc] initRemembering:[[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"]
-												displaying:[[NSUserDefaults standardUserDefaults] integerForKey:@"displayNum"]
-										 withDisplayLength:_DISPLENGTH];
+		nil]
+		];
+	[super init];
+}
+
+- (void)awakeFromNib
+{
+	// Hotkey default value
+	if ( ! [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] || [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] < 0.6  ) {
+		// A decent starting value for the main hotkey is control-option-V
+		[mainRecorder setKeyCombo:SRMakeKeyCombo(9, 786432)];
+		NSLog(@"Setting hotkey");
+		if ( [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] ) {
+			NSLog(@"Pulling old preference");
+			// We need to pull out the relevant objects and stuff them in as proper preferences for the net.sf.Jumpcut domain
+			if ( [[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"hotkeyModifiers"] != nil )
+			{
+				NSLog(@"Setting hotkey");
+				[mainRecorder setKeyCombo:SRMakeKeyCombo(9, [[[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"hotkeyModifiers"] intValue])];
+			}	
+		}
+	}
+	// Initialize the JumpcutStore
+	clippingStore = [[JumpcutStore alloc] initRemembering:[[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"]
+											   displaying:[[NSUserDefaults standardUserDefaults] integerForKey:@"displayNum"]
+										withDisplayLength:_DISPLENGTH];
 	// Set up the bezel window
     NSSize windowSize = NSMakeSize(325.0, 325.0);
     NSSize screenSize = [[NSScreen mainScreen] frame].size;
@@ -82,9 +109,6 @@
 											   defer:NO];
 	[bezel setDelegate:self];
 
-    clippingStore = [[JumpcutStore alloc] initRemembering:40
-											   displaying:15
-										withDisplayLength:_DISPLENGTH];
 	// Create our pasteboard interface
     jcPasteboard = [NSPasteboard generalPasteboard];
     [jcPasteboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:nil];
@@ -92,10 +116,16 @@
 
 	// Build the statusbar menu
     statusItem = [[[NSStatusBar systemStatusBar]
-            statusItemWithLength:NSSquareStatusItemLength] retain];
+            statusItemWithLength:NSVariableStatusItemLength] retain];
     [statusItem setHighlightMode:YES];
-    [statusItem setTitle:[NSString stringWithFormat:@"%C",0x2702]]; 
-    [statusItem setMenu:jcMenu];
+	if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"menuIcon"] == 1 ) {
+		[statusItem setTitle:[NSString stringWithFormat:@"%C",0x2704]]; 
+	} else if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"menuIcon"] == 2 ) {
+		[statusItem setTitle:[NSString stringWithFormat:@"%C",0x2702]]; 
+	} else {
+		[statusItem setImage:[NSImage imageNamed:@"net.sf.jumpcut.scissors_bw16.png"]];
+    }
+	[statusItem setMenu:jcMenu];
     [statusItem setEnabled:YES];
 	
     // If our preferences indicate that we are saving, load the dictionary from the saved plist
@@ -116,10 +146,37 @@
 
 	// Stack position starts @ 0 by default
 	stackPosition = 0;
-	
-	NSLog(@"Jumpcut running: init complete.");
-		
-    [super init];
+
+	// Make sure we only run the 0.5x transition once
+	[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithFloat:0.6]
+											 forKey:@"lastRun"];
+
+									     								
+	[NSApp activateIgnoringOtherApps: YES];
+
+}
+
+-(IBAction) setBezelAlpha:(id)sender
+{
+	// In a masterpiece of poorly-considered design--because I want to eventually 
+	// allow users to select from a variety of bezels--I've decided to create the
+	// bezel programatically, meaning that I have to go through AppController as
+	// a cutout to allow the user interface to interact w/the bezel.
+	[bezel setAlpha:[sender floatValue]];
+}
+
+-(IBAction) switchMenuIcon:(id)sender
+{
+	if ([sender indexOfSelectedItem] == 1 ) {
+		[statusItem setImage:nil];
+		[statusItem setTitle:[NSString stringWithFormat:@"%C",0x2704]]; 
+	} else if ( [sender indexOfSelectedItem] == 2 ) {
+		[statusItem setImage:nil];
+		[statusItem setTitle:[NSString stringWithFormat:@"%C",0x2702]]; 
+	} else {
+		[statusItem setTitle:@""];
+		[statusItem setImage:[NSImage imageNamed:@"net.sf.jumpcut.scissors_bw16.png"]];
+    }
 }
 
 -(IBAction) setRememberNumPref:(id)sender
@@ -137,10 +194,8 @@
 			[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:[clippingStore jcListCount]]
 													 forKey:@"rememberNum"];
 			[self updateMenu];
-			NSLog(@"Alternate - %d", [clippingStore jcListCount]);
 			return;
 		} else if ( choice == NSAlertOtherReturn ) {
-			NSLog(@"Other");
 			[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES]
 													 forKey:@"stifleRememberResizeWarning"];
 		} else {
@@ -161,12 +216,31 @@
 }
 
 -(IBAction) showPreferencePanel:(id)sender
-{
+{                                    
+	int checkLoginRegistry = [UKLoginItemRegistry indexForLoginItemWithPath:[[NSBundle mainBundle] bundlePath]];
 //    if ( ![prefsPanel isVisible] ) {
+	// Synchronize checkbox with login items -- changes could be made manually outside Jumpcut
+	if ( checkLoginRegistry >= 1 ) {
+		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES]
+												 forKey:@"loadOnStartup"];
+	} else {
+		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:NO]
+												 forKey:@"loadOnStartup"];
+	}
+	
 	[NSApp activateIgnoringOtherApps: YES];
 	[prefsPanel makeKeyAndOrderFront:self];
 	issuedRememberResizeWarning = NO;
 }
+
+-(IBAction)toggleLoadOnStartup:(id)sender {
+	if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"loadOnStartup"] ) {
+		[UKLoginItemRegistry addLoginItemWithPath:[[NSBundle mainBundle] bundlePath] hideIt:NO];
+	} else {
+		[UKLoginItemRegistry removeLoginItemWithPath:[[NSBundle mainBundle] bundlePath]];
+	}
+}
+
 
 - (void)pasteFromStack
 {
@@ -217,11 +291,10 @@
         if ( type != nil ) {
 			NSString *contents = [jcPasteboard stringForType:type];
 			if ( contents == nil ) {
-                NSLog(@"Contents: Empty");
+//                NSLog(@"Contents: Empty");
             } else {
 				if (( [clippingStore jcListCount] == 0 || ! [contents isEqualToString:[clippingStore clippingContentsAtPosition:0]])
 					&&  ! [pbCount isEqualTo:pbBlockCount] ) {
-//					NSLog(@"New pbCount: %@, pbBlockCount: %@", pbCount, pbBlockCount);
                     [clippingStore addClipping:contents
 										ofType:type	];
 //					The below tracks our position down down down... Maybe as an option?
@@ -246,7 +319,27 @@
 	// AppControl should only be getting these directly from bezel via delegation
 	if ( [theEvent type] == NSKeyDown )
 	{
-		unichar pressed = [[theEvent characters] characterAtIndex:0];
+		if ( [theEvent keyCode] == [mainRecorder keyCombo].code )
+		{
+			if ( [theEvent modifierFlags] & NSShiftKeyMask )
+			{
+				stackPosition--; if ( stackPosition < 0 ) stackPosition = 0;
+				if ( [clippingStore jcListCount] > stackPosition ) {
+					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+				}
+			} else {
+				stackPosition++;
+				if ( [clippingStore jcListCount] > stackPosition ) {
+					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+				} else {
+					stackPosition--;
+				}
+			}
+			return;
+		}
+		unichar pressed = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
 		switch ( pressed ) {
 			case 0x1B:
 				[self hideApp];
@@ -315,7 +408,8 @@
 				}
 				break;
             default: // It's not a navigation/application-defined thing, so let's figure out what to do with it.
-				// NSLog(@"%d", pressed);
+				NSLog(@"PRESSED %d", pressed);
+				NSLog(@"CODE %d", [mainRecorder keyCombo].code);
 				break;
 		}		
 	}
@@ -528,7 +622,6 @@
         } else {
 			NSLog(@"Not array");
 		}
-        NSLog(@"Contents loaded from file.");
         [self updateMenu];
         [loadDict release];
     }
@@ -608,28 +701,24 @@
 	}
 }
 
-- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)app {
-    // if we wanted to cancel, we would:
-    //   return NSTerminateLater;
-    // That might be useful for us at some point.
-	if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 1 ) {
-        [self saveEngine];
-    }
-    return NSTerminateNow;
-}
-
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
+	if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 1 ) {
+		NSLog(@"Saving on exit");
+        [self saveEngine] ;
+    }
 	//Unregister our hot key (not required)
 	[[PTHotKeyCenter sharedCenter] unregisterHotKey: mainHotKey];
-	
-	//Memory cleanup
 	[mainHotKey release];
 	mainHotKey = nil;
 	[nc removeObserver:self];
-	
 	[self hideBezel];
+}
+
+- (void) dealloc
+{
 	[bezel release];
+	[super dealloc];
 }
 
 @end

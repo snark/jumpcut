@@ -32,6 +32,7 @@
 - (NSString *)text;
 - (void)setText:(NSString *)newText;
 - (void)setCharString:(NSString *)newChar;
+- (void)setAlpha:(float)newValue;
 
 - (id)delegate;
 - (void)setDelegate:(id)newDelegate;

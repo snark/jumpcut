@@ -16,7 +16,6 @@
 #import "ShortcutRecorderCell.h"
 #import "ShortcutRecorder.h"
 #import "CTGradient.h"
-#import "NSBezierPathAdditions.h"
 
 // Unicode values of some keyboard glyphs
 enum {
@@ -73,6 +72,35 @@ enum {
 #define ShortcutRecorderEscapeKey 53
 #define ShortcutRecorderBackspaceKey 51
 #define ShortcutRecorderDeleteKey 117
+
+// This segment is a category on NSBezierPath to supply roundrects. It's a common thing if you're drawing,
+// so to integrate well, we use an oddball method signature to not implement the same method twice.
+
+// This code is originally from http://www.cocoadev.com/index.pl?RoundedRectangles and no license demands
+// (or Copyright demands) are stated, so we pretend it's public domain. 
+
+// This used to be in a separate file (like CTGradient) but it's beneficial (ie short enough) to bring inline here.
+
+@interface NSBezierPath (ShortcutRecorderCellNSBezierPathAdditions)
++ (NSBezierPath*)bezierPathWithSRCRoundRectInRect:(NSRect)aRect radius:(float)radius;
+@end
+
+@implementation NSBezierPath (ShortcutRecorderCellNSBezierPathAdditions)
+
++ (NSBezierPath*)bezierPathWithSRCRoundRectInRect:(NSRect)aRect radius:(float)radius
+{
+	NSBezierPath* path = [self bezierPath];
+	radius = MIN(radius, 0.5f * MIN(NSWidth(aRect), NSHeight(aRect)));
+	NSRect rect = NSInsetRect(aRect, radius, radius);
+	[path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(rect), NSMinY(rect)) radius:radius startAngle:180.0 endAngle:270.0];
+	[path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(rect), NSMinY(rect)) radius:radius startAngle:270.0 endAngle:360.0];
+	[path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(rect), NSMaxY(rect)) radius:radius startAngle:  0.0 endAngle: 90.0];
+	[path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(rect), NSMaxY(rect)) radius:radius startAngle: 90.0 endAngle:180.0];
+	[path closePath];
+	return path;
+}
+
+@end
 
 @interface ShortcutRecorderCell (Private)
 - (void)_privateInit;
@@ -227,7 +255,7 @@ enum {
 	// Draw gradient when in recording mode
 	if (isRecording)
 	{
-		roundedRect = [NSBezierPath bezierPathWithRoundRectInRect:cellFrame radius:NSHeight(cellFrame)/2.0];
+		roundedRect = [NSBezierPath bezierPathWithSRCRoundRectInRect:cellFrame radius:NSHeight(cellFrame)/2.0];
 		
 		// Fill background with gradient
 		[[NSGraphicsContext currentContext] saveGraphicsState];
@@ -252,7 +280,7 @@ enum {
 	}
 	
 	// Draw white rounded box
-	roundedRect = [NSBezierPath bezierPathWithRoundRectInRect:whiteRect radius:NSHeight(whiteRect)/2.0];
+	roundedRect = [NSBezierPath bezierPathWithSRCRoundRectInRect:whiteRect radius:NSHeight(whiteRect)/2.0];
 	[[NSGraphicsContext currentContext] saveGraphicsState];
 	[roundedRect addClip];
 	[[NSColor whiteColor] set];
@@ -1098,7 +1126,7 @@ enum {
 	if (flags & shiftKey) localShiftMod = YES;
 	if (flags & controlKey) localCtrlMod = YES;
 
-	while (globalHotKeyInfoDictionary = [globalHotKeysEnumerator nextObject])
+	while ((globalHotKeyInfoDictionary = [globalHotKeysEnumerator nextObject]))
 	{
 		// Only check if global hotkey is enabled
 		if ((CFBooleanRef)[globalHotKeyInfoDictionary objectForKey: (NSString *)kHISymbolicHotKeyEnabled] == kCFBooleanTrue)
@@ -1163,7 +1191,7 @@ enum {
 	if (flags & shiftKey) localShiftMod = YES;
 	if (flags & controlKey) localCtrlMod = YES;
 	
-	while (menuItem = [menuItemsEnumerator nextObject])
+	while ((menuItem = [menuItemsEnumerator nextObject]))
 	{
 		if ([menuItem hasSubmenu])
 		{

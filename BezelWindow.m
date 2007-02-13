@@ -23,13 +23,12 @@
 							defer:NO];
 	if ( self )
 	{
-		[self setBackgroundColor: [NSColor clearColor]];
 		[self setOpaque:NO];
 		[self setAlphaValue:1.0];
 		[self setOpaque:NO];
 		[self setHasShadow:NO];
 		[self setMovableByWindowBackground:NO];
-		[self setBackgroundColor:[self sizedBezelBackgroundWithRadius:25.0 withAlpha:0.25]];
+		[self setBackgroundColor:[self sizedBezelBackgroundWithRadius:25.0 withAlpha:[[NSUserDefaults standardUserDefaults] floatForKey:@"bezelAlpha"]]];
 		float lineHeight = 16;
 		NSRect textFrame = NSMakeRect(12, 12, [self frame].size.width - 24, 8 * lineHeight);
 		textField = [[RoundRecTextField alloc] initWithFrame:textFrame];
@@ -50,7 +49,7 @@
 		[charField setBordered:NO];
 		[charField setAlignment:NSCenterTextAlignment];
 		[self setInitialFirstResponder:textField];
-		icon = [NSImage imageNamed:@"ghost_scissors_small.png"];
+		icon = [NSImage imageNamed:@"net.sf.jumpcut.ghost_scissors_small.png"];
 		if ( [icon isValid] ) {
 			NSRect iconFrame = NSMakeRect( ([self frame].size.width - [icon size].width) / 2, [self frame].size.height - [icon size].height - 24, [icon size].width, [icon size].height);
 			iconView = [[NSImageView alloc] initWithFrame:iconFrame];
@@ -60,6 +59,12 @@
 		return self;
 	}
 	return nil;
+}
+
+- (void) setAlpha:(float)newValue
+{
+	[self setBackgroundColor:[self sizedBezelBackgroundWithRadius:25.0 withAlpha:[[NSUserDefaults standardUserDefaults] floatForKey:@"bezelAlpha"]]];
+	[[self contentView] setNeedsDisplay:YES];
 }
 
 - (NSString *)title

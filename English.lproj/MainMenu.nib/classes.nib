@@ -4,15 +4,24 @@
             ACTIONS = {
                 clearClippingList = id; 
                 processMenuClippingSelection = id; 
+                setBezelAlpha = id; 
                 setDisplayNumPref = id; 
                 setRememberNumPref = id; 
                 showPreferencePanel = id; 
-                toggleMainHotKey = id; 
+                switchMenuIcon = id; 
+                toggleLoadOnStartup = id; 
             }; 
             CLASS = AppController; 
             LANGUAGE = ObjC; 
             OUTLETS = {jcMenu = NSMenu; mainRecorder = ShortcutRecorder; prefsPanel = NSPanel; }; 
             SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {setAlpha = id; }; 
+            CLASS = BezelWindow; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {delegate = id; }; 
+            SUPERCLASS = NSWindow; 
         }, 
         {
             ACTIONS = {"" = id; }; 

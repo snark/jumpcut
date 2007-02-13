@@ -13,6 +13,13 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		AA058DC70A10512100DB7366 /* UKPrefsPanel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA058DC50A10512100DB7366 /* UKPrefsPanel.h */; };
 		AA058DC80A10512100DB7366 /* UKPrefsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA058DC60A10512100DB7366 /* UKPrefsPanel.m */; };
+		AA08753B0B7FFA6B00C1F175 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA08753A0B7FFA6B00C1F175 /* Sparkle.framework */; };
+		AA0875FD0B8011B000C1F175 /* LoginItemsAE.c in Sources */ = {isa = PBXBuildFile; fileRef = AA0875FB0B8011B000C1F175 /* LoginItemsAE.c */; };
+		AA0875FE0B8011B000C1F175 /* LoginItemsAE.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0875FC0B8011B000C1F175 /* LoginItemsAE.h */; };
+		AA0876030B8011EC00C1F175 /* UKLoginItemRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0876010B8011EC00C1F175 /* UKLoginItemRegistry.h */; };
+		AA0876040B8011EC00C1F175 /* UKLoginItemRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0876020B8011EC00C1F175 /* UKLoginItemRegistry.m */; };
+		AA2640B90A37D2E600591C20 /* jumpcut.icns in Resources */ = {isa = PBXBuildFile; fileRef = AA2640B80A37D2E600591C20 /* jumpcut.icns */; };
+		AAACCE8A0B7FF2F600560ED4 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAACCE750B7FF2E800560ED4 /* Sparkle.framework */; };
 		AABE486809FF1DF800A6A239 /* BezelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486309FF1DF800A6A239 /* BezelWindow.m */; };
 		AABE486909FF1DF800A6A239 /* RoundRecTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486509FF1DF800A6A239 /* RoundRecTextField.m */; };
 		AABE486A09FF1DF800A6A239 /* RoundRecBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486709FF1DF800A6A239 /* RoundRecBezierPath.m */; };
@@ -28,13 +35,15 @@
 		AABE496A09FF227E00A6A239 /* JumpcutClipping.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE496409FF227E00A6A239 /* JumpcutClipping.m */; };
 		AABE496B09FF227E00A6A239 /* JumpcutStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE496609FF227E00A6A239 /* JumpcutStore.m */; };
 		AABE497C09FF9CD000A6A239 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE497B09FF9CD000A6A239 /* AppController.m */; };
-		AADC65F30A1DFCF000C0096D /* ghost_scissors_small.png in Resources */ = {isa = PBXBuildFile; fileRef = AADC65F20A1DFCEF00C0096D /* ghost_scissors_small.png */; };
+		AADC65F30A1DFCF000C0096D /* net.sf.jumpcut.ghost_scissors_small.png in Resources */ = {isa = PBXBuildFile; fileRef = AADC65F20A1DFCEF00C0096D /* net.sf.jumpcut.ghost_scissors_small.png */; };
+		AAE200780A228741002DCC2A /* net.sf.jumpcut.preferences.appearance.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAE200770A228741002DCC2A /* net.sf.jumpcut.preferences.appearance.tiff */; };
+		AAE2FD090A1EC35D002DCC2A /* net.sf.jumpcut.preferences.general.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAE2FD080A1EC35D002DCC2A /* net.sf.jumpcut.preferences.general.tiff */; };
+		AAE2FEA70A1F6AD4002DCC2A /* net.sf.jumpcut.scissors_bw16.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE2FEA60A1F6AD3002DCC2A /* net.sf.jumpcut.scissors_bw16.png */; };
+		AAE2FF150A1FB4A7002DCC2A /* RemoveShortcut.tif in Resources */ = {isa = PBXBuildFile; fileRef = AAE2FF120A1FB4A7002DCC2A /* RemoveShortcut.tif */; };
+		AAE2FF160A1FB4A8002DCC2A /* RemoveShortcutPressed.tif in Resources */ = {isa = PBXBuildFile; fileRef = AAE2FF130A1FB4A7002DCC2A /* RemoveShortcutPressed.tif */; };
+		AAE2FF170A1FB4A8002DCC2A /* RemoveShortcutRollover.tif in Resources */ = {isa = PBXBuildFile; fileRef = AAE2FF140A1FB4A7002DCC2A /* RemoveShortcutRollover.tif */; };
 		AAECDC800A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */; };
-		AAECDC920A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDC910A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff */; };
 		AAECDDC70A03DCC5007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */; };
-		AAECDE430A03E746007D377A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAECDE300A03E746007D377A /* Sparkle.framework */; };
-		AAECDE460A03E78A007D377A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAECDE300A03E746007D377A /* Sparkle.framework */; };
-		AAFAC7620A1B5EA300DC6025 /* jumpcut.icns in Resources */ = {isa = PBXBuildFile; fileRef = AAFAC7610A1B5EA300DC6025 /* jumpcut.icns */; };
 		AAFAC85F0A1BD9DD00DC6025 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,14 +63,23 @@
 /* End PBXBuildStyle section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		AAE200D70A23255C002DCC2A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				AA058DC70A10512100DB7366 /* UKPrefsPanel.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAECDE440A03E75C007D377A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AAECDE460A03E78A007D377A /* Sparkle.framework in CopyFiles */,
-				AA058DC70A10512100DB7366 /* UKPrefsPanel.h in CopyFiles */,
+				AAACCE8A0B7FF2F600560ED4 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +98,13 @@
 		8D1107320486CEB800E47090 /* Jumpcut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumpcut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA058DC50A10512100DB7366 /* UKPrefsPanel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UKPrefsPanel.h; sourceTree = "<group>"; };
 		AA058DC60A10512100DB7366 /* UKPrefsPanel.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = UKPrefsPanel.m; sourceTree = "<group>"; };
+		AA08753A0B7FFA6B00C1F175 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		AA0875FB0B8011B000C1F175 /* LoginItemsAE.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = LoginItemsAE.c; sourceTree = "<group>"; };
+		AA0875FC0B8011B000C1F175 /* LoginItemsAE.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LoginItemsAE.h; sourceTree = "<group>"; };
+		AA0876010B8011EC00C1F175 /* UKLoginItemRegistry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UKLoginItemRegistry.h; sourceTree = "<group>"; };
+		AA0876020B8011EC00C1F175 /* UKLoginItemRegistry.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = UKLoginItemRegistry.m; sourceTree = "<group>"; };
+		AA2640B80A37D2E600591C20 /* jumpcut.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = jumpcut.icns; sourceTree = "<group>"; };
+		AAACCE750B7FF2E800560ED4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		AABE486209FF1DF800A6A239 /* BezelWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BezelWindow.h; sourceTree = "<group>"; };
 		AABE486309FF1DF800A6A239 /* BezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = BezelWindow.m; sourceTree = "<group>"; };
 		AABE486409FF1DF800A6A239 /* RoundRecTextField.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RoundRecTextField.h; sourceTree = "<group>"; };
@@ -110,12 +135,15 @@
 		AABE496609FF227E00A6A239 /* JumpcutStore.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = JumpcutStore.m; sourceTree = "<group>"; };
 		AABE497A09FF9CD000A6A239 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		AABE497B09FF9CD000A6A239 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
-		AADC65F20A1DFCEF00C0096D /* ghost_scissors_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghost_scissors_small.png; sourceTree = "<group>"; };
+		AADC65F20A1DFCEF00C0096D /* net.sf.jumpcut.ghost_scissors_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = net.sf.jumpcut.ghost_scissors_small.png; sourceTree = "<group>"; };
+		AAE200770A228741002DCC2A /* net.sf.jumpcut.preferences.appearance.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.appearance.tiff; sourceTree = "<group>"; };
+		AAE2FD080A1EC35D002DCC2A /* net.sf.jumpcut.preferences.general.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.general.tiff; sourceTree = "<group>"; };
+		AAE2FEA60A1F6AD3002DCC2A /* net.sf.jumpcut.scissors_bw16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = net.sf.jumpcut.scissors_bw16.png; sourceTree = "<group>"; };
+		AAE2FF120A1FB4A7002DCC2A /* RemoveShortcut.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = RemoveShortcut.tif; sourceTree = "<group>"; };
+		AAE2FF130A1FB4A7002DCC2A /* RemoveShortcutPressed.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = RemoveShortcutPressed.tif; sourceTree = "<group>"; };
+		AAE2FF140A1FB4A7002DCC2A /* RemoveShortcutRollover.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = RemoveShortcutRollover.tif; sourceTree = "<group>"; };
 		AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.hotkey.tiff; sourceTree = "<group>"; };
-		AAECDC910A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = net.sf.jumpcut.preferences.general.tiff; path = ../../Snapback/net.sf.jumpcut.preferences.general.tiff; sourceTree = SOURCE_ROOT; };
 		AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.acknowledgements.tiff; sourceTree = "<group>"; };
-		AAECDE300A03E746007D377A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		AAFAC7610A1B5EA300DC6025 /* jumpcut.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = jumpcut.icns; sourceTree = "<group>"; };
 		AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -125,8 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				AAECDE430A03E746007D377A /* Sparkle.framework in Frameworks */,
 				AAFAC85F0A1BD9DD00DC6025 /* Carbon.framework in Frameworks */,
+				AA08753B0B7FFA6B00C1F175 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +167,7 @@
 				AABE497A09FF9CD000A6A239 /* AppController.h */,
 				AABE497B09FF9CD000A6A239 /* AppController.m */,
 				AABE496009FF227E00A6A239 /* JumpcutEngine */,
+				AA0875E60B800F2600C1F175 /* LoginItem */,
 				AABE491909FF214900A6A239 /* UI */,
 				AAECDC8B0A03C9DC007D377A /* UKPrefsPanel */,
 				AABE492609FF21BE00A6A239 /* PTHotKeysLib */,
@@ -150,8 +179,9 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA08753A0B7FFA6B00C1F175 /* Sparkle.framework */,
+				AAACCE750B7FF2E800560ED4 /* Sparkle.framework */,
 				AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */,
-				AAECDE300A03E746007D377A /* Sparkle.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -199,11 +229,16 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AADC65F20A1DFCEF00C0096D /* ghost_scissors_small.png */,
-				AAFAC7610A1B5EA300DC6025 /* jumpcut.icns */,
+				AA2640B80A37D2E600591C20 /* jumpcut.icns */,
+				AAE2FF120A1FB4A7002DCC2A /* RemoveShortcut.tif */,
+				AAE2FF130A1FB4A7002DCC2A /* RemoveShortcutPressed.tif */,
+				AAE2FF140A1FB4A7002DCC2A /* RemoveShortcutRollover.tif */,
+				AADC65F20A1DFCEF00C0096D /* net.sf.jumpcut.ghost_scissors_small.png */,
+				AAE2FEA60A1F6AD3002DCC2A /* net.sf.jumpcut.scissors_bw16.png */,
 				AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */,
+				AAE200770A228741002DCC2A /* net.sf.jumpcut.preferences.appearance.tiff */,
 				AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */,
-				AAECDC910A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff */,
+				AAE2FD080A1EC35D002DCC2A /* net.sf.jumpcut.preferences.general.tiff */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
@@ -218,6 +253,17 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA0875E60B800F2600C1F175 /* LoginItem */ = {
+			isa = PBXGroup;
+			children = (
+				AA0876010B8011EC00C1F175 /* UKLoginItemRegistry.h */,
+				AA0876020B8011EC00C1F175 /* UKLoginItemRegistry.m */,
+				AA0875FB0B8011B000C1F175 /* LoginItemsAE.c */,
+				AA0875FC0B8011B000C1F175 /* LoginItemsAE.h */,
+			);
+			name = LoginItem;
 			sourceTree = "<group>";
 		};
 		AABE48F109FF203300A6A239 /* ShortcutRecorder */ = {
@@ -287,6 +333,18 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		AAE2036C0A27B2B9002DCC2A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0875FE0B8011B000C1F175 /* LoginItemsAE.h in Headers */,
+				AA0876030B8011EC00C1F175 /* UKLoginItemRegistry.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		8D1107260486CEB800E47090 /* Jumpcut */ = {
 			isa = PBXNativeTarget;
@@ -294,8 +352,10 @@
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
-				8D11072E0486CEB800E47090 /* Frameworks */,
 				AAECDE440A03E75C007D377A /* CopyFiles */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+				AAE200D70A23255C002DCC2A /* CopyFiles */,
+				AAE2036C0A27B2B9002DCC2A /* Headers */,
 			);
 			buildRules = (
 			);
@@ -338,10 +398,15 @@
 				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				AAECDC800A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */,
-				AAECDC920A03CA74007D377A /* net.sf.jumpcut.preferences.general.tiff in Resources */,
 				AAECDDC70A03DCC5007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff in Resources */,
-				AAFAC7620A1B5EA300DC6025 /* jumpcut.icns in Resources */,
-				AADC65F30A1DFCF000C0096D /* ghost_scissors_small.png in Resources */,
+				AADC65F30A1DFCF000C0096D /* net.sf.jumpcut.ghost_scissors_small.png in Resources */,
+				AAE2FD090A1EC35D002DCC2A /* net.sf.jumpcut.preferences.general.tiff in Resources */,
+				AAE2FEA70A1F6AD4002DCC2A /* net.sf.jumpcut.scissors_bw16.png in Resources */,
+				AAE2FF150A1FB4A7002DCC2A /* RemoveShortcut.tif in Resources */,
+				AAE2FF160A1FB4A8002DCC2A /* RemoveShortcutPressed.tif in Resources */,
+				AAE2FF170A1FB4A8002DCC2A /* RemoveShortcutRollover.tif in Resources */,
+				AAE200780A228741002DCC2A /* net.sf.jumpcut.preferences.appearance.tiff in Resources */,
+				AA2640B90A37D2E600591C20 /* jumpcut.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,8 +432,10 @@
 				AABE493709FF21BE00A6A239 /* PTKeyCombo.m in Sources */,
 				AABE496A09FF227E00A6A239 /* JumpcutClipping.m in Sources */,
 				AABE496B09FF227E00A6A239 /* JumpcutStore.m in Sources */,
-				AABE497C09FF9CD000A6A239 /* AppController.m in Sources */,
+				AA0876040B8011EC00C1F175 /* UKLoginItemRegistry.m in Sources */,
 				AA058DC80A10512100DB7366 /* UKPrefsPanel.m in Sources */,
+				AA0875FD0B8011B000C1F175 /* LoginItemsAE.c in Sources */,
+				AABE497C09FF9CD000A6A239 /* AppController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

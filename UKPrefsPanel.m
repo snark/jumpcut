@@ -44,7 +44,6 @@ Constructor:
 		tabView = nil;
 		itemsList = [[NSMutableDictionary alloc] init];
 		baseWindowName = [@"" retain];
-		autosaveName = [@"com.ulikusterer" retain];
 	}
 	
 	return self;
@@ -59,7 +58,6 @@ Destructor:
 {
 	[itemsList release];
 	[baseWindowName release];
-	[autosaveName release];
 	[super dealloc];
 }
 
@@ -80,8 +78,6 @@ If anybody knows how to fix this, you're welcome to tell me.
 
 -(void)	awakeFromNib
 {
-	NSString*		key;
-	int				index = 0;
 	NSString*		wndTitle = nil;
 	
 	// Generate a string containing the window's title so we can display the original window title plus the selected pane:
@@ -92,13 +88,8 @@ If anybody knows how to fix this, you're welcome to tell me.
 		baseWindowName = [[NSString stringWithFormat: @"%@ : ", wndTitle] retain];
 	}
 	
-	// Make sure our autosave-name is based on the one of our prefs window:
-	[self setAutosaveName: [[tabView window] frameAutosaveName]];
 	
-	// Select the preferences page the user last had selected when this window was opened:
-	key = [NSString stringWithFormat: @"%@.prefspanel.recentpage", autosaveName];
-	index = [[NSUserDefaults standardUserDefaults] integerForKey: key];
-	[tabView selectTabViewItemAtIndex: index];
+	[tabView selectTabViewItemAtIndex: 0];
 	
 	// Actually hook up our toolbar and the tabs:
 	[self mapTabsToToolbar];
@@ -134,11 +125,11 @@ Tab identifier  -	Image file name and toolbar item identifier.
 	NSTabViewItem	*currPage = nil;
 	
 	if( toolbar == nil )   // No toolbar yet? Create one!
-		toolbar = [[[NSToolbar alloc] initWithIdentifier: [NSString stringWithFormat: @"%@.prefspanel.toolbar", autosaveName]] autorelease];
+		toolbar = [[[NSToolbar alloc] initWithIdentifier:@"net.sf.Jumpcut.prefsToolbar"] autorelease];
 	
     // Set up toolbar properties: Allow customization, give a default display mode, and remember state in user defaults 
     [toolbar setAllowsUserCustomization: YES];
-    [toolbar setAutosavesConfiguration: YES];
+    [toolbar setAutosavesConfiguration: NO];
     [toolbar setDisplayMode: NSToolbarDisplayModeIconAndLabel];
 	
 	// Set up item list based on Tab View:
@@ -206,26 +197,6 @@ Accessor for specifying the tab view to query.
 	return tabView;
 }
 
-
-/* -----------------------------------------------------------------------------
-setAutosaveName:
-Name used for saving state of prefs window.
--------------------------------------------------------------------------- */
-
--(void)			setAutosaveName: (NSString*)name
-{
-	[name retain];
-	[autosaveName release];
-	autosaveName = name;
-}
-
-
--(NSString*)	autosaveName
-{
-	return autosaveName;
-}
-
-
 /* -----------------------------------------------------------------------------
 toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:
 Create an item with the proper image and name based on our list
@@ -288,13 +259,10 @@ a click.
 
 -(IBAction)	changePanes: (id)sender
 {
-	NSString*		key;
 	
 	[tabView selectTabViewItemAtIndex: [sender tag]];
 //	[[tabView window] setTitle: [baseWindowName stringByAppendingString: [sender label]]];
 	
-	key = [NSString stringWithFormat: @"%@.prefspanel.recentpage", autosaveName];
-	[[NSUserDefaults standardUserDefaults] setInteger:[sender tag] forKey:key];
 	id box = [[[[tabView tabViewItemAtIndex:[sender tag]] view] subviews] objectAtIndex:0];
 	// We want to obtain our current contentView height and compare it to box
 	if ([box isKindOfClass:[NSBox class]])
