@@ -11,7 +11,7 @@
 #import "AppController.h"
 #import "PTHotKey.h"
 #import "PTHotKeyCenter.h"
-#import "ShortcutRecorderCell.h"
+#import "SRRecorderCell.h"
 #import "UKLoginItemRegistry.h"
 
 
@@ -675,7 +675,7 @@
 }
 
 
-- (BOOL)shortcutRecorder:(ShortcutRecorder *)aRecorder isKeyCode:(signed short)keyCode andFlagsTaken:(unsigned int)flags reason:(NSString **)aReason
+- (BOOL)shortcutRecorder:(SRRecorderControl *)aRecorder isKeyCode:(signed short)keyCode andFlagsTaken:(unsigned int)flags reason:(NSString **)aReason
 {
 	if (aRecorder == mainRecorder)
 	{
@@ -693,7 +693,7 @@
 	return NO;
 }
 
-- (void)shortcutRecorder:(ShortcutRecorder *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo
+- (void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo
 {
 	if (aRecorder == mainRecorder)
 	{

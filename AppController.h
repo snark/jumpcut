@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <ApplicationServices/ApplicationServices.h>
 #import "BezelWindow.h"
-#import "ShortcutRecorder.h"
+#import "SRRecorderControl.h"
 #import "JumpcutStore.h"
 
 @class PTHotKey;
@@ -17,7 +17,7 @@
 @interface AppController : NSObject {
     BezelWindow					*bezel;
 	PTHotKey					*mainHotKey;
-	IBOutlet ShortcutRecorder	*mainRecorder;
+	IBOutlet SRRecorderControl	*mainRecorder;
 	IBOutlet NSPanel			*prefsPanel;
 	int							mainHotkeyModifiers;
 	NSNotificationCenter		*nc;
@@ -66,7 +66,7 @@
 -(void) loadEngineFromPList;
 
 // Hotkey related
--(void)shortcutRecorder:(ShortcutRecorder *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo;
+-(void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo;
 -(void)hitMainHotKey:(PTHotKey *)hotKey;
 
 // Bezel related

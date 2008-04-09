@@ -7,6 +7,24 @@
 		<dict>
 			<key>ACTIONS</key>
 			<dict>
+				<key>forIBuse__nilOutDeprecatedAutosaveName</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>SRRecorderControl</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>delegate</key>
+				<string>id</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSControl</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
 				<key></key>
 				<string>id</string>
 			</dict>
@@ -16,6 +34,12 @@
 			<string>ObjC</string>
 			<key>SUPERCLASS</key>
 			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>NSObject</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
 		</dict>
 		<dict>
 			<key>ACTIONS</key>
@@ -67,6 +91,8 @@
 				<string>id</string>
 				<key>switchMenuIcon</key>
 				<string>id</string>
+				<key>toggleLoadOnStartup</key>
+				<string>id</string>
 				<key>toggleMainHotKey</key>
 				<string>id</string>
 			</dict>
@@ -79,7 +105,7 @@
 				<key>jcMenu</key>
 				<string>NSMenu</string>
 				<key>mainRecorder</key>
-				<string>ShortcutRecorder</string>
+				<string>SRRecorderControl</string>
 				<key>prefsPanel</key>
 				<string>NSPanel</string>
 			</dict>

@@ -19,14 +19,22 @@
 		AA0876030B8011EC00C1F175 /* UKLoginItemRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0876010B8011EC00C1F175 /* UKLoginItemRegistry.h */; };
 		AA0876040B8011EC00C1F175 /* UKLoginItemRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0876020B8011EC00C1F175 /* UKLoginItemRegistry.m */; };
 		AA2640B90A37D2E600591C20 /* jumpcut.icns in Resources */ = {isa = PBXBuildFile; fileRef = AA2640B80A37D2E600591C20 /* jumpcut.icns */; };
+		AA6D1BDD0DAD68D800734235 /* SRValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D1BD10DAD68D800734235 /* SRValidator.h */; };
+		AA6D1BDE0DAD68D800734235 /* CTGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D1BD20DAD68D800734235 /* CTGradient.m */; };
+		AA6D1BDF0DAD68D800734235 /* SRCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D1BD30DAD68D800734235 /* SRCommon.h */; };
+		AA6D1BE00DAD68D800734235 /* SRRecorderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D1BD40DAD68D800734235 /* SRRecorderCell.h */; };
+		AA6D1BE10DAD68D800734235 /* SRRecorderControl.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D1BD50DAD68D800734235 /* SRRecorderControl.h */; };
+		AA6D1BE20DAD68D800734235 /* SRRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D1BD60DAD68D800734235 /* SRRecorderControl.m */; };
+		AA6D1BE30DAD68D800734235 /* SRKeyCodeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D1BD70DAD68D800734235 /* SRKeyCodeTransformer.m */; };
+		AA6D1BE40DAD68D800734235 /* SRCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D1BD80DAD68D800734235 /* SRCommon.m */; };
+		AA6D1BE50DAD68D800734235 /* SRKeyCodeTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D1BD90DAD68D800734235 /* SRKeyCodeTransformer.h */; };
+		AA6D1BE60DAD68D800734235 /* SRRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D1BDA0DAD68D800734235 /* SRRecorderCell.m */; };
+		AA6D1BE70DAD68D800734235 /* CTGradient.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D1BDB0DAD68D800734235 /* CTGradient.h */; };
+		AA6D1BE80DAD68D800734235 /* SRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D1BDC0DAD68D800734235 /* SRValidator.m */; };
 		AAACCE8A0B7FF2F600560ED4 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAACCE750B7FF2E800560ED4 /* Sparkle.framework */; };
 		AABE486809FF1DF800A6A239 /* BezelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486309FF1DF800A6A239 /* BezelWindow.m */; };
 		AABE486909FF1DF800A6A239 /* RoundRecTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486509FF1DF800A6A239 /* RoundRecTextField.m */; };
 		AABE486A09FF1DF800A6A239 /* RoundRecBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486709FF1DF800A6A239 /* RoundRecBezierPath.m */; };
-		AABE48FA09FF203400A6A239 /* ShortcutRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE48F309FF203300A6A239 /* ShortcutRecorder.m */; };
-		AABE48FB09FF203400A6A239 /* ShortcutRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE48F509FF203300A6A239 /* ShortcutRecorderCell.m */; };
-		AABE48FC09FF203400A6A239 /* NSBezierPathAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE48F709FF203300A6A239 /* NSBezierPathAdditions.m */; };
-		AABE48FD09FF203400A6A239 /* CTGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE48F909FF203300A6A239 /* CTGradient.m */; };
 		AABE493309FF21BE00A6A239 /* PTHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE492909FF21BE00A6A239 /* PTHotKey.m */; };
 		AABE493409FF21BE00A6A239 /* PTHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE492B09FF21BE00A6A239 /* PTHotKeyCenter.m */; };
 		AABE493509FF21BE00A6A239 /* PTKeyBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE492D09FF21BE00A6A239 /* PTKeyBroadcaster.m */; };
@@ -89,6 +97,18 @@
 		AA0876010B8011EC00C1F175 /* UKLoginItemRegistry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UKLoginItemRegistry.h; sourceTree = "<group>"; };
 		AA0876020B8011EC00C1F175 /* UKLoginItemRegistry.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = UKLoginItemRegistry.m; sourceTree = "<group>"; };
 		AA2640B80A37D2E600591C20 /* jumpcut.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = jumpcut.icns; sourceTree = "<group>"; };
+		AA6D1BD10DAD68D800734235 /* SRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRValidator.h; sourceTree = "<group>"; };
+		AA6D1BD20DAD68D800734235 /* CTGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTGradient.m; sourceTree = "<group>"; };
+		AA6D1BD30DAD68D800734235 /* SRCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCommon.h; sourceTree = "<group>"; };
+		AA6D1BD40DAD68D800734235 /* SRRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderCell.h; sourceTree = "<group>"; };
+		AA6D1BD50DAD68D800734235 /* SRRecorderControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderControl.h; sourceTree = "<group>"; };
+		AA6D1BD60DAD68D800734235 /* SRRecorderControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderControl.m; sourceTree = "<group>"; };
+		AA6D1BD70DAD68D800734235 /* SRKeyCodeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRKeyCodeTransformer.m; sourceTree = "<group>"; };
+		AA6D1BD80DAD68D800734235 /* SRCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCommon.m; sourceTree = "<group>"; };
+		AA6D1BD90DAD68D800734235 /* SRKeyCodeTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRKeyCodeTransformer.h; sourceTree = "<group>"; };
+		AA6D1BDA0DAD68D800734235 /* SRRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderCell.m; sourceTree = "<group>"; };
+		AA6D1BDB0DAD68D800734235 /* CTGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTGradient.h; sourceTree = "<group>"; };
+		AA6D1BDC0DAD68D800734235 /* SRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRValidator.m; sourceTree = "<group>"; };
 		AAACCE750B7FF2E800560ED4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		AABE486209FF1DF800A6A239 /* BezelWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BezelWindow.h; sourceTree = "<group>"; };
 		AABE486309FF1DF800A6A239 /* BezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = BezelWindow.m; sourceTree = "<group>"; };
@@ -96,14 +116,6 @@
 		AABE486509FF1DF800A6A239 /* RoundRecTextField.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RoundRecTextField.m; sourceTree = "<group>"; };
 		AABE486609FF1DF800A6A239 /* RoundRecBezierPath.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RoundRecBezierPath.h; sourceTree = "<group>"; };
 		AABE486709FF1DF800A6A239 /* RoundRecBezierPath.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RoundRecBezierPath.m; sourceTree = "<group>"; };
-		AABE48F209FF203300A6A239 /* ShortcutRecorder.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ShortcutRecorder.h; sourceTree = "<group>"; };
-		AABE48F309FF203300A6A239 /* ShortcutRecorder.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = ShortcutRecorder.m; sourceTree = "<group>"; };
-		AABE48F409FF203300A6A239 /* ShortcutRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ShortcutRecorderCell.h; sourceTree = "<group>"; };
-		AABE48F509FF203300A6A239 /* ShortcutRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = ShortcutRecorderCell.m; sourceTree = "<group>"; };
-		AABE48F609FF203300A6A239 /* NSBezierPathAdditions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NSBezierPathAdditions.h; sourceTree = "<group>"; };
-		AABE48F709FF203300A6A239 /* NSBezierPathAdditions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NSBezierPathAdditions.m; sourceTree = "<group>"; };
-		AABE48F809FF203300A6A239 /* CTGradient.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CTGradient.h; sourceTree = "<group>"; };
-		AABE48F909FF203300A6A239 /* CTGradient.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CTGradient.m; sourceTree = "<group>"; };
 		AABE492809FF21BE00A6A239 /* PTHotKey.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PTHotKey.h; path = src/PTHotKey.h; sourceTree = "<group>"; };
 		AABE492909FF21BE00A6A239 /* PTHotKey.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = PTHotKey.m; path = src/PTHotKey.m; sourceTree = "<group>"; };
 		AABE492A09FF21BE00A6A239 /* PTHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PTHotKeyCenter.h; path = src/PTHotKeyCenter.h; sourceTree = "<group>"; };
@@ -254,14 +266,18 @@
 		AABE48F109FF203300A6A239 /* ShortcutRecorder */ = {
 			isa = PBXGroup;
 			children = (
-				AABE48F209FF203300A6A239 /* ShortcutRecorder.h */,
-				AABE48F309FF203300A6A239 /* ShortcutRecorder.m */,
-				AABE48F409FF203300A6A239 /* ShortcutRecorderCell.h */,
-				AABE48F509FF203300A6A239 /* ShortcutRecorderCell.m */,
-				AABE48F609FF203300A6A239 /* NSBezierPathAdditions.h */,
-				AABE48F709FF203300A6A239 /* NSBezierPathAdditions.m */,
-				AABE48F809FF203300A6A239 /* CTGradient.h */,
-				AABE48F909FF203300A6A239 /* CTGradient.m */,
+				AA6D1BDB0DAD68D800734235 /* CTGradient.h */,
+				AA6D1BD20DAD68D800734235 /* CTGradient.m */,
+				AA6D1BD30DAD68D800734235 /* SRCommon.h */,
+				AA6D1BD80DAD68D800734235 /* SRCommon.m */,
+				AA6D1BD40DAD68D800734235 /* SRRecorderCell.h */,
+				AA6D1BDA0DAD68D800734235 /* SRRecorderCell.m */,
+				AA6D1BD50DAD68D800734235 /* SRRecorderControl.h */,
+				AA6D1BD60DAD68D800734235 /* SRRecorderControl.m */,
+				AA6D1BD90DAD68D800734235 /* SRKeyCodeTransformer.h */,
+				AA6D1BD70DAD68D800734235 /* SRKeyCodeTransformer.m */,
+				AA6D1BD10DAD68D800734235 /* SRValidator.h */,
+				AA6D1BDC0DAD68D800734235 /* SRValidator.m */,
 			);
 			name = ShortcutRecorder;
 			sourceTree = "<group>";
@@ -325,6 +341,12 @@
 			files = (
 				AA0875FE0B8011B000C1F175 /* LoginItemsAE.h in Headers */,
 				AA0876030B8011EC00C1F175 /* UKLoginItemRegistry.h in Headers */,
+				AA6D1BDD0DAD68D800734235 /* SRValidator.h in Headers */,
+				AA6D1BDF0DAD68D800734235 /* SRCommon.h in Headers */,
+				AA6D1BE00DAD68D800734235 /* SRRecorderCell.h in Headers */,
+				AA6D1BE10DAD68D800734235 /* SRRecorderControl.h in Headers */,
+				AA6D1BE50DAD68D800734235 /* SRKeyCodeTransformer.h in Headers */,
+				AA6D1BE70DAD68D800734235 /* CTGradient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,10 +422,6 @@
 				AABE486809FF1DF800A6A239 /* BezelWindow.m in Sources */,
 				AABE486909FF1DF800A6A239 /* RoundRecTextField.m in Sources */,
 				AABE486A09FF1DF800A6A239 /* RoundRecBezierPath.m in Sources */,
-				AABE48FA09FF203400A6A239 /* ShortcutRecorder.m in Sources */,
-				AABE48FB09FF203400A6A239 /* ShortcutRecorderCell.m in Sources */,
-				AABE48FC09FF203400A6A239 /* NSBezierPathAdditions.m in Sources */,
-				AABE48FD09FF203400A6A239 /* CTGradient.m in Sources */,
 				AABE493309FF21BE00A6A239 /* PTHotKey.m in Sources */,
 				AABE493409FF21BE00A6A239 /* PTHotKeyCenter.m in Sources */,
 				AABE493509FF21BE00A6A239 /* PTKeyBroadcaster.m in Sources */,
@@ -415,6 +433,12 @@
 				AA058DC80A10512100DB7366 /* UKPrefsPanel.m in Sources */,
 				AA0875FD0B8011B000C1F175 /* LoginItemsAE.c in Sources */,
 				AABE497C09FF9CD000A6A239 /* AppController.m in Sources */,
+				AA6D1BDE0DAD68D800734235 /* CTGradient.m in Sources */,
+				AA6D1BE20DAD68D800734235 /* SRRecorderControl.m in Sources */,
+				AA6D1BE30DAD68D800734235 /* SRKeyCodeTransformer.m in Sources */,
+				AA6D1BE40DAD68D800734235 /* SRCommon.m in Sources */,
+				AA6D1BE60DAD68D800734235 /* SRRecorderCell.m in Sources */,
+				AA6D1BE80DAD68D800734235 /* SRValidator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
