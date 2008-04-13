@@ -66,7 +66,6 @@
 -(void) loadEngineFromPList;
 
 // Hotkey related
--(void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo;
 -(void)hitMainHotKey:(PTHotKey *)hotKey;
 
 // Bezel related
@@ -86,5 +85,7 @@
 -(IBAction) setBezelAlpha:(id)sender;
 -(IBAction) switchMenuIcon:(id)sender;
 -(IBAction) toggleLoadOnStartup:(id)sender;
+-(IBAction) toggleMainHotKey:(id)sender;
+-(void) setHotKeyPreferenceForRecorder:(SRRecorderControl *)aRecorder;
 
 @end

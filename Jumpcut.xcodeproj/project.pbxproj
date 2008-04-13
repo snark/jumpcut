@@ -13,7 +13,6 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		AA058DC70A10512100DB7366 /* UKPrefsPanel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA058DC50A10512100DB7366 /* UKPrefsPanel.h */; };
 		AA058DC80A10512100DB7366 /* UKPrefsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA058DC60A10512100DB7366 /* UKPrefsPanel.m */; };
-		AA08753B0B7FFA6B00C1F175 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA08753A0B7FFA6B00C1F175 /* Sparkle.framework */; };
 		AA0875FD0B8011B000C1F175 /* LoginItemsAE.c in Sources */ = {isa = PBXBuildFile; fileRef = AA0875FB0B8011B000C1F175 /* LoginItemsAE.c */; };
 		AA0875FE0B8011B000C1F175 /* LoginItemsAE.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0875FC0B8011B000C1F175 /* LoginItemsAE.h */; };
 		AA0876030B8011EC00C1F175 /* UKLoginItemRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0876010B8011EC00C1F175 /* UKLoginItemRegistry.h */; };
@@ -91,7 +90,6 @@
 		8D1107320486CEB800E47090 /* Jumpcut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumpcut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA058DC50A10512100DB7366 /* UKPrefsPanel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UKPrefsPanel.h; sourceTree = "<group>"; };
 		AA058DC60A10512100DB7366 /* UKPrefsPanel.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = UKPrefsPanel.m; sourceTree = "<group>"; };
-		AA08753A0B7FFA6B00C1F175 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		AA0875FB0B8011B000C1F175 /* LoginItemsAE.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = LoginItemsAE.c; sourceTree = "<group>"; };
 		AA0875FC0B8011B000C1F175 /* LoginItemsAE.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LoginItemsAE.h; sourceTree = "<group>"; };
 		AA0876010B8011EC00C1F175 /* UKLoginItemRegistry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UKLoginItemRegistry.h; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				AAFAC85F0A1BD9DD00DC6025 /* Carbon.framework in Frameworks */,
-				AA08753B0B7FFA6B00C1F175 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +173,6 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AA08753A0B7FFA6B00C1F175 /* Sparkle.framework */,
 				AAACCE750B7FF2E800560ED4 /* Sparkle.framework */,
 				AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,

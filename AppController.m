@@ -57,6 +57,8 @@
 	[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
 		[NSNumber numberWithInt:15],
 		@"displayNum",
+		[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]],
+		@"ShortcutRecorder mainHotkey",
 		[NSNumber numberWithInt:40],
 		@"rememberNum",
 		[NSNumber numberWithInt:1],
@@ -93,6 +95,12 @@
 			}	
 		}
 	}
+	// We no longer get autosave from ShortcutRecorder, so let's set the recorder by hand
+	if ( [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"ShortcutRecorder mainHotkey"] ) {
+		[mainRecorder setKeyCombo:SRMakeKeyCombo([[[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"ShortcutRecorder mainHotkey"] objectForKey:@"keyCode"] intValue],
+												 [[[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"ShortcutRecorder mainHotkey"] objectForKey:@"modifierFlags"] intValue] )
+		];
+	};
 	// Initialize the JumpcutStore
 	clippingStore = [[JumpcutStore alloc] initRemembering:[[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"]
 											   displaying:[[NSUserDefaults standardUserDefaults] integerForKey:@"displayNum"]
@@ -107,6 +115,7 @@
 										   styleMask:NSBorderlessWindowMask
 											 backing:NSBackingStoreBuffered
 											   defer:NO];
+	[bezel setDelegate:self];
 	[bezel setDelegate:self];
 
 	// Create our pasteboard interface
@@ -418,17 +427,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
 	//Create our hot key
-	mainHotKey = [[PTHotKey alloc] initWithIdentifier:@"mainHotKey"
-											   keyCombo:[PTKeyCombo keyComboWithKeyCode:[mainRecorder keyCombo].code
-																			  modifiers:[mainRecorder cocoaToCarbonFlags: [mainRecorder keyCombo].flags]]];
-	// mainHotkeyModifiers = [mainRecorder cocoaToCarbonFlags:[mainRecorder keyCombo].flags];
-	// NSLog(@"Hotkey modifiers: %d", mainHotkeyModifiers);
-	[mainHotKey setName: @"Activate Bezel HotKey"]; //This is typically used by PTKeyComboPanel
-	[mainHotKey setTarget: self];
-	[mainHotKey setAction: @selector( hitMainHotKey: ) ];
-	
-	//Register it
-	[[PTHotKeyCenter sharedCenter] registerHotKey: mainHotKey];
+	[self toggleMainHotKey:[NSNull null]];
 }
 
 - (void) showBezel
@@ -493,6 +492,7 @@
 											   keyCombo:[PTKeyCombo keyComboWithKeyCode:[mainRecorder keyCombo].code
 																			  modifiers:[mainRecorder cocoaToCarbonFlags: [mainRecorder keyCombo].flags]]];
 	
+	[mainHotKey setName: @"Activate Jumpcut HotKey"]; //This is typically used by PTKeyComboPanel
 	[mainHotKey setTarget: self];
 	[mainHotKey setAction: @selector(hitMainHotKey:)];
 	
@@ -674,6 +674,15 @@
     }
 }
 
+- (void)setHotKeyPreferenceForRecorder:(SRRecorderControl *)aRecorder
+{
+	if (aRecorder == mainRecorder)
+	{
+		[[NSUserDefaults standardUserDefaults] setObject:
+			[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:[mainRecorder keyCombo].code],[NSNumber numberWithInt:[mainRecorder keyCombo].flags],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]]
+		forKey:@"ShortcutRecorder mainHotkey"];
+	}
+}
 
 - (BOOL)shortcutRecorder:(SRRecorderControl *)aRecorder isKeyCode:(signed short)keyCode andFlagsTaken:(unsigned int)flags reason:(NSString **)aReason
 {
@@ -698,6 +707,7 @@
 	if (aRecorder == mainRecorder)
 	{
 		[self toggleMainHotKey: aRecorder];
+		[self setHotKeyPreferenceForRecorder: aRecorder];
 	}
 }
 
