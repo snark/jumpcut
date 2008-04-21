@@ -19,7 +19,7 @@
 
 @implementation AppController
 
-- (void)init
+- (id)init
 {
 	if ( ! [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] || [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] < 0.6  ) {
 		// A decent starting value for the main hotkey is control-option-V
@@ -75,7 +75,7 @@
 		@"menuSelectionPastes",
 		nil]
 		];
-	[super init];
+	return [super init];
 }
 
 - (void)awakeFromNib
@@ -150,6 +150,7 @@
 												   repeats:YES] retain];
 	
     // Finish up
+	srTransformer = [[[SRKeyCodeTransformer alloc] init] retain];
     pbBlockCount = [[NSNumber numberWithInt:0] retain];
     [pollPBTimer fire];
 
@@ -283,9 +284,11 @@
 	// Ideally, in the future, we will be able to tell from what environment JC was passed the trigger
 	// and have different behavior from each.
 { 
+	NSNumber *keyCode = [srTransformer reverseTransformedValue:@"V"];
+	CGKeyCode veeCode = (CGKeyCode)[keyCode intValue];
 	CGPostKeyboardEvent( (CGCharCode)0, (CGKeyCode)55, true ); // Command down
-	CGPostKeyboardEvent( (CGCharCode)'v', (CGKeyCode)9, true ); // V down 
-	CGPostKeyboardEvent( (CGCharCode)'v', (CGKeyCode)9, false ); //  V up 
+	CGPostKeyboardEvent( (CGCharCode)'v', veeCode, true ); // V down 
+	CGPostKeyboardEvent( (CGCharCode)'v', veeCode, false ); //  V up 
 	CGPostKeyboardEvent( (CGCharCode)0, (CGKeyCode)55, false ); // Command up
 } 
 
@@ -721,13 +724,13 @@
 	[[PTHotKeyCenter sharedCenter] unregisterHotKey: mainHotKey];
 	[mainHotKey release];
 	mainHotKey = nil;
-	[nc removeObserver:self];
 	[self hideBezel];
 }
 
 - (void) dealloc
 {
 	[bezel release];
+	[srTransformer release];
 	[super dealloc];
 }
 

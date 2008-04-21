@@ -10,6 +10,7 @@
 #import <ApplicationServices/ApplicationServices.h>
 #import "BezelWindow.h"
 #import "SRRecorderControl.h"
+#import "SRKeyCodeTransformer.h"
 #import "JumpcutStore.h"
 
 @class PTHotKey;
@@ -20,7 +21,7 @@
 	IBOutlet SRRecorderControl	*mainRecorder;
 	IBOutlet NSPanel			*prefsPanel;
 	int							mainHotkeyModifiers;
-	NSNotificationCenter		*nc;
+	SRKeyCodeTransformer        *srTransformer;
 	BOOL						isBezelDisplayed;
 	BOOL						isBezelPinned; // Currently not used
 
