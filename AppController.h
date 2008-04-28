@@ -24,7 +24,7 @@
 	SRKeyCodeTransformer        *srTransformer;
 	BOOL						isBezelDisplayed;
 	BOOL						isBezelPinned; // Currently not used
-
+	NSString					*currentKeycodeCharacter;
 	int							stackPosition;
 	
 	// The below were pulled in from JumpcutController
@@ -57,9 +57,11 @@
 -(void) hideApp;
 -(void) pasteFromStack;
 -(void) fakeCommandV;
+-(void) stackUp;
+-(void) stackDown;
 -(IBAction)clearClippingList:(id)sender;
 
-	// Stack related
+// Stack related
 -(BOOL) isValidClippingNumber:(NSNumber *)number;
 -(NSString *) clippingStringWithCount:(int)count;
 	// Save and load
@@ -78,6 +80,7 @@
 // Menu related
 -(void) updateMenu;
 -(IBAction) processMenuClippingSelection:(id)sender;
+-(IBAction) activateAndOrderFrontStandardAboutPanel:(id)sender;
 
 // Preference related
 -(IBAction) showPreferencePanel:(id)sender;

@@ -77,6 +77,8 @@
 		<dict>
 			<key>ACTIONS</key>
 			<dict>
+				<key>activateAndOrderFrontStandardAboutPanel</key>
+				<string>id</string>
 				<key>clearClippingList</key>
 				<string>id</string>
 				<key>processMenuClippingSelection</key>

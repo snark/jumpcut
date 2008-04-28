@@ -70,6 +70,8 @@
 		[NSNumber numberWithBool:NO],
 		@"stickyBezel",
 		[NSNumber numberWithBool:NO],
+		@"wraparoundBezel",
+		[NSNumber numberWithBool:NO],
 		@"launchOnStartup",
 		[NSNumber numberWithBool:YES],
 		@"menuSelectionPastes",
@@ -161,9 +163,13 @@
 	[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithFloat:0.6]
 											 forKey:@"lastRun"];
 
-									     								
 	[NSApp activateIgnoringOtherApps: YES];
+}
 
+-(IBAction) activateAndOrderFrontStandardAboutPanel:(id)sender
+{
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+    [[NSApplication sharedApplication] orderFrontStandardAboutPanel:sender];
 }
 
 -(IBAction) setBezelAlpha:(id)sender
@@ -335,19 +341,9 @@
 		{
 			if ( [theEvent modifierFlags] & NSShiftKeyMask )
 			{
-				stackPosition--; if ( stackPosition < 0 ) stackPosition = 0;
-				if ( [clippingStore jcListCount] > stackPosition ) {
-					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
-					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
-				}
+				[self stackUp];
 			} else {
-				stackPosition++;
-				if ( [clippingStore jcListCount] > stackPosition ) {
-					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
-					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
-				} else {
-					stackPosition--;
-				}
+				[self stackDown];
 			}
 			return;
 		}
@@ -361,21 +357,11 @@
 				break;
 			case NSUpArrowFunctionKey: 
 			case NSLeftArrowFunctionKey: 
-				stackPosition--; if ( stackPosition < 0 ) stackPosition = 0;
-				if ( [clippingStore jcListCount] > stackPosition ) {
-					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
-					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
-				}
+				[self stackUp];
 				break;
 			case NSDownArrowFunctionKey: 
 			case NSRightArrowFunctionKey:
-				stackPosition++;
-				if ( [clippingStore jcListCount] > stackPosition ) {
-					[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
-					[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
-				} else {
-					stackPosition--;
-				}
+				[self stackDown];
 				break;
             case NSHomeFunctionKey:
 				if ( [clippingStore jcListCount] > 0 ) {
@@ -472,13 +458,7 @@
 		}
 		[self showBezel];
 	} else {
-		stackPosition++;
-		if ( [clippingStore jcListCount] > stackPosition ) {
-			[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
-			[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
-		} else {
-			stackPosition--;
-		}
+		[self stackDown];
 	}
 }
 
@@ -490,15 +470,12 @@
 		[mainHotKey release];
 		mainHotKey = nil;
 	}
-	
 	mainHotKey = [[PTHotKey alloc] initWithIdentifier:@"mainHotKey"
 											   keyCombo:[PTKeyCombo keyComboWithKeyCode:[mainRecorder keyCombo].code
 																			  modifiers:[mainRecorder cocoaToCarbonFlags: [mainRecorder keyCombo].flags]]];
-	
 	[mainHotKey setName: @"Activate Jumpcut HotKey"]; //This is typically used by PTKeyComboPanel
 	[mainHotKey setTarget: self];
 	[mainHotKey setAction: @selector(hitMainHotKey:)];
-	
 	[[PTHotKeyCenter sharedCenter] registerHotKey:mainHotKey];
 }
 
@@ -630,6 +607,42 @@
     }
 }
 
+
+-(void) stackDown
+{
+	stackPosition++;
+	if ( [clippingStore jcListCount] > stackPosition ) {
+		[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+		[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+	} else {
+		if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"wraparoundBezel"] ) {
+			stackPosition = 0;
+			[bezel setCharString:[NSString stringWithFormat:@"%d", 1]];
+			[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+		} else {
+			stackPosition--;
+		}
+	}
+}
+
+-(void) stackUp
+{
+	stackPosition--;
+	if ( stackPosition < 0 ) {
+		if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"wraparoundBezel"] ) {
+			stackPosition = [clippingStore jcListCount] - 1;
+			[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+			[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+		} else {
+			stackPosition = 0;
+		}
+	}
+	if ( [clippingStore jcListCount] > stackPosition ) {
+		[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
+		[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
+	}
+}
+
 -(void) saveEngine
 {
     NSMutableDictionary *saveDict;
@@ -725,6 +738,14 @@
 	[mainHotKey release];
 	mainHotKey = nil;
 	[self hideBezel];
+	[[NSDistributedNotificationCenter defaultCenter]
+		removeObserver:self
+        		  name:@"AppleKeyboardPreferencesChangedNotification"
+				object:nil];
+	[[NSDistributedNotificationCenter defaultCenter]
+		removeObserver:self
+				  name:@"AppleSelectedInputSourcesChangedNotification"
+				object:nil];
 }
 
 - (void) dealloc

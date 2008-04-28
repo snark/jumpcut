@@ -96,39 +96,6 @@ static NSArray              *padKeysArray        = nil;
     // generate the string to keycode mapping dict...
     stringToKeyCodeDict = [[NSMutableDictionary alloc] init];
     [self regenerateStringToKeyCodeMapping];
-	
-	// register two observers to see if the keyboard type changes...
-	[[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                   selector:@selector(keyboardLayoutDidChange:)
-                       name:@"AppleKeyboardPreferencesChangedNotification"
-					object:nil];
-	[[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                   selector:@selector(keyboardLayoutDidChange:)
-                       name:@"AppleSelectedInputSourcesChangedNotification"
-					object:nil];
-	// ...and to see if the application is exiting
-	[[NSNotificationCenter defaultCenter] addObserver:self
-		selector:@selector(applicationWillTerminate:)
-			name:NSApplicationWillTerminateNotification
-		  object:nil];
-}
-
-+ (void)applicationWillTerminate:(NSNotification *)notification
-{
-	[[NSNotificationCenter defaultCenter] removeObserver: self
-		  name:NSApplicationWillTerminateNotification
-		object:nil];
-	[[NSDistributedNotificationCenter defaultCenter] removeObserver:self
-                       name:@"AppleKeyboardPreferencesChangedNotification"
-					object:nil];
-	[[NSDistributedNotificationCenter defaultCenter] removeObserver:self
-                       name:@"AppleSelectedInputSourcesChangedNotification"
-					object:nil];
-}
-
-+ (void)keyboardLayoutDidChange:(NSNotification *)notification
-{
-	[self regenerateStringToKeyCodeMapping];
 }
 
 //---------------------------------------------------------- 
