@@ -17,6 +17,18 @@
 
 #define _DISPLENGTH 40
 
+enum {
+    NSWindowCollectionBehaviorDefault = 0,
+    NSWindowCollectionBehaviorCanJoinAllSpaces = 1 << 0,
+    NSWindowCollectionBehaviorMoveToActiveSpace = 1 << 1
+};
+
+typedef unsigned NSWindowCollectionBehavior;
+
+@interface NSWindow (NSWindowCollectionBehavior)
+- (void)setCollectionBehavior:(NSWindowCollectionBehavior)behavior;
+@end
+
 @implementation AppController
 
 - (id)init
@@ -234,8 +246,6 @@
 -(IBAction) showPreferencePanel:(id)sender
 {                                    
 	int checkLoginRegistry = [UKLoginItemRegistry indexForLoginItemWithPath:[[NSBundle mainBundle] bundlePath]];
-//    if ( ![prefsPanel isVisible] ) {
-	// Synchronize checkbox with login items -- changes could be made manually outside Jumpcut
 	if ( checkLoginRegistry >= 1 ) {
 		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES]
 												 forKey:@"loadOnStartup"];
@@ -244,6 +254,8 @@
 												 forKey:@"loadOnStartup"];
 	}
 	
+	if ([prefsPanel respondsToSelector:@selector(setCollectionBehavior:)])
+		[prefsPanel setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
 	[NSApp activateIgnoringOtherApps: YES];
 	[prefsPanel makeKeyAndOrderFront:self];
 	issuedRememberResizeWarning = NO;
@@ -425,7 +437,8 @@
 		[bezel setCharString:[NSString stringWithFormat:@"%d", stackPosition + 1]];
 		[bezel setText:[clippingStore clippingContentsAtPosition:stackPosition]];
 	} 
-	[bezel makeKeyAndOrderFront:nil];
+	if ([bezel respondsToSelector:@selector(setCollectionBehavior:)])
+		[bezel setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];	[bezel makeKeyAndOrderFront:nil];
 	isBezelDisplayed = YES;
 }
 
