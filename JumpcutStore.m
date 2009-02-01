@@ -180,7 +180,7 @@
     }
     enumerator = [subArray reverseObjectEnumerator];
     while ( aClipping = [enumerator nextObject] ) {
-        [returnArray insertObject:[aClipping displayString] atIndex:0];
+        [returnArray insertObject:[[aClipping displayString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] atIndex:0];
     }
     return returnArray;
 }
