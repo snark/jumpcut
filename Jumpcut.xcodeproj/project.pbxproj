@@ -53,6 +53,7 @@
 		AAECDC800A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */; };
 		AAECDDC70A03DCC5007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */; };
 		AAFAC85F0A1BD9DD00DC6025 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */; };
+		CDE0B9E50F3619C0007B09AF /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = CDE0B9E40F3619C0007B09AF /* Credits.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -150,6 +151,7 @@
 		AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.hotkey.tiff; sourceTree = "<group>"; };
 		AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.acknowledgements.tiff; sourceTree = "<group>"; };
 		AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		CDE0B9E40F3619C0007B09AF /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CDE0B9E40F3619C0007B09AF /* Credits.html */,
 				AA2640B80A37D2E600591C20 /* jumpcut.icns */,
 				AAE2FF120A1FB4A7002DCC2A /* RemoveShortcut.tif */,
 				AAE2FF130A1FB4A7002DCC2A /* RemoveShortcutPressed.tif */,
@@ -416,6 +419,7 @@
 				AAE2FF170A1FB4A8002DCC2A /* RemoveShortcutRollover.tif in Resources */,
 				AAE200780A228741002DCC2A /* net.sf.jumpcut.preferences.appearance.tiff in Resources */,
 				AA2640B90A37D2E600591C20 /* jumpcut.icns in Resources */,
+				CDE0B9E50F3619C0007B09AF /* Credits.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

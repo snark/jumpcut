@@ -1,32 +1,32 @@
 /* =============================================================================
-FILE:		UKPrefsPanel.h
-
-AUTHORS:	M. Uli Kusterer (UK), (c) Copyright 2003, all rights reserved.
-
-DIRECTIONS:
-UKPrefsPanel is ridiculously easy to use: Create a tabless NSTabView,
-where the name of each tab is the name for the toolbar item, and the
-identifier of each tab is the identifier to be used for the toolbar
-item to represent it. Then create image files with the identifier as
-their names to be used as icons in the toolbar.
-
-Finally, drag UKPrefsPanel.h into the NIB with the NSTabView,
-instantiate a UKPrefsPanel and connect its tabView outlet to your
-NSTabView. When you open the window, the UKPrefsPanel will
-automatically add a toolbar to the window with all tabs represented by
-a toolbar item, and clicking an item will switch between the tab view's
-items.
-
-
-REVISIONS:
-2003-08-13	UK	Added auto-save, fixed bug with empty window titles.
-2003-07-22  UK  Added Panther stuff, documented.
-2003-06-30  UK  Created.
-========================================================================== */
+ FILE:		UKPrefsPanel.m
+ 
+ AUTHORS:	M. Uli Kusterer (UK), (c) Copyright 2003, all rights reserved.
+ 
+ DIRECTIONS:
+ UKPrefsPanel is ridiculously easy to use: Create a tabless NSTabView,
+ where the name of each tab is the name for the toolbar item, and the
+ identifier of each tab is the identifier to be used for the toolbar
+ item to represent it. Then create image files with the identifier as
+ their names to be used as icons in the toolbar.
+ 
+ Finally, drag UKPrefsPanel.h into the NIB with the NSTabView,
+ instantiate a UKPrefsPanel and connect its tabView outlet to your
+ NSTabView. When you open the window, the UKPrefsPanel will
+ automatically add a toolbar to the window with all tabs represented by
+ a toolbar item, and clicking an item will switch between the tab view's
+ items.
+ 
+ 
+ REVISIONS:
+ 2003-08-13	UK	Added auto-save, fixed bug with empty window titles.
+ 2003-07-22  UK  Added Panther stuff, documented.
+ 2003-06-30  UK  Created.
+ ========================================================================== */
 
 /* -----------------------------------------------------------------------------
-Headers:
--------------------------------------------------------------------------- */
+ Headers:
+ -------------------------------------------------------------------------- */
 
 #import "UKPrefsPanel.h"
 
@@ -34,8 +34,8 @@ Headers:
 @implementation UKPrefsPanel
 
 /* -----------------------------------------------------------------------------
-Constructor:
--------------------------------------------------------------------------- */
+ Constructor:
+ -------------------------------------------------------------------------- */
 
 -(id) init
 {
@@ -51,8 +51,8 @@ Constructor:
 
 
 /* -----------------------------------------------------------------------------
-Destructor:
--------------------------------------------------------------------------- */
+ Destructor:
+ -------------------------------------------------------------------------- */
 
 -(void)	dealloc
 {
@@ -63,18 +63,18 @@ Destructor:
 
 
 /* -----------------------------------------------------------------------------
-awakeFromNib:
-This object and all others in the NIB have been created and hooked up.
-Fetch the window name so we can modify it to indicate the current
-page, and add our toolbar to the window.
-
-This method is the great obstacle to making UKPrefsPanel an NSTabView
-subclass. When the tab view's awakeFromNib method is called, the
-individual tabs aren't set up yet, meaning mapTabsToToolbar gives us an
-empty toolbar. ... bummer.
-
-If anybody knows how to fix this, you're welcome to tell me.
--------------------------------------------------------------------------- */
+ awakeFromNib:
+ This object and all others in the NIB have been created and hooked up.
+ Fetch the window name so we can modify it to indicate the current
+ page, and add our toolbar to the window.
+ 
+ This method is the great obstacle to making UKPrefsPanel an NSTabView
+ subclass. When the tab view's awakeFromNib method is called, the
+ individual tabs aren't set up yet, meaning mapTabsToToolbar gives us an
+ empty toolbar. ... bummer.
+ 
+ If anybody knows how to fix this, you're welcome to tell me.
+ -------------------------------------------------------------------------- */
 
 -(void)	awakeFromNib
 {
@@ -109,19 +109,19 @@ If anybody knows how to fix this, you're welcome to tell me.
 
 
 /* -----------------------------------------------------------------------------
-mapTabsToToolbar:
-Create a toolbar based on our tab control.
-
-Tab title		-   Name for toolbar item.
-Tab identifier  -	Image file name and toolbar item identifier.
--------------------------------------------------------------------------- */
+ mapTabsToToolbar:
+ Create a toolbar based on our tab control.
+ 
+ Tab title		-   Name for toolbar item.
+ Tab identifier  -	Image file name and toolbar item identifier.
+ -------------------------------------------------------------------------- */
 
 -(void) mapTabsToToolbar
 {
     // Create a new toolbar instance, and attach it to our document window 
     NSToolbar		*toolbar =[[tabView window] toolbar];
 	int				itemCount = 0,
-		x = 0;
+	x = 0;
 	NSTabViewItem	*currPage = nil;
 	
 	if( toolbar == nil )   // No toolbar yet? Create one!
@@ -155,25 +155,20 @@ Tab identifier  -	Image file name and toolbar item identifier.
 	currPage = [tabView selectedTabViewItem];
 	if( currPage == nil )
 		currPage = [tabView tabViewItemAtIndex:0];
-//	[[tabView window] setTitle: [baseWindowName stringByAppendingString: [currPage label]]];
+	//	[[tabView window] setTitle: [baseWindowName stringByAppendingString: [currPage label]]];
 	
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3
 	if( [toolbar respondsToSelector: @selector(setSelectedItemIdentifier:)] )
 		[toolbar setSelectedItemIdentifier: [currPage identifier]];
 #endif
-
-	// Jam in a flexible space to seperate out our acknowledgements tab
-	// sbc
-	int foo = [[toolbar items] count] - 1;
-	[toolbar insertItemWithItemIdentifier:NSToolbarFlexibleSpaceItemIdentifier atIndex:foo];
-
+	
 }
 
 
 /* -----------------------------------------------------------------------------
-orderFrontPrefsPanel:
-IBAction to assign to "Preferences..." menu item.
--------------------------------------------------------------------------- */
+ orderFrontPrefsPanel:
+ IBAction to assign to "Preferences..." menu item.
+ -------------------------------------------------------------------------- */
 
 -(IBAction)		orderFrontPrefsPanel: (id)sender
 {
@@ -182,9 +177,9 @@ IBAction to assign to "Preferences..." menu item.
 
 
 /* -----------------------------------------------------------------------------
-setTabView:
-Accessor for specifying the tab view to query.
--------------------------------------------------------------------------- */
+ setTabView:
+ Accessor for specifying the tab view to query.
+ -------------------------------------------------------------------------- */
 
 -(void)			setTabView: (NSTabView*)tv
 {
@@ -198,10 +193,10 @@ Accessor for specifying the tab view to query.
 }
 
 /* -----------------------------------------------------------------------------
-toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:
-Create an item with the proper image and name based on our list
-of tabs for the specified identifier.
--------------------------------------------------------------------------- */
+ toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:
+ Create an item with the proper image and name based on our list
+ of tabs for the specified identifier.
+ -------------------------------------------------------------------------- */
 
 -(NSToolbarItem *) toolbar: (NSToolbar *)toolbar itemForItemIdentifier: (NSString *) itemIdent willBeInsertedIntoToolbar:(BOOL) willBeInserted
 {
@@ -237,10 +232,10 @@ of tabs for the specified identifier.
 
 
 /* -----------------------------------------------------------------------------
-toolbarSelectableItemIdentifiers:
-Make sure all our custom items can be selected. NSToolbar will
-automagically select the appropriate item when it is clicked.
--------------------------------------------------------------------------- */
+ toolbarSelectableItemIdentifiers:
+ Make sure all our custom items can be selected. NSToolbar will
+ automagically select the appropriate item when it is clicked.
+ -------------------------------------------------------------------------- */
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3
 -(NSArray*) toolbarSelectableItemIdentifiers: (NSToolbar*)toolbar
@@ -251,17 +246,17 @@ automagically select the appropriate item when it is clicked.
 
 
 /* -----------------------------------------------------------------------------
-changePanes:
-Action for our custom toolbar items that causes the window title to
-reflect the current pane and the proper pane to be shown in response to
-a click.
--------------------------------------------------------------------------- */
+ changePanes:
+ Action for our custom toolbar items that causes the window title to
+ reflect the current pane and the proper pane to be shown in response to
+ a click.
+ -------------------------------------------------------------------------- */
 
 -(IBAction)	changePanes: (id)sender
 {
 	
 	[tabView selectTabViewItemAtIndex: [sender tag]];
-//	[[tabView window] setTitle: [baseWindowName stringByAppendingString: [sender label]]];
+	//	[[tabView window] setTitle: [baseWindowName stringByAppendingString: [sender label]]];
 	
 	id box = [[[[tabView tabViewItemAtIndex:[sender tag]] view] subviews] objectAtIndex:0];
 	// We want to obtain our current contentView height and compare it to box
@@ -286,11 +281,11 @@ a click.
 }
 
 /* -----------------------------------------------------------------------------
-toolbarDefaultItemIdentifiers:
-Return the identifiers for all toolbar items that will be shown by
-default.
-This is simply a list of all tab view items in order.
--------------------------------------------------------------------------- */
+ toolbarDefaultItemIdentifiers:
+ Return the identifiers for all toolbar items that will be shown by
+ default.
+ This is simply a list of all tab view items in order.
+ -------------------------------------------------------------------------- */
 
 -(NSArray*) toolbarDefaultItemIdentifiers: (NSToolbar *) toolbar
 {
@@ -312,19 +307,19 @@ This is simply a list of all tab view items in order.
 
 
 /* -----------------------------------------------------------------------------
-toolbarAllowedItemIdentifiers:
-Return the identifiers for all toolbar items that *can* be put in this
-toolbar. We allow a couple more items (flexible space, separator lines
-									   etc.) in addition to our custom items.
--------------------------------------------------------------------------- */
+ toolbarAllowedItemIdentifiers:
+ Return the identifiers for all toolbar items that *can* be put in this
+ toolbar. We allow a couple more items (flexible space, separator lines
+ etc.) in addition to our custom items.
+ -------------------------------------------------------------------------- */
 
 -(NSArray*) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar
 {
     NSMutableArray*		allowedItems = [[[itemsList allKeys] mutableCopy] autorelease];
 	
 	[allowedItems addObjectsFromArray: [NSArray arrayWithObjects: NSToolbarSeparatorItemIdentifier,
-		NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier,
-		NSToolbarCustomizeToolbarItemIdentifier, nil] ];
+										NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier,
+										NSToolbarCustomizeToolbarItemIdentifier, nil] ];
 	
 	return allowedItems;
 }
