@@ -11,30 +11,9 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		AA058DC70A10512100DB7366 /* UKPrefsPanel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA058DC50A10512100DB7366 /* UKPrefsPanel.h */; };
-		AA058DC80A10512100DB7366 /* UKPrefsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA058DC60A10512100DB7366 /* UKPrefsPanel.m */; };
-		AA0875FD0B8011B000C1F175 /* LoginItemsAE.c in Sources */ = {isa = PBXBuildFile; fileRef = AA0875FB0B8011B000C1F175 /* LoginItemsAE.c */; };
-		AA0875FE0B8011B000C1F175 /* LoginItemsAE.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0875FC0B8011B000C1F175 /* LoginItemsAE.h */; };
-		AA0876030B8011EC00C1F175 /* UKLoginItemRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0876010B8011EC00C1F175 /* UKLoginItemRegistry.h */; };
-		AA0876040B8011EC00C1F175 /* UKLoginItemRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0876020B8011EC00C1F175 /* UKLoginItemRegistry.m */; };
 		AA2640B90A37D2E600591C20 /* jumpcut.icns in Resources */ = {isa = PBXBuildFile; fileRef = AA2640B80A37D2E600591C20 /* jumpcut.icns */; };
-		AA6D1BDD0DAD68D800734235 /* SRValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D1BD10DAD68D800734235 /* SRValidator.h */; };
-		AA6D1BDE0DAD68D800734235 /* CTGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D1BD20DAD68D800734235 /* CTGradient.m */; };
-		AA6D1BDF0DAD68D800734235 /* SRCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D1BD30DAD68D800734235 /* SRCommon.h */; };
-		AA6D1BE00DAD68D800734235 /* SRRecorderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D1BD40DAD68D800734235 /* SRRecorderCell.h */; };
-		AA6D1BE10DAD68D800734235 /* SRRecorderControl.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D1BD50DAD68D800734235 /* SRRecorderControl.h */; };
-		AA6D1BE20DAD68D800734235 /* SRRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D1BD60DAD68D800734235 /* SRRecorderControl.m */; };
-		AA6D1BE30DAD68D800734235 /* SRKeyCodeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D1BD70DAD68D800734235 /* SRKeyCodeTransformer.m */; };
-		AA6D1BE40DAD68D800734235 /* SRCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D1BD80DAD68D800734235 /* SRCommon.m */; };
-		AA6D1BE50DAD68D800734235 /* SRKeyCodeTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D1BD90DAD68D800734235 /* SRKeyCodeTransformer.h */; };
-		AA6D1BE60DAD68D800734235 /* SRRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D1BDA0DAD68D800734235 /* SRRecorderCell.m */; };
-		AA6D1BE70DAD68D800734235 /* CTGradient.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D1BDB0DAD68D800734235 /* CTGradient.h */; };
-		AA6D1BE80DAD68D800734235 /* SRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D1BDC0DAD68D800734235 /* SRValidator.m */; };
 		AA730D100DC3D47600F53350 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA730D0F0DC3D47600F53350 /* Sparkle.framework */; };
 		AA730D240DC3D48200F53350 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA730D0F0DC3D47600F53350 /* Sparkle.framework */; };
-		AABE486809FF1DF800A6A239 /* BezelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486309FF1DF800A6A239 /* BezelWindow.m */; };
-		AABE486909FF1DF800A6A239 /* RoundRecTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486509FF1DF800A6A239 /* RoundRecTextField.m */; };
-		AABE486A09FF1DF800A6A239 /* RoundRecBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE486709FF1DF800A6A239 /* RoundRecBezierPath.m */; };
 		AABE493309FF21BE00A6A239 /* PTHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE492909FF21BE00A6A239 /* PTHotKey.m */; };
 		AABE493409FF21BE00A6A239 /* PTHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE492B09FF21BE00A6A239 /* PTHotKeyCenter.m */; };
 		AABE493509FF21BE00A6A239 /* PTKeyBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE492D09FF21BE00A6A239 /* PTKeyBroadcaster.m */; };
@@ -47,12 +26,36 @@
 		AAE200780A228741002DCC2A /* net.sf.jumpcut.preferences.appearance.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAE200770A228741002DCC2A /* net.sf.jumpcut.preferences.appearance.tiff */; };
 		AAE2FD090A1EC35D002DCC2A /* net.sf.jumpcut.preferences.general.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAE2FD080A1EC35D002DCC2A /* net.sf.jumpcut.preferences.general.tiff */; };
 		AAE2FEA70A1F6AD4002DCC2A /* net.sf.jumpcut.scissors_bw16.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE2FEA60A1F6AD3002DCC2A /* net.sf.jumpcut.scissors_bw16.png */; };
-		AAE2FF150A1FB4A7002DCC2A /* RemoveShortcut.tif in Resources */ = {isa = PBXBuildFile; fileRef = AAE2FF120A1FB4A7002DCC2A /* RemoveShortcut.tif */; };
-		AAE2FF160A1FB4A8002DCC2A /* RemoveShortcutPressed.tif in Resources */ = {isa = PBXBuildFile; fileRef = AAE2FF130A1FB4A7002DCC2A /* RemoveShortcutPressed.tif */; };
-		AAE2FF170A1FB4A8002DCC2A /* RemoveShortcutRollover.tif in Resources */ = {isa = PBXBuildFile; fileRef = AAE2FF140A1FB4A7002DCC2A /* RemoveShortcutRollover.tif */; };
 		AAECDC800A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */; };
 		AAECDDC70A03DCC5007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */; };
 		AAFAC85F0A1BD9DD00DC6025 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */; };
+		CDCB0D580F6DD3410098FC6A /* RoundRecTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D520F6DD3410098FC6A /* RoundRecTextField.h */; };
+		CDCB0D590F6DD3410098FC6A /* RoundRecBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D530F6DD3410098FC6A /* RoundRecBezierPath.m */; };
+		CDCB0D5A0F6DD3410098FC6A /* BezelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D540F6DD3410098FC6A /* BezelWindow.m */; };
+		CDCB0D5B0F6DD3410098FC6A /* RoundRecBezierPath.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D550F6DD3410098FC6A /* RoundRecBezierPath.h */; };
+		CDCB0D5C0F6DD3410098FC6A /* RoundRecTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D560F6DD3410098FC6A /* RoundRecTextField.m */; };
+		CDCB0D5D0F6DD3410098FC6A /* BezelWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D570F6DD3410098FC6A /* BezelWindow.h */; };
+		CDCB0D620F6DD38D0098FC6A /* UKLoginItemRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D5E0F6DD38D0098FC6A /* UKLoginItemRegistry.h */; };
+		CDCB0D630F6DD38D0098FC6A /* LoginItemsAE.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D5F0F6DD38D0098FC6A /* LoginItemsAE.h */; };
+		CDCB0D640F6DD38D0098FC6A /* UKLoginItemRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D600F6DD38D0098FC6A /* UKLoginItemRegistry.m */; };
+		CDCB0D650F6DD38D0098FC6A /* LoginItemsAE.c in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D610F6DD38D0098FC6A /* LoginItemsAE.c */; };
+		CDCB0D7F0F6DD4150098FC6A /* UKPrefsPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D7D0F6DD4150098FC6A /* UKPrefsPanel.h */; };
+		CDCB0D800F6DD4150098FC6A /* UKPrefsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D7E0F6DD4150098FC6A /* UKPrefsPanel.m */; };
+		CDCB0D840F6DD4650098FC6A /* RemoveShortcut.tif in Resources */ = {isa = PBXBuildFile; fileRef = CDCB0D810F6DD4650098FC6A /* RemoveShortcut.tif */; };
+		CDCB0D850F6DD4650098FC6A /* RemoveShortcutRollover.tif in Resources */ = {isa = PBXBuildFile; fileRef = CDCB0D820F6DD4650098FC6A /* RemoveShortcutRollover.tif */; };
+		CDCB0D860F6DD4650098FC6A /* RemoveShortcutPressed.tif in Resources */ = {isa = PBXBuildFile; fileRef = CDCB0D830F6DD4650098FC6A /* RemoveShortcutPressed.tif */; };
+		CDCB0D910F6DD4E30098FC6A /* SRCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D870F6DD4E30098FC6A /* SRCommon.h */; };
+		CDCB0D920F6DD4E30098FC6A /* SRCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D880F6DD4E30098FC6A /* SRCommon.m */; };
+		CDCB0D930F6DD4E30098FC6A /* SRValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D890F6DD4E30098FC6A /* SRValidator.h */; };
+		CDCB0D940F6DD4E30098FC6A /* SRRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D8A0F6DD4E30098FC6A /* SRRecorderControl.m */; };
+		CDCB0D950F6DD4E30098FC6A /* SRKeyCodeTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D8B0F6DD4E30098FC6A /* SRKeyCodeTransformer.h */; };
+		CDCB0D960F6DD4E30098FC6A /* SRRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D8C0F6DD4E30098FC6A /* SRRecorderCell.m */; };
+		CDCB0D970F6DD4E30098FC6A /* SRRecorderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D8D0F6DD4E30098FC6A /* SRRecorderCell.h */; };
+		CDCB0D980F6DD4E30098FC6A /* SRRecorderControl.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D8E0F6DD4E30098FC6A /* SRRecorderControl.h */; };
+		CDCB0D990F6DD4E30098FC6A /* SRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D8F0F6DD4E30098FC6A /* SRValidator.m */; };
+		CDCB0D9A0F6DD4E30098FC6A /* SRKeyCodeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D900F6DD4E30098FC6A /* SRKeyCodeTransformer.m */; };
+		CDCB0D9D0F6DD4ED0098FC6A /* CTGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D9B0F6DD4ED0098FC6A /* CTGradient.m */; };
+		CDCB0D9E0F6DD4ED0098FC6A /* CTGradient.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D9C0F6DD4ED0098FC6A /* CTGradient.h */; };
 		CDE0B9E50F3619C0007B09AF /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = CDE0B9E40F3619C0007B09AF /* Credits.html */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +75,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				AA058DC70A10512100DB7366 /* UKPrefsPanel.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,32 +101,8 @@
 		32CA4F630368D1EE00C91783 /* Jumpcut_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jumpcut_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Jumpcut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumpcut.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA058DC50A10512100DB7366 /* UKPrefsPanel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UKPrefsPanel.h; sourceTree = "<group>"; };
-		AA058DC60A10512100DB7366 /* UKPrefsPanel.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = UKPrefsPanel.m; sourceTree = "<group>"; };
-		AA0875FB0B8011B000C1F175 /* LoginItemsAE.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = LoginItemsAE.c; sourceTree = "<group>"; };
-		AA0875FC0B8011B000C1F175 /* LoginItemsAE.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LoginItemsAE.h; sourceTree = "<group>"; };
-		AA0876010B8011EC00C1F175 /* UKLoginItemRegistry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UKLoginItemRegistry.h; sourceTree = "<group>"; };
-		AA0876020B8011EC00C1F175 /* UKLoginItemRegistry.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = UKLoginItemRegistry.m; sourceTree = "<group>"; };
 		AA2640B80A37D2E600591C20 /* jumpcut.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = jumpcut.icns; sourceTree = "<group>"; };
-		AA6D1BD10DAD68D800734235 /* SRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRValidator.h; sourceTree = "<group>"; };
-		AA6D1BD20DAD68D800734235 /* CTGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTGradient.m; sourceTree = "<group>"; };
-		AA6D1BD30DAD68D800734235 /* SRCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCommon.h; sourceTree = "<group>"; };
-		AA6D1BD40DAD68D800734235 /* SRRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderCell.h; sourceTree = "<group>"; };
-		AA6D1BD50DAD68D800734235 /* SRRecorderControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderControl.h; sourceTree = "<group>"; };
-		AA6D1BD60DAD68D800734235 /* SRRecorderControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderControl.m; sourceTree = "<group>"; };
-		AA6D1BD70DAD68D800734235 /* SRKeyCodeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRKeyCodeTransformer.m; sourceTree = "<group>"; };
-		AA6D1BD80DAD68D800734235 /* SRCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCommon.m; sourceTree = "<group>"; };
-		AA6D1BD90DAD68D800734235 /* SRKeyCodeTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRKeyCodeTransformer.h; sourceTree = "<group>"; };
-		AA6D1BDA0DAD68D800734235 /* SRRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderCell.m; sourceTree = "<group>"; };
-		AA6D1BDB0DAD68D800734235 /* CTGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTGradient.h; sourceTree = "<group>"; };
-		AA6D1BDC0DAD68D800734235 /* SRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRValidator.m; sourceTree = "<group>"; };
 		AA730D0F0DC3D47600F53350 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		AABE486209FF1DF800A6A239 /* BezelWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BezelWindow.h; sourceTree = "<group>"; };
-		AABE486309FF1DF800A6A239 /* BezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = BezelWindow.m; sourceTree = "<group>"; };
-		AABE486409FF1DF800A6A239 /* RoundRecTextField.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RoundRecTextField.h; sourceTree = "<group>"; };
-		AABE486509FF1DF800A6A239 /* RoundRecTextField.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RoundRecTextField.m; sourceTree = "<group>"; };
-		AABE486609FF1DF800A6A239 /* RoundRecBezierPath.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RoundRecBezierPath.h; sourceTree = "<group>"; };
-		AABE486709FF1DF800A6A239 /* RoundRecBezierPath.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RoundRecBezierPath.m; sourceTree = "<group>"; };
 		AABE492809FF21BE00A6A239 /* PTHotKey.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PTHotKey.h; path = src/PTHotKey.h; sourceTree = "<group>"; };
 		AABE492909FF21BE00A6A239 /* PTHotKey.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = PTHotKey.m; path = src/PTHotKey.m; sourceTree = "<group>"; };
 		AABE492A09FF21BE00A6A239 /* PTHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PTHotKeyCenter.h; path = src/PTHotKeyCenter.h; sourceTree = "<group>"; };
@@ -145,12 +123,36 @@
 		AAE200770A228741002DCC2A /* net.sf.jumpcut.preferences.appearance.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.appearance.tiff; sourceTree = "<group>"; };
 		AAE2FD080A1EC35D002DCC2A /* net.sf.jumpcut.preferences.general.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.general.tiff; sourceTree = "<group>"; };
 		AAE2FEA60A1F6AD3002DCC2A /* net.sf.jumpcut.scissors_bw16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = net.sf.jumpcut.scissors_bw16.png; sourceTree = "<group>"; };
-		AAE2FF120A1FB4A7002DCC2A /* RemoveShortcut.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = RemoveShortcut.tif; sourceTree = "<group>"; };
-		AAE2FF130A1FB4A7002DCC2A /* RemoveShortcutPressed.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = RemoveShortcutPressed.tif; sourceTree = "<group>"; };
-		AAE2FF140A1FB4A7002DCC2A /* RemoveShortcutRollover.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = RemoveShortcutRollover.tif; sourceTree = "<group>"; };
 		AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.hotkey.tiff; sourceTree = "<group>"; };
 		AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.acknowledgements.tiff; sourceTree = "<group>"; };
 		AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		CDCB0D520F6DD3410098FC6A /* RoundRecTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoundRecTextField.h; path = UI/RoundRecTextField.h; sourceTree = "<group>"; };
+		CDCB0D530F6DD3410098FC6A /* RoundRecBezierPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoundRecBezierPath.m; path = UI/RoundRecBezierPath.m; sourceTree = "<group>"; };
+		CDCB0D540F6DD3410098FC6A /* BezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BezelWindow.m; path = UI/BezelWindow.m; sourceTree = "<group>"; };
+		CDCB0D550F6DD3410098FC6A /* RoundRecBezierPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoundRecBezierPath.h; path = UI/RoundRecBezierPath.h; sourceTree = "<group>"; };
+		CDCB0D560F6DD3410098FC6A /* RoundRecTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoundRecTextField.m; path = UI/RoundRecTextField.m; sourceTree = "<group>"; };
+		CDCB0D570F6DD3410098FC6A /* BezelWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BezelWindow.h; path = UI/BezelWindow.h; sourceTree = "<group>"; };
+		CDCB0D5E0F6DD38D0098FC6A /* UKLoginItemRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UKLoginItemRegistry.h; path = LoginItem/UKLoginItemRegistry.h; sourceTree = "<group>"; };
+		CDCB0D5F0F6DD38D0098FC6A /* LoginItemsAE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginItemsAE.h; path = LoginItem/LoginItemsAE.h; sourceTree = "<group>"; };
+		CDCB0D600F6DD38D0098FC6A /* UKLoginItemRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UKLoginItemRegistry.m; path = LoginItem/UKLoginItemRegistry.m; sourceTree = "<group>"; };
+		CDCB0D610F6DD38D0098FC6A /* LoginItemsAE.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = LoginItemsAE.c; path = LoginItem/LoginItemsAE.c; sourceTree = "<group>"; };
+		CDCB0D7D0F6DD4150098FC6A /* UKPrefsPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UKPrefsPanel.h; path = UKPrefsPanel_d/UKPrefsPanel.h; sourceTree = "<group>"; };
+		CDCB0D7E0F6DD4150098FC6A /* UKPrefsPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UKPrefsPanel.m; path = UKPrefsPanel_d/UKPrefsPanel.m; sourceTree = "<group>"; };
+		CDCB0D810F6DD4650098FC6A /* RemoveShortcut.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = RemoveShortcut.tif; path = ShortcutRecorder/RemoveShortcut.tif; sourceTree = "<group>"; };
+		CDCB0D820F6DD4650098FC6A /* RemoveShortcutRollover.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = RemoveShortcutRollover.tif; path = ShortcutRecorder/RemoveShortcutRollover.tif; sourceTree = "<group>"; };
+		CDCB0D830F6DD4650098FC6A /* RemoveShortcutPressed.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = RemoveShortcutPressed.tif; path = ShortcutRecorder/RemoveShortcutPressed.tif; sourceTree = "<group>"; };
+		CDCB0D870F6DD4E30098FC6A /* SRCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRCommon.h; path = ShortcutRecorder/SRCommon.h; sourceTree = "<group>"; };
+		CDCB0D880F6DD4E30098FC6A /* SRCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRCommon.m; path = ShortcutRecorder/SRCommon.m; sourceTree = "<group>"; };
+		CDCB0D890F6DD4E30098FC6A /* SRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRValidator.h; path = ShortcutRecorder/SRValidator.h; sourceTree = "<group>"; };
+		CDCB0D8A0F6DD4E30098FC6A /* SRRecorderControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRRecorderControl.m; path = ShortcutRecorder/SRRecorderControl.m; sourceTree = "<group>"; };
+		CDCB0D8B0F6DD4E30098FC6A /* SRKeyCodeTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRKeyCodeTransformer.h; path = ShortcutRecorder/SRKeyCodeTransformer.h; sourceTree = "<group>"; };
+		CDCB0D8C0F6DD4E30098FC6A /* SRRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRRecorderCell.m; path = ShortcutRecorder/SRRecorderCell.m; sourceTree = "<group>"; };
+		CDCB0D8D0F6DD4E30098FC6A /* SRRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRRecorderCell.h; path = ShortcutRecorder/SRRecorderCell.h; sourceTree = "<group>"; };
+		CDCB0D8E0F6DD4E30098FC6A /* SRRecorderControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRRecorderControl.h; path = ShortcutRecorder/SRRecorderControl.h; sourceTree = "<group>"; };
+		CDCB0D8F0F6DD4E30098FC6A /* SRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRValidator.m; path = ShortcutRecorder/SRValidator.m; sourceTree = "<group>"; };
+		CDCB0D900F6DD4E30098FC6A /* SRKeyCodeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRKeyCodeTransformer.m; path = ShortcutRecorder/SRKeyCodeTransformer.m; sourceTree = "<group>"; };
+		CDCB0D9B0F6DD4ED0098FC6A /* CTGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTGradient.m; path = ShortcutRecorder/CTGradient.m; sourceTree = "<group>"; };
+		CDCB0D9C0F6DD4ED0098FC6A /* CTGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTGradient.h; path = ShortcutRecorder/CTGradient.h; sourceTree = "<group>"; };
 		CDE0B9E40F3619C0007B09AF /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,10 +176,10 @@
 				AABE497A09FF9CD000A6A239 /* AppController.h */,
 				AABE497B09FF9CD000A6A239 /* AppController.m */,
 				AABE496009FF227E00A6A239 /* JumpcutEngine */,
-				AA0875E60B800F2600C1F175 /* LoginItem */,
 				AABE491909FF214900A6A239 /* UI */,
-				AAECDC8B0A03C9DC007D377A /* UKPrefsPanel */,
+				AA0875E60B800F2600C1F175 /* LoginItem */,
 				AABE492609FF21BE00A6A239 /* PTHotKeysLib */,
+				AAECDC8B0A03C9DC007D377A /* UKPrefsPanel */,
 				AABE48F109FF203300A6A239 /* ShortcutRecorder */,
 			);
 			name = Classes;
@@ -235,11 +237,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CDCB0D810F6DD4650098FC6A /* RemoveShortcut.tif */,
+				CDCB0D820F6DD4650098FC6A /* RemoveShortcutRollover.tif */,
+				CDCB0D830F6DD4650098FC6A /* RemoveShortcutPressed.tif */,
 				CDE0B9E40F3619C0007B09AF /* Credits.html */,
 				AA2640B80A37D2E600591C20 /* jumpcut.icns */,
-				AAE2FF120A1FB4A7002DCC2A /* RemoveShortcut.tif */,
-				AAE2FF130A1FB4A7002DCC2A /* RemoveShortcutPressed.tif */,
-				AAE2FF140A1FB4A7002DCC2A /* RemoveShortcutRollover.tif */,
 				AADC65F20A1DFCEF00C0096D /* net.sf.jumpcut.ghost_scissors_small.png */,
 				AAE2FEA60A1F6AD3002DCC2A /* net.sf.jumpcut.scissors_bw16.png */,
 				AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */,
@@ -265,10 +267,10 @@
 		AA0875E60B800F2600C1F175 /* LoginItem */ = {
 			isa = PBXGroup;
 			children = (
-				AA0876010B8011EC00C1F175 /* UKLoginItemRegistry.h */,
-				AA0876020B8011EC00C1F175 /* UKLoginItemRegistry.m */,
-				AA0875FB0B8011B000C1F175 /* LoginItemsAE.c */,
-				AA0875FC0B8011B000C1F175 /* LoginItemsAE.h */,
+				CDCB0D5E0F6DD38D0098FC6A /* UKLoginItemRegistry.h */,
+				CDCB0D5F0F6DD38D0098FC6A /* LoginItemsAE.h */,
+				CDCB0D600F6DD38D0098FC6A /* UKLoginItemRegistry.m */,
+				CDCB0D610F6DD38D0098FC6A /* LoginItemsAE.c */,
 			);
 			name = LoginItem;
 			sourceTree = "<group>";
@@ -276,18 +278,18 @@
 		AABE48F109FF203300A6A239 /* ShortcutRecorder */ = {
 			isa = PBXGroup;
 			children = (
-				AA6D1BDB0DAD68D800734235 /* CTGradient.h */,
-				AA6D1BD20DAD68D800734235 /* CTGradient.m */,
-				AA6D1BD30DAD68D800734235 /* SRCommon.h */,
-				AA6D1BD80DAD68D800734235 /* SRCommon.m */,
-				AA6D1BD40DAD68D800734235 /* SRRecorderCell.h */,
-				AA6D1BDA0DAD68D800734235 /* SRRecorderCell.m */,
-				AA6D1BD50DAD68D800734235 /* SRRecorderControl.h */,
-				AA6D1BD60DAD68D800734235 /* SRRecorderControl.m */,
-				AA6D1BD90DAD68D800734235 /* SRKeyCodeTransformer.h */,
-				AA6D1BD70DAD68D800734235 /* SRKeyCodeTransformer.m */,
-				AA6D1BD10DAD68D800734235 /* SRValidator.h */,
-				AA6D1BDC0DAD68D800734235 /* SRValidator.m */,
+				CDCB0D9B0F6DD4ED0098FC6A /* CTGradient.m */,
+				CDCB0D9C0F6DD4ED0098FC6A /* CTGradient.h */,
+				CDCB0D870F6DD4E30098FC6A /* SRCommon.h */,
+				CDCB0D880F6DD4E30098FC6A /* SRCommon.m */,
+				CDCB0D890F6DD4E30098FC6A /* SRValidator.h */,
+				CDCB0D8A0F6DD4E30098FC6A /* SRRecorderControl.m */,
+				CDCB0D8B0F6DD4E30098FC6A /* SRKeyCodeTransformer.h */,
+				CDCB0D8C0F6DD4E30098FC6A /* SRRecorderCell.m */,
+				CDCB0D8D0F6DD4E30098FC6A /* SRRecorderCell.h */,
+				CDCB0D8E0F6DD4E30098FC6A /* SRRecorderControl.h */,
+				CDCB0D8F0F6DD4E30098FC6A /* SRValidator.m */,
+				CDCB0D900F6DD4E30098FC6A /* SRKeyCodeTransformer.m */,
 			);
 			name = ShortcutRecorder;
 			sourceTree = "<group>";
@@ -295,12 +297,12 @@
 		AABE491909FF214900A6A239 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				AABE486209FF1DF800A6A239 /* BezelWindow.h */,
-				AABE486309FF1DF800A6A239 /* BezelWindow.m */,
-				AABE486409FF1DF800A6A239 /* RoundRecTextField.h */,
-				AABE486509FF1DF800A6A239 /* RoundRecTextField.m */,
-				AABE486609FF1DF800A6A239 /* RoundRecBezierPath.h */,
-				AABE486709FF1DF800A6A239 /* RoundRecBezierPath.m */,
+				CDCB0D520F6DD3410098FC6A /* RoundRecTextField.h */,
+				CDCB0D530F6DD3410098FC6A /* RoundRecBezierPath.m */,
+				CDCB0D540F6DD3410098FC6A /* BezelWindow.m */,
+				CDCB0D550F6DD3410098FC6A /* RoundRecBezierPath.h */,
+				CDCB0D560F6DD3410098FC6A /* RoundRecTextField.m */,
+				CDCB0D570F6DD3410098FC6A /* BezelWindow.h */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -336,8 +338,8 @@
 		AAECDC8B0A03C9DC007D377A /* UKPrefsPanel */ = {
 			isa = PBXGroup;
 			children = (
-				AA058DC50A10512100DB7366 /* UKPrefsPanel.h */,
-				AA058DC60A10512100DB7366 /* UKPrefsPanel.m */,
+				CDCB0D7D0F6DD4150098FC6A /* UKPrefsPanel.h */,
+				CDCB0D7E0F6DD4150098FC6A /* UKPrefsPanel.m */,
 			);
 			name = UKPrefsPanel;
 			sourceTree = "<group>";
@@ -349,14 +351,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA0875FE0B8011B000C1F175 /* LoginItemsAE.h in Headers */,
-				AA0876030B8011EC00C1F175 /* UKLoginItemRegistry.h in Headers */,
-				AA6D1BDD0DAD68D800734235 /* SRValidator.h in Headers */,
-				AA6D1BDF0DAD68D800734235 /* SRCommon.h in Headers */,
-				AA6D1BE00DAD68D800734235 /* SRRecorderCell.h in Headers */,
-				AA6D1BE10DAD68D800734235 /* SRRecorderControl.h in Headers */,
-				AA6D1BE50DAD68D800734235 /* SRKeyCodeTransformer.h in Headers */,
-				AA6D1BE70DAD68D800734235 /* CTGradient.h in Headers */,
+				CDCB0D580F6DD3410098FC6A /* RoundRecTextField.h in Headers */,
+				CDCB0D5B0F6DD3410098FC6A /* RoundRecBezierPath.h in Headers */,
+				CDCB0D5D0F6DD3410098FC6A /* BezelWindow.h in Headers */,
+				CDCB0D620F6DD38D0098FC6A /* UKLoginItemRegistry.h in Headers */,
+				CDCB0D630F6DD38D0098FC6A /* LoginItemsAE.h in Headers */,
+				CDCB0D7F0F6DD4150098FC6A /* UKPrefsPanel.h in Headers */,
+				CDCB0D910F6DD4E30098FC6A /* SRCommon.h in Headers */,
+				CDCB0D930F6DD4E30098FC6A /* SRValidator.h in Headers */,
+				CDCB0D950F6DD4E30098FC6A /* SRKeyCodeTransformer.h in Headers */,
+				CDCB0D970F6DD4E30098FC6A /* SRRecorderCell.h in Headers */,
+				CDCB0D980F6DD4E30098FC6A /* SRRecorderControl.h in Headers */,
+				CDCB0D9E0F6DD4ED0098FC6A /* CTGradient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,12 +420,12 @@
 				AADC65F30A1DFCF000C0096D /* net.sf.jumpcut.ghost_scissors_small.png in Resources */,
 				AAE2FD090A1EC35D002DCC2A /* net.sf.jumpcut.preferences.general.tiff in Resources */,
 				AAE2FEA70A1F6AD4002DCC2A /* net.sf.jumpcut.scissors_bw16.png in Resources */,
-				AAE2FF150A1FB4A7002DCC2A /* RemoveShortcut.tif in Resources */,
-				AAE2FF160A1FB4A8002DCC2A /* RemoveShortcutPressed.tif in Resources */,
-				AAE2FF170A1FB4A8002DCC2A /* RemoveShortcutRollover.tif in Resources */,
 				AAE200780A228741002DCC2A /* net.sf.jumpcut.preferences.appearance.tiff in Resources */,
 				AA2640B90A37D2E600591C20 /* jumpcut.icns in Resources */,
 				CDE0B9E50F3619C0007B09AF /* Credits.html in Resources */,
+				CDCB0D840F6DD4650098FC6A /* RemoveShortcut.tif in Resources */,
+				CDCB0D850F6DD4650098FC6A /* RemoveShortcutRollover.tif in Resources */,
+				CDCB0D860F6DD4650098FC6A /* RemoveShortcutPressed.tif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,9 +437,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				AABE486809FF1DF800A6A239 /* BezelWindow.m in Sources */,
-				AABE486909FF1DF800A6A239 /* RoundRecTextField.m in Sources */,
-				AABE486A09FF1DF800A6A239 /* RoundRecBezierPath.m in Sources */,
 				AABE493309FF21BE00A6A239 /* PTHotKey.m in Sources */,
 				AABE493409FF21BE00A6A239 /* PTHotKeyCenter.m in Sources */,
 				AABE493509FF21BE00A6A239 /* PTKeyBroadcaster.m in Sources */,
@@ -441,16 +444,19 @@
 				AABE493709FF21BE00A6A239 /* PTKeyCombo.m in Sources */,
 				AABE496A09FF227E00A6A239 /* JumpcutClipping.m in Sources */,
 				AABE496B09FF227E00A6A239 /* JumpcutStore.m in Sources */,
-				AA0876040B8011EC00C1F175 /* UKLoginItemRegistry.m in Sources */,
-				AA058DC80A10512100DB7366 /* UKPrefsPanel.m in Sources */,
-				AA0875FD0B8011B000C1F175 /* LoginItemsAE.c in Sources */,
 				AABE497C09FF9CD000A6A239 /* AppController.m in Sources */,
-				AA6D1BDE0DAD68D800734235 /* CTGradient.m in Sources */,
-				AA6D1BE20DAD68D800734235 /* SRRecorderControl.m in Sources */,
-				AA6D1BE30DAD68D800734235 /* SRKeyCodeTransformer.m in Sources */,
-				AA6D1BE40DAD68D800734235 /* SRCommon.m in Sources */,
-				AA6D1BE60DAD68D800734235 /* SRRecorderCell.m in Sources */,
-				AA6D1BE80DAD68D800734235 /* SRValidator.m in Sources */,
+				CDCB0D590F6DD3410098FC6A /* RoundRecBezierPath.m in Sources */,
+				CDCB0D5A0F6DD3410098FC6A /* BezelWindow.m in Sources */,
+				CDCB0D5C0F6DD3410098FC6A /* RoundRecTextField.m in Sources */,
+				CDCB0D640F6DD38D0098FC6A /* UKLoginItemRegistry.m in Sources */,
+				CDCB0D650F6DD38D0098FC6A /* LoginItemsAE.c in Sources */,
+				CDCB0D800F6DD4150098FC6A /* UKPrefsPanel.m in Sources */,
+				CDCB0D920F6DD4E30098FC6A /* SRCommon.m in Sources */,
+				CDCB0D940F6DD4E30098FC6A /* SRRecorderControl.m in Sources */,
+				CDCB0D960F6DD4E30098FC6A /* SRRecorderCell.m in Sources */,
+				CDCB0D990F6DD4E30098FC6A /* SRValidator.m in Sources */,
+				CDCB0D9A0F6DD4E30098FC6A /* SRKeyCodeTransformer.m in Sources */,
+				CDCB0D9D0F6DD4ED0098FC6A /* CTGradient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
