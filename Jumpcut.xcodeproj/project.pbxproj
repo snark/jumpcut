@@ -56,6 +56,8 @@
 		CDCB0D9A0F6DD4E30098FC6A /* SRKeyCodeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D900F6DD4E30098FC6A /* SRKeyCodeTransformer.m */; };
 		CDCB0D9D0F6DD4ED0098FC6A /* CTGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D9B0F6DD4ED0098FC6A /* CTGradient.m */; };
 		CDCB0D9E0F6DD4ED0098FC6A /* CTGradient.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D9C0F6DD4ED0098FC6A /* CTGradient.h */; };
+		CDCB0DC40F6DEAA80098FC6A /* NSBezierPathAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0DC20F6DEAA80098FC6A /* NSBezierPathAdditions.h */; };
+		CDCB0DC50F6DEAA80098FC6A /* NSBezierPathAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0DC30F6DEAA80098FC6A /* NSBezierPathAdditions.m */; };
 		CDE0B9E50F3619C0007B09AF /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = CDE0B9E40F3619C0007B09AF /* Credits.html */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +155,8 @@
 		CDCB0D900F6DD4E30098FC6A /* SRKeyCodeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRKeyCodeTransformer.m; path = ShortcutRecorder/SRKeyCodeTransformer.m; sourceTree = "<group>"; };
 		CDCB0D9B0F6DD4ED0098FC6A /* CTGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTGradient.m; path = ShortcutRecorder/CTGradient.m; sourceTree = "<group>"; };
 		CDCB0D9C0F6DD4ED0098FC6A /* CTGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTGradient.h; path = ShortcutRecorder/CTGradient.h; sourceTree = "<group>"; };
+		CDCB0DC20F6DEAA80098FC6A /* NSBezierPathAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSBezierPathAdditions.h; path = UI/NSBezierPathAdditions.h; sourceTree = "<group>"; };
+		CDCB0DC30F6DEAA80098FC6A /* NSBezierPathAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSBezierPathAdditions.m; path = UI/NSBezierPathAdditions.m; sourceTree = "<group>"; };
 		CDE0B9E40F3619C0007B09AF /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -267,9 +271,9 @@
 		AA0875E60B800F2600C1F175 /* LoginItem */ = {
 			isa = PBXGroup;
 			children = (
+				CDCB0D600F6DD38D0098FC6A /* UKLoginItemRegistry.m */,
 				CDCB0D5E0F6DD38D0098FC6A /* UKLoginItemRegistry.h */,
 				CDCB0D5F0F6DD38D0098FC6A /* LoginItemsAE.h */,
-				CDCB0D600F6DD38D0098FC6A /* UKLoginItemRegistry.m */,
 				CDCB0D610F6DD38D0098FC6A /* LoginItemsAE.c */,
 			);
 			name = LoginItem;
@@ -297,12 +301,14 @@
 		AABE491909FF214900A6A239 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CDCB0D570F6DD3410098FC6A /* BezelWindow.h */,
+				CDCB0D540F6DD3410098FC6A /* BezelWindow.m */,
+				CDCB0DC20F6DEAA80098FC6A /* NSBezierPathAdditions.h */,
+				CDCB0DC30F6DEAA80098FC6A /* NSBezierPathAdditions.m */,
 				CDCB0D520F6DD3410098FC6A /* RoundRecTextField.h */,
 				CDCB0D530F6DD3410098FC6A /* RoundRecBezierPath.m */,
-				CDCB0D540F6DD3410098FC6A /* BezelWindow.m */,
 				CDCB0D550F6DD3410098FC6A /* RoundRecBezierPath.h */,
 				CDCB0D560F6DD3410098FC6A /* RoundRecTextField.m */,
-				CDCB0D570F6DD3410098FC6A /* BezelWindow.h */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -363,6 +369,7 @@
 				CDCB0D970F6DD4E30098FC6A /* SRRecorderCell.h in Headers */,
 				CDCB0D980F6DD4E30098FC6A /* SRRecorderControl.h in Headers */,
 				CDCB0D9E0F6DD4ED0098FC6A /* CTGradient.h in Headers */,
+				CDCB0DC40F6DEAA80098FC6A /* NSBezierPathAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +464,7 @@
 				CDCB0D990F6DD4E30098FC6A /* SRValidator.m in Sources */,
 				CDCB0D9A0F6DD4E30098FC6A /* SRKeyCodeTransformer.m in Sources */,
 				CDCB0D9D0F6DD4ED0098FC6A /* CTGradient.m in Sources */,
+				CDCB0DC50F6DEAA80098FC6A /* NSBezierPathAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
