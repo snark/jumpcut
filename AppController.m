@@ -215,9 +215,9 @@ typedef unsigned NSWindowCollectionBehavior;
 		 ! issuedRememberResizeWarning &&
 		 ! [[NSUserDefaults standardUserDefaults] boolForKey:@"stifleRememberResizeWarning"]
 		 ) {
-		choice = NSRunAlertPanel(@"Resize Stack", 
-								 @"Resizing the stack to a value below its present size will cause clippings to be lost.",
-								 @"Resize", @"Cancel", @"Don't Warn Me Again");
+		choice = NSRunAlertPanel(NSLocalizedString(@"Resize Stack", @"Alert panel - resize stack - title"), 
+								 NSLocalizedString(@"Resizing the stack to a value below its present size will cause clippings to be lost.", @"Alert panel - resize stack - message"),
+								 NSLocalizedString(@"Resize", @"Alert panel - resize stack - action"), NSLocalizedString(@"Cancel", @"Alert panel - cancel"), NSLocalizedString(@"Don't Warn Me Again", @"Alert panel - don't warn me"));
 		if ( choice == NSAlertAlternateReturn ) {
 			[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:[clippingStore jcListCount]]
 													 forKey:@"rememberNum"];
@@ -496,9 +496,9 @@ typedef unsigned NSWindowCollectionBehavior;
     int choice;
 	
 	[NSApp activateIgnoringOtherApps:YES];
-    choice = NSRunAlertPanel(@"Clear Clipping List", 
-							 @"Do you want to clear all recent clippings?",
-							 @"Clear", @"Cancel", nil);
+    choice = NSRunAlertPanel(NSLocalizedString(@"Clear Clipping List", @"Alert panel - clear clippings list - title"), 
+							 NSLocalizedString(@"Do you want to clear all recent clippings?", @"Alert panel - clear clippings list - message"),
+							 NSLocalizedString(@"Clear", @"Alert panel - clear clippings list - message"), NSLocalizedString(@"Cancel", @"Alert panel - cancel"), nil);
 	
     // on clear, zap the list and redraw the menu
     if ( choice == NSAlertDefaultReturn ) {

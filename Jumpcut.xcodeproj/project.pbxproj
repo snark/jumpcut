@@ -58,6 +58,7 @@
 		CDCB0D9E0F6DD4ED0098FC6A /* CTGradient.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D9C0F6DD4ED0098FC6A /* CTGradient.h */; };
 		CDCB0DC40F6DEAA80098FC6A /* NSBezierPathAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0DC20F6DEAA80098FC6A /* NSBezierPathAdditions.h */; };
 		CDCB0DC50F6DEAA80098FC6A /* NSBezierPathAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0DC30F6DEAA80098FC6A /* NSBezierPathAdditions.m */; };
+		CDCC495A0F7419F800D2BBB3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CDCC49590F7419F800D2BBB3 /* Localizable.strings */; };
 		CDE0B9E50F3619C0007B09AF /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = CDE0B9E40F3619C0007B09AF /* Credits.html */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +158,10 @@
 		CDCB0D9C0F6DD4ED0098FC6A /* CTGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTGradient.h; path = ShortcutRecorder/CTGradient.h; sourceTree = "<group>"; };
 		CDCB0DC20F6DEAA80098FC6A /* NSBezierPathAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSBezierPathAdditions.h; path = UI/NSBezierPathAdditions.h; sourceTree = "<group>"; };
 		CDCB0DC30F6DEAA80098FC6A /* NSBezierPathAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSBezierPathAdditions.m; path = UI/NSBezierPathAdditions.m; sourceTree = "<group>"; };
+		CDCC49570F7419ED00D2BBB3 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CDCC495B0F741A0300D2BBB3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CDCC495C0F741A2C00D2BBB3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CDCC495D0F741A3500D2BBB3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = fr; path = fr.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		CDE0B9E40F3619C0007B09AF /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,6 +258,7 @@
 				AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */,
 				AAE2FD080A1EC35D002DCC2A /* net.sf.jumpcut.preferences.general.tiff */,
 				8D1107310486CEB800E47090 /* Info.plist */,
+				CDCC49590F7419F800D2BBB3 /* Localizable.strings */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
 			);
@@ -406,6 +412,13 @@
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Jumpcut" */;
 			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				fr,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Jumpcut */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -433,6 +446,7 @@
 				CDCB0D840F6DD4650098FC6A /* RemoveShortcut.tif in Resources */,
 				CDCB0D850F6DD4650098FC6A /* RemoveShortcutRollover.tif in Resources */,
 				CDCB0D860F6DD4650098FC6A /* RemoveShortcutPressed.tif in Resources */,
+				CDCC495A0F7419F800D2BBB3 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +489,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				089C165DFE840E0CC02AAC07 /* English */,
+				CDCC495C0F741A2C00D2BBB3 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -483,8 +498,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				29B97319FDCFA39411CA2CEA /* English */,
+				CDCC495D0F741A3500D2BBB3 /* fr */,
 			);
 			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+		CDCC49590F7419F800D2BBB3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDCC49570F7419ED00D2BBB3 /* English */,
+				CDCC495B0F741A0300D2BBB3 /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
