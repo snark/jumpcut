@@ -1,0 +1,70 @@
+{
+    IBClasses =     (
+                {
+            ACTIONS =             {
+                activateAndOrderFrontStandardAboutPanel = id;
+                clearClippingList = id;
+                processMenuClippingSelection = id;
+                setBezelAlpha = id;
+                setDisplayNumPref = id;
+                setRememberNumPref = id;
+                showPreferencePanel = id;
+                switchMenuIcon = id;
+                toggleLoadOnStartup = id;
+                toggleMainHotKey = id;
+            };
+            CLASS = AppController;
+            LANGUAGE = ObjC;
+            OUTLETS =             {
+                jcMenu = NSMenu;
+                mainRecorder = SRRecorderControl;
+                prefsPanel = NSPanel;
+            };
+            SUPERCLASS = NSObject;
+        },
+                {
+            ACTIONS =             {
+                "" = id;
+            };
+            CLASS = FirstResponder;
+            LANGUAGE = ObjC;
+            SUPERCLASS = NSObject;
+        },
+                {
+            CLASS = NSObject;
+            LANGUAGE = ObjC;
+        },
+                {
+            ACTIONS =             {
+                "forIBuse__nilOutDeprecatedAutosaveName" = id;
+            };
+            CLASS = SRRecorderControl;
+            LANGUAGE = ObjC;
+            OUTLETS =             {
+                delegate = id;
+            };
+            SUPERCLASS = NSControl;
+        },
+                {
+            ACTIONS =             {
+                checkForUpdates = id;
+            };
+            CLASS = SUUpdater;
+            LANGUAGE = ObjC;
+            SUPERCLASS = NSObject;
+        },
+                {
+            ACTIONS =             {
+                changePanes = id;
+                orderFrontPrefsPanel = id;
+            };
+            CLASS = UKPrefsPanel;
+            LANGUAGE = ObjC;
+            OUTLETS =             {
+                tabView = NSTabView;
+            };
+            SUPERCLASS = NSObject;
+        }
+    );
+    IBVersion = 1;
+}
