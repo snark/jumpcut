@@ -87,6 +87,8 @@ typedef unsigned NSWindowCollectionBehavior;
 		@"launchOnStartup",
 		[NSNumber numberWithBool:YES],
 		@"menuSelectionPastes",
+		[NSNumber numberWithBool:YES],
+		@"bezelSelectionPastes",
 		nil]
 		];
 	return [super init];
@@ -269,12 +271,12 @@ typedef unsigned NSWindowCollectionBehavior;
 
 - (void)pasteFromStack
 {
+	[self performSelector:@selector(hideApp) withObject:nil afterDelay:0.2];
 	if ( [clippingStore jcListCount] > stackPosition ) {
 		[self addClipToPasteboardFromCount:stackPosition];
-		[self performSelector:@selector(hideApp) withObject:nil afterDelay:0.2];
-		[self performSelector:@selector(fakeCommandV) withObject:nil afterDelay:0.2];
-	} else {
-		[self performSelector:@selector(hideApp) withObject:nil afterDelay:0.2];
+    	if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"bezelSelectionPastes"] ) {
+    		[self performSelector:@selector(fakeCommandV) withObject:nil afterDelay:0.2];
+    	}
 	}
 }
 
