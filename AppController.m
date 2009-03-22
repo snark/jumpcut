@@ -98,13 +98,10 @@ typedef unsigned NSWindowCollectionBehavior;
 	if ( ! [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] || [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] < 0.6  ) {
 		// A decent starting value for the main hotkey is control-option-V
 		[mainRecorder setKeyCombo:SRMakeKeyCombo(9, 786432)];
-		NSLog(@"Setting hotkey");
 		if ( [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] ) {
-			NSLog(@"Pulling old preference");
 			// We need to pull out the relevant objects and stuff them in as proper preferences for the net.sf.Jumpcut domain
 			if ( [[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"hotkeyModifiers"] != nil )
 			{
-				NSLog(@"Setting hotkey");
 				[mainRecorder setKeyCombo:SRMakeKeyCombo(9, [[[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"hotkeyModifiers"] intValue])];
 			}	
 		}
@@ -418,8 +415,8 @@ typedef unsigned NSWindowCollectionBehavior;
 				}
 				break;
             default: // It's not a navigation/application-defined thing, so let's figure out what to do with it.
-				NSLog(@"PRESSED %d", pressed);
-				NSLog(@"CODE %d", [mainRecorder keyCombo].code);
+//				NSLog(@"PRESSED %d", pressed);
+//				NSLog(@"CODE %d", [mainRecorder keyCombo].code);
 				break;
 		}		
 	}
@@ -665,7 +662,6 @@ typedef unsigned NSWindowCollectionBehavior;
     NSString *path;
     path = [[NSString stringWithString:@"~/Library/Application Support/Jumpcut"] stringByExpandingTildeInPath];
     if ( ![[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir] || ! isDir ) {
-        NSLog(@"Creating Application Support directory");
         [[NSFileManager defaultManager] createDirectoryAtPath:path
 												   attributes:[NSDictionary dictionaryWithObjectsAndKeys:
 													   @"NSFileModificationDate", [NSNull null],
@@ -695,12 +691,6 @@ typedef unsigned NSWindowCollectionBehavior;
 			];
     }
     [saveDict setObject:jcListArray forKey:@"jcList"];
-	
-    if ( [saveDict writeToFile:[path stringByAppendingString:@"/JCEngine.save"] atomically:true] ) {
-		// NSLog(@"Engine contents saved.");
-    } else {
-		NSLog(@"Engine contents NOT saved.");
-    }
 }
 
 - (void)setHotKeyPreferenceForRecorder:(SRRecorderControl *)aRecorder
@@ -718,16 +708,9 @@ typedef unsigned NSWindowCollectionBehavior;
 	if (aRecorder == mainRecorder)
 	{
 		BOOL isTaken = NO;
-/*		
-		KeyCombo kc = [delegateDisallowRecorder keyCombo];
-		
-		if (kc.code == keyCode && kc.flags == flags) isTaken = YES;
-		
-		*aReason = [delegateDisallowReasonField stringValue];
-*/		
+		/* Delegate check would go here if we were using delegation */
 		return isTaken;
 	}
-	
 	return NO;
 }
 
