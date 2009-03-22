@@ -18,7 +18,7 @@
 
 #pragma mark Define magic
 
-#ifdef	DEPRECATED_ATTRIBUTE
+#if defined( DEPRECATED_ATTRIBUTE ) && defined( MAC_OS_X_VERSION_10_5 )
 #	define	SR_DEPRECATED_ATTRIBUTE		DEPRECATED_ATTRIBUTE
 #else
 #	define	SR_DEPRECATED_ATTRIBUTE		
