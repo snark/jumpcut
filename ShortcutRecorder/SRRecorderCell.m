@@ -576,6 +576,7 @@
 													 radius:NSHeight(cellFrame)/2.0] fill];
 			[NSGraphicsContext restoreGraphicsState];
 		}
+        [displayString release];
 		
 	}
 }
@@ -823,8 +824,8 @@
 						keyCombo.code = [theEvent keyCode];
 						
 						hasKeyChars = YES;
-						keyChars = [[theEvent characters] retain];
-						keyCharsIgnoringModifiers = [[theEvent charactersIgnoringModifiers] retain];
+						keyChars = [theEvent characters];
+						keyCharsIgnoringModifiers = [theEvent charactersIgnoringModifiers];
 //						NSLog(@"keychars: %@, ignoringmods: %@", keyChars, keyCharsIgnoringModifiers);
 //						NSLog(@"calculated keychars: %@, ignoring: %@", SRStringForKeyCode(keyCombo.code), SRCharacterForKeyCodeAndCocoaFlags(keyCombo.code,keyCombo.flags));
 						

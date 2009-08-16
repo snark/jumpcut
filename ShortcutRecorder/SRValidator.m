@@ -144,6 +144,7 @@
         }
 	}
 	
+    [globalHotKeys release];
 	// Check menus too
 	return [self isKeyCode:keyCode andFlags:flags takenInMenu:[NSApp mainMenu] error:error];
 }
