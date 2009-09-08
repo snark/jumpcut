@@ -284,7 +284,7 @@
 			(recordingOrEmpty ? [NSColor disabledControlTextColor] : [NSColor blackColor]), NSForegroundColorAttributeName, 
 			nil];
 		
-		NSString *displayString;
+		NSString *displayString = [[[NSString alloc] init] autorelease];
 		
 		if (isRecording)
 		{
@@ -563,7 +563,7 @@
 	// Finally draw it
 				[displayString drawInRect:textRect withAttributes:attributes];
 		}
-		
+		[viewportMovement release];
 		[[NSGraphicsContext currentContext] restoreGraphicsState];
 		
     // draw a focus ring...?
@@ -575,9 +575,7 @@
 			[[NSBezierPath bezierPathWithSRCRoundRectInRect:cellFrame //NSInsetRect(cellFrame,2,2)
 													 radius:NSHeight(cellFrame)/2.0] fill];
 			[NSGraphicsContext restoreGraphicsState];
-		}
-        [displayString release];
-		
+		}		
 	}
 }
 
@@ -1198,6 +1196,7 @@
 			[mutableDefaultsValue setObject:keyCharsIgnoringModifiers forKey:@"keyCharsIgnoringModifiers"];
 			
 			defaultsValue = [mutableDefaultsValue copy];
+			[defaultsValue autorelease];
 			[mutableDefaultsValue release];
 			
 		}

@@ -177,23 +177,31 @@ NSString *SRCharacterForKeyCodeAndCocoaFlags(signed short keyCode, unsigned int 
 	CFMutableStringRef resultString;
 	
     err = KLGetCurrentKeyboardLayout( &currentLayout );
-    if(err != noErr)
-		return FailWithNaiveString;
+    if(err != noErr) {
+		CFRelease(locale);
+		return FailWithNaiveString;	
+	} 
 	
     err = KLGetKeyboardLayoutProperty( currentLayout, kKLKind, (const void **)&keyLayoutKind );
-    if (err != noErr)
-		return FailWithNaiveString;
+    if(err != noErr) {
+		CFRelease(locale);
+		return FailWithNaiveString;	
+	} 
 	
     if (keyLayoutKind == kKLKCHRKind) {
 		PUDNSLog(@"KCHR kind key layout");
 		err = KLGetKeyboardLayoutProperty( currentLayout, kKLKCHRData, (const void **)&KCHRData );
-		if (err != noErr)
-			return FailWithNaiveString;
+		if(err != noErr) {
+			CFRelease(locale);
+			return FailWithNaiveString;	
+		} 
     } else {
 		PUDNSLog(@"uchr kind key layout");
 		err = KLGetKeyboardLayoutProperty( currentLayout, kKLuchrData, (const void **)&uchrData );
-		if (err !=  noErr)
-			return FailWithNaiveString;
+		if(err != noErr) {
+			CFRelease(locale);
+			return FailWithNaiveString;	
+		} 
     }
 	
     if (keyLayoutKind == kKLKCHRKind) {
@@ -362,7 +370,7 @@ static NSMutableDictionary *SRSharedImageCache = nil;
 	size = [sizeValue sizeValue];
 //	NSLog(@"size: %@", NSStringFromSize(size));
 	
-	NSCustomImageRep *customImageRep = [[NSCustomImageRep alloc] initWithDrawSelector:NSSelectorFromString([NSString stringWithFormat:@"_draw%@:", name]) delegate:self];
+	NSCustomImageRep *customImageRep = [[[NSCustomImageRep alloc] initWithDrawSelector:NSSelectorFromString([NSString stringWithFormat:@"_draw%@:", name]) delegate:self] autorelease];
 	[customImageRep setSize:size];
 //	NSLog(@"created customImageRep: %@", customImageRep);
 	NSImage *returnImage = [[NSImage alloc] initWithSize:size];
@@ -424,7 +432,7 @@ static NSMutableDictionary *SRSharedImageCache = nil;
 	[bp curveToPoint:MakeRelativePoint(0.4085750, 0.5154130) controlPoint1:MakeRelativePoint(0.7383412, 0.4930328) controlPoint2:MakeRelativePoint(0.4085750, 0.5154130)];
 	[bp lineToPoint:MakeRelativePoint(0.4085750, 0.2654000)];
 	
-	NSAffineTransform *flip = [[NSAffineTransform alloc] init];
+	NSAffineTransform *flip = [[[NSAffineTransform alloc] init] autorelease];
 //	[flip translateXBy:0.95 yBy:-1.0];
 	[flip scaleXBy:0.9 yBy:1.0];
 	[flip translateXBy:0.5 yBy:-0.5];
@@ -438,7 +446,8 @@ static NSMutableDictionary *SRSharedImageCache = nil;
 	[sh set];
 	
 	[bp fill];
-	
+	[sh release];
+	[bp release];
 }
 
 + (NSValue *)_sizeSRRemoveShortcut {
@@ -469,6 +478,7 @@ static NSMutableDictionary *SRSharedImageCache = nil;
 	[cross lineToPoint:MakeRelativePoint(4,10)];
 		
 	[cross stroke];
+	[cross release];
 }
 + (void)_drawSRRemoveShortcut:(id)anNSCustomImageRep {
 	
