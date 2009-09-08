@@ -12,6 +12,7 @@
 #import "SRRecorderControl.h"
 #import "SRKeyCodeTransformer.h"
 #import "JumpcutStore.h"
+#import "UKLoginItemRegistry.h"
 
 @class PTHotKey;
 
@@ -48,7 +49,11 @@
 	NSDictionary *standardPreferences;
     int jcDisplayNum;
 	BOOL issuedRememberResizeWarning;
+    unsigned vMajor, vMinor, vBugFix;
 }
+
+// Utility method
+-(void) getSystemVersionMajor:(unsigned *)major minor:(unsigned *)minor bugFix:(unsigned *)bugFix;
 
 // Basic functionality
 -(void) pollPB:(NSTimer *)timer;

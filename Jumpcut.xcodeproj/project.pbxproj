@@ -29,6 +29,7 @@
 		AAECDC800A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */; };
 		AAECDDC70A03DCC5007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */; };
 		AAFAC85F0A1BD9DD00DC6025 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */; };
+		CD4712071055ACA30007CC83 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = CD4712061055ACA20007CC83 /* dsa_pub.pem */; };
 		CDCB0D580F6DD3410098FC6A /* RoundRecTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCB0D520F6DD3410098FC6A /* RoundRecTextField.h */; };
 		CDCB0D590F6DD3410098FC6A /* RoundRecBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D530F6DD3410098FC6A /* RoundRecBezierPath.m */; };
 		CDCB0D5A0F6DD3410098FC6A /* BezelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB0D540F6DD3410098FC6A /* BezelWindow.m */; };
@@ -129,6 +130,7 @@
 		AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.hotkey.tiff; sourceTree = "<group>"; };
 		AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.acknowledgements.tiff; sourceTree = "<group>"; };
 		AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		CD4712061055ACA20007CC83 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		CDCB0D520F6DD3410098FC6A /* RoundRecTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoundRecTextField.h; path = UI/RoundRecTextField.h; sourceTree = "<group>"; };
 		CDCB0D530F6DD3410098FC6A /* RoundRecBezierPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoundRecBezierPath.m; path = UI/RoundRecBezierPath.m; sourceTree = "<group>"; };
 		CDCB0D540F6DD3410098FC6A /* BezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BezelWindow.m; path = UI/BezelWindow.m; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD4712061055ACA20007CC83 /* dsa_pub.pem */,
 				CDCB0D810F6DD4650098FC6A /* RemoveShortcut.tif */,
 				CDCB0D820F6DD4650098FC6A /* RemoveShortcutRollover.tif */,
 				CDCB0D830F6DD4650098FC6A /* RemoveShortcutPressed.tif */,
@@ -447,6 +450,7 @@
 				CDCB0D850F6DD4650098FC6A /* RemoveShortcutRollover.tif in Resources */,
 				CDCB0D860F6DD4650098FC6A /* RemoveShortcutPressed.tif in Resources */,
 				CDCC495A0F7419F800D2BBB3 /* Localizable.strings in Resources */,
+				CD4712071055ACA30007CC83 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
