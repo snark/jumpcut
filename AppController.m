@@ -120,6 +120,8 @@ fail:
 		@"menuSelectionPastes",
 		[NSNumber numberWithBool:YES],
 		@"bezelSelectionPastes",
+		[NSNumber numberWithBool:NO],
+		@"menuSelectionMovesToTop",
 		nil]
 		];
 	return [super init];
@@ -194,7 +196,7 @@ fail:
 												   repeats:YES] retain];
 	
     // Finish up
-	srTransformer = [[[SRKeyCodeTransformer alloc] init] retain];
+	srTransformer = [[SRKeyCodeTransformer alloc] init];
     pbBlockCount = [[NSNumber numberWithInt:0] retain];
     [pollPBTimer fire];
 
@@ -312,7 +314,7 @@ fail:
 {
 	[self performSelector:@selector(hideApp) withObject:nil afterDelay:0.2];
 	if ( [clippingStore jcListCount] > stackPosition ) {
-		[self addClipToPasteboardFromCount:stackPosition];
+		[self addClipToPasteboardFromCount:stackPosition movingToTop:NO];
     	if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"bezelSelectionPastes"] ) {
     		[self performSelector:@selector(fakeCommandV) withObject:nil afterDelay:0.2];
     	}
@@ -583,7 +585,11 @@ fail:
 -(IBAction)processMenuClippingSelection:(id)sender
 {
     int index=[[sender menu] indexOfItem:sender];
-    [self addClipToPasteboardFromCount:index];
+	if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"menuSelectionMovesToTop"] ) {
+		[self addClipToPasteboardFromCount:index movingToTop:YES];
+	} else {
+		[self addClipToPasteboardFromCount:index movingToTop:NO];
+	}
 	if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"menuSelectionPastes"] ) {
 		[self performSelector:@selector(hideApp) withObject:nil];
 		[self performSelector:@selector(fakeCommandV) withObject:nil afterDelay:0.2];
@@ -610,7 +616,7 @@ fail:
     pbBlockCount = newPBBlockCount;
 }
 
--(BOOL)addClipToPasteboardFromCount:(int)indexInt
+-(BOOL)addClipToPasteboardFromCount:(int)indexInt movingToTop:(bool)moveBool
 {
     NSString *pbFullText;
     NSArray *pbTypes;
@@ -626,8 +632,12 @@ fail:
     [jcPasteboard declareTypes:pbTypes owner:NULL];
 	
     [jcPasteboard setString:pbFullText forType:@"NSStringPboardType"];
-    [self setPBBlockCount:[NSNumber numberWithInt:[jcPasteboard changeCount]]];
-    return true;
+	if ( moveBool ) {
+	
+	} else {
+		[self setPBBlockCount:[NSNumber numberWithInt:[jcPasteboard changeCount]]];
+	}
+	return true;
 }
 
 -(void) loadEngineFromPList

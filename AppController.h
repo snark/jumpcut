@@ -25,7 +25,7 @@
 	SRKeyCodeTransformer        *srTransformer;
 	BOOL						isBezelDisplayed;
 	BOOL						isBezelPinned; // Currently not used
-	NSString					*currentKeycodeCharacter;
+	// NSString					*currentKeycodeCharacter;
 	int							stackPosition;
 	
 	// The below were pulled in from JumpcutController
@@ -57,7 +57,7 @@
 
 // Basic functionality
 -(void) pollPB:(NSTimer *)timer;
--(BOOL) addClipToPasteboardFromCount:(int)indexInt;
+-(BOOL) addClipToPasteboardFromCount:(int)indexInt movingToTop:(bool)moveBool;
 -(void) setPBBlockCount:(NSNumber *)newPBBlockCount;
 -(void) hideApp;
 -(void) pasteFromStack;
