@@ -1,0 +1,23 @@
+.DS_Store
+dsa_priv.pem
+
+# XCode (and ancestors) per-user config (very noisy, and not relevant)
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspetivev3
+*.pbxuser
+
+# build products
+build/
+*.[oa]
+
+# automatic backup files
+*~.nib
+*.swp
+*~
+*(Autosaved).rtfd/
+
+# Personal scratch files
+*.tmp
