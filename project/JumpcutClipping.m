@@ -128,12 +128,12 @@
 	// We're resetting the display string, so release the old one.
     [clipDisplayString release];
 	// We want to restrict the display string to the clipping contents through the first line break.
-	trimmedString = [clipContents stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	trimmedString = [clipContents stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	[trimmedString getLineStart:&start end:&lineEnd contentsEnd:&contentsEnd forRange:startRange];
 	contentsRange = NSMakeRange(0, contentsEnd);
 	firstLineOfClipping = [trimmedString substringWithRange:contentsRange];
     if ( [firstLineOfClipping length] > clipDisplayLength ) {
-        newDisplayString = [[NSString stringWithString:[firstLineOfClipping substringToIndex:clipDisplayLength]] stringByAppendingString:@"..."];   
+        newDisplayString = [[NSString stringWithString:[firstLineOfClipping substringToIndex:clipDisplayLength]] stringByAppendingString:@"…"];
     } else {
         newDisplayString = [NSString stringWithString:firstLineOfClipping];
     }
