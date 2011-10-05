@@ -360,7 +360,7 @@ fail:
         pbCount = [[NSNumber numberWithInt:[jcPasteboard changeCount]] retain];
         if ( type != nil ) {
 			NSString *contents = [jcPasteboard stringForType:type];
-			if ( contents == nil ) {
+			if ( contents == nil || [jcPasteboard stringForType:@"PasswordPboardType"] ) {
 //                NSLog(@"Contents: Empty");
             } else {
 				if (( [clippingStore jcListCount] == 0 || ! [contents isEqualToString:[clippingStore clippingContentsAtPosition:0]])
