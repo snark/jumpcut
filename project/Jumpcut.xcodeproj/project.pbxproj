@@ -130,6 +130,9 @@
 		AAECDC7E0A03C8FB007D377A /* net.sf.jumpcut.preferences.hotkey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.hotkey.tiff; sourceTree = "<group>"; };
 		AAECDDC60A03DCC4007D377A /* net.sf.jumpcut.preferences.acknowledgements.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.acknowledgements.tiff; sourceTree = "<group>"; };
 		AAFAC84A0A1BD9DD00DC6025 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		CD08DA21143C16B70027D1A3 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CD08DA22143C16C60027D1A3 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CD08DA23143C16CD0027D1A3 /* de */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = de; path = de.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		CD4712061055ACA20007CC83 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		CDCB0D520F6DD3410098FC6A /* RoundRecTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoundRecTextField.h; path = UI/RoundRecTextField.h; sourceTree = "<group>"; };
 		CDCB0D530F6DD3410098FC6A /* RoundRecBezierPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoundRecBezierPath.m; path = UI/RoundRecBezierPath.m; sourceTree = "<group>"; };
@@ -421,6 +424,7 @@
 				French,
 				German,
 				fr,
+				de,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Jumpcut */;
 			projectDirPath = "";
@@ -494,6 +498,7 @@
 			children = (
 				089C165DFE840E0CC02AAC07 /* English */,
 				CDCC495C0F741A2C00D2BBB3 /* fr */,
+				CD08DA22143C16C60027D1A3 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -503,6 +508,7 @@
 			children = (
 				29B97319FDCFA39411CA2CEA /* English */,
 				CDCC495D0F741A3500D2BBB3 /* fr */,
+				CD08DA23143C16CD0027D1A3 /* de */,
 			);
 			name = MainMenu.nib;
 			sourceTree = "<group>";
@@ -512,6 +518,7 @@
 			children = (
 				CDCC49570F7419ED00D2BBB3 /* English */,
 				CDCC495B0F741A0300D2BBB3 /* fr */,
+				CD08DA21143C16B70027D1A3 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
