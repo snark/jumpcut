@@ -284,7 +284,7 @@
 			(recordingOrEmpty ? [NSColor disabledControlTextColor] : [NSColor blackColor]), NSForegroundColorAttributeName, 
 			nil];
 		
-		NSString *displayString = [[[NSString alloc] init] autorelease];
+		NSString *displayString;
 		
 		if (isRecording)
 		{
@@ -379,13 +379,13 @@
 		
 //	NSAffineTransform *transitionMovement = [[NSAffineTransform alloc] init];
 		NSAffineTransform *viewportMovement = [[NSAffineTransform alloc] init];
-		CTGradient *currRecordingGradient = [recordingGradient gradientWithAlphaComponent:0.3];
+//		CTGradient *currRecordingGradient = [recordingGradient gradientWithAlphaComponent:0.3];
 	// Draw gradient when in recording mode
 		if (isVaguelyRecording)
 		{
 			if (isAnimatingNow) {
 //			[transitionMovement translateXBy:(isAnimatingTowardsRecording ? -(NSWidth(cellFrame)*(1.0-xanim)) : +(NSWidth(cellFrame)*xanim)) yBy:0.0];
-				currRecordingGradient = [currRecordingGradient gradientWithAlphaComponent:alphaRecording];
+//				currRecordingGradient = [currRecordingGradient gradientWithAlphaComponent:alphaRecording];
 				if (SRAnimationAxisIsY) {
 //				[viewportMovement translateXBy:0.0 yBy:(isAnimatingTowardsRecording ? -(NSHeight(cellFrame)*(xanim)) : -(NSHeight(cellFrame)*(1.0-xanim)))];
 					[viewportMovement translateXBy:0.0 yBy:(isAnimatingTowardsRecording ? NSHeight(cellFrame)*(xanim) : NSHeight(cellFrame)*(1.0-xanim))];
@@ -413,7 +413,7 @@
 		
 //	if (isVaguelyRecording) 
 		{
-			roundedRect = [viewportMovement transformBezierPath:[NSBezierPath bezierPathWithSRCRoundRectInRect:SRAnimationOffsetRect(cellFrame,cellFrame) radius:NSHeight(cellFrame)/2.0]];
+			//roundedRect = [viewportMovement transformBezierPath:[NSBezierPath bezierPathWithSRCRoundRectInRect:SRAnimationOffsetRect(cellFrame,cellFrame) radius:NSHeight(cellFrame)/2.0]];
 			
 		// Fill background with gradient
 		//		[currRecordingGradient fillRect:cellFrame angle:90.0];
@@ -646,7 +646,7 @@
 - (BOOL)trackMouse:(NSEvent *)theEvent inRect:(NSRect)cellFrame ofView:(SRRecorderControl *)controlView untilMouseUp:(BOOL)flag
 {		
 	NSEvent *currentEvent = theEvent;
-	NSPoint mouseLocation = [controlView convertPoint:[currentEvent locationInWindow] fromView:nil];
+	NSPoint mouseLocation; // = [controlView convertPoint:[currentEvent locationInWindow] fromView:nil];
 	
 	NSRect trackingRect = (isRecording ? [self _snapbackRectForFrame: cellFrame] : [self _removeButtonRectForFrame: cellFrame]);
 	NSRect leftRect = cellFrame;

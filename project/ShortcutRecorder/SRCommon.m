@@ -172,19 +172,16 @@ NSString *SRCharacterForKeyCodeAndCocoaFlags(signed short keyCode, unsigned int 
     UInt32          keyTranslateState;
 	UInt32              deadKeyState;
     OSStatus err = noErr;
-    CFLocaleRef locale = CFLocaleCopyCurrent();
 	
 	CFMutableStringRef resultString;
 	
     err = KLGetCurrentKeyboardLayout( &currentLayout );
     if(err != noErr) {
-		CFRelease(locale);
 		return FailWithNaiveString;	
 	} 
 	
     err = KLGetKeyboardLayoutProperty( currentLayout, kKLKind, (const void **)&keyLayoutKind );
     if(err != noErr) {
-		CFRelease(locale);
 		return FailWithNaiveString;	
 	} 
 	
@@ -192,14 +189,12 @@ NSString *SRCharacterForKeyCodeAndCocoaFlags(signed short keyCode, unsigned int 
 		PUDNSLog(@"KCHR kind key layout");
 		err = KLGetKeyboardLayoutProperty( currentLayout, kKLKCHRData, (const void **)&KCHRData );
 		if(err != noErr) {
-			CFRelease(locale);
 			return FailWithNaiveString;	
 		} 
     } else {
 		PUDNSLog(@"uchr kind key layout");
 		err = KLGetKeyboardLayoutProperty( currentLayout, kKLuchrData, (const void **)&uchrData );
 		if(err != noErr) {
-			CFRelease(locale);
 			return FailWithNaiveString;	
 		} 
     }
@@ -252,6 +247,8 @@ NSString *SRCharacterForKeyCodeAndCocoaFlags(signed short keyCode, unsigned int 
 		if(temp)
 			CFRelease(temp);
 	}   
+	CFLocaleRef locale = CFLocaleCopyCurrent();
+
 	CFStringCapitalize(resultString, locale);
 	CFRelease(locale);
 	
@@ -437,7 +434,7 @@ static NSMutableDictionary *SRSharedImageCache = nil;
 	[flip scaleXBy:0.9 yBy:1.0];
 	[flip translateXBy:0.5 yBy:-0.5];
 	
-	[bp transformUsingAffineTransform:flip];
+	[bp transformUsingAffineTransform:flip]; [flip release];
 	
 	NSShadow *sh = [[NSShadow alloc] init];
 	[sh setShadowColor:[[NSColor blackColor] colorWithAlphaComponent:0.45]];
