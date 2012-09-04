@@ -744,6 +744,8 @@ fail:
 			];
     }
     [saveDict setObject:jcListArray forKey:@"jcList"];
+
+	[saveDict writeToFile:[path stringByAppendingString:@"/JCEngine.save"] atomically:true];
 }
 
 - (void)setHotKeyPreferenceForRecorder:(SRRecorderControl *)aRecorder
