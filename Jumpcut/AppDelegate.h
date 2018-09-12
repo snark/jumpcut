@@ -6,10 +6,27 @@
 //  Copyright © 2018 Steve Cook. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import "BezelWindow.h"
+#import "JumpcutClipping.h"
+#import "JumpcutStore.h"
+#import <ShortcutRecorder/SRCommon.h>
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
+@property (strong, nonatomic) IBOutlet NSMenu *statusMenu;
+@property (assign) IBOutlet NSWindow *prefsPanel;
 
+// Preference related
+-(IBAction) showPreferencePanel:(id)sender;
+
+// Pasteboard and stack
+-(void)pollPasteboard:(NSTimer *)timer;
+-(void) saveEngine;
+
+// Bezel related
+-(void) showBezel;
+-(void) hideBezel;
+-(void) processBezelKeyDown:(NSEvent *)theEvent;
+-(void) metaKeysReleased;
 
 @end
 
