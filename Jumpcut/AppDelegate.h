@@ -28,5 +28,8 @@
 -(void) processBezelKeyDown:(NSEvent *)theEvent;
 -(void) metaKeysReleased;
 
+// Other actions
+-(IBAction)clearClippingList:(id)sender;
+
 @end
 

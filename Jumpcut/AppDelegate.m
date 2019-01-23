@@ -39,7 +39,6 @@
 
 - (id)init
 {
-    /*
     if ( ! [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] || [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] < 0.6  ) {
         // A decent starting value for the main hotkey is control-option-V
         NSDictionary *defaultHotkey = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]];
@@ -74,7 +73,7 @@
             } // End savePreference test
         } // End if/then that deals with 0.5x preferences
     } // End new-to-version check
-    */
+
     // If we don't have preferences defined, let's set some default values:
     [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
                                                              [NSNumber numberWithInt:20],
@@ -658,6 +657,26 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
 }
 
 /* Misc. UX */
+-(IBAction)clearClippingList:(id)sender {
+    NSUInteger choice;
+    [NSApp activateIgnoringOtherApps:YES];
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:NSLocalizedString(@"Clear", @"Alert panel - clear clippings list - clear")];
+    [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Alert panel - cancel")];
+    [alert setMessageText:NSLocalizedString(@"Clear Clipping List", @"Alert panel - clear clippings list - title")];
+    [alert setInformativeText:NSLocalizedString(@"Do you want to clear all recent clippings?", @"Alert panel - clear clippings list - message")];
+    choice = [alert runModal];
+    // on clear, zap the list and redraw the menu
+    if (choice == NSAlertFirstButtonReturn) {
+        [self.clippingStore clearList];
+        [self updateMenu];
+        if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 1 ) {
+            [self saveEngine];
+        }
+        [self.bezel setText:@""];
+    }
+    [alert release];
+}
 
 -(IBAction) showPreferencePanel:(id)sender
 {
@@ -666,6 +685,5 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     [NSApp activateIgnoringOtherApps: YES];
     [self.prefsPanel makeKeyAndOrderFront:self];
 }
-
 
 @end
