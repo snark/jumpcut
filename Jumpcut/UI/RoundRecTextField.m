@@ -24,14 +24,14 @@
 // Until then, this is kind of useless code.
 
 /*
-- (id)initWithFrame:(NSRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-    }
-    return self;
-}
-*/
+ - (id)initWithFrame:(NSRect)frame {
+ self = [super initWithFrame:frame];
+ if (self) {
+ // Initialization code here.
+ }
+ return self;
+ }
+ */
 
 - (BOOL)isOpaque {
     return NO;
@@ -43,7 +43,7 @@
     [[self backgroundColor] set];
     [roundedRec fill];
     [self setDrawsBackground:NO];
-	// We might eventually want to pass [super drawRect] something smaller than rect, to ensure that we don't bleed over the corners
+    // We might eventually want to pass [super drawRect] something smaller than rect, to ensure that we don't bleed over the corners
     [super drawRect:rect];
     [self setDrawsBackground:YES];
 }

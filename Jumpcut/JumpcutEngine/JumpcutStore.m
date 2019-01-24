@@ -32,13 +32,13 @@
 -(id) init
 {
     return [self initRemembering:20
-                displaying:10	
-                withDisplayLength:40 ];
+                      displaying:10	
+               withDisplayLength:40 ];
 }
 
 -(id) initRemembering:(int)nowRemembering
-        displaying:(int)nowDisplaying
-        withDisplayLength:(int)displayLength
+           displaying:(int)nowDisplaying
+    withDisplayLength:(int)displayLength
 {
     [super init];
     jcList = [[NSMutableArray alloc] init];
@@ -52,16 +52,16 @@
 -(void) addClipping:(NSString *)clipping ofType:(NSString *)type{
     // Clipping object
     JumpcutClipping * newClipping;
-	// Create clipping
+    // Create clipping
     newClipping = [[JumpcutClipping alloc] initWithContents:clipping
-												   withType:type
-										  withDisplayLength:[self displayLen]];
-	// Push it onto our recent clippings stack
-	[jcList insertObject:newClipping atIndex:0];
-	// Delete clippings older than jcRememberNum
-	while ( [jcList count] > jcRememberNum ) {
-		[jcList removeObjectAtIndex:jcRememberNum];
-	}
+                                                   withType:type
+                                          withDisplayLength:[self displayLen]];
+    // Push it onto our recent clippings stack
+    [jcList insertObject:newClipping atIndex:0];
+    // Delete clippings older than jcRememberNum
+    while ( [jcList count] > jcRememberNum ) {
+        [jcList removeObjectAtIndex:jcRememberNum];
+    }
 
     [newClipping release];
 }
@@ -85,9 +85,9 @@
 {
     if ( nowRemembering  > 0 ) {
         jcRememberNum = nowRemembering;
-		while ( [jcList count] > jcRememberNum ) {
-			[jcList removeObjectAtIndex:jcRememberNum];
-		}
+        while ( [jcList count] > jcRememberNum ) {
+            [jcList removeObjectAtIndex:jcRememberNum];
+        }
     }
 }
 
@@ -102,7 +102,7 @@
 {
     NSEnumerator *listEnum = [jcList objectEnumerator];
     JumpcutClipping *aClipping;
-    
+
     if ( newDisplayLength > 0 ) {
         jcDisplayLen = newDisplayLength;
         while ( aClipping = [listEnum nextObject] ) {
@@ -123,11 +123,11 @@
 
 -(NSString *) clippingContentsAtPosition:(int)index
 {
-	if ( index >= [jcList count] ) {
-		return nil;
-	} else {
-		return [NSString stringWithString:[[jcList objectAtIndex:index] contents]];
-	}
+    if ( index >= [jcList count] ) {
+        return nil;
+    } else {
+        return [NSString stringWithString:[[jcList objectAtIndex:index] contents]];
+    }
 }
 
 -(NSString *) clippingDisplayStringAtPosition:(int)index
@@ -139,7 +139,7 @@
 {
     NSString *returnString;
     returnString = [NSString stringWithString:[[jcList objectAtIndex:index] type]];
-//    return [[jcList objectAtIndex:index] type];
+    //    return [[jcList objectAtIndex:index] type];
     return returnString;
 }
 
@@ -194,7 +194,7 @@
 
     // Free collections
     [jcList release];
-   
+
     [super dealloc];
 }
 

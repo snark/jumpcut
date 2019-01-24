@@ -31,8 +31,8 @@
 -(id) init
 {
     [self initWithContents:@""
-          withType:@""
-          withDisplayLength:40];
+                  withType:@""
+         withDisplayLength:40];
     return self;
 }
 
@@ -46,11 +46,12 @@
     [self setContents:contents setDisplayLength:displayLength];
     [self setType:type];
     [self setHasName:false];
-    
+
     return self;
 }
 
-/* - (id)initWithCoder:(NSCoder *)coder
+/*
+- (id)initWithCoder:(NSCoder *)coder
 {
     NSString * newContents;
     int newDisplayLength;
@@ -61,7 +62,7 @@
         [coder decodeValueOfObjCType:@encode(int) at:&newDisplayLength];
         newType = [NSString stringWithString:[coder decodeObject]];
         [coder decodeValueOfObjCType:@encode(BOOL) at:&newHasName];
-        [self 	     setContents:newContents
+        [self       setContents:newContents
                 setDisplayLength:newDisplayLength];
         [self setType:newType];
         [self setHasName:newHasName];
@@ -77,7 +78,8 @@
     [coder encodeValueOfObjCType:@encode(int) at:&codeDisplayLength];
     [coder encodeObject:[self type]];
     [coder encodeValueOfObjCType:@encode(BOOL) at:&codeHasName];
-} */
+}
+*/
 
 -(void) setContents:(NSString *)newContents setDisplayLength:(int)newDisplayLength
 {
@@ -88,7 +90,7 @@
     if ( newDisplayLength  > 0 ) {
         clipDisplayLength = newDisplayLength;
     }
-   [self resetDisplayString];
+    [self resetDisplayString];
 }
 
 -(void) setContents:(NSString *)newContents
@@ -116,22 +118,22 @@
 
 -(void) setHasName:(BOOL)newHasName
 {
-        clipHasName = newHasName;
+    clipHasName = newHasName;
 }
 
 -(void) resetDisplayString
 {
     NSString *newDisplayString, *trimmedString, *firstLineOfClipping;
-	unsigned long start, lineEnd, contentsEnd;
-	NSRange startRange = NSMakeRange(0,0);
-	NSRange contentsRange;
-	// We're resetting the display string, so release the old one.
+    unsigned long start, lineEnd, contentsEnd;
+    NSRange startRange = NSMakeRange(0,0);
+    NSRange contentsRange;
+    // We're resetting the display string, so release the old one.
     [clipDisplayString release];
-	// We want to restrict the display string to the clipping contents through the first line break.
-	trimmedString = [clipContents stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-	[trimmedString getLineStart:&start end:&lineEnd contentsEnd:&contentsEnd forRange:startRange];
-	contentsRange = NSMakeRange(0, contentsEnd);
-	firstLineOfClipping = [trimmedString substringWithRange:contentsRange];
+    // We want to restrict the display string to the clipping contents through the first line break.
+    trimmedString = [clipContents stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    [trimmedString getLineStart:&start end:&lineEnd contentsEnd:&contentsEnd forRange:startRange];
+    contentsRange = NSMakeRange(0, contentsEnd);
+    firstLineOfClipping = [trimmedString substringWithRange:contentsRange];
     if ( [firstLineOfClipping length] > clipDisplayLength ) {
         newDisplayString = [[NSString stringWithString:[firstLineOfClipping substringToIndex:clipDisplayLength]] stringByAppendingString:@"…"];
     } else {
@@ -144,15 +146,15 @@
 -(NSString *) description
 {
     NSString *description = [[super description] stringByAppendingString:@": "];
-    description = [description stringByAppendingString:[self displayString]];   
+    description = [description stringByAppendingString:[self displayString]];
     return description;
 }
 
 -(NSString *) contents
 {
-//    NSString *returnClipContents;
-//    returnClipContents = [NSString stringWithString:clipContents];
-//    return returnClipContents;
+    //    NSString *returnClipContents;
+    //    returnClipContents = [NSString stringWithString:clipContents];
+    //    return returnClipContents;
     return clipContents;
 }
 

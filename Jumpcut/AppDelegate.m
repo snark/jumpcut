@@ -40,68 +40,11 @@
 - (id)init
 {
     if ( ! [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] || [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] < 0.6  ) {
-        // A decent starting value for the main hotkey is control-option-V
-        NSDictionary *defaultHotkey = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]];
-        [[NSUserDefaults standardUserDefaults] setValue:defaultHotkey
-                                                 forKey:@"mainHotkey"];
-
-        // Something we'd really like is to transfer over info from 0.5x if we can get at it --
-        if ( [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] ) {
-            // We need to pull out the relevant objects and stuff them in as proper preferences for the net.sf.Jumpcut domain
-            if ( [[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"displayNum"] != nil )
-            {
-                [[NSUserDefaults standardUserDefaults] setValue:[ [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"displayNum"]
-                                                         forKey:@"displayNum"];
-            }
-            if ( [[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"savePreference"] != nil )
-            {
-                if ( [[[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"savePreference"] isEqual:@"onChange"] )
-                {
-                    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:2]
-                                                             forKey:@"savePreference"];
-                }
-                else if ( [[[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"savePreference"] isEqual:@"onExit"] )
-                {
-                    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:1]
-                                                             forKey:@"savePreference"];
-                }
-                else
-                {
-                    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:0]
-                                                             forKey:@"savePreference"];
-                } // End save preference test
-            } // End savePreference test
-        } // End if/then that deals with 0.5x preferences
-    } // End new-to-version check
-
-    // If we don't have preferences defined, let's set some default values:
-    [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                             [NSNumber numberWithInt:20],
-                                                             @"displayNum",
-                                                             [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]],
-                                                             @"ShortcutRecorder mainHotkey",
-                                                             [NSNumber numberWithInt:80],
-                                                             @"rememberNum",
-                                                             [NSNumber numberWithInt:1],
-                                                             @"savePreference",
-                                                             [NSNumber numberWithInt:0],
-                                                             @"menuIcon",
-                                                             [NSNumber numberWithFloat:.25],
-                                                             @"bezelAlpha",
-                                                             [NSNumber numberWithBool:NO],
-                                                             @"stickyBezel",
-                                                             [NSNumber numberWithBool:NO],
-                                                             @"wraparoundBezel",
-                                                             [NSNumber numberWithBool:NO],
-                                                             @"launchOnStartup",
-                                                             [NSNumber numberWithBool:YES],
-                                                             @"menuSelectionPastes",
-                                                             [NSNumber numberWithBool:YES],
-                                                             @"bezelSelectionPastes",
-                                                             [NSNumber numberWithBool:NO],
-                                                             @"menuSelectionMovesToTop",
-                                                             nil]
-    ];
+        [self upgradeFromPre0_5];
+    }
+    // Ensure we only run the upgrade-from-0.5 transition once
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithFloat:0.7] forKey:@"lastRun"];
+    [self registerDefaultPreferences];
     // TODO: We should look for a change in the keyboard definition and re-run findVeeCode()
     self.veeCode = findVeeCode();
     return [super init];
@@ -162,9 +105,7 @@ CGKeyCode findVeeCode() {
 NSString* keyCodeToString(CGKeyCode keyCode) {
     // Code taken from https://stackoverflow.com/questions/1918841/how-to-convert-ascii-character-to-cgkeycode
     TISInputSourceRef currentKeyboard = TISCopyCurrentKeyboardInputSource();
-    CFDataRef uchr =
-    (CFDataRef)TISGetInputSourceProperty(currentKeyboard,
-                                         kTISPropertyUnicodeKeyLayoutData);
+    CFDataRef uchr = (CFDataRef)TISGetInputSourceProperty(currentKeyboard, kTISPropertyUnicodeKeyLayoutData);
     const UCKeyboardLayout *keyboardLayout =
     (const UCKeyboardLayout*)CFDataGetBytePtr(uchr);
 
@@ -208,7 +149,7 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
 - (void)awakeFromNib
 {
     NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
-    
+
     // Set up the bezel window
     NSSize windowSize = NSMakeSize(325.0, 325.0);
     NSSize screenSize = [[NSScreen mainScreen] frame].size;
@@ -229,7 +170,6 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     if ([[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 1) {
         [self loadEngineFromPList];
     }
-    
 
     // Set up the hotkey and hotkey observer
     [self.hotkeyRecorder bind:NSValueBinding
@@ -254,9 +194,9 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
         PTHotKeyCenter *hotKeyCenter = [PTHotKeyCenter sharedCenter];
         PTHotKey *oldHotKey = [hotKeyCenter hotKeyWithIdentifier:aKeyPath];
         [hotKeyCenter unregisterHotKey:oldHotKey];
-        
+
         NSDictionary *newShortcut = [anObject valueForKeyPath:aKeyPath];
-        
+
         if (newShortcut && (NSNull *)newShortcut != [NSNull null])
         {
             PTHotKey *newHotKey = [PTHotKey hotKeyWithIdentifier:aKeyPath
@@ -264,6 +204,16 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
                                                           target:self
                                                           action:@selector(hitMainHotkey:)];
             [hotKeyCenter registerHotKey:newHotKey];
+            if ([newShortcut valueForKey:@"keyCode"] != [NSNull null]) {
+                long keyCode = [[newShortcut valueForKey:@"keyCode"] integerValue];
+                NSNumber *keyCodeNumber = [NSNumber numberWithLong:keyCode];
+                NSDictionary *hotKeyPreference = @{
+                                                   @"keyCode": keyCodeNumber,
+                                                   @"modifierFlags": [newShortcut valueForKey:@"modifierFlags"],
+                                                   };
+                [[NSUserDefaults standardUserDefaults] setValue:hotKeyPreference
+                                                         forKey:@"mainHotkey"];
+            }
         }
     }
     else
@@ -274,12 +224,9 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
 {
     if ( ! self.isBezelDisplayed ) {
         [NSApp activateIgnoringOtherApps:YES];
-        // SBC do we care about this?
-        /*
-         if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"stickyBezel"] ) {
-         isBezelPinned = YES;
-         }
-         */
+        if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"stickyBezel"] ) {
+            self.isBezelPinned = YES;
+        }
         [self showBezel];
     } else {
         [self stackDown];
@@ -385,25 +332,25 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     NSArray *savedJCList;
     NSRange loadRange;
     int rangeCap;
-    
+
     if (loadDict != nil) {
         savedJCList = [loadDict objectForKey:@"jcList"];
-        
+
         if ([savedJCList isKindOfClass:[NSArray class]]) {
             // There's probably a nicer way to prevent the range from going out of bounds, but this works.
             rangeCap = [savedJCList count] < [[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"]
-                ? (int)[savedJCList count]
-                : (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"];
+            ? (int)[savedJCList count]
+            : (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"rememberNum"];
             loadRange = NSMakeRange(0, rangeCap);
             enumerator = [[savedJCList subarrayWithRange:loadRange] reverseObjectEnumerator];
-            
+
             while (aSavedClipping = [enumerator nextObject])
                 [self.clippingStore addClipping:[aSavedClipping objectForKey:@"Contents"]
-                                    ofType:[aSavedClipping objectForKey:@"Type"]];
+                                         ofType:[aSavedClipping objectForKey:@"Type"]];
         } else {
             NSLog(@"Not array");
         }
-        
+
         [self updateMenu];
         [loadDict release];
     }
@@ -461,9 +408,9 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     }
     pbFullText = [self clippingStringWithCount:indexInt];
     pbTypes = [NSArray arrayWithObjects:@"NSStringPboardType",NULL];
-    
+
     [self.jcPasteboard declareTypes:pbTypes owner:NULL];
-    
+
     [self.jcPasteboard setString:pbFullText forType:@"NSStringPboardType"];
     if (! moveBool) {
         self.pbBlockCount = (int)[self.jcPasteboard changeCount];
@@ -622,6 +569,7 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     if ( !self.isBezelPinned ) {
         [self pasteFromStack];
     }
+    NSLog(@"%@", [NSApp windows]);
 }
 
 -(void)pollPasteboard:(NSTimer *)timer
@@ -645,7 +593,7 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
                     self.stackPosition = 0;
                     [self updateMenu];
                     if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 2 ) {
-                         [self saveEngine];
+                        [self saveEngine];
                     }
                 }
             }
@@ -653,7 +601,7 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
             // NSLog(@"Contents: Non-string");
         }
     }
-    
+
 }
 
 /* Misc. UX */
@@ -684,6 +632,72 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
         [self.prefsPanel setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
     [NSApp activateIgnoringOtherApps: YES];
     [self.prefsPanel makeKeyAndOrderFront:self];
+}
+
+// Utility functions
+-(void) upgradeFromPre0_5 {
+    // A decent starting value for the main hotkey is control-option-V
+    NSDictionary *defaultHotkey = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]];
+    [[NSUserDefaults standardUserDefaults] setValue:defaultHotkey
+                                             forKey:@"mainHotkey"];
+
+    // Something we'd really like is to transfer over info from 0.5x if we can get at it --
+    if ( [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] ) {
+        // We need to pull out the relevant objects and stuff them in as proper preferences for the net.sf.Jumpcut domain
+        if ( [[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"displayNum"] != nil )
+        {
+            [[NSUserDefaults standardUserDefaults] setValue:[ [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"displayNum"]
+                                                     forKey:@"displayNum"];
+        }
+        if ( [[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"savePreference"] != nil )
+        {
+            if ( [[[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"savePreference"] isEqual:@"onChange"] )
+            {
+                [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:2]
+                                                         forKey:@"savePreference"];
+            }
+            else if ( [[[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"savePreference"] isEqual:@"onExit"] )
+            {
+                [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:1]
+                                                         forKey:@"savePreference"];
+            }
+            else
+            {
+                [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:0]
+                                                         forKey:@"savePreference"];
+            } // End save preference test
+        } // End savePreference test
+    } // End if/then that deals with 0.5x preferences
+}
+
+-(void) registerDefaultPreferences {
+    [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                             [NSNumber numberWithInt:20],
+                                                             @"displayNum",
+                                                             [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]],
+                                                             @"ShortcutRecorder mainHotkey",
+                                                             [NSNumber numberWithInt:80],
+                                                             @"rememberNum",
+                                                             [NSNumber numberWithInt:1],
+                                                             @"savePreference",
+                                                             [NSNumber numberWithInt:0],
+                                                             @"menuIcon",
+                                                             [NSNumber numberWithFloat:.25],
+                                                             @"bezelAlpha",
+                                                             [NSNumber numberWithBool:NO],
+                                                             @"stickyBezel",
+                                                             [NSNumber numberWithBool:NO],
+                                                             @"wraparoundBezel",
+                                                             [NSNumber numberWithBool:NO],
+                                                             @"launchOnStartup",
+                                                             [NSNumber numberWithBool:YES],
+                                                             @"menuSelectionPastes",
+                                                             [NSNumber numberWithBool:YES],
+                                                             @"bezelSelectionPastes",
+                                                             [NSNumber numberWithBool:NO],
+                                                             @"menuSelectionMovesToTop",
+                                                             nil]
+     ];
 }
 
 @end
