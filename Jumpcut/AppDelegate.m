@@ -439,8 +439,7 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     } else {
         [self addClipToPasteboardFromCount:index movingToTop:NO];
     }
-    //    if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"menuSelectionPastes"] ) {
-    if (1) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"menuSelectionPastes"]) {
         [self performSelector:@selector(hideApp) withObject:nil];
         [self performSelector:@selector(fakeCommandV) withObject:nil afterDelay:0.2];
     }
