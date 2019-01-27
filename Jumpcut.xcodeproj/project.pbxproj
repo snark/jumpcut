@@ -13,8 +13,8 @@
 		AAB4CC202149C9460015C072 /* net.sf.jumpcut.preferences.appearance.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAB4CC1D2149C9460015C072 /* net.sf.jumpcut.preferences.appearance.tiff */; };
 		AAB4CC212149C9460015C072 /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAB4CC1E2149C9460015C072 /* net.sf.jumpcut.preferences.hotkey.tiff */; };
 		AAB4CC222149C9460015C072 /* net.sf.jumpcut.preferences.general.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAB4CC1F2149C9460015C072 /* net.sf.jumpcut.preferences.general.tiff */; };
-		AAB4CC36214B28F20015C072 /* PTHotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB4CC33214B28E60015C072 /* PTHotKey.framework */; };
-		AAB4CC37214B28F20015C072 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB4CC31214B28E60015C072 /* ShortcutRecorder.framework */; };
+		AAB4CC36214B28F20015C072 /* PTHotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB4CC33214B28E60015C072 /* PTHotKey.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		AAB4CC37214B28F20015C072 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB4CC31214B28E60015C072 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		AAB4CC39214B29220015C072 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAB4CC31214B28E60015C072 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AAB4CC3A214B29220015C072 /* PTHotKey.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAB4CC33214B28E60015C072 /* PTHotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AAB4CC44214D4E4E0015C072 /* RoundRecTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4CC3C214D4E4D0015C072 /* RoundRecTextField.m */; };
@@ -23,6 +23,12 @@
 		AAB4CC47214D4E4E0015C072 /* NSBezierPathAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4CC43214D4E4D0015C072 /* NSBezierPathAdditions.m */; };
 		AAB4CC4D214D62230015C072 /* JumpcutClipping.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4CC49214D62220015C072 /* JumpcutClipping.m */; };
 		AAB4CC4E214D62230015C072 /* JumpcutStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4CC4C214D62230015C072 /* JumpcutStore.m */; };
+		AAE89F0A21FD036A00091FA5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE89F0921FD036A00091FA5 /* AppDelegate.m */; };
+		AAE89F0C21FD036D00091FA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE89F0B21FD036D00091FA5 /* Assets.xcassets */; };
+		AAE89F0F21FD036D00091FA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAE89F0D21FD036D00091FA5 /* MainMenu.xib */; };
+		AAE89F1221FD036D00091FA5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE89F1121FD036D00091FA5 /* main.m */; };
+		AAE89F1821FD03CC00091FA5 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE89F1721FD03CC00091FA5 /* ServiceManagement.framework */; };
+		AAE89F1B21FD2CD400091FA5 /* JumpcutHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAE89F0621FD036A00091FA5 /* JumpcutHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AAED43852148B64C001A2FCF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAED43842148B64C001A2FCF /* AppDelegate.m */; };
 		AAED43872148B64D001A2FCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAED43862148B64D001A2FCF /* Assets.xcassets */; };
 		AAED438A2148B64D001A2FCF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAED43882148B64D001A2FCF /* MainMenu.xib */; };
@@ -59,10 +65,20 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolderSpec = 11;
 			files = (
 				AAB4CC39214B29220015C072 /* ShortcutRecorder.framework in CopyFiles */,
 				AAB4CC3A214B29220015C072 /* PTHotKey.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAE89F1A21FD2CBB00091FA5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				AAE89F1B21FD2CD400091FA5 /* JumpcutHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +105,15 @@
 		AAB4CC4A214D62230015C072 /* JumpcutClipping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpcutClipping.h; sourceTree = "<group>"; };
 		AAB4CC4B214D62230015C072 /* JumpcutStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpcutStore.h; sourceTree = "<group>"; };
 		AAB4CC4C214D62230015C072 /* JumpcutStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpcutStore.m; sourceTree = "<group>"; };
+		AAE89F0621FD036A00091FA5 /* JumpcutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpcutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAE89F0821FD036A00091FA5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AAE89F0921FD036A00091FA5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AAE89F0B21FD036D00091FA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AAE89F0E21FD036D00091FA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		AAE89F1021FD036D00091FA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAE89F1121FD036D00091FA5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AAE89F1321FD036D00091FA5 /* JumpcutHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JumpcutHelper.entitlements; sourceTree = "<group>"; };
+		AAE89F1721FD03CC00091FA5 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		AAED43802148B64C001A2FCF /* Jumpcut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumpcut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAED43832148B64C001A2FCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AAED43842148B64C001A2FCF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -102,10 +127,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AAE89F0321FD036A00091FA5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAED437D2148B64C001A2FCF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAE89F1821FD03CC00091FA5 /* ServiceManagement.framework in Frameworks */,
 				AAB4CC36214B28F20015C072 /* PTHotKey.framework in Frameworks */,
 				AAB4CC37214B28F20015C072 /* ShortcutRecorder.framework in Frameworks */,
 			);
@@ -117,6 +150,7 @@
 		AAB4CC28214B28CC0015C072 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAE89F1721FD03CC00091FA5 /* ServiceManagement.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -157,10 +191,25 @@
 			path = JumpcutEngine;
 			sourceTree = "<group>";
 		};
+		AAE89F0721FD036A00091FA5 /* JumpcutHelper */ = {
+			isa = PBXGroup;
+			children = (
+				AAE89F0821FD036A00091FA5 /* AppDelegate.h */,
+				AAE89F0921FD036A00091FA5 /* AppDelegate.m */,
+				AAE89F0B21FD036D00091FA5 /* Assets.xcassets */,
+				AAE89F0D21FD036D00091FA5 /* MainMenu.xib */,
+				AAE89F1021FD036D00091FA5 /* Info.plist */,
+				AAE89F1121FD036D00091FA5 /* main.m */,
+				AAE89F1321FD036D00091FA5 /* JumpcutHelper.entitlements */,
+			);
+			path = JumpcutHelper;
+			sourceTree = "<group>";
+		};
 		AAED43772148B64C001A2FCF = {
 			isa = PBXGroup;
 			children = (
 				AAED43822148B64C001A2FCF /* Jumpcut */,
+				AAE89F0721FD036A00091FA5 /* JumpcutHelper */,
 				AAED43812148B64C001A2FCF /* Products */,
 				AAB4CC28214B28CC0015C072 /* Frameworks */,
 			);
@@ -170,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				AAED43802148B64C001A2FCF /* Jumpcut.app */,
+				AAE89F0621FD036A00091FA5 /* JumpcutHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,6 +253,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AAE89F0521FD036A00091FA5 /* JumpcutHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAE89F1421FD036D00091FA5 /* Build configuration list for PBXNativeTarget "JumpcutHelper" */;
+			buildPhases = (
+				AAE89F0221FD036A00091FA5 /* Sources */,
+				AAE89F0321FD036A00091FA5 /* Frameworks */,
+				AAE89F0421FD036A00091FA5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JumpcutHelper;
+			productName = JumpcutHelper;
+			productReference = AAE89F0621FD036A00091FA5 /* JumpcutHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
 		AAED437F2148B64C001A2FCF /* Jumpcut */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAED43912148B64D001A2FCF /* Build configuration list for PBXNativeTarget "Jumpcut" */;
@@ -211,6 +278,7 @@
 				AAED437D2148B64C001A2FCF /* Frameworks */,
 				AAED437E2148B64C001A2FCF /* Resources */,
 				AAB4CC38214B29150015C072 /* CopyFiles */,
+				AAE89F1A21FD2CBB00091FA5 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -230,6 +298,9 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Steve Cook";
 				TargetAttributes = {
+					AAE89F0521FD036A00091FA5 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					AAED437F2148B64C001A2FCF = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
@@ -255,6 +326,7 @@
 			projectRoot = "";
 			targets = (
 				AAED437F2148B64C001A2FCF /* Jumpcut */,
+				AAE89F0521FD036A00091FA5 /* JumpcutHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -284,6 +356,15 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AAE89F0421FD036A00091FA5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE89F0C21FD036D00091FA5 /* Assets.xcassets in Resources */,
+				AAE89F0F21FD036D00091FA5 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAED437E2148B64C001A2FCF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -302,6 +383,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AAE89F0221FD036A00091FA5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE89F1221FD036D00091FA5 /* main.m in Sources */,
+				AAE89F0A21FD036A00091FA5 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAED437C2148B64C001A2FCF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,6 +411,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		AAE89F0D21FD036D00091FA5 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAE89F0E21FD036D00091FA5 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		AAED43882148B64D001A2FCF /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -332,6 +430,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AAE89F1521FD036D00091FA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = JumpcutHelper/JumpcutHelper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				INFOPLIST_FILE = JumpcutHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.jumpcut.JumpcutHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		AAE89F1621FD036D00091FA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = JumpcutHelper/JumpcutHelper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				INFOPLIST_FILE = JumpcutHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.jumpcut.JumpcutHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		AAED438F2148B64D001A2FCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -453,10 +592,11 @@
 				INFOPLIST_FILE = Jumpcut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/../Frameworks",
+					"@executable_path/../SharedFrameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut2;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -472,9 +612,9 @@
 				INFOPLIST_FILE = Jumpcut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/../Frameworks",
+					"@executable_path/../SharedFrameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut2;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -482,6 +622,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AAE89F1421FD036D00091FA5 /* Build configuration list for PBXNativeTarget "JumpcutHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAE89F1521FD036D00091FA5 /* Debug */,
+				AAE89F1621FD036D00091FA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AAED437B2148B64C001A2FCF /* Build configuration list for PBXProject "Jumpcut" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

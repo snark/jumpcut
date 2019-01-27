@@ -14,6 +14,7 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 @property (strong, nonatomic) IBOutlet NSMenu *statusMenu;
 @property (assign) IBOutlet NSWindow *prefsPanel;
+@property (assign) IBOutlet NSSegmentedControl *launchAtLoginButton;
 
 // Preference related
 -(IBAction) showPreferencePanel:(id)sender;
@@ -30,6 +31,7 @@
 
 // Other actions
 -(IBAction)clearClippingList:(id)sender;
+-(IBAction)toggleLaunchAtLogin:(id)sender;
 
 @end
 

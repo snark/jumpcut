@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <ServiceManagement/ServiceManagement.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import <PTHotKey/PTHotKeyCenter.h>
 #import <PTHotKey/PTHotKey+ShortcutRecorder.h>
@@ -568,7 +569,6 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     if ( !self.isBezelPinned ) {
         [self pasteFromStack];
     }
-    NSLog(@"%@", [NSApp windows]);
 }
 
 -(void)pollPasteboard:(NSTimer *)timer
@@ -634,6 +634,30 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
 }
 
 // Utility functions
+-(IBAction)toggleLaunchAtLogin:(NSButton *)sender
+{
+    // TODO: Messages in this function need to be localized
+    if (sender.state == NSOnState) {
+        // Turn on launch at login
+        if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"net.sf.jumpcut.JumpcutHelper", YES)) {
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
+            [alert setMessageText:NSLocalizedString(@"An error occurred", @"An error occurred")];
+            [alert setInformativeText:NSLocalizedString(@"Couldn't add Jumpcut's helper app to launch at login item list.", @"Launch on login - Couldn't add")];
+            [alert runModal];
+        }
+    } else {
+        // Turn off launch at login
+        if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"net.sf.jumpcut.JumpcutHelper", NO)) {
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
+            [alert setMessageText:NSLocalizedString(@"An error occurred", @"An error occurred")];
+            [alert setInformativeText:NSLocalizedString(@"Couldn't remove Jumpcut's helper app to launch at login item list.", @"Launch on login - Couldn't remove")];
+            [alert runModal];
+        }
+    }
+}
+
 -(void) upgradeFromPre0_5 {
     // A decent starting value for the main hotkey is control-option-V
     NSDictionary *defaultHotkey = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]];
