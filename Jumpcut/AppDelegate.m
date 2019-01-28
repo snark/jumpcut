@@ -639,6 +639,20 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     [self.prefsPanel makeKeyAndOrderFront:self];
 }
 
+-(IBAction) switchMenuIcon:(id)sender
+{
+    if ([sender selectedTag] == 1 ) {
+        [self.statusItem setImage:nil];
+        self.statusItem.title = @"✂";
+    } else if ([sender selectedTag] == 2) {
+        [self.statusItem setImage:nil];
+        self.statusItem.title = @"✄";
+    } else {
+        [self.statusItem setTitle:@""];
+        [self.statusItem setImage:[NSImage imageNamed:@"scissors_bw"]];
+    }
+}
+
 // Utility functions
 -(IBAction)toggleLaunchAtLogin:(NSButton *)sender
 {

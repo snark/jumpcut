@@ -147,6 +147,31 @@
                                 <view key="view" ambiguous="YES" id="gPn-hP-Bh4">
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Gs-3L-2SA">
+                                            <rect key="frame" x="18" y="324" width="152" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" title="Scissors icon" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="k9J-MD-Rma" id="ZIm-Pi-RZ7">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="4o1-16-GSJ">
+                                                    <items>
+                                                        <menuItem title="Scissors icon" id="k9J-MD-Rma"/>
+                                                        <menuItem title="Black scissors (✂)" tag="1" id="C7g-4G-cKM">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="White scissors (✄)" state="on" tag="2" id="aAR-EC-PXo"/>
+                                                    </items>
+                                                </menu>
+                                                <connections>
+                                                    <binding destination="eO6-7l-wpz" name="selectedTag" keyPath="values.menuIcon" id="L2O-sc-His"/>
+                                                </connections>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <action selector="switchMenuIcon:" target="Voe-Tx-rLC" id="Hwl-uq-qDa"/>
+                                            </connections>
+                                        </popUpButton>
+                                    </subviews>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
