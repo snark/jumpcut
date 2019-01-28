@@ -59,7 +59,13 @@
     self.pbCount = 0;
     self.shortcutTransformer = [[[SRKeyCodeTransformer alloc] init] retain];
     self.statusItem = [[NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength] retain];
-    self.statusItem.title = @"✂";
+    if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"menuIcon"] == 1 ) {
+        self.statusItem.title = @"✂";
+    } else if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"menuIcon"] == 2 ) {
+        self.statusItem.title = @"✄";
+    } else {
+        [self.statusItem setImage:[NSImage imageNamed:@"scissors_bw"]];
+    }
     self.statusItem.menu = self.statusMenu;
     if ([self.bezel respondsToSelector:@selector(setCollectionBehavior:)]) {
         [self.bezel setCollectionBehavior:NSWindowCollectionBehaviorTransient | NSWindowCollectionBehaviorIgnoresCycle | NSWindowCollectionBehaviorFullScreenAuxiliary | NSWindowCollectionBehaviorMoveToActiveSpace];

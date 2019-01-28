@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA929277215B2B8C009A2BE4 /* net.sf.jumpcut.scissors_bw16@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA929273215B2B8B009A2BE4 /* net.sf.jumpcut.scissors_bw16@2x.png */; };
-		AA929279215B2BA4009A2BE4 /* net.sf.jumpcut.scissors_bw16.png in Resources */ = {isa = PBXBuildFile; fileRef = AA929278215B2BA4009A2BE4 /* net.sf.jumpcut.scissors_bw16.png */; };
+		AA3F2D3521FEC5750027AF62 /* net.sf.jumpcut.preferences.appearance.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AA3F2D3221FEC5740027AF62 /* net.sf.jumpcut.preferences.appearance.tiff */; };
+		AA3F2D3621FEC5750027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AA3F2D3321FEC5740027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff */; };
+		AA3F2D3D21FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AA3F2D3921FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff */; };
 		AA92927C21685207009A2BE4 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = AA92927B21685206009A2BE4 /* Credits.html */; };
-		AAB4CC202149C9460015C072 /* net.sf.jumpcut.preferences.appearance.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAB4CC1D2149C9460015C072 /* net.sf.jumpcut.preferences.appearance.tiff */; };
-		AAB4CC212149C9460015C072 /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAB4CC1E2149C9460015C072 /* net.sf.jumpcut.preferences.hotkey.tiff */; };
-		AAB4CC222149C9460015C072 /* net.sf.jumpcut.preferences.general.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AAB4CC1F2149C9460015C072 /* net.sf.jumpcut.preferences.general.tiff */; };
 		AAB4CC36214B28F20015C072 /* PTHotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB4CC33214B28E60015C072 /* PTHotKey.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		AAB4CC37214B28F20015C072 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB4CC31214B28E60015C072 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		AAB4CC39214B29220015C072 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAB4CC31214B28E60015C072 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -85,13 +83,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AA929273215B2B8B009A2BE4 /* net.sf.jumpcut.scissors_bw16@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "net.sf.jumpcut.scissors_bw16@2x.png"; sourceTree = "<group>"; };
-		AA929278215B2BA4009A2BE4 /* net.sf.jumpcut.scissors_bw16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = net.sf.jumpcut.scissors_bw16.png; sourceTree = "<group>"; };
+		AA3F2D3221FEC5740027AF62 /* net.sf.jumpcut.preferences.appearance.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.appearance.tiff; sourceTree = "<group>"; };
+		AA3F2D3321FEC5740027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.hotkey.tiff; sourceTree = "<group>"; };
+		AA3F2D3921FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = net.sf.jumpcut.preferences.general.tiff; path = ../../../../../Desktop/net.sf.jumpcut.preferences.general.tiff; sourceTree = "<group>"; };
 		AA92927A2161C4D2009A2BE4 /* Jumpcut_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jumpcut_Prefix.pch; sourceTree = "<group>"; };
 		AA92927B21685206009A2BE4 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Credits.html; path = Jumpcut/Credits.html; sourceTree = SOURCE_ROOT; };
-		AAB4CC1D2149C9460015C072 /* net.sf.jumpcut.preferences.appearance.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.appearance.tiff; sourceTree = "<group>"; };
-		AAB4CC1E2149C9460015C072 /* net.sf.jumpcut.preferences.hotkey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.hotkey.tiff; sourceTree = "<group>"; };
-		AAB4CC1F2149C9460015C072 /* net.sf.jumpcut.preferences.general.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.general.tiff; sourceTree = "<group>"; };
 		AAB4CC2A214B28E60015C072 /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = ShortcutRecorder/ShortcutRecorder.xcodeproj; sourceTree = SOURCE_ROOT; };
 		AAB4CC3C214D4E4D0015C072 /* RoundRecTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundRecTextField.m; sourceTree = "<group>"; };
 		AAB4CC3D214D4E4D0015C072 /* BezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezelWindow.m; sourceTree = "<group>"; };
@@ -232,14 +228,12 @@
 				AAB4CC51214D62720015C072 /* JumpcutEngine */,
 				AAB4CC2A214B28E60015C072 /* ShortcutRecorder.xcodeproj */,
 				AAB4CC48214D4E540015C072 /* UI */,
-				AA929278215B2BA4009A2BE4 /* net.sf.jumpcut.scissors_bw16.png */,
-				AA929273215B2B8B009A2BE4 /* net.sf.jumpcut.scissors_bw16@2x.png */,
-				AAB4CC1D2149C9460015C072 /* net.sf.jumpcut.preferences.appearance.tiff */,
-				AAB4CC1F2149C9460015C072 /* net.sf.jumpcut.preferences.general.tiff */,
-				AAB4CC1E2149C9460015C072 /* net.sf.jumpcut.preferences.hotkey.tiff */,
 				AAED439B2148C37C001A2FCF /* UKPrefsPanel.h */,
 				AAED439C2148C37C001A2FCF /* UKPrefsPanel.m */,
 				AAED43862148B64D001A2FCF /* Assets.xcassets */,
+				AA3F2D3221FEC5740027AF62 /* net.sf.jumpcut.preferences.appearance.tiff */,
+				AA3F2D3921FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff */,
+				AA3F2D3321FEC5740027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff */,
 				AA92927B21685206009A2BE4 /* Credits.html */,
 				AAED43882148B64D001A2FCF /* MainMenu.xib */,
 				AAED438B2148B64D001A2FCF /* Info.plist */,
@@ -369,14 +363,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAB4CC202149C9460015C072 /* net.sf.jumpcut.preferences.appearance.tiff in Resources */,
 				AAED43872148B64D001A2FCF /* Assets.xcassets in Resources */,
+				AA3F2D3521FEC5750027AF62 /* net.sf.jumpcut.preferences.appearance.tiff in Resources */,
 				AAED438A2148B64D001A2FCF /* MainMenu.xib in Resources */,
-				AAB4CC222149C9460015C072 /* net.sf.jumpcut.preferences.general.tiff in Resources */,
-				AA929277215B2B8C009A2BE4 /* net.sf.jumpcut.scissors_bw16@2x.png in Resources */,
 				AA92927C21685207009A2BE4 /* Credits.html in Resources */,
-				AAB4CC212149C9460015C072 /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */,
-				AA929279215B2BA4009A2BE4 /* net.sf.jumpcut.scissors_bw16.png in Resources */,
+				AA3F2D3D21FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff in Resources */,
+				AA3F2D3621FEC5750027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
