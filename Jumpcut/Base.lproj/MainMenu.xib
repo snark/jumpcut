@@ -72,7 +72,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="net.sf.jumpcut.preferences.general" id="DNp-1Q-y9Y">
-                                <view key="view" id="bJx-qD-T7A">
+                                <view key="view" ambiguous="YES" id="bJx-qD-T7A">
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -128,6 +128,33 @@
                                                 <binding destination="eO6-7l-wpz" name="value" keyPath="values.launchOnStartup" id="gPw-zn-3Li"/>
                                             </connections>
                                         </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gtf-IQ-bzI">
+                                            <rect key="frame" x="20" y="269" width="61" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Clippings" id="kaH-ui-e4W">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QtA-jZ-7zl">
+                                            <rect key="frame" x="85" y="264" width="156" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" title="Never" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ilu-zt-I6F" id="Dkl-Ig-doL">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="HBf-29-iBq">
+                                                    <items>
+                                                        <menuItem title="Never" state="on" id="ilu-zt-I6F"/>
+                                                        <menuItem title="On exit" tag="1" id="Ifz-NG-uFd"/>
+                                                        <menuItem title="After each clip" tag="2" id="iac-ng-UkH"/>
+                                                    </items>
+                                                </menu>
+                                                <connections>
+                                                    <binding destination="eO6-7l-wpz" name="selectedTag" keyPath="values.savePreference" id="ZxE-Kp-PcS"/>
+                                                </connections>
+                                            </popUpButtonCell>
+                                        </popUpButton>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -144,7 +171,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Appearance" identifier="net.sf.jumpcut.preferences.appearance" id="FPB-UG-fTX">
-                                <view key="view" ambiguous="YES" id="gPn-hP-Bh4">
+                                <view key="view" id="gPn-hP-Bh4">
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
