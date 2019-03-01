@@ -13,6 +13,8 @@
 #import <PTHotKey/PTHotKey+ShortcutRecorder.h>
 
 #define _DISPLENGTH 40
+#define _MAX_REMEMBER 99
+#define _MAX_DISPLAY 40
 
 @interface AppDelegate ()
 @property BezelWindow *bezel;
@@ -20,6 +22,8 @@
 @property (assign) IBOutlet SRRecorderControl *hotkeyRecorder;
 @property BOOL isBezelDisplayed;
 @property BOOL isBezelPinned;
+@property BOOL issuedRememberResizeWarning;
+@property BOOL stifleRememberResizeWarning;
 @property NSPasteboard *jcPasteboard;
 @property unsigned int pbBlockCount;
 @property unsigned int pbCount;
@@ -637,6 +641,7 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
         [self.prefsPanel setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
     [NSApp activateIgnoringOtherApps: YES];
     [self.prefsPanel makeKeyAndOrderFront:self];
+    self.issuedRememberResizeWarning = NO;
 }
 
 -(IBAction) switchMenuIcon:(id)sender
@@ -678,6 +683,67 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     }
 }
 
+-(IBAction) handleRememberNumPref:(id)sender
+{
+    int newRemember = [sender intValue];
+    if (newRemember > _MAX_REMEMBER) {
+        newRemember = 1;
+    }
+    if (newRemember < 1) {
+        newRemember = _MAX_REMEMBER;
+    }
+    if ( newRemember < [self.clippingStore jcListCount] && (!self.issuedRememberResizeWarning && !self.stifleRememberResizeWarning)) {
+        long choice;
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setInformativeText:NSLocalizedString(
+                                                    @"Resizing the stack to a value below its present size will cause clippings to be lost.", @"Alert panel - resize stack - message"
+                                                    )];
+        [alert setMessageText:NSLocalizedString(@"Resize Stack", @"Alert panel - resize stack - title")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Resize", @"Alert panel - resize stack - action")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Alert panel - cancel")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Don't Warn Me Again", @"Alert panel - don't warn me")];
+        choice = [alert runModal];
+        // We issue this warning once per open of the preference window. It can be disabled for the entire
+        // session by chosing "Don't warn me again."
+        self.issuedRememberResizeWarning = YES;
+
+        if ( choice == NSAlertThirdButtonReturn ) {
+            self.stifleRememberResizeWarning = YES;
+            [self setRememberNumPref:newRemember];
+        } else if ( choice == NSAlertSecondButtonReturn ) {
+            [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:[self.clippingStore remembering]]
+                                                     forKey:@"rememberNum"];
+            self.issuedRememberResizeWarning = NO;
+        } else if ( choice == NSAlertFirstButtonReturn ) {
+            [self setRememberNumPref:newRemember];
+        }
+    } else {
+        [self setRememberNumPref:newRemember];
+    }
+}
+
+-(void) setRememberNumPref:(int)newPref {
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:newPref]
+                                             forKey:@"rememberNum"];
+    [self.clippingStore setRememberNum:newPref];
+    [self updateMenu];
+}
+
+-(IBAction) setDisplayNumPref:(id)sender
+{
+    // TODO: This whole function can be replaced by making the NSStepper wrap around.
+    int newDisplay = [sender intValue];
+    if (newDisplay > _MAX_DISPLAY) {
+        newDisplay = 1;
+    }
+    if (newDisplay < 1) {
+        newDisplay = _MAX_DISPLAY;
+    }
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:newDisplay]
+                                             forKey:@"displayNum"];
+    [self updateMenu];
+}
+
 -(void) upgradeFromPre0_5 {
     // A decent starting value for the main hotkey is control-option-V
     NSDictionary *defaultHotkey = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]];
@@ -717,10 +783,10 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
                                                              [NSNumber numberWithInt:20],
                                                              @"displayNum",
-                                                             [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]],
-                                                             @"ShortcutRecorder mainHotkey",
                                                              [NSNumber numberWithInt:80],
                                                              @"rememberNum",
+                                                             [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]],
+                                                             @"ShortcutRecorder mainHotkey",
                                                              [NSNumber numberWithInt:1],
                                                              @"savePreference",
                                                              [NSNumber numberWithInt:0],

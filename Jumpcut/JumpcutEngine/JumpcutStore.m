@@ -121,6 +121,11 @@
     return (int)[jcList count];
 }
 
+-(int) remembering
+{
+    return jcRememberNum;
+}
+
 -(NSString *) clippingContentsAtPosition:(int)index
 {
     if ( index >= [jcList count] ) {

@@ -62,6 +62,7 @@
 
 // Retrieve various values
 -(int) displayLen;
+-(int) remembering;
 -(int) jcListCount;
 -(NSString *) clippingContentsAtPosition:(int)index;
 -(NSString *) clippingDisplayStringAtPosition:(int)index;
