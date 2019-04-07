@@ -39,6 +39,7 @@
 - (void)dealloc
 {
     [[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.mainHotkey"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 
@@ -52,6 +53,11 @@
     [self registerDefaultPreferences];
     // TODO: We should look for a change in the keyboard definition and re-run findVeeCode()
     self.veeCode = findVeeCode();
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardInputSourceChanged:)
+                                                 name:@"NSTextInputContextKeyboardSelectionDidChangeNotification"
+                                               object:nil
+     ];
     return [super init];
 }
 
@@ -88,6 +94,11 @@
 {
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
     [[NSApplication sharedApplication] orderFrontStandardAboutPanel:sender];
+}
+
+- (void)keyboardInputSourceChanged:(NSNotification *)notification
+{
+    self.veeCode = findVeeCode();
 }
 
 CGKeyCode findVeeCode() {
