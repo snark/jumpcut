@@ -24,6 +24,7 @@
 @property BOOL isBezelPinned;
 @property BOOL issuedRememberResizeWarning;
 @property BOOL stifleRememberResizeWarning;
+@property BOOL hasAccessibility;
 @property NSPasteboard *jcPasteboard;
 @property unsigned int pbBlockCount;
 @property unsigned int pbCount;
@@ -81,6 +82,8 @@
         [self.bezel setCollectionBehavior:NSWindowCollectionBehaviorTransient | NSWindowCollectionBehaviorIgnoresCycle | NSWindowCollectionBehaviorFullScreenAuxiliary | NSWindowCollectionBehaviorMoveToActiveSpace];
     }
     [self.bezel setHidesOnDeactivate: YES];
+    NSDictionary *trustedCheckOptions = @{(id)kAXTrustedCheckOptionPrompt: @YES};
+    self.hasAccessibility = AXIsProcessTrustedWithOptions((CFDictionaryRef)trustedCheckOptions);
 }
 
 - (void)applicationWillResignActive:(NSNotification *)aNotification {
@@ -102,7 +105,7 @@
 }
 
 CGKeyCode findVeeCode() {
-    // Under ShortcutRecord 1, there was a programatic method to determine a keyCode for a given character.
+    // Under ShortcutRecorder 1, there was a programatic method to determine a keyCode for a given character.
     // This no longer exists in the 64-bit-compatible ShortcutRecorder 2, so we need to do a quick check to
     // determine what matches "v"; this is 9 in the default case of English, QWERTY keyboards, which we optimize
     // for.
@@ -559,7 +562,6 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
         [self addClipToPasteboardFromCount:self.stackPosition movingToTop:NO];
         //        if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"bezelSelectionPastes"] ) {
         if (1) {
-            // Set this back to 0.2 when it's working.
             [self performSelector:@selector(fakeCommandV) withObject:nil afterDelay:0.2];
         }
     }
@@ -651,6 +653,10 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     if ([self.prefsPanel respondsToSelector:@selector(setCollectionBehavior:)])
         [self.prefsPanel setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
     [NSApp activateIgnoringOtherApps: YES];
+    // Double-check the status of our accessibility preferences before displaying the preference
+    // window, so we can provide instructions if needed.
+    NSDictionary *trustedCheckOptions = @{(id)kAXTrustedCheckOptionPrompt: @NO};
+    self.hasAccessibility = AXIsProcessTrustedWithOptions((CFDictionaryRef)trustedCheckOptions);
     [self.prefsPanel makeKeyAndOrderFront:self];
     self.issuedRememberResizeWarning = NO;
 }

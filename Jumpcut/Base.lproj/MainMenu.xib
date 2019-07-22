@@ -96,8 +96,12 @@
                                             <buttonCell key="cell" type="check" title="Menu selection pastes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3ge-5r-sIg">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.hasAccessibility" id="s0o-zJ-SEJ"/>
+                                                </connections>
                                             </buttonCell>
                                             <connections>
+                                                <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.hasAccessibility" id="Koy-ei-sdV"/>
                                                 <binding destination="eO6-7l-wpz" name="value" keyPath="values.menuSelectionPastes" id="COR-aw-dgV"/>
                                             </connections>
                                         </button>
@@ -243,6 +247,19 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5cw-Kf-LG8">
+                                            <rect key="frame" x="191" y="299" width="416" height="51"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" selectable="YES" id="b8q-tH-HJ2">
+                                                <font key="font" metaFont="system"/>
+                                                <string key="title">To activate pasting, in the "Security &amp; Privacy" System Preference, in the "Privacy" tab, go to "Accessibility" and check Jumpcut. (Click the "+" if Jumpcut is not listed.)</string>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.hasAccessibility" id="68O-iN-bkq"/>
+                                            </connections>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -296,5 +313,16 @@
             <point key="canvasLocation" x="2296" y="253"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="eO6-7l-wpz"/>
+        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="jdx-rP-uWy">
+            <rect key="frame" x="0.0" y="0.0" width="416" height="51"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <textFieldCell key="cell" selectable="YES" id="Gqe-qE-8tj">
+                <font key="font" metaFont="system"/>
+                <string key="title">To activate pasting, in the "Security &amp; Privacy" System Preference, in the "Privacy" tab, go to "Accessibility" and check Jumpcut. (Click the "+" if Jumpcut is not listed.)</string>
+                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+            </textFieldCell>
+            <point key="canvasLocation" x="2259" y="-28"/>
+        </textField>
     </objects>
 </document>
