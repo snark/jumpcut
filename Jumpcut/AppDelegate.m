@@ -698,10 +698,10 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
 {
     int newRemember = [sender intValue];
     if (newRemember > _MAX_REMEMBER) {
-        newRemember = 1;
+        newRemember = _MAX_REMEMBER;
     }
     if (newRemember < 1) {
-        newRemember = _MAX_REMEMBER;
+        newRemember = 1;
     }
     if ( newRemember < [self.clippingStore jcListCount] && (!self.issuedRememberResizeWarning && !self.stifleRememberResizeWarning)) {
         long choice;
@@ -742,14 +742,7 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
 
 -(IBAction) setDisplayNumPref:(id)sender
 {
-    // TODO: This whole function can be replaced by making the NSStepper wrap around.
     int newDisplay = [sender intValue];
-    if (newDisplay > _MAX_DISPLAY) {
-        newDisplay = 1;
-    }
-    if (newDisplay < 1) {
-        newDisplay = _MAX_DISPLAY;
-    }
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:newDisplay]
                                              forKey:@"displayNum"];
     [self updateMenu];

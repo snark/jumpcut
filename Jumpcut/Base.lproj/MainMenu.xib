@@ -141,7 +141,7 @@
                                             <rect key="frame" x="96" y="255" width="30" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Save" id="0rs-4v-tJC">
-                                                <font key="font" metaFont="system" size="11"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -167,7 +167,7 @@
                                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbi-DS-Sgx">
                                             <rect key="frame" x="151" y="225" width="19" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="B1t-ya-aJ6">
+                                            <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="99" doubleValue="1" id="B1t-ya-aJ6">
                                                 <connections>
                                                     <action selector="handleRememberNumPref:" target="Voe-Tx-rLC" id="8We-Gb-816"/>
                                                 </connections>
@@ -201,7 +201,7 @@
                                             <rect key="frame" x="67" y="231" width="61" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Remember" id="1ro-cg-bLV">
-                                                <font key="font" metaFont="system" size="11"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -209,7 +209,7 @@
                                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWb-iU-ImI">
                                             <rect key="frame" x="267" y="225" width="19" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="jcP-ve-VdQ"/>
+                                            <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="99" doubleValue="1" id="jcP-ve-VdQ"/>
                                             <connections>
                                                 <action selector="setDisplayNumPref:" target="Voe-Tx-rLC" id="4el-NN-oeV"/>
                                                 <binding destination="eO6-7l-wpz" name="value" keyPath="values.displayNum" id="zJf-aC-L2k">
@@ -238,7 +238,7 @@
                                             <rect key="frame" x="203" y="231" width="43" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Display" id="MhI-hn-FSx">
-                                                <font key="font" metaFont="system" size="11"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -266,16 +266,16 @@
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Gs-3L-2SA">
                                             <rect key="frame" x="18" y="324" width="152" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="Scissors icon" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="k9J-MD-Rma" id="ZIm-Pi-RZ7">
+                                            <popUpButtonCell key="cell" type="push" title="Scissors icon" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="k9J-MD-Rma" id="ZIm-Pi-RZ7">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
                                                 <menu key="menu" id="4o1-16-GSJ">
                                                     <items>
-                                                        <menuItem title="Scissors icon" id="k9J-MD-Rma"/>
+                                                        <menuItem title="Scissors icon" state="on" id="k9J-MD-Rma"/>
                                                         <menuItem title="Black scissors (✂)" tag="1" id="C7g-4G-cKM">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
-                                                        <menuItem title="White scissors (✄)" state="on" tag="2" id="aAR-EC-PXo"/>
+                                                        <menuItem title="White scissors (✄)" tag="2" id="aAR-EC-PXo"/>
                                                     </items>
                                                 </menu>
                                                 <connections>
