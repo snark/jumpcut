@@ -60,19 +60,19 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="4ya-R8-y5l">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="131" y="158" width="628" height="352"/>
+            <rect key="contentRect" x="131" y="158" width="628" height="198"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="6Kg-Fp-aTB">
-                <rect key="frame" x="0.0" y="0.0" width="628" height="352"/>
+                <rect key="frame" x="0.0" y="0.0" width="628" height="198"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tabView fixedFrame="YES" type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="mjN-mk-mOf">
-                        <rect key="frame" x="0.0" y="-8" width="644" height="368"/>
+                        <rect key="frame" x="0.0" y="-162" width="644" height="368"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="net.sf.jumpcut.preferences.general" id="DNp-1Q-y9Y">
-                                <view key="view" ambiguous="YES" id="bJx-qD-T7A">
+                                <view key="view" id="bJx-qD-T7A">
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -114,22 +114,6 @@
                                             </buttonCell>
                                             <connections>
                                                 <binding destination="eO6-7l-wpz" name="value" keyPath="values.wraparoundBezel" id="QPl-K6-ohr"/>
-                                            </connections>
-                                        </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-nX-pIh">
-                                            <rect key="frame" x="18" y="18" width="175" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Launch Jumpcut on login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sK9-xw-Shg">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                                <connections>
-                                                    <binding destination="eO6-7l-wpz" name="value" keyPath="values.launchOnLogin" id="fNc-Uq-dwF"/>
-                                                    <outlet property="representedObject" destination="-2" id="Pb3-DN-gw6"/>
-                                                </connections>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="toggleLaunchAtLogin:" target="-1" id="Rrm-tF-7b6"/>
-                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.launchOnStartup" id="gPw-zn-3Li"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gtf-IQ-bzI">
@@ -260,18 +244,53 @@
                                                 <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.hasAccessibility" id="68O-iN-bkq"/>
                                             </connections>
                                         </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-nX-pIh">
+                                            <rect key="frame" x="18" y="175" width="175" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Launch Jumpcut on login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sK9-xw-Shg">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <binding destination="eO6-7l-wpz" name="value" keyPath="values.launchOnLogin" id="fNc-Uq-dwF"/>
+                                                    <outlet property="representedObject" destination="-2" id="Pb3-DN-gw6"/>
+                                                </connections>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="toggleLaunchAtLogin:" target="-1" id="Rrm-tF-7b6"/>
+                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.launchOnStartup" id="gPw-zn-3Li"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Hotkeys" identifier="net.sf.jumpcut.preferences.hotkey" id="itI-cS-vha">
-                                <view key="view" id="TaW-YB-WSw">
+                                <view key="view" ambiguous="YES" id="TaW-YB-WSw">
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D1t-UG-qMu" customClass="SRRecorderControl">
-                                            <rect key="frame" x="17" y="323" width="163" height="25"/>
+                                            <rect key="frame" x="115" y="323" width="163" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </customView>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5wY-Il-sch">
+                                            <rect key="frame" x="18" y="327" width="91" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Master hotkey" id="dd0-HU-AAW">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZDh-HW-hZJ">
+                                            <rect key="frame" x="284" y="290" width="342" height="58"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" selectable="YES" id="dci-Lb-eKM">
+                                                <font key="font" metaFont="system" size="10"/>
+                                                <string key="title">Press the key repeatedly (holding modifiers) to move through selections; shift reverses directions. Release to select a clipping.</string>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -281,14 +300,14 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Gs-3L-2SA">
-                                            <rect key="frame" x="18" y="324" width="152" height="26"/>
+                                            <rect key="frame" x="106" y="324" width="152" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="Scissors icon" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="k9J-MD-Rma" id="ZIm-Pi-RZ7">
+                                            <popUpButtonCell key="cell" type="push" title="Jumpcut graphic" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="k9J-MD-Rma" id="ZIm-Pi-RZ7">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
                                                 <menu key="menu" id="4o1-16-GSJ">
                                                     <items>
-                                                        <menuItem title="Scissors icon" state="on" id="k9J-MD-Rma"/>
+                                                        <menuItem title="Jumpcut graphic" state="on" id="k9J-MD-Rma"/>
                                                         <menuItem title="Black scissors (✂)" tag="1" id="C7g-4G-cKM">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
@@ -303,6 +322,15 @@
                                                 <action selector="switchMenuIcon:" target="Voe-Tx-rLC" id="Hwl-uq-qDa"/>
                                             </connections>
                                         </popUpButton>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EbA-aJ-r7I">
+                                            <rect key="frame" x="18" y="331" width="84" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Menu display" id="4gx-BK-rxM">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -310,7 +338,7 @@
                     </tabView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="2296" y="253"/>
+            <point key="canvasLocation" x="2066" y="131"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="eO6-7l-wpz"/>
         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="jdx-rP-uWy">
