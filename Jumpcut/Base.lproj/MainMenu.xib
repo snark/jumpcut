@@ -72,12 +72,12 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="net.sf.jumpcut.preferences.general" id="DNp-1Q-y9Y">
-                                <view key="view" id="bJx-qD-T7A">
+                                <view key="view" ambiguous="YES" id="bJx-qD-T7A">
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brA-Vf-sBR">
-                                            <rect key="frame" x="18" y="312" width="96" height="18"/>
+                                        <button toolTip="Do not select a clipping when the modifier keys are released; instead, require use of the return key to select." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brA-Vf-sBR">
+                                            <rect key="frame" x="18" y="292" width="96" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Sticky bezel" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YtX-wX-E05">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -90,10 +90,10 @@
                                                 <binding destination="eO6-7l-wpz" name="value" keyPath="values.stickyBezel" id="IGx-0d-ddR"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bz6-2z-Fm1">
-                                            <rect key="frame" x="18" y="332" width="158" height="18"/>
+                                        <button toolTip="In addition to putting a selected clipping on the pasteboard, issue a standard &quot;paste&quot; command to the frontmost app." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bz6-2z-Fm1">
+                                            <rect key="frame" x="18" y="332" width="174" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Menu selection pastes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3ge-5r-sIg">
+                                            <buttonCell key="cell" type="check" title="Clipping selection pastes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3ge-5r-sIg">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                                 <connections>
@@ -105,8 +105,8 @@
                                                 <binding destination="eO6-7l-wpz" name="value" keyPath="values.menuSelectionPastes" id="COR-aw-dgV"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gew-cP-RqR">
-                                            <rect key="frame" x="18" y="292" width="133" height="18"/>
+                                        <button toolTip="When navigating through the bezel, allow scrolling from the last clipping to the first and from the first to the last." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gew-cP-RqR">
+                                            <rect key="frame" x="18" y="312" width="133" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Wraparound bezel" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Yds-tM-yBa">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -116,8 +116,51 @@
                                                 <binding destination="eO6-7l-wpz" name="value" keyPath="values.wraparoundBezel" id="QPl-K6-ohr"/>
                                             </connections>
                                         </button>
+                                        <button toolTip="Instruct Jumpcut to skip clippings that are flagged as &quot;concealed&quot;, usually indicating passwords, in standard ways." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4QB-JP-fJ5">
+                                            <rect key="frame" x="18" y="272" width="193" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Ignore confidential clippings" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6Gf-TR-aTB">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <binding destination="eO6-7l-wpz" name="value" keyPath="values.ignoreSensitiveClippingTypes" id="lYN-vI-K8H"/>
+                                                </connections>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.ignore" id="cpC-up-R3I"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-nX-pIh">
+                                            <rect key="frame" x="18" y="175" width="175" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Launch Jumpcut on login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sK9-xw-Shg">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <binding destination="eO6-7l-wpz" name="value" keyPath="values.launchOnLogin" id="fNc-Uq-dwF"/>
+                                                    <outlet property="representedObject" destination="-2" id="Pb3-DN-gw6"/>
+                                                </connections>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="toggleLaunchAtLogin:" target="-1" id="Rrm-tF-7b6"/>
+                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.launchOnStartup" id="gPw-zn-3Li"/>
+                                            </connections>
+                                        </button>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5cw-Kf-LG8">
+                                            <rect key="frame" x="260" y="299" width="359" height="51"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" selectable="YES" id="b8q-tH-HJ2">
+                                                <font key="font" metaFont="system"/>
+                                                <string key="title">To activate pasting, in the "Security &amp; Privacy" System Preference, in the "Privacy" tab, go to "Accessibility" and check Jumpcut. (Click the "+" if Jumpcut is not listed.)</string>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.hasAccessibility" id="68O-iN-bkq"/>
+                                            </connections>
+                                        </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gtf-IQ-bzI">
-                                            <rect key="frame" x="20" y="254" width="61" height="17"/>
+                                            <rect key="frame" x="18" y="247" width="61" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Clippings" id="kaH-ui-e4W">
                                                 <font key="font" metaFont="system"/>
@@ -126,7 +169,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="itU-sx-3jC">
-                                            <rect key="frame" x="96" y="255" width="30" height="14"/>
+                                            <rect key="frame" x="94" y="248" width="30" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Save" id="0rs-4v-tJC">
                                                 <font key="font" metaFont="smallSystem"/>
@@ -135,7 +178,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QtA-jZ-7zl">
-                                            <rect key="frame" x="130" y="249" width="156" height="26"/>
+                                            <rect key="frame" x="128" y="242" width="156" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Never" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ilu-zt-I6F" id="Dkl-Ig-doL">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -153,7 +196,7 @@
                                             </popUpButtonCell>
                                         </popUpButton>
                                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbi-DS-Sgx">
-                                            <rect key="frame" x="151" y="225" width="19" height="27"/>
+                                            <rect key="frame" x="149" y="218" width="19" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="99" doubleValue="1" id="B1t-ya-aJ6">
                                                 <connections>
@@ -165,7 +208,7 @@
                                             </connections>
                                         </stepper>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7V-gg-EPb">
-                                            <rect key="frame" x="120" y="230" width="4" height="17"/>
+                                            <rect key="frame" x="118" y="224" width="4" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" id="P4K-nP-8S7">
                                                 <font key="font" metaFont="system"/>
@@ -174,7 +217,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dh7-MC-gmP">
-                                            <rect key="frame" x="132" y="231" width="19" height="16"/>
+                                            <rect key="frame" x="130" y="224" width="19" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="10" id="b1z-V3-sd9">
                                                 <font key="font" metaFont="system"/>
@@ -186,7 +229,7 @@
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="be0-bt-tC7">
-                                            <rect key="frame" x="67" y="231" width="61" height="14"/>
+                                            <rect key="frame" x="65" y="224" width="61" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Remember" id="1ro-cg-bLV">
                                                 <font key="font" metaFont="smallSystem"/>
@@ -195,7 +238,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWb-iU-ImI">
-                                            <rect key="frame" x="267" y="225" width="19" height="27"/>
+                                            <rect key="frame" x="265" y="218" width="19" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="99" doubleValue="1" id="jcP-ve-VdQ"/>
                                             <connections>
@@ -208,7 +251,7 @@
                                             </connections>
                                         </stepper>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fL9-vO-6dx">
-                                            <rect key="frame" x="248" y="231" width="19" height="16"/>
+                                            <rect key="frame" x="246" y="224" width="19" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="10" id="a0q-ZG-0OH">
                                                 <font key="font" metaFont="system"/>
@@ -223,7 +266,7 @@
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eFl-bC-I0J">
-                                            <rect key="frame" x="203" y="231" width="43" height="14"/>
+                                            <rect key="frame" x="201" y="224" width="43" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Display" id="MhI-hn-FSx">
                                                 <font key="font" metaFont="smallSystem"/>
@@ -231,40 +274,11 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5cw-Kf-LG8">
-                                            <rect key="frame" x="191" y="299" width="416" height="51"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <textFieldCell key="cell" selectable="YES" id="b8q-tH-HJ2">
-                                                <font key="font" metaFont="system"/>
-                                                <string key="title">To activate pasting, in the "Security &amp; Privacy" System Preference, in the "Privacy" tab, go to "Accessibility" and check Jumpcut. (Click the "+" if Jumpcut is not listed.)</string>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <connections>
-                                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.hasAccessibility" id="68O-iN-bkq"/>
-                                            </connections>
-                                        </textField>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-nX-pIh">
-                                            <rect key="frame" x="18" y="175" width="175" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Launch Jumpcut on login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sK9-xw-Shg">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                                <connections>
-                                                    <binding destination="eO6-7l-wpz" name="value" keyPath="values.launchOnLogin" id="fNc-Uq-dwF"/>
-                                                    <outlet property="representedObject" destination="-2" id="Pb3-DN-gw6"/>
-                                                </connections>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="toggleLaunchAtLogin:" target="-1" id="Rrm-tF-7b6"/>
-                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.launchOnStartup" id="gPw-zn-3Li"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Hotkeys" identifier="net.sf.jumpcut.preferences.hotkey" id="itI-cS-vha">
-                                <view key="view" ambiguous="YES" id="TaW-YB-WSw">
+                                <view key="view" id="TaW-YB-WSw">
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -286,7 +300,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" selectable="YES" id="dci-Lb-eKM">
                                                 <font key="font" metaFont="system" size="10"/>
-                                                <string key="title">Press the key repeatedly (holding modifiers) to move through selections; shift reverses directions. Release to select a clipping.</string>
+                                                <string key="title">Press the key repeatedly (holding modifiers) to move through selections; shift reverses directions. Release to select a clipping. (When the "sticky bezel" preference is active, the modifier keys do not need to be held, and the return key selects a clipping.)</string>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
