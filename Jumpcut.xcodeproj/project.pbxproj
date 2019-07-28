@@ -11,6 +11,7 @@
 		AA3F2D3621FEC5750027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AA3F2D3321FEC5740027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff */; };
 		AA3F2D3D21FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AA3F2D3921FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff */; };
 		AA92927C21685207009A2BE4 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = AA92927B21685206009A2BE4 /* Credits.html */; };
+		AA9D0F8222ED073E006D0C3A /* JumpcutHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAE89F0621FD036A00091FA5 /* JumpcutHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AAB4CC36214B28F20015C072 /* PTHotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB4CC33214B28E60015C072 /* PTHotKey.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		AAB4CC37214B28F20015C072 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB4CC31214B28E60015C072 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		AAB4CC39214B29220015C072 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAB4CC31214B28E60015C072 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -26,7 +27,6 @@
 		AAE89F0F21FD036D00091FA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAE89F0D21FD036D00091FA5 /* MainMenu.xib */; };
 		AAE89F1221FD036D00091FA5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE89F1121FD036D00091FA5 /* main.m */; };
 		AAE89F1821FD03CC00091FA5 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE89F1721FD03CC00091FA5 /* ServiceManagement.framework */; };
-		AAE89F1B21FD2CD400091FA5 /* JumpcutHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAE89F0621FD036A00091FA5 /* JumpcutHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AAED43852148B64C001A2FCF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAED43842148B64C001A2FCF /* AppDelegate.m */; };
 		AAED43872148B64D001A2FCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAED43862148B64D001A2FCF /* Assets.xcassets */; };
 		AAED438A2148B64D001A2FCF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAED43882148B64D001A2FCF /* MainMenu.xib */; };
@@ -76,7 +76,7 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				AAE89F1B21FD2CD400091FA5 /* JumpcutHelper.app in CopyFiles */,
+				AA9D0F8222ED073E006D0C3A /* JumpcutHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +608,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Release;
 		};
