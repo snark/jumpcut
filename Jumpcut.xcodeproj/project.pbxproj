@@ -32,6 +32,8 @@
 		AAED438A2148B64D001A2FCF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAED43882148B64D001A2FCF /* MainMenu.xib */; };
 		AAED438D2148B64D001A2FCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAED438C2148B64D001A2FCF /* main.m */; };
 		AAED439D2148C37C001A2FCF /* UKPrefsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = AAED439C2148C37C001A2FCF /* UKPrefsPanel.m */; };
+		AAEEBFB82302553D00B9AF6C /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEEBFB42302553D00B9AF6C /* Sparkle.framework */; };
+		AAEEBFB92302556500B9AF6C /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAEEBFB42302553D00B9AF6C /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 11;
 			files = (
+				AAEEBFB92302556500B9AF6C /* Sparkle.framework in CopyFiles */,
 				AAB4CC39214B29220015C072 /* ShortcutRecorder.framework in CopyFiles */,
 				AAB4CC3A214B29220015C072 /* PTHotKey.framework in CopyFiles */,
 			);
@@ -120,6 +123,7 @@
 		AAED438E2148B64D001A2FCF /* Jumpcut.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jumpcut.entitlements; sourceTree = "<group>"; };
 		AAED439B2148C37C001A2FCF /* UKPrefsPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKPrefsPanel.h; sourceTree = "<group>"; };
 		AAED439C2148C37C001A2FCF /* UKPrefsPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKPrefsPanel.m; sourceTree = "<group>"; };
+		AAEEBFB42302553D00B9AF6C /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,7 @@
 				AAE89F1821FD03CC00091FA5 /* ServiceManagement.framework in Frameworks */,
 				AAB4CC36214B28F20015C072 /* PTHotKey.framework in Frameworks */,
 				AAB4CC37214B28F20015C072 /* ShortcutRecorder.framework in Frameworks */,
+				AAEEBFB82302553D00B9AF6C /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +151,7 @@
 		AAB4CC28214B28CC0015C072 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAEEBFB42302553D00B9AF6C /* Sparkle.framework */,
 				AAE89F1721FD03CC00091FA5 /* ServiceManagement.framework */,
 			);
 			name = Frameworks;
@@ -581,10 +587,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Jumpcut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../SharedFrameworks",
+					"@loader_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -601,10 +612,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Jumpcut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../SharedFrameworks",
+					"@loader_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
