@@ -25,6 +25,7 @@
 @property BOOL issuedRememberResizeWarning;
 @property BOOL stifleRememberResizeWarning;
 @property BOOL hasAccessibility;
+@property BOOL showManualAccessibilityWarning;
 @property (nonatomic, strong) NSArray *transientPasteboardTypes;
 @property (nonatomic, strong) NSArray *sensitivePasteboardTypes;
 @property NSPasteboard *jcPasteboard;
@@ -48,10 +49,13 @@
 
 - (id)init
 {
+    // If we're coming in from a very old Jumpcut, upgrade the preferences.
     if ( ! [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] || [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] < 0.6  ) {
         [self upgradeFromPre0_5];
     }
-    // Ensure we only run the upgrade-from-0.5 transition once
+    // If we're coming in from a pre-0.7 Jumpcut, set a flag to fire an alert the first time we run explaining
+    // that manually updating Accessibility may be required
+    self.showManualAccessibilityWarning = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] && [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] < 0.6999;
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithFloat:0.7] forKey:@"lastRun"];
     [self registerDefaultPreferences];
     // TODO: We should look for a change in the keyboard definition and re-run findVeeCode()
@@ -99,6 +103,16 @@
                                       @"org.nspasteboard.ConcealedType",
                                       @"com.agilebits.onepassword"
                                       ];
+    if (self.showManualAccessibilityWarning) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"Alert panel - Accessibility upgrade warning - OK")];
+        [alert setMessageText:NSLocalizedString(@"Jumpcut Upgrade Note", @"Alert panel - Accessibility upgrade warning - title")];
+        [alert setInformativeText:NSLocalizedString(
+                                                    @"Users upgrading from older versions of Jumpcut may need to remove Jumpcut from the Security & Privacy Preference's Accessibility tab and add it again manually in order to fix the \"Clipping Selection Pastes\" option. This should be a one-time fix.",
+                                                    @"Alert panel - Accessibility upgrade warning - message")];
+        [alert runModal];
+        [alert release];
+    }
 }
 
 - (void)applicationWillResignActive:(NSNotification *)aNotification {
