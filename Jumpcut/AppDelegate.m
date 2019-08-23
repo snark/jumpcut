@@ -81,7 +81,9 @@
     } else if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"menuIcon"] == 2 ) {
         self.statusItem.title = @"✄";
     } else {
-        [self.statusItem setImage:[NSImage imageNamed:@"scissors_bw"]];
+        NSImage *scissorsImage = [NSImage imageNamed:@"scissors_bw"];
+        [scissorsImage setTemplate:YES];
+        [self.statusItem setImage:scissorsImage];
     }
     self.statusItem.menu = self.statusMenu;
     if ([self.bezel respondsToSelector:@selector(setCollectionBehavior:)]) {
