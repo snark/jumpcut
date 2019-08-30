@@ -22,6 +22,7 @@
 		AAB4CC47214D4E4E0015C072 /* NSBezierPathAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4CC43214D4E4D0015C072 /* NSBezierPathAdditions.m */; };
 		AAB4CC4D214D62230015C072 /* JumpcutClipping.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4CC49214D62220015C072 /* JumpcutClipping.m */; };
 		AAB4CC4E214D62230015C072 /* JumpcutStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4CC4C214D62230015C072 /* JumpcutStore.m */; };
+		AADA53AF2318D8E100E2326A /* Jumpcut.iconset in Resources */ = {isa = PBXBuildFile; fileRef = AADA53AB2318D8E100E2326A /* Jumpcut.iconset */; };
 		AAE89F0A21FD036A00091FA5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE89F0921FD036A00091FA5 /* AppDelegate.m */; };
 		AAE89F0C21FD036D00091FA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE89F0B21FD036D00091FA5 /* Assets.xcassets */; };
 		AAE89F0F21FD036D00091FA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAE89F0D21FD036D00091FA5 /* MainMenu.xib */; };
@@ -104,6 +105,7 @@
 		AAB4CC4A214D62230015C072 /* JumpcutClipping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpcutClipping.h; sourceTree = "<group>"; };
 		AAB4CC4B214D62230015C072 /* JumpcutStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpcutStore.h; sourceTree = "<group>"; };
 		AAB4CC4C214D62230015C072 /* JumpcutStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpcutStore.m; sourceTree = "<group>"; };
+		AADA53AB2318D8E100E2326A /* Jumpcut.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = Jumpcut.iconset; sourceTree = "<group>"; };
 		AAE89F0621FD036A00091FA5 /* JumpcutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpcutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE89F0821FD036A00091FA5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AAE89F0921FD036A00091FA5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				AAED439B2148C37C001A2FCF /* UKPrefsPanel.h */,
 				AAED439C2148C37C001A2FCF /* UKPrefsPanel.m */,
 				AAED43862148B64D001A2FCF /* Assets.xcassets */,
+				AADA53AB2318D8E100E2326A /* Jumpcut.iconset */,
 				AA3F2D3221FEC5740027AF62 /* net.sf.jumpcut.preferences.appearance.tiff */,
 				AA3F2D3921FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff */,
 				AA3F2D3321FEC5740027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff */,
@@ -382,6 +385,7 @@
 			files = (
 				AAED43872148B64D001A2FCF /* Assets.xcassets in Resources */,
 				AA3F2D3521FEC5750027AF62 /* net.sf.jumpcut.preferences.appearance.tiff in Resources */,
+				AADA53AF2318D8E100E2326A /* Jumpcut.iconset in Resources */,
 				AAED438A2148B64D001A2FCF /* MainMenu.xib in Resources */,
 				AA92927C21685207009A2BE4 /* Credits.html in Resources */,
 				AA3F2D3D21FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff in Resources */,
