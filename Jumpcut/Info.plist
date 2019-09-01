@@ -38,5 +38,7 @@
 	<string>NSApplication</string>
 	<key>SUFeedURL</key>
 	<string>https://snark.github.io/jumpcut/jumpcut.appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>7Mkfcw16WbeV0KiUzv9oNt1zny+0z1MWPHa2IxOM5qw=</string>
 </dict>
 </plist>
