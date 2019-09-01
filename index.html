@@ -1,67 +1,138 @@
 ---
 permalink: /index.html
 ---
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jumpcut</title>
+    <!-- Water.css, from https://github.com/kognise/water.css -->
+    <link rel="stylesheet" href=/assets/css/light.min.css">
+    </style>
+    </head>
+    <body>
+    <h1>Jumpcut: Make Your Clipboard Dance</h1>
+    <img src="/jumpcut/assets/images/jumpcut.png">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<link rel="stylesheet" type="text/css" href="./assets/css/basic.css" />
+    <h2>About</h2>
+    <p>
+        Jumpcut is a macOS clipboard manager that provides Mac users
+        with <mark>quick, intuitive access to their clipboard history</mark>,
+        with an interface that stays out of their way. It&rsquo;s been around
+        for <mark>over fifteen years</mark>, saving users time and preventing
+        frustration whenever they need to use a phone number, URL, or code
+        snippet that they had just a minute ago.  It&rsquo;s <mark>absolutely
+        free and open source</mark> under the MIT License.
+    </p>
 
-	<title>Jumpcut: Minimalist Clipboard Buffering for OS X</title>
-	
-</head>
+    <p>
+        The most recent version of Jumpcut is <strong>0.70</strong>,
+        released September 2019.
+        <br>
+        <button type="submit" onclick="window.open('https://github.com/snark/jumpcut/releases/download/v0.70/Jumpcut-0.70.tar.bz2')">Download Jumpcut from Github</button>
+        <!-- or install using <a href="https://brew.sh">Homebrew</a>: -->
+    </p>
 
-<body>
-<img src="./assets/images/jumpcut.png" alt="Jumpcut icon" style="float: left;" /><h1>Jumpcut</h1>
-<p class="tagline">Make your clipboard dance.</p>
-<br style="clear: both;" />
+    <!--
+    <code>
+        brew install jumpcut
+    </code>
+    -->
 
-<h2>About</h2>
-<p>Jumpcut is an application that provides &quot;clipboard buffering&quot; &mdash; that is, access to text that you've cut or copied, even if you've subsequently cut or copied something else. The goal of Jumpcut's interface is to provide quick, natural, intuitive access to your clipboard's history.</p>
+    <p>
+        Jumpcut currently supports versions of macOS from 10.13 (High
+        Sierra) forward. Users of older Macintoshes may want to consider
+        <a href="http://downloads.sourceforge.net/jumpcut/Jumpcut_0.63.tgz">Jumpcut
+        0.63</a>, which supports operating systems as old as OS X 10.3.9
+        Panther.
+    </p>
 
-<h2>Recent Changes</h2>
-<ul>
-<li>25 Jan 2009 &mdash; Version 0.63 released, improving behavior when run under Spaces (Jumpcut will now appear in any Space).</li>
-<li>11 Mar 2008 &mdash; Version 0.62 released, improving support for Dvorak keyboard users and providing new &quot;wraparound&quot; bezel option.</li>
-<li>12 Feb 2007 &mdash; Version 0.61 released, allowing for automatic launch on user login</li>
-<li>19 June 2006 &mdash; Awarded <a href="http://www.macworld.com/weblogs/macgems/2006/06/jumpcut-popcopy/">4 &#189; mice</a> by MacUser</li>
-<li>13 June 2006 &mdash; Released Jumpcut 0.60 to SourceForge</li>
-<li>8 April 2006 &mdash; Posted code and Jumpcut 0.54 to SourceForge</li>
-<li>2 April 2006 &mdash; Updated Jumpcut to version 0.54 (now Universal Binary)</li>
-</ul>
+    <hr>
 
-<h2>Downloads</h2>
-<p>The current version of Jumpcut, <a href="http://downloads.sourceforge.net/jumpcut/Jumpcut_0.63.tgz">Jumpcut 0.63</a>, is a Universal Binary that requires OS X 10.3.9 or later. Users running earlier versions of OS X should try <a href="http://prdownloads.sourceforge.net/jumpcut/jumpcut-0.54.tgz?download">Jumpcut 0.54</a>, which should work with OS X 10.1 and later.</p>
+    <h2>Using Jumpcut</h2>
+    <p>
+        Jumpcut is designed to be simple. Move the Jumpcut application (the
+        one with the pretty scissors icon) to your Applications directory.
+        Launch Jumpcut. A scissors icon will appear in your menu bar. Now
+        whenever you cut or copy a text item, it&rsquo;ll be added to the
+        &ldquo;stack&rquo; of clippings that Jumpcut has recorded.
+    </p>
 
-<p><a href="http://downloads.sourceforge.net/jumpcut/jumpcut_0.63-src.tgz?use_mirror=">Source code</a> is also available. Jumpcut is open sourced under the MIT License.</p>
+    <p>
+        To get at a clipping, choose one from under the Jumpcut menu item.
+        Or, set a global hotkey (from the Preferences menu) and begin using
+        Jumpcut via keyboard. (The default value for this hotkey is
+        &#2318;&2325;V: Command + Option + V.) Typing it will bring up a
+        pop-up bezel, similiar to the application switcher. Hold the modifier
+        keys (Command and Option by default) and use the arrow keys or the
+        non-modifier key (V, by default) to scroll through the stack. (Shift
+        plus the non-modifier key scrolls in reverse. Release all keys to
+        select the clipping, or hit Escape to cancel.
+    </p>
 
-<h2>Using Jumpcut</h2>
-<p>Jumpcut is designed to be simple. Download the application, double-click the <tt>.tgz</tt> file to open it, and drag the application (the one with the pretty scissors icon) to your Applications directory. Launch Jumpcut. A scissors icon will appear in your menu bar. Now whenever you cut or copy a text item, it'll be added to the &quot;stack&quot; of clippings that Jumpcut has recorded. Clippings can be accessed in one of two ways:
-<ul>
-<li><p><strong>Under the menu bar</strong><br />
-Choose a clipping from the Jumpcut menu.</p></li>
-<li><p><strong>Through a pop-up bezel</strong><br />
-In any application into which you want to paste an item from Jumpcut's stack, press the hotkey to activate Jumpcut's bezel. (The default value for this hotkey is Control-Option-V.) A little window like the one you see when using the application switcher or the brightness controls will appear. <em>While holding the modifier keys</em> (for the default hotkey, this is the Control-Option combo), use the arrow keys to scroll through the stack.</p></li>
-</ul>
+    <p>
+        When you&rsquo;ve selected a clipping, Jumpcut will put it on the
+        pasteboard and attempt to paste it into your application. It does
+        this by mimicking a user typing Command-V. As such, the first time
+        you run Jumpcut, <mark>you&rsquo;ll be prompted by macOS to give
+        Jumpcut access to type into other programs</mark>. This is all
+        Jumpcut uses Accessibility for; if access is not given or the
+        &ldquo;Clipping selection pastes&rdquo; preference is unchecked, the
+        clipping will still be put on your pasteboard and you can paste
+        manually. (If you change your mind, you can add Jumpcut in the
+        Accessility pane of the &ldquo;Security &amp; Privacy&rdquo;
+        System Preference. Click the lock, if needed, and then the plus
+        button. Make sure the checkbox is checked!)
+    </p>
 
-<p>When you've selected a clipping, Jumpcut will put it on the pasteboard and attempt to paste it into your application. It does this by mimicking a user typing Command-V, so unusual applications which don't use this to indicate &quot;Paste&quot; will be confused. The clip will still be on the pasteboard, though, so you can paste it normally. If Command-V is used in a non-standard way in applications you are trying to paste to, a preference is available to disable the &quot;paste&quot; action for clippings selected from the menu bar. In this case, choose the clipping and paste however your application asks you to do it.</p>
+    <p>
+        Jumpcut remembers the last clipping you selected using the bezel. The
+        next time you bring the bezel up, it will start with that clipping
+        unless it&rsquo;s scrolled off the stack.
+    </p>
 
-<p>I've tried to allow a few different methods for navigating in the bezel. You can move down the stack using the right arrow, down arrow, or &quot;V&quot; key; you can move up the stack using the left arrow, up arrow, or &quot;Shift-V&quot;. Home moves to the beginning, and End moves to the end. Page Up and Page Down scroll through the stack more quickly. If you change your mind and decide not to paste the application, hit escape to make the bezel vanish. A &quot;sticky bezel&quot; preference is available; if it's selected, you must explicitly hit return or escape to dismiss the bezel.</p>
+    <h2>Additional Behavior</h2>
+    <p>
+        Some users may prefer to use a &quot;sticky bezel&quot;; if this
+        preference is enabled, you must hit return to select a clipping or
+        escape to dismiss the bezel once it is activated.
+    </p>
 
-<p>Jumpcut remembers the last clipping you selected using the bezel. The next time you bring the bezel up, it will start with that clipping unless it's scrolled off the stack.</p>
-	
-<h2>Etcetera</h2>
-<p>Jumpcut was begun in December 2002 as my first serious Cocoa project. <a href="http://www.pth.com/PTHPasteboard/">PTHPasteboard</a>, my preferred clipboard buffering application at the time, was being turned into a piece of commercial software, and none of the many shareware and freeware clipboard buffer programs I tried worked the way I wanted. My wife was even less satisfied with the options available than I was; some discussion revealed that the two of us had very clear ideas about the ways in which a clipboard buffer should <em>just work</em>. I cranked out several versions, starting with a version that was based on intent study of Brent Simmons' <a href="http://ranchero.com/tigerlaunch/">TigerLaunch</a> and only used the menubar item interface. Over the next year and a half I tinkered off and on with the software, adding the bezel interface and a few refinements. In mid-2004 I had reached version 0.53, where it stayed for the next eighteen months. The application did what I and the small user base, most of whom I knew personally, needed it to do (if not everything that I might <em>want</em> it to do).</p>
+    <h2>Not Using Jumpcut</h2>
+    <p>
+        Not for you? You might want to try out other open source macOS
+        clipboard managers, such as <a href="https://maccy.app">Maccy</a>
+        or <a href="https://clipy-app.com">Clipy</a>.
+    </p>
 
-<p>Then, in February 2006, the <a href="http://www.mexicanpictures.com/headingeast/">Heading East</a> weblog gave me the great and unexpected compliment of including Jumpcut on its list of <a href="http://www.mexicanpictures.com/headingeast/2006/02/10-semi-obscure-mac-programs-you.html">&quot;10 Semi-Obscure Mac Programs You Shouldn't Be Without&quot;</a>. (Jumpcut, appropriately enough, was #11.) Jumpcut was del.icio.us'ed, and I started getting feedback from complete strangers. I dusted off the code (a mess) and began recoding big chunks of it. However, I was strongly encouraged by my friend David to put the existing code base online &mdash; despite the stunning inelegance of parts, it was working code and someone might be able to use it. This was my first real experience with Cocoa and Objective-C, so the code should generally not be taken as an exemplar of how to do things, but if you're interested in seeing how <em>I</em> did things, take a look. Version 0.54 is basically this circa-2004 code, compiled to be a Universal Binary.</p>
+    <h2>Contributing to Jumpcut</h2>
+    <p>
+        I review pull requests and issues filed and welcome questions or
+        suggestions, but Jumpcut is a hobbyist project and releases should
+        be expected to be infrequent.
+    </p>
 
-<p>Releases of Jumpcut should be expected to remain infrequent. The source may be accessed directly at Jumpcut's <a href="https://github.com/snark/jumpcut/">GitHub page</a>.</p>
+    <h2>Miscellania</h2>
+    <p>
+        A <a href="https://en.wikipedia.org/wiki/Jump_cut">&quot;jump
+        cut&quot;</a> is a film editing technique in which two shots
+        of the same subject matter from slightly different angles are
+        shown sequentially, creating an effect of jumping forward in
+        time. Jumpcut is designed to move your clipboard <em>backward</em>
+        in time, but it&rsquo;s a nice name for a lightweight clipboard
+        manager, and I like both <em>Breathless</em> and
+        <a href=https://www.rogerebert.com/reviews/great-movie-man-with-a-movie-camera-1929>
+            <em>Man with a Movie Camera</em></a>.
+    </p>
 
-<p>Interested parties are encouraged to click over to my weblog at <a href="https://blog.snarkout.org/">snarkout.org</a> to read about many things, almost none of which have to do with the Mac, open source development, or indeed any technological development after the vacuum tube.</p>
+    <p>
+        My <a href="https://github.com/snark">contact info</a> is
+        available on GitHub.
+    </p>
 
-<hr />
-</body>
+
+  
+  </body>
 </html>
 
