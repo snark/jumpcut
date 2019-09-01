@@ -6,7 +6,7 @@
             <title>0.70</title>
             <pubDate>Sat, 31 Aug 2019 21:52:09 -0400</pubDate>
             <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-            <enclosure url="https://snark.github.io/jumpcut/Jumpcut-0.70.tar.bz2" sparkle:version="20190901" sparkle:shortVersionString="0.70" length="1799899" type="application/octet-stream" sparkle:edSignature="9/ysZ4o0yCsmN2yDBFdiKuNN6yZ2SYVD2tFmAWgRmNVEbCzNj6a2zNH+g4rs+8PWNCWOlViUuFs1cH37HVLqBw=="/>
+            <enclosure url="https://github.com/snark/jumpcut/releases/download/v0.70/Jumpcut-0.70.tar.bz2" sparkle:version="20190901" sparkle:shortVersionString="0.70" length="1799899" type="application/octet-stream" sparkle:edSignature="9/ysZ4o0yCsmN2yDBFdiKuNN6yZ2SYVD2tFmAWgRmNVEbCzNj6a2zNH+g4rs+8PWNCWOlViUuFs1cH37HVLqBw=="/>
             <sparkle:releaseNotesLink>https://snark.github.io/jumpcut/Jumpcut-0.70.html</sparkle:releaseNotesLink>
         </item>
     </channel>
