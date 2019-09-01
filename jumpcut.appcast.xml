@@ -1,32 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://andymatuschak.org/xml-namespaces/sparkle" version="2.0">
-	<channel>
-		<title>Jumpcut Changelog</title>
-		<link>http://jumpcut.sf.net/jumpcut.appcast.xml</link>
-		<description>Most recent changes with links to updates.</description>
-		<item>
-			<title>Version 0.63</title>
-			<description>&lt;p&gt;When using Spaces, bezel window now appears in active Space rather than reverting to the first Space it was used in; revised tooltips in preferences window&lt;/p&gt;</description>
-			<pubDate>Mon, 26 Jan 2009 19:22:30 -0500</pubDate>
-			<enclosure sparkle:version="0.63" url="http://downloads.sourceforge.net/jumpcut/Jumpcut_0.63.tgz?use_mirror=" length="530939" type="application/octet-stream"/>
-		</item>
-		<item>
-			<title>Version 0.62</title>
-			<description>&lt;p&gt;Paste support for Dvorak and international keyboard users; new wraparound option in bezel interface; updated ShortcutRecorder and Sparkle libraries.&lt;/p&gt;</description>
-			<pubDate>Sun, 11 May 2008 19:05:00 -0500</pubDate>
-			<enclosure sparkle:version="0.62" url="http://downloads.sourceforge.net/jumpcut/Jumpcut_0.62.tgz?big_mirror=0" length="530776" type="application/octet-stream"/>
-		</item>
-		<item>
-			<title>Version 0.61</title>
-			<description>&lt;p&gt;Added "launch on login" preference; moved to current versions of ShortcutRecorder and Sparkle auto-updater code.&lt;/p&gt;</description>
-			<pubDate>Sun, 25 Feb 2007 09:25:00 -0500</pubDate>
-			<enclosure sparkle:version="0.61" url="http://umn.dl.sourceforge.net/sourceforge/jumpcut/Jumpcut_0.61.tgz" length="514260" type="application/octet-stream"/>
-		</item>
-		<item>
-			<title>Version 0.6</title>
-			<description>&lt;p&gt;Improved preference panel; improved "remember" and "display" preferences; added Appearance preference pane; added "sticky bezel" option; now using ShortcutRecorder for improved hotkey selection; rewrote back-end bezel code; now using Sparkle automatic-update framework; added preference for menu items to paste directly rather than simply inserting themselves into the pasteboard.&lt;/p&gt;</description>
-			<pubDate>Mon, 12 Jun 2006 08:03:00 -0400</pubDate>
-			<enclosure sparkle:version="0.6" url="http://jumpcut.sf.net/Jumpcut_0.6.tgz" length="277602" type="application/octet-stream"/>
-		</item>
-	</channel>
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Jumpcut</title>
+        <item>
+            <title>0.70</title>
+            <pubDate>Sat, 31 Aug 2019 21:52:09 -0400</pubDate>
+            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+            <enclosure url="https://snark.github.io/jumpcut/Jumpcut-0.70.tar.bz2" sparkle:version="20190901" sparkle:shortVersionString="0.70" length="1799899" type="application/octet-stream" sparkle:edSignature="9/ysZ4o0yCsmN2yDBFdiKuNN6yZ2SYVD2tFmAWgRmNVEbCzNj6a2zNH+g4rs+8PWNCWOlViUuFs1cH37HVLqBw=="/>
+            <sparkle:releaseNotesLink>https://snark.github.io/jumpcut/Jumpcut-0.70.html</sparkle:releaseNotesLink>
+        </item>
+    </channel>
 </rss>
