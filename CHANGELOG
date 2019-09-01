@@ -1,0 +1,59 @@
+# Changelog
+
+Jumpcut predates the widespread adoption of semantic versioning; as such,
+pre-1.0 releases are numbered as 0.XX.
+
+## [0.70] - 2019-09-01
+### Fixed
+- 64-bit compatible; now runs without warning under Mojave
+- Corrected behavior for Command-V emission on non-American keyboards
+- Known transient sources of content (such as TypeIt4Me and TextExpander) are now ignored
+- Rewrote Launch on Login to support modern macOS requirements
+### Added
+- Restored “Clear All” menu item
+- Accessibility entailment for modern macOS security concerns
+- Retina-ready “Jumpcut logo” menu bar icon
+- Dark mode support for menu bar icon
+- Option to ignore known sources of sensitive data, such as KeePassXC or 1Password
+### Removed
+- Dropped (regrettably) outdated German and French localizations
+- Support for pre-High Sierra macOS
+- Dropped Credits preference panel in favor of credits embedded in the About
+menu
+- Dropped Appearance menu sliders for adjusting bezel transparency
+### Changed
+- Updated to ShortcutRecord2
+- Pointed all references to SourceForge at Github
+
+## [0.63] - 2009-01-26
+### Fixed
+- When using Spaces, bezel window now appears in active Space rather than
+reverting to the first Space it was used in; revised tooltips in preferences
+window
+
+## [0.62] - 2008-05-11
+### Added
+- Paste support for Dvorak and international keyboard users
+- New wraparound option in bezel interface
+### Changed
+- Updated ShortcutRecorder and Sparkle libraries
+
+## [0.61] - 2007-02-25
+### Added
+- Launch on login preference
+### Changed
+- Updated ShortcutRecorder and Sparkle libraries
+
+## [0.6] - 2006-06-12
+### Added
+-  Preference for menu items to paste directly rather than simply inserting
+themselves into the pasteboard
+- Now using ShortcutRecorder for improved hotkey selection
+- Now using Sparkle automatic-update framework
+- "Sticky Bezel" option
+- Appearance preference pane
+### Changed
+- Improved preference panel
+- Appearance preference pane
+- Improved "remember" and "display" preferences
+- Rewritten back-end bezel code
