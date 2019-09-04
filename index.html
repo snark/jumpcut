@@ -14,7 +14,6 @@ permalink: /index.html
     </style>
     </head>
     <body>
-    <a class="github-fork-ribbon right-top" href="https://github.com/snark/jumpcut/" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
     <h1>Jumpcut: Make Your Clipboard Dance</h1>
     <img src="/jumpcut/assets/images/jumpcut.png">
 
@@ -32,6 +31,7 @@ permalink: /index.html
     <p>
         The most recent version of Jumpcut is <strong>0.70</strong>,
         released September 2019.
+        <br>
         <button type="submit" onclick="window.open('https://github.com/snark/jumpcut/releases/download/v0.70/Jumpcut-0.70.tar.bz2')">Download Jumpcut from Github</button>
         <br>
         or install using <a href="https://brew.sh">Homebrew</a>:
@@ -53,6 +53,16 @@ brew cask install jumpcut</code></pre>
     </p>
 
     <hr>
+
+    <h2>Note to Upgraders</h2>
+    <p>
+        Users upgrading from 0.63 have reported issues with the Accessibility
+        tab of the &ldquo;Security &amp; Preferences&rdquo; Preferences panel,
+        which is required to make the paste functionality work. <mark>If
+        Jumpcut is not pasting</mark> despite the &ldquo;Clipping selection
+        pastes&rdquo; preference being checked in Jumpcut, please
+        <a href="./accessibility.html">see here</a>.
+    </p>
 
     <h2>Using Jumpcut</h2>
     <p>
@@ -78,16 +88,15 @@ brew cask install jumpcut</code></pre>
     <p>
         When you&rsquo;ve selected a clipping, Jumpcut will put it on the
         pasteboard and attempt to paste it into your application. It does
-        this by mimicking a user typing Command-V. As such, the first time
+        this by mimicking a user typing Command-V. (As such, the first time
         you run Jumpcut, <mark>you&rsquo;ll be prompted by macOS to give
-        Jumpcut access to type into other programs</mark>. This is all
-        Jumpcut uses Accessibility for; if access is not given or the
-        &ldquo;Clipping selection pastes&rdquo; preference is unchecked, the
-        clipping will still be put on your pasteboard and you can paste
-        manually. (If you change your mind, you can add Jumpcut in the
-        Accessility pane of the &ldquo;Security &amp; Privacy&rdquo;
-        System Preference. Click the lock, if needed, and then the plus
-        button. Make sure the checkbox is checked!)
+        Jumpcut access to type into other programs</mark>.  If this access
+        is not given or the &ldquo;Clipping selection pastes&rdquo;
+        in preference in Jumpcut is unchecked, the clipping will still be
+        put on your pasteboard and you can paste manually. (If you change
+        your mind, you can add Jumpcut in the Accessility pane of the
+        &ldquo;Security &amp; Privacy&rdquo; System Preference. Read more
+        about <a href="./accessibility.html">accessibilty</a>.
     </p>
 
     <p>
@@ -135,8 +144,8 @@ brew cask install jumpcut</code></pre>
         available on GitHub.
     </p>
 
+    <a class="github-fork-ribbon right-top" href="https://github.com/snark/jumpcut/" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
 
-  
   </body>
 </html>
 
