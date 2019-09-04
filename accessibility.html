@@ -1,0 +1,90 @@
+---
+permalink: /accessibility.html
+---
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jumpcut: Accessibility and Upgrading</title>
+    <!-- Water.css, from https://github.com/kognise/water.css -->
+    <link rel="stylesheet" href="/jumpcut/assets/css/light.min.css">
+    </style>
+    </head>
+    <body>
+    <h1>Jumpcut: Accessibility</h1>
+    <h2>On Accessibility</h2>
+    <p>
+        Jumpcut requies the use of macOS&rsquo;s Accessibility features
+        in order to paste clippings. (Internally, these are done by
+        emitting the same events that would occur if you typed Command-V 
+        manually. The
+        <a href="https://developer.apple.com/library/archive/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXmodel.html">Accessibility
+        features</a> of Macintoshes allow programs to control the behavior
+        of other programs, but this requires users to explicitly allow this
+        behavior. (This is a standard method used by Mac applications
+        such as Jumpcut or the window manager
+        <a href="https://github.com/eczarny/spectacle">Spectacle</a> to
+        extend native system behavior.)
+    </p>
+
+    <h2>Granting Accessibility</h2>
+    <p>
+        When Jumpcut detects that it does not have these Accessibility
+        privileges, it will prompt you when the program first launches,
+        asking you to grant them. (There will also be a notification
+        in Jumpcut&rsquo;s General Preferences tab, and the
+        &ldquo;Clipping Selection Pastes&rdquo; checkbox will be grayed
+        out.
+    </p>
+
+    <p>
+        To grant Accessibility access to Jumpcut:
+        <ol>
+            <li>Open System Preferences (under the Apple menu).</li>
+            <li>Open the Security &amp; Privacy preference pane.</li>
+            <li>Choose the Privacy tab, then choose Accessibiltiy.</li>
+            <li>
+                If necessary, click the lock and enter your password to 
+                make changes.
+            </li>
+            <li>
+                If Jumpcut isn't present in the list of applications
+                allowed to &ldquo;control your computer&rdquo;, click
+                the &ldquo;+&rdquo; button to add it.
+            </li>
+            <li>Click the checkbox to activate the permission.</li>
+            <li>Click the lock to prevent further changes.</li>
+        </ol>
+    </p>
+
+    <p>
+        When successfully added, your Privacy tab should look something
+        like this (from High Sierra):<br>
+        <img src="./assets/images/high-siera-accessibility.png"
+            width="412" height="300">
+    </p>
+
+    <h2>Warning to Upgraders</h2>
+    <p>
+        Multiple users have reported issues with Jumpcut failing to
+        paste properly after upgrading from 0.63 to 0.70. Beyond the
+        paste function not working, one symptom of this issue is that
+        Jumpcut appears in the Accessibility tab of the &ldquo;Security
+        and Privacy&rdquo; System Preference with only its icon appearing,
+        <em>without</em> the name &rdquo;Jumpcut&ldquo; appearing beside
+        it. (<a href="./assets/images/bad-accessibility.png" target="_blank">
+        See an example.</a>) If this occurs, click the lock if needed to make
+        changes. Highlight the Jumpcut icon and click &rdquo;-&ldquo;
+        to remove the bad Accessibility record. Add Jumpcut again following
+        the steps given above.
+    </p>
+    <p>
+        The underlying cause for this upgrade behavior isn&rsquo;t currently
+        known, but may have something to do with the way in which Jumpcut
+        0.63&rsquo;'s privileges were granted in the older code.
+
+    </p>
+
+    </body>
+</html>
