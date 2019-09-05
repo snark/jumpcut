@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA3B200D2320BB8E0018D85C /* JCRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3B20092320B5FE0018D85C /* JCRecorderControl.m */; };
 		AA3F2D3521FEC5750027AF62 /* net.sf.jumpcut.preferences.appearance.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AA3F2D3221FEC5740027AF62 /* net.sf.jumpcut.preferences.appearance.tiff */; };
 		AA3F2D3621FEC5750027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AA3F2D3321FEC5740027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff */; };
 		AA3F2D3D21FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AA3F2D3921FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff */; };
@@ -87,6 +88,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA3B20092320B5FE0018D85C /* JCRecorderControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCRecorderControl.m; sourceTree = "<group>"; };
+		AA3B200C2320BA5D0018D85C /* JCRecorderControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCRecorderControl.h; sourceTree = "<group>"; };
 		AA3F2D3221FEC5740027AF62 /* net.sf.jumpcut.preferences.appearance.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.appearance.tiff; sourceTree = "<group>"; };
 		AA3F2D3321FEC5740027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.hotkey.tiff; sourceTree = "<group>"; };
 		AA3F2D3921FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.general.tiff; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				AAB4CC40214D4E4D0015C072 /* RoundRecBezierPath.m */,
 				AAB4CC42214D4E4D0015C072 /* RoundRecTextField.h */,
 				AAB4CC3C214D4E4D0015C072 /* RoundRecTextField.m */,
+				AA3B200C2320BA5D0018D85C /* JCRecorderControl.h */,
+				AA3B20092320B5FE0018D85C /* JCRecorderControl.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -435,6 +440,7 @@
 				AAB4CC4D214D62230015C072 /* JumpcutClipping.m in Sources */,
 				AAB4CC47214D4E4E0015C072 /* NSBezierPathAdditions.m in Sources */,
 				AAB4CC44214D4E4E0015C072 /* RoundRecTextField.m in Sources */,
+				AA3B200D2320BB8E0018D85C /* JCRecorderControl.m in Sources */,
 				AAB4CC46214D4E4E0015C072 /* RoundRecBezierPath.m in Sources */,
 				AAED439D2148C37C001A2FCF /* UKPrefsPanel.m in Sources */,
 				AAED43852148B64C001A2FCF /* AppDelegate.m in Sources */,

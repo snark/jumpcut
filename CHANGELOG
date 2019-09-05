@@ -3,6 +3,10 @@
 Jumpcut predates the widespread adoption of semantic versioning; as such,
 pre-1.0 releases are numbered as 0.XX.
 
+## Unreleased
+### Fixed
+- Edge case: the hotkey no longer triggers the bezel while setting the hotkey
+
 ## [0.70] - 2019-09-01
 ### Fixed
 - 64-bit compatible; now runs without warning under Mojave

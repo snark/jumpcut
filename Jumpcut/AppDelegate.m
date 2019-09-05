@@ -11,6 +11,7 @@
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import <PTHotKey/PTHotKeyCenter.h>
 #import <PTHotKey/PTHotKey+ShortcutRecorder.h>
+#import "JCRecorderControl.h"
 
 #define _DISPLENGTH 40
 #define _MAX_REMEMBER 99
@@ -19,7 +20,7 @@
 @interface AppDelegate ()
 @property BezelWindow *bezel;
 @property JumpcutStore *clippingStore;
-@property (assign) IBOutlet SRRecorderControl *hotkeyRecorder;
+@property (assign) IBOutlet JCRecorderControl *hotkeyRecorder;
 @property BOOL isBezelDisplayed;
 @property BOOL isBezelPinned;
 @property BOOL issuedRememberResizeWarning;

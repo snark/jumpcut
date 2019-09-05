@@ -7,6 +7,7 @@
 //
 
 #import "BezelWindow.h"
+#import "JCRecorderControl.h"
 #import "JumpcutClipping.h"
 #import "JumpcutStore.h"
 #import <ShortcutRecorder/SRCommon.h>
