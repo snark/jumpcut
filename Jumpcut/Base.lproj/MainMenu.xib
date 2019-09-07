@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -300,7 +300,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Hotkeys" identifier="net.sf.jumpcut.preferences.hotkey" id="itI-cS-vha">
-                                <view key="view" ambiguous="YES" id="TaW-YB-WSw">
+                                <view key="view" id="TaW-YB-WSw">
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -331,7 +331,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Appearance" identifier="net.sf.jumpcut.preferences.appearance" id="FPB-UG-fTX">
-                                <view key="view" id="gPn-hP-Bh4">
+                                <view key="view" ambiguous="YES" id="gPn-hP-Bh4">
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -348,21 +348,32 @@
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
                                                         <menuItem title="White scissors (✄)" tag="2" id="aAR-EC-PXo"/>
+                                                        <menuItem title="No menubar icon" tag="3" id="uhN-oa-fMu">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
                                                     </items>
                                                 </menu>
                                                 <connections>
+                                                    <action selector="updateMenuBarIcon:" target="Voe-Tx-rLC" id="Uz8-Tv-RJA"/>
                                                     <binding destination="eO6-7l-wpz" name="selectedTag" keyPath="values.menuIcon" id="L2O-sc-His"/>
                                                 </connections>
                                             </popUpButtonCell>
-                                            <connections>
-                                                <action selector="switchMenuIcon:" target="Voe-Tx-rLC" id="Hwl-uq-qDa"/>
-                                            </connections>
                                         </popUpButton>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EbA-aJ-r7I">
                                             <rect key="frame" x="18" y="331" width="84" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Menu display" id="4gx-BK-rxM">
                                                 <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LL8-Bc-XRk">
+                                            <rect key="frame" x="106" y="268" width="359" height="51"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" selectable="YES" id="nz4-dy-AuS">
+                                                <font key="font" metaFont="system"/>
+                                                <string key="title">If you choose "No menubar icon", you can open Jumpcut's preferences window by double-clicking the application icon when the app is already running.</string>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -374,7 +385,7 @@
                     </tabView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="2066" y="131"/>
+            <point key="canvasLocation" x="2210" y="147"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="eO6-7l-wpz"/>
         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="jdx-rP-uWy">

@@ -17,6 +17,8 @@
 #define _MAX_REMEMBER 99
 #define _MAX_DISPLAY 40
 
+enum MenuBarIconPref { jumpcut = 0, blackScissors = 1, whiteScissors = 2, noIcon = 3 };
+
 @interface AppDelegate ()
 @property BezelWindow *bezel;
 @property JumpcutStore *clippingStore;
@@ -76,17 +78,7 @@
     self.pbBlockCount = 0;
     self.pbCount = 0;
     self.shortcutTransformer = [[[SRKeyCodeTransformer alloc] init] retain];
-    self.statusItem = [[NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength] retain];
-    if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"menuIcon"] == 1 ) {
-        self.statusItem.title = @"✂";
-    } else if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"menuIcon"] == 2 ) {
-        self.statusItem.title = @"✄";
-    } else {
-        NSImage *scissorsImage = [NSImage imageNamed:@"scissors_bw"];
-        [scissorsImage setTemplate:YES];
-        [self.statusItem setImage:scissorsImage];
-    }
-    self.statusItem.menu = self.statusMenu;
+    [self updateMenuBarIcon:nil];
     if ([self.bezel respondsToSelector:@selector(setCollectionBehavior:)]) {
         [self.bezel setCollectionBehavior:NSWindowCollectionBehaviorTransient | NSWindowCollectionBehaviorIgnoresCycle | NSWindowCollectionBehaviorFullScreenAuxiliary | NSWindowCollectionBehaviorMoveToActiveSpace];
     }
@@ -124,6 +116,15 @@
         [self hideBezel];
     }
 }
+
+- (BOOL) applicationShouldHandleReopen:(NSApplication *) sender hasVisibleWindows:(BOOL) flag {
+    enum MenuBarIconPref pref = (enum MenuBarIconPref) [[NSUserDefaults standardUserDefaults] integerForKey:@"menuIcon"];
+    if (pref == noIcon) {
+        [self showPreferencePanel:nil];
+    }
+    return NO;
+}
+
 
 -(IBAction) activateAndOrderFrontStandardAboutPanel:(id)sender
 {
@@ -712,17 +713,32 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     self.issuedRememberResizeWarning = NO;
 }
 
--(IBAction) switchMenuIcon:(id)sender
-{
-    if ([sender selectedTag] == 1 ) {
-        [self.statusItem setImage:nil];
-        self.statusItem.title = @"✂";
-    } else if ([sender selectedTag] == 2) {
-        [self.statusItem setImage:nil];
-        self.statusItem.title = @"✄";
+-(IBAction) updateMenuBarIcon:(id)sender {
+    enum MenuBarIconPref pref = (enum MenuBarIconPref) [[NSUserDefaults standardUserDefaults] integerForKey:@"menuIcon"];
+	if ( pref == noIcon ) {
+		if (self.statusItem != nil) {
+			[NSStatusBar.systemStatusBar removeStatusItem:self.statusItem];
+			self.statusItem = nil;
+		}
+		return;
+	}
+
+    if (self.statusItem == nil) {
+        self.statusItem = [[NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength] retain];
+        self.statusItem.menu = self.statusMenu;
+    }
+
+    if ( pref == blackScissors ) {
+		[self.statusItem setImage:nil];
+  		self.statusItem.title = @"✂";
+    } else if ( pref == whiteScissors ) {
+		[self.statusItem setImage:nil];
+  		self.statusItem.title = @"✄";
     } else {
-        [self.statusItem setTitle:@""];
-        [self.statusItem setImage:[NSImage imageNamed:@"scissors_bw"]];
+        NSImage *scissorsImage = [NSImage imageNamed:@"scissors_bw"];
+        [scissorsImage setTemplate:YES];
+        [self.statusItem setImage:scissorsImage];
+		[self.statusItem setTitle:@""];
     }
 }
 
