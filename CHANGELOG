@@ -6,6 +6,7 @@ pre-1.0 releases are numbered as 0.XX.
 ## Unreleased
 ### Fixed
 - Edge case: the hotkey no longer triggers the bezel while setting the hotkey
+- Sparkle auto-updater not triggering on launch
 
 ## [0.70] - 2019-09-01
 ### Fixed

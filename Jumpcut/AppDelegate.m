@@ -7,10 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import <ServiceManagement/ServiceManagement.h>
-#import <ShortcutRecorder/ShortcutRecorder.h>
 #import <PTHotKey/PTHotKeyCenter.h>
 #import <PTHotKey/PTHotKey+ShortcutRecorder.h>
+#import <ServiceManagement/ServiceManagement.h>
+#import <ShortcutRecorder/ShortcutRecorder.h>
+#import <Sparkle/Sparkle.h>
 #import "JCRecorderControl.h"
 
 #define _DISPLENGTH 40
@@ -241,6 +242,14 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
                                      selector:@selector(pollPasteboard:)
                                      userInfo:nil
                                       repeats:YES] retain] fire];
+    // This should not run if SUHasLaunchedBefore is falsey -- we're going to ignore the interval for now.
+    // If we choose to implement the interval, see:
+    // https://github.com/Tunnelblick/Tunnelblick/blob/master/tunnelblick/MenuController.m
+    if ([[SUUpdater sharedUpdater] automaticallyChecksForUpdates] && [[NSUserDefaults standardUserDefaults] boolForKey:@"SUHasLaunchedBefore"]) {
+        [[SUUpdater sharedUpdater] checkForUpdatesInBackground];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"SUHasLaunchedBefore"];
+    }
 }
 
 /* Hotkey handler */
