@@ -51,10 +51,6 @@
 
 - (id)init
 {
-    // If we're coming in from a very old Jumpcut, upgrade the preferences.
-    if ( ! [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] || [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] < 0.6  ) {
-        [self upgradeFromPre0_5];
-    }
     // If we're coming in from a pre-0.7 Jumpcut, set a flag to fire an alert the first time we run explaining
     // that manually updating Accessibility may be required
     self.showManualAccessibilityWarning = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] && [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] < 0.6999;
@@ -812,41 +808,6 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:newDisplay]
                                              forKey:@"displayNum"];
     [self updateMenu];
-}
-
--(void) upgradeFromPre0_5 {
-    // A decent starting value for the main hotkey is control-option-V
-    NSDictionary *defaultHotkey = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]];
-    [[NSUserDefaults standardUserDefaults] setValue:defaultHotkey
-                                             forKey:@"mainHotkey"];
-
-    // Something we'd really like is to transfer over info from 0.5x if we can get at it --
-    if ( [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] ) {
-        // We need to pull out the relevant objects and stuff them in as proper preferences for the net.sf.Jumpcut domain
-        if ( [[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"displayNum"] != nil )
-        {
-            [[NSUserDefaults standardUserDefaults] setValue:[ [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"displayNum"]
-                                                     forKey:@"displayNum"];
-        }
-        if ( [[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"savePreference"] != nil )
-        {
-            if ( [[[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"savePreference"] isEqual:@"onChange"] )
-            {
-                [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:2]
-                                                         forKey:@"savePreference"];
-            }
-            else if ( [[[[NSUserDefaults standardUserDefaults] persistentDomainForName:@"Jumpcut"] objectForKey:@"savePreference"] isEqual:@"onExit"] )
-            {
-                [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:1]
-                                                         forKey:@"savePreference"];
-            }
-            else
-            {
-                [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:0]
-                                                         forKey:@"savePreference"];
-            } // End save preference test
-        } // End savePreference test
-    } // End if/then that deals with 0.5x preferences
 }
 
 -(void) registerDefaultPreferences {
