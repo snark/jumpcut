@@ -8,6 +8,8 @@
 //  This code is open-source software subject to the MIT License; see the homepage
 //  at <http://jumpcut.sourceforge.net/> for details.
 
+#define _MAXTEXTLENGTH 10000
+
 #import "BezelWindow.h"
 
 @implementation BezelWindow
@@ -95,6 +97,11 @@
 
 - (void)setText:(NSString *)newText
 {
+    if ([newText length] > _MAXTEXTLENGTH) {
+        NSRange stringRange = {0, _MAXTEXTLENGTH};
+        stringRange = [newText rangeOfComposedCharacterSequencesForRange:stringRange];
+        newText = [newText substringWithRange:stringRange];
+    }
     [newText retain];
     [bezelText release];
     bezelText = newText;
