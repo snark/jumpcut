@@ -56,7 +56,6 @@
     self.showManualAccessibilityWarning = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] && [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] < 0.6999;
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithFloat:0.7] forKey:@"lastRun"];
     [self registerDefaultPreferences];
-    // TODO: We should look for a change in the keyboard definition and re-run findVeeCode()
     self.veeCode = findVeeCode();
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardInputSourceChanged:)
