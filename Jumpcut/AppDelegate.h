@@ -33,7 +33,6 @@
 // Other actions
 -(IBAction)clearClippingList:(id)sender;
 -(IBAction)toggleLaunchAtLogin:(id)sender;
--(IBAction) switchMenuIcon:(id)sender;
 -(void) keyboardInputSourceChanged:(NSNotification *)notification;
 
 
