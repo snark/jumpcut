@@ -16,6 +16,7 @@
 
 #define _DISPLENGTH 40
 #define _MAX_REMEMBER 99
+#define _MIN_REMEMBER 10
 #define _MAX_DISPLAY 40
 
 @interface AppDelegate ()
@@ -761,8 +762,8 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     if (newRemember > _MAX_REMEMBER) {
         newRemember = _MAX_REMEMBER;
     }
-    if (newRemember < 1) {
-        newRemember = 1;
+    if (newRemember < _MIN_REMEMBER) {
+        newRemember = _MIN_REMEMBER;
     }
     if ( newRemember < [self.clippingStore jcListCount] && (!self.issuedRememberResizeWarning && !self.stifleRememberResizeWarning)) {
         long choice;
@@ -798,6 +799,10 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:newPref]
                                              forKey:@"rememberNum"];
     [self.clippingStore setRememberNum:newPref];
+    if (self.stackPosition >= newPref) {
+        // We have a lower bound of _MIN_REMEMBER from the caller.
+        self.stackPosition = newPref - 1;
+    }
     [self updateMenu];
 }
 
