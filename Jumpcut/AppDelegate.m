@@ -200,6 +200,15 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     }
 }
 
+- (void)applicationDidChangeScreenParameters:(NSNotification *)aNotification {
+    NSSize windowSize = NSMakeSize(325.0, 325.0);
+    NSSize screenSize = [[NSScreen mainScreen] frame].size;
+    NSRect windowFrame = NSMakeRect( (screenSize.width - windowSize.width) / 2,
+                                    (screenSize.height - windowSize.height) / 3,
+                                    windowSize.width, windowSize.height );
+    [self.bezel setFrame:windowFrame display:self.isBezelDisplayed animate:NO];
+}
+
 - (void)awakeFromNib
 {
     NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
