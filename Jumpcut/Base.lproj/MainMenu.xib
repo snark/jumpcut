@@ -305,11 +305,11 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D1t-UG-qMu" customClass="JCRecorderControl">
-                                            <rect key="frame" x="115" y="323" width="163" height="25"/>
+                                            <rect key="frame" x="115" y="323" width="120" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </customView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5wY-Il-sch">
-                                            <rect key="frame" x="18" y="327" width="91" height="17"/>
+                                            <rect key="frame" x="18" y="323" width="97" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Master hotkey" id="dd0-HU-AAW">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -318,7 +318,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZDh-HW-hZJ">
-                                            <rect key="frame" x="284" y="290" width="342" height="58"/>
+                                            <rect key="frame" x="241" y="295" width="385" height="54"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" selectable="YES" id="dci-Lb-eKM">
                                                 <font key="font" metaFont="system" size="10"/>
@@ -374,7 +374,7 @@
                     </tabView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="2066" y="131"/>
+            <point key="canvasLocation" x="1947" y="197"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="eO6-7l-wpz"/>
         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="jdx-rP-uWy">

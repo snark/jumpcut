@@ -5,6 +5,8 @@ pre-1.0 releases are numbered as 0.XX.
 
 ## Unreleased
 ### Fixed
+- ShortcutRecorder control was too old to have Mojave styling or Dark Mode
+support; some assets have been brought back into the pinned old version
 - Edge case: the hotkey no longer triggers the bezel while setting the hotkey
 - Very large clippings (such as Moby Dick) no longer cause discernable lag
 time when viewed in the bezel
