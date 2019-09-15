@@ -13,6 +13,7 @@ support; some assets have been brought back into the pinned old version
 time when viewed in the bezel
 - Sparkle auto-updater not triggering on launch
 ### Changed
+- Jumpcut now targets versions of macOS 10.11 (Yosemite) and later
 - Minimum number of clips to remember is now a more sane 10 instead of 1
 
 ## [0.70] - 2019-09-01
