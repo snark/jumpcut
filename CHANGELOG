@@ -7,6 +7,7 @@ pre-1.0 releases are numbered as 0.XX.
 ### Fixed
 - ShortcutRecorder control was too old to have Mojave styling or Dark Mode
 support; some assets have been brought back into the pinned old version
+- Removed some blank Info.plist values causing problems in Activity monitor
 - Edge case: the hotkey no longer triggers the bezel while setting the hotkey
 - Very large clippings (such as Moby Dick) no longer cause discernable lag
 time when viewed in the bezel
