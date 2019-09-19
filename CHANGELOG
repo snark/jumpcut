@@ -6,16 +6,23 @@ pre-1.0 releases are numbered as 0.XX.
 ## [0.71] - 2019-09-19
 ### Fixed
 - Display resolution changes now trigger adjustments to bezel size and
-positioning.
-- ShortcutRecorder control was too old to have Mojave styling or Dark Mode
-support; some assets have been brought back into the pinned old version
-- Removed some blank Info.plist values causing problems in Activity monitor
-- Edge case: the hotkey no longer triggers the bezel while setting the hotkey
+positioning, meaning that Jumpcut does not need to be restarted to have
+a normal bezel after adding or removing a monitor.
+- The version of ShortcutRecorder used by Jumpcut was too old to have Mojave
+styling or Dark Mode support; some assets have been brought back from the
+upstream project to provide this. Snow Leopard styling has been dropped. The
+recorder is now legible in Dark Mode.
+- Removed some blank Info.plist values causing problems in Activity Monitor;
+Jumpcut was not displaying or displaying with no listed name, just the icon.
+- Edge case: typing the active hotkey while _setting_ the hotkey no longer
+activates the bezel.
 - Very large clippings (such as Moby Dick) no longer cause discernable lag
 time when viewed in the bezel
-- Sparkle auto-updater not triggering on launch
+- Sparkle auto-updater now runs properly on launch if the checkbox has been
+checked. (Previously, due to a misreading of the Sparkle docs, it was not
+activating.)
 ### Changed
-- Jumpcut now targets versions of macOS 10.11 (Yosemite) and later
+- Jumpcut now targets versions of macOS/OS X 10.11 (El Capitan) and later
 - Minimum number of clips to remember is now a more sane 10 instead of 1
 
 ## [0.70] - 2019-09-01
