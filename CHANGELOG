@@ -3,6 +3,12 @@
 Jumpcut predates the widespread adoption of semantic versioning; as such,
 pre-1.0 releases are numbered as 0.XX.
 
+## Unreleased
+### Fixed
+- keyCodeToString crashed when using Hiragana and Katakana keyboards;
+this code has been made more defensive and should work more robustly for
+non-Roman keyboards.  
+
 ## [0.71] - 2019-09-19
 ### Fixed
 - Display resolution changes now trigger adjustments to bezel size and

@@ -158,11 +158,27 @@ CGKeyCode findVeeCode() {
 
 NSString* keyCodeToString(CGKeyCode keyCode) {
     // Code taken from https://stackoverflow.com/questions/1918841/how-to-convert-ascii-character-to-cgkeycode
+    // with some changes to deal with https://github.com/snark/jumpcut/issues/30 -- Katakana and
+    // possibly other Japanese keyboards don't return a value from TISCopyCurrentKeyboardInputSource,
+    // which caused a crash. We're making this code much more defensive, since it runs only at startup
+    // and keyboard change.
     TISInputSourceRef currentKeyboard = TISCopyCurrentKeyboardInputSource();
-    CFDataRef uchr = (CFDataRef)TISGetInputSourceProperty(currentKeyboard, kTISPropertyUnicodeKeyLayoutData);
-    const UCKeyboardLayout *keyboardLayout =
-    (const UCKeyboardLayout*)CFDataGetBytePtr(uchr);
-
+    CFDataRef uchr;
+    const UCKeyboardLayout *keyboardLayout;
+    if (!currentKeyboard) {
+        currentKeyboard = TISCopyCurrentKeyboardLayoutInputSource();
+    }
+    if (!currentKeyboard) {
+        // Nothing to be done here; bail early.
+        return nil;
+    } else {
+        uchr = (CFDataRef)TISGetInputSourceProperty(currentKeyboard, kTISPropertyUnicodeKeyLayoutData);
+    }
+    if (uchr) {
+        keyboardLayout = (const UCKeyboardLayout*)CFDataGetBytePtr(uchr);
+    } else {
+        return nil;
+    }
     if(keyboardLayout)
     {
         UInt32 deadKeyState = 0;
