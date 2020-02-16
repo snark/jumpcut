@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
@@ -72,7 +72,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="net.sf.jumpcut.preferences.general" id="DNp-1Q-y9Y">
-                                <view key="view" ambiguous="YES" id="bJx-qD-T7A">
+                                <view key="view" id="bJx-qD-T7A">
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -300,7 +300,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Hotkeys" identifier="net.sf.jumpcut.preferences.hotkey" id="itI-cS-vha">
-                                <view key="view" id="TaW-YB-WSw">
+                                <view key="view" ambiguous="YES" id="TaW-YB-WSw">
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
