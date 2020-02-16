@@ -7,12 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import <PTHotKey/PTHotKeyCenter.h>
-#import <PTHotKey/PTHotKey+ShortcutRecorder.h>
 #import <ServiceManagement/ServiceManagement.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import <Sparkle/Sparkle.h>
-#import "JCRecorderControl.h"
 
 #define _DISPLENGTH 40
 #define _MAX_REMEMBER 99
@@ -22,7 +19,7 @@
 @interface AppDelegate ()
 @property BezelWindow *bezel;
 @property JumpcutStore *clippingStore;
-@property (assign) IBOutlet JCRecorderControl *hotkeyRecorder;
+@property (assign) IBOutlet SRRecorderControl *hotkeyRecorder;
 @property BOOL isBezelDisplayed;
 @property BOOL isBezelPinned;
 @property BOOL issuedRememberResizeWarning;
@@ -38,6 +35,7 @@
 @property signed int stackPosition;
 @property NSStatusItem *statusItem;
 @property CGKeyCode veeCode;
+@property SRShortcutAction *mainHotkeyAction;
 
 @end
 
@@ -72,6 +70,7 @@
     self.isBezelPinned = NO;
     self.pbBlockCount = 0;
     self.pbCount = 0;
+
     self.shortcutTransformer = [[[SRKeyCodeTransformer alloc] init] retain];
     self.statusItem = [[NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength] retain];
     if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"menuIcon"] == 1 ) {
@@ -276,32 +275,21 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
 /* Hotkey handler */
 - (void)observeValueForKeyPath:(NSString *)aKeyPath ofObject:(id)anObject change:(NSDictionary *)aChange context:(void *)aContext
 {
+    SRGlobalShortcutMonitor *globalMonitor = [SRGlobalShortcutMonitor sharedMonitor];
     if ([aKeyPath isEqualToString:@"values.mainHotkey"])
     {
-        PTHotKeyCenter *hotKeyCenter = [PTHotKeyCenter sharedCenter];
-        PTHotKey *oldHotKey = [hotKeyCenter hotKeyWithIdentifier:aKeyPath];
-        [hotKeyCenter unregisterHotKey:oldHotKey];
-
-        NSDictionary *newShortcut = [anObject valueForKeyPath:aKeyPath];
-
-        if (newShortcut && (NSNull *)newShortcut != [NSNull null])
-        {
-            PTHotKey *newHotKey = [PTHotKey hotKeyWithIdentifier:aKeyPath
-                                                        keyCombo:newShortcut
-                                                          target:self
-                                                          action:@selector(hitMainHotkey:)];
-            [hotKeyCenter registerHotKey:newHotKey];
-            if ([newShortcut valueForKey:@"keyCode"] != [NSNull null]) {
-                long keyCode = [[newShortcut valueForKey:@"keyCode"] integerValue];
-                NSNumber *keyCodeNumber = [NSNumber numberWithLong:keyCode];
-                NSDictionary *hotKeyPreference = @{
-                                                   @"keyCode": keyCodeNumber,
-                                                   @"modifierFlags": [newShortcut valueForKey:@"modifierFlags"],
-                                                   };
-                [[NSUserDefaults standardUserDefaults] setValue:hotKeyPreference
-                                                         forKey:@"mainHotkey"];
-            }
+        //[globalMonitor removeAction:masterAction];
+        SRShortcut *newShortcut = [SRShortcut shortcutWithDictionary:[anObject valueForKeyPath:aKeyPath]];
+        SRShortcutAction *mainHotkeyAction = [SRShortcutAction
+                                       shortcutActionWithShortcut:newShortcut
+                                       target:self
+                                       action:@selector(hitMainHotkey:)
+                                       tag:1];
+        if (self.mainHotkeyAction) {
+            [globalMonitor removeAction:self.mainHotkeyAction];
         }
+        self.mainHotkeyAction = mainHotkeyAction;
+        [globalMonitor addAction:mainHotkeyAction forKeyEvent:SRKeyEventTypeDown];
     }
     else
         [super observeValueForKeyPath:aKeyPath ofObject:anObject change:aChange context:aContext];

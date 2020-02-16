@@ -7,16 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA3B200D2320BB8E0018D85C /* JCRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3B20092320B5FE0018D85C /* JCRecorderControl.m */; };
 		AA3F2D3521FEC5750027AF62 /* net.sf.jumpcut.preferences.appearance.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AA3F2D3221FEC5740027AF62 /* net.sf.jumpcut.preferences.appearance.tiff */; };
 		AA3F2D3621FEC5750027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AA3F2D3321FEC5740027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff */; };
 		AA3F2D3D21FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AA3F2D3921FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff */; };
 		AA92927C21685207009A2BE4 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = AA92927B21685206009A2BE4 /* Credits.html */; };
 		AA9D0F8222ED073E006D0C3A /* JumpcutHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAE89F0621FD036A00091FA5 /* JumpcutHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AAB4CC36214B28F20015C072 /* PTHotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB4CC33214B28E60015C072 /* PTHotKey.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		AAB4CC37214B28F20015C072 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB4CC31214B28E60015C072 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		AAB4CC39214B29220015C072 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAB4CC31214B28E60015C072 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AAB4CC3A214B29220015C072 /* PTHotKey.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAB4CC33214B28E60015C072 /* PTHotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AAB4CC44214D4E4E0015C072 /* RoundRecTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4CC3C214D4E4D0015C072 /* RoundRecTextField.m */; };
 		AAB4CC45214D4E4E0015C072 /* BezelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4CC3D214D4E4D0015C072 /* BezelWindow.m */; };
 		AAB4CC46214D4E4E0015C072 /* RoundRecBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB4CC40214D4E4D0015C072 /* RoundRecBezierPath.m */; };
@@ -46,19 +43,26 @@
 			remoteGlobalIDString = 939837800DA42965007F53F3;
 			remoteInfo = ShortcutRecorder.framework;
 		};
-		AAB4CC32214B28E60015C072 /* PBXContainerItemProxy */ = {
+		AAD7908E23F8CC2B00A071AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AAB4CC2A214B28E60015C072 /* ShortcutRecorder.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = E273122E1349EC9000A84433;
-			remoteInfo = PTHotKey.framework;
+			remoteGlobalIDString = BAC79C07216FCE8E00E45F23;
+			remoteInfo = Inspector;
 		};
-		AAB4CC34214B28E60015C072 /* PBXContainerItemProxy */ = {
+		AAD7909023F8CC2B00A071AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AAB4CC2A214B28E60015C072 /* ShortcutRecorder.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 0D6B2468180304DE00CE1142;
-			remoteInfo = Demo;
+			remoteGlobalIDString = BA722EC52161619200EFF192;
+			remoteInfo = "Unit Tests";
+		};
+		AAD7909223F8CC2B00A071AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAB4CC2A214B28E60015C072 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BAC79C16216FCE8F00E45F23;
+			remoteInfo = "UI Tests";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -71,7 +75,6 @@
 			files = (
 				AAEEBFB92302556500B9AF6C /* Sparkle.framework in CopyFiles */,
 				AAB4CC39214B29220015C072 /* ShortcutRecorder.framework in CopyFiles */,
-				AAB4CC3A214B29220015C072 /* PTHotKey.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,8 +91,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AA3B20092320B5FE0018D85C /* JCRecorderControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCRecorderControl.m; sourceTree = "<group>"; };
-		AA3B200C2320BA5D0018D85C /* JCRecorderControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCRecorderControl.h; sourceTree = "<group>"; };
 		AA3F2D3221FEC5740027AF62 /* net.sf.jumpcut.preferences.appearance.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.appearance.tiff; sourceTree = "<group>"; };
 		AA3F2D3321FEC5740027AF62 /* net.sf.jumpcut.preferences.hotkey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.hotkey.tiff; sourceTree = "<group>"; };
 		AA3F2D3921FEC69F0027AF62 /* net.sf.jumpcut.preferences.general.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = net.sf.jumpcut.preferences.general.tiff; sourceTree = "<group>"; };
@@ -144,7 +145,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAE89F1821FD03CC00091FA5 /* ServiceManagement.framework in Frameworks */,
-				AAB4CC36214B28F20015C072 /* PTHotKey.framework in Frameworks */,
 				AAB4CC37214B28F20015C072 /* ShortcutRecorder.framework in Frameworks */,
 				AAEEBFB82302553D00B9AF6C /* Sparkle.framework in Frameworks */,
 			);
@@ -165,9 +165,10 @@
 		AAB4CC2B214B28E60015C072 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				AAD7908F23F8CC2B00A071AE /* Inspector.app */,
 				AAB4CC31214B28E60015C072 /* ShortcutRecorder.framework */,
-				AAB4CC33214B28E60015C072 /* PTHotKey.framework */,
-				AAB4CC35214B28E60015C072 /* Demo.app */,
+				AAD7909123F8CC2B00A071AE /* Unit Tests.xctest */,
+				AAD7909323F8CC2B00A071AE /* UI Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,8 +184,6 @@
 				AAB4CC40214D4E4D0015C072 /* RoundRecBezierPath.m */,
 				AAB4CC42214D4E4D0015C072 /* RoundRecTextField.h */,
 				AAB4CC3C214D4E4D0015C072 /* RoundRecTextField.m */,
-				AA3B200C2320BA5D0018D85C /* JCRecorderControl.h */,
-				AA3B20092320B5FE0018D85C /* JCRecorderControl.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -358,18 +357,25 @@
 			remoteRef = AAB4CC30214B28E60015C072 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		AAB4CC33214B28E60015C072 /* PTHotKey.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PTHotKey.framework;
-			remoteRef = AAB4CC32214B28E60015C072 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AAB4CC35214B28E60015C072 /* Demo.app */ = {
+		AAD7908F23F8CC2B00A071AE /* Inspector.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
-			path = Demo.app;
-			remoteRef = AAB4CC34214B28E60015C072 /* PBXContainerItemProxy */;
+			path = Inspector.app;
+			remoteRef = AAD7908E23F8CC2B00A071AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AAD7909123F8CC2B00A071AE /* Unit Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Unit Tests.xctest";
+			remoteRef = AAD7909023F8CC2B00A071AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AAD7909323F8CC2B00A071AE /* UI Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "UI Tests.xctest";
+			remoteRef = AAD7909223F8CC2B00A071AE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -440,7 +446,6 @@
 				AAB4CC4D214D62230015C072 /* JumpcutClipping.m in Sources */,
 				AAB4CC47214D4E4E0015C072 /* NSBezierPathAdditions.m in Sources */,
 				AAB4CC44214D4E4E0015C072 /* RoundRecTextField.m in Sources */,
-				AA3B200D2320BB8E0018D85C /* JCRecorderControl.m in Sources */,
 				AAB4CC46214D4E4E0015C072 /* RoundRecBezierPath.m in Sources */,
 				AAED439D2148C37C001A2FCF /* UKPrefsPanel.m in Sources */,
 				AAED43852148B64C001A2FCF /* AppDelegate.m in Sources */,
