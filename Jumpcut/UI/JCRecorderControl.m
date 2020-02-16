@@ -8,7 +8,6 @@
 //  Taken directly from:
 //     https://github.com/Kentzo/ShortcutRecorder/wiki/Usage-of-pause-and-resume-methods-of-PTHotKeyCenter
 
-#import <PTHotKey/PTHotKeyCenter.h>
 #import "JCRecorderControl.h"
 
 @implementation JCRecorderControl
