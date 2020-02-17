@@ -7,10 +7,10 @@
 //
 
 #import "BezelWindow.h"
-#import "JCRecorderControl.h"
 #import "JumpcutClipping.h"
 #import "JumpcutStore.h"
 #import <ShortcutRecorder/SRCommon.h>
+#import <ShortcutRecorder/SRRecorderControl.h>
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 @property (strong, nonatomic) IBOutlet NSMenu *statusMenu;

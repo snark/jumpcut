@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
@@ -304,10 +304,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D1t-UG-qMu" customClass="JCRecorderControl">
-                                            <rect key="frame" x="115" y="323" width="120" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        </customView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5wY-Il-sch">
                                             <rect key="frame" x="18" y="323" width="97" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -318,7 +314,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZDh-HW-hZJ">
-                                            <rect key="frame" x="241" y="295" width="385" height="54"/>
+                                            <rect key="frame" x="284" y="295" width="342" height="54"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" selectable="YES" id="dci-Lb-eKM">
                                                 <font key="font" metaFont="system" size="10"/>
@@ -327,6 +323,10 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D1t-UG-qMu" customClass="SRRecorderControl">
+                                            <rect key="frame" x="121" y="321" width="140" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        </customView>
                                     </subviews>
                                 </view>
                             </tabViewItem>
