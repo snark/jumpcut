@@ -7,7 +7,8 @@ pre-1.0 releases are numbered as 0.XX.
 ### Fixed
 - keyCodeToString crashed when using Hiragana and Katakana keyboards;
 this code has been made more defensive and should work more robustly for
-non-Roman keyboards.  
+non-Roman keyboards. (Update: this change also fixed a similar bug with
+Pinyin keyboards.)
 
 ## [0.71] - 2019-09-19
 ### Fixed
