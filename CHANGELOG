@@ -5,6 +5,8 @@ pre-1.0 releases are numbered as 0.XX.
 
 ## Unreleased
 ### Fixed
+- "Bezel selection pastes" and "menu selection pastes" are once again
+separate items in the general preferences.
 - Jumpcut has updated to use the most recent ShortcutRecorder code
 as of February 2020; while the fork previously in use worked correctly
 on Macs running 10.13 (High Sierra) and later, a crashing bug was

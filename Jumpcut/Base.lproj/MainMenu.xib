@@ -72,28 +72,14 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="net.sf.jumpcut.preferences.general" id="DNp-1Q-y9Y">
-                                <view key="view" id="bJx-qD-T7A">
+                                <view key="view" ambiguous="YES" id="bJx-qD-T7A">
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button toolTip="Do not select a clipping when the modifier keys are released; instead, require use of the return key to select." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brA-Vf-sBR">
-                                            <rect key="frame" x="18" y="292" width="96" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Sticky bezel" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YtX-wX-E05">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                                <connections>
-                                                    <binding destination="eO6-7l-wpz" name="value" keyPath="values.stickyBezel" id="p13-Gv-XWG"/>
-                                                </connections>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.stickyBezel" id="IGx-0d-ddR"/>
-                                            </connections>
-                                        </button>
                                         <button toolTip="In addition to putting a selected clipping on the pasteboard, issue a standard &quot;paste&quot; command to the frontmost app." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bz6-2z-Fm1">
-                                            <rect key="frame" x="18" y="332" width="174" height="18"/>
+                                            <rect key="frame" x="18" y="332" width="158" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Clipping selection pastes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3ge-5r-sIg">
+                                            <buttonCell key="cell" type="check" title="Menu selection pastes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3ge-5r-sIg">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                                 <connections>
@@ -105,29 +91,19 @@
                                                 <binding destination="eO6-7l-wpz" name="value" keyPath="values.menuSelectionPastes" id="COR-aw-dgV"/>
                                             </connections>
                                         </button>
-                                        <button toolTip="When navigating through the bezel, allow scrolling from the last clipping to the first and from the first to the last." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gew-cP-RqR">
-                                            <rect key="frame" x="18" y="312" width="133" height="18"/>
+                                        <button toolTip="In addition to putting a selected clipping on the pasteboard, issue a standard &quot;paste&quot; command to the frontmost app." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B41-Pd-rLH">
+                                            <rect key="frame" x="18" y="312" width="158" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Wraparound bezel" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Yds-tM-yBa">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.wraparoundBezel" id="QPl-K6-ohr"/>
-                                            </connections>
-                                        </button>
-                                        <button toolTip="Instruct Jumpcut to skip clippings that are flagged as &quot;concealed&quot;, usually indicating passwords, in standard ways." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4QB-JP-fJ5">
-                                            <rect key="frame" x="18" y="272" width="193" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Ignore confidential clippings" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6Gf-TR-aTB">
+                                            <buttonCell key="cell" type="check" title="Bezel selection pastes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ier-5n-YfP">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                                 <connections>
-                                                    <binding destination="eO6-7l-wpz" name="value" keyPath="values.ignoreSensitiveClippingTypes" id="lYN-vI-K8H"/>
+                                                    <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.hasAccessibility" id="QFt-zn-n4l"/>
                                                 </connections>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.ignore" id="cpC-up-R3I"/>
+                                                <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.hasAccessibility" id="Ceo-zZ-d9r"/>
+                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.bezelSelectionPastes" id="cew-ZR-vYw"/>
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-nX-pIh">
@@ -159,117 +135,11 @@
                                                 <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.hasAccessibility" id="68O-iN-bkq"/>
                                             </connections>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gtf-IQ-bzI">
-                                            <rect key="frame" x="18" y="247" width="61" height="17"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Clippings" id="kaH-ui-e4W">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="itU-sx-3jC">
-                                            <rect key="frame" x="94" y="248" width="30" height="14"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Save" id="0rs-4v-tJC">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QtA-jZ-7zl">
-                                            <rect key="frame" x="128" y="242" width="156" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="Never" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ilu-zt-I6F" id="Dkl-Ig-doL">
-                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
-                                                <menu key="menu" id="HBf-29-iBq">
-                                                    <items>
-                                                        <menuItem title="Never" state="on" id="ilu-zt-I6F"/>
-                                                        <menuItem title="On exit" tag="1" id="Ifz-NG-uFd"/>
-                                                        <menuItem title="After each clip" tag="2" id="iac-ng-UkH"/>
-                                                    </items>
-                                                </menu>
-                                                <connections>
-                                                    <binding destination="eO6-7l-wpz" name="selectedTag" keyPath="values.savePreference" id="ZxE-Kp-PcS"/>
-                                                </connections>
-                                            </popUpButtonCell>
-                                        </popUpButton>
-                                        <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbi-DS-Sgx">
-                                            <rect key="frame" x="149" y="218" width="19" height="27"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="99" doubleValue="1" id="B1t-ya-aJ6">
-                                                <connections>
-                                                    <action selector="handleRememberNumPref:" target="Voe-Tx-rLC" id="8We-Gb-816"/>
-                                                </connections>
-                                            </stepperCell>
-                                            <connections>
-                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.rememberNum" id="xDe-0p-JVU"/>
-                                            </connections>
-                                        </stepper>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7V-gg-EPb">
                                             <rect key="frame" x="118" y="224" width="4" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" id="P4K-nP-8S7">
                                                 <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dh7-MC-gmP">
-                                            <rect key="frame" x="130" y="224" width="19" height="16"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="10" id="b1z-V3-sd9">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <connections>
-                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.rememberNum" id="SVZ-Zr-9O3"/>
-                                            </connections>
-                                        </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="be0-bt-tC7">
-                                            <rect key="frame" x="65" y="224" width="61" height="14"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Remember" id="1ro-cg-bLV">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWb-iU-ImI">
-                                            <rect key="frame" x="265" y="218" width="19" height="27"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="99" doubleValue="1" id="jcP-ve-VdQ"/>
-                                            <connections>
-                                                <action selector="setDisplayNumPref:" target="Voe-Tx-rLC" id="4el-NN-oeV"/>
-                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.displayNum" id="zJf-aC-L2k">
-                                                    <dictionary key="options">
-                                                        <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
-                                                    </dictionary>
-                                                </binding>
-                                            </connections>
-                                        </stepper>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fL9-vO-6dx">
-                                            <rect key="frame" x="246" y="224" width="19" height="16"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="10" id="a0q-ZG-0OH">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                <connections>
-                                                    <binding destination="eO6-7l-wpz" name="value" keyPath="values.displayNum" id="528-YV-c2f"/>
-                                                </connections>
-                                            </textFieldCell>
-                                            <connections>
-                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.displayNum" id="hIQ-Dl-QLt"/>
-                                            </connections>
-                                        </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eFl-bC-I0J">
-                                            <rect key="frame" x="201" y="224" width="43" height="14"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Display" id="MhI-hn-FSx">
-                                                <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -296,11 +166,156 @@
                                                 <action selector="checkForUpdates:" target="dse-dV-9Lq" id="wsw-c0-ada"/>
                                             </connections>
                                         </button>
+                                        <button toolTip="Do not select a clipping when the modifier keys are released; instead, require use of the return key to select." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brA-Vf-sBR">
+                                            <rect key="frame" x="18" y="271" width="96" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Sticky bezel" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YtX-wX-E05">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <binding destination="eO6-7l-wpz" name="value" keyPath="values.stickyBezel" id="p13-Gv-XWG"/>
+                                                </connections>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.stickyBezel" id="IGx-0d-ddR"/>
+                                            </connections>
+                                        </button>
+                                        <button toolTip="When navigating through the bezel, allow scrolling from the last clipping to the first and from the first to the last." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gew-cP-RqR">
+                                            <rect key="frame" x="18" y="291" width="133" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Wraparound bezel" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Yds-tM-yBa">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.wraparoundBezel" id="QPl-K6-ohr"/>
+                                            </connections>
+                                        </button>
+                                        <button toolTip="Instruct Jumpcut to skip clippings that are flagged as &quot;concealed&quot;, usually indicating passwords, in standard ways." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4QB-JP-fJ5">
+                                            <rect key="frame" x="18" y="251" width="193" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Ignore confidential clippings" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6Gf-TR-aTB">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <binding destination="eO6-7l-wpz" name="value" keyPath="values.ignoreSensitiveClippingTypes" id="lYN-vI-K8H"/>
+                                                </connections>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.ignore" id="cpC-up-R3I"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gtf-IQ-bzI">
+                                            <rect key="frame" x="18" y="226" width="61" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Clippings" id="kaH-ui-e4W">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="itU-sx-3jC">
+                                            <rect key="frame" x="94" y="227" width="30" height="14"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Save" id="0rs-4v-tJC">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QtA-jZ-7zl">
+                                            <rect key="frame" x="128" y="221" width="156" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" title="Never" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ilu-zt-I6F" id="Dkl-Ig-doL">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="HBf-29-iBq">
+                                                    <items>
+                                                        <menuItem title="Never" state="on" id="ilu-zt-I6F"/>
+                                                        <menuItem title="On exit" tag="1" id="Ifz-NG-uFd"/>
+                                                        <menuItem title="After each clip" tag="2" id="iac-ng-UkH"/>
+                                                    </items>
+                                                </menu>
+                                                <connections>
+                                                    <binding destination="eO6-7l-wpz" name="selectedTag" keyPath="values.savePreference" id="ZxE-Kp-PcS"/>
+                                                </connections>
+                                            </popUpButtonCell>
+                                        </popUpButton>
+                                        <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbi-DS-Sgx">
+                                            <rect key="frame" x="149" y="197" width="19" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="99" doubleValue="1" id="B1t-ya-aJ6">
+                                                <connections>
+                                                    <action selector="handleRememberNumPref:" target="Voe-Tx-rLC" id="8We-Gb-816"/>
+                                                </connections>
+                                            </stepperCell>
+                                            <connections>
+                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.rememberNum" id="xDe-0p-JVU"/>
+                                            </connections>
+                                        </stepper>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dh7-MC-gmP">
+                                            <rect key="frame" x="130" y="203" width="19" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="10" id="b1z-V3-sd9">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.rememberNum" id="SVZ-Zr-9O3"/>
+                                            </connections>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="be0-bt-tC7">
+                                            <rect key="frame" x="65" y="203" width="61" height="14"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Remember" id="1ro-cg-bLV">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWb-iU-ImI">
+                                            <rect key="frame" x="265" y="197" width="19" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="99" doubleValue="1" id="jcP-ve-VdQ"/>
+                                            <connections>
+                                                <action selector="setDisplayNumPref:" target="Voe-Tx-rLC" id="4el-NN-oeV"/>
+                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.displayNum" id="zJf-aC-L2k">
+                                                    <dictionary key="options">
+                                                        <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </stepper>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fL9-vO-6dx">
+                                            <rect key="frame" x="246" y="203" width="19" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="10" id="a0q-ZG-0OH">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <connections>
+                                                    <binding destination="eO6-7l-wpz" name="value" keyPath="values.displayNum" id="528-YV-c2f"/>
+                                                </connections>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="eO6-7l-wpz" name="value" keyPath="values.displayNum" id="hIQ-Dl-QLt"/>
+                                            </connections>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eFl-bC-I0J">
+                                            <rect key="frame" x="201" y="203" width="43" height="14"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Display" id="MhI-hn-FSx">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Hotkeys" identifier="net.sf.jumpcut.preferences.hotkey" id="itI-cS-vha">
-                                <view key="view" ambiguous="YES" id="TaW-YB-WSw">
+                                <view key="view" id="TaW-YB-WSw">
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="368"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
