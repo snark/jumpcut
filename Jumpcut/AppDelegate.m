@@ -610,8 +610,7 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
     [self performSelector:@selector(hideApp) withObject:nil afterDelay:0.2];
     if ( [self.clippingStore jcListCount] > self.stackPosition ) {
         [self addClipToPasteboardFromCount:self.stackPosition movingToTop:NO];
-        //        if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"bezelSelectionPastes"] ) {
-        if (1) {
+        if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"bezelSelectionPastes"] ) {
             [self performSelector:@selector(fakeCommandV) withObject:nil afterDelay:0.2];
         }
     }
@@ -851,7 +850,7 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
                                                              @"menuSelectionPastes",
                                                              [NSNumber numberWithBool:YES],
                                                              @"bezelSelectionPastes",
-                                                             [NSNumber numberWithBool:NO],
+                                                             [NSNumber numberWithBool:YES],
                                                              @"menuSelectionMovesToTop",
                                                              [NSNumber numberWithBool:NO],
                                                              @"ignoreSensitiveClippingTypes",
