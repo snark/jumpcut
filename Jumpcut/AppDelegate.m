@@ -53,7 +53,11 @@
     // If we're coming in from a pre-0.7 Jumpcut, set a flag to fire an alert the first time we run explaining
     // that manually updating Accessibility may be required
     self.showManualAccessibilityWarning = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] && [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"] < 0.6999;
-    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithFloat:0.7] forKey:@"lastRun"];
+    if (![[NSUserDefaults standardUserDefaults] floatForKey:@"lastRun"]) {
+        // Control-Option-V for new installs.
+        [[NSUserDefaults standardUserDefaults] setValue:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]] forKey:@"mainHotkey"];
+    }
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithFloat:0.72] forKey:@"lastRun"];
     [self registerDefaultPreferences];
     self.veeCode = findVeeCode();
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -832,8 +836,6 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
                                                              @"displayNum",
                                                              [NSNumber numberWithInt:80],
                                                              @"rememberNum",
-                                                             [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]],
-                                                             @"ShortcutRecorder mainHotkey",
                                                              [NSNumber numberWithInt:1],
                                                              @"savePreference",
                                                              [NSNumber numberWithInt:0],
