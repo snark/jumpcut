@@ -5,6 +5,8 @@ pre-1.0 releases are numbered as 0.XX.
 
 ## Unreleased
 ### Fixed
+- Fix issue preventing default hotkey (Control-Option-V) from being set
+on new installations of Jumpcut.
 - "Bezel selection pastes" and "menu selection pastes" are once again
 separate items in the general preferences.
 - Jumpcut has updated to use the most recent ShortcutRecorder code
