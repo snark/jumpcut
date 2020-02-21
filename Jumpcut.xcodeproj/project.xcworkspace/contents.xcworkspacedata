@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:net.sf.jumpcut.preferences.general.tiff">
-   </FileRef>
-   <FileRef
-      location = "group:net.sf.jumpcut.preferences.general.tiff">
-   </FileRef>
-   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>
