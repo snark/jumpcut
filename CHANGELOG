@@ -3,12 +3,11 @@
 Jumpcut predates the widespread adoption of semantic versioning; as such,
 pre-1.0 releases are numbered as 0.XX.
 
-## Unreleased
+## [0.72] - 2020-02-20
 ### Fixed
-- Fix issue preventing default hotkey (Control-Option-V) from being set
 on new installations of Jumpcut.
-- "Bezel selection pastes" and "menu selection pastes" are once again
-separate items in the general preferences.
+- Fixed issue preventing default hotkey (Control-Option-V) from being set
+for first-time users.
 - Jumpcut has updated to use the most recent ShortcutRecorder code
 as of February 2020; while the fork previously in use worked correctly
 on Macs running 10.13 (High Sierra) and later, a crashing bug was
@@ -20,6 +19,9 @@ normally.
 this code has been made more defensive and should work more robustly for
 non-Roman keyboards. (Update: this change also fixed a similar bug with
 Pinyin keyboards.)
+### Added
+- "Bezel selection pastes" and "menu selection pastes" are once again
+separate items in the general preferences.
 
 ## [0.71] - 2019-09-19
 ### Fixed
