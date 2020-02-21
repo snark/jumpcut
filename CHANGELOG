@@ -5,7 +5,6 @@ pre-1.0 releases are numbered as 0.XX.
 
 ## [0.72] - 2020-02-20
 ### Fixed
-on new installations of Jumpcut.
 - Fixed issue preventing default hotkey (Control-Option-V) from being set
 for first-time users.
 - Jumpcut has updated to use the most recent ShortcutRecorder code
