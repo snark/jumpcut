@@ -17,7 +17,8 @@ normally.
 - keyCodeToString crashed when using Hiragana and Katakana keyboards;
 this code has been made more defensive and should work more robustly for
 non-Roman keyboards. (Update: this change also fixed a similar bug with
-Pinyin keyboards.)
+Pinyin keyboards.) Thanks to Darren Gore for the initial bug report and
+assistance with reproduction and testing.
 ### Added
 - "Bezel selection pastes" and "menu selection pastes" are once again
 separate items in the general preferences.
