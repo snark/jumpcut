@@ -366,18 +366,22 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
 
 -(void) stackUp
 {
+    int count = [self.clippingStore jcListCount];
+    if ( count == 0 ) {
+        return;
+    }
     self.stackPosition--;
     if ( self.stackPosition < 0 ) {
         self.stackPosition = 0;
         if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"wraparoundBezel"] ) {
-            self.stackPosition = [self.clippingStore jcListCount] - 1;
+            self.stackPosition = count - 1;
             [self.bezel setCharString:[NSString stringWithFormat:@"%d", self.stackPosition + 1]];
             [self.bezel setText:[self.clippingStore clippingContentsAtPosition:self.stackPosition]];
         } else {
             self.stackPosition = 0;
         }
     }
-    if ( [self.clippingStore jcListCount] > self.stackPosition ) {
+    if ( count > self.stackPosition ) {
         [self.bezel setCharString:[NSString stringWithFormat:@"%d", self.stackPosition + 1]];
         [self.bezel setText:[self.clippingStore clippingContentsAtPosition:self.stackPosition]];
     }
@@ -385,8 +389,12 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
 
 -(void) stackDown
 {
+    int count = [self.clippingStore jcListCount];
+    if ( count == 0 ) {
+        return;
+    }
     self.stackPosition++;
-    if ( [self.clippingStore jcListCount] > self.stackPosition ) {
+    if ( count > self.stackPosition ) {
         [self.bezel setCharString:[NSString stringWithFormat:@"%d", self.stackPosition + 1]];
         [self.bezel setText:[self.clippingStore clippingContentsAtPosition:self.stackPosition]];
     } else {
@@ -584,9 +592,28 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
                     [self.bezel setText:[self.clippingStore clippingContentsAtPosition:self.stackPosition]];
                 }
                 break;
-            case NSBackspaceCharacter: break;
-            case NSDeleteCharacter: break;
-            case NSDeleteFunctionKey: break;
+            case NSBackspaceCharacter:
+            case NSDeleteCharacter:
+            case NSDeleteFunctionKey:
+                // Delete what's on the stack (if anything)
+                if ([self.clippingStore removeClippingAtPosition:self.stackPosition]) {
+                    // If there's anything left on the stackstack, move down
+                    if ([self.clippingStore jcListCount] == 0) {
+                        [self.bezel setCharString:@""];
+                        [self.bezel setText:@""];
+                        self.stackPosition = 0;
+                    } else {
+                        if ( self.stackPosition > [self.clippingStore jcListCount] ) {
+                            self.stackPosition = [self.clippingStore jcListCount] - 1;
+                        } else if ( self.stackPosition == [self.clippingStore jcListCount] ) {
+                            self.stackPosition = self.stackPosition - 1;
+                        }
+                        [self.bezel setCharString:[NSString stringWithFormat:@"%d", self.stackPosition + 1]];
+                        [self.bezel setText:[self.clippingStore clippingContentsAtPosition:self.stackPosition]];
+                    }
+                    [self updateMenu];
+                }
+                break;
             case 0x30: case 0x31: case 0x32: case 0x33: case 0x34:                 // Numeral
             case 0x35: case 0x36: case 0x37: case 0x38: case 0x39:
                 // We'll currently ignore the possibility that the user wants to do something with shift.
@@ -608,8 +635,9 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
 
 - (void)pasteFromStack
 {
+    int count = [self.clippingStore jcListCount];
     [self performSelector:@selector(hideApp) withObject:nil afterDelay:0.2];
-    if ( [self.clippingStore jcListCount] > self.stackPosition ) {
+    if ( count && count > self.stackPosition ) {
         [self addClipToPasteboardFromCount:self.stackPosition movingToTop:NO];
         if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"bezelSelectionPastes"] ) {
             [self performSelector:@selector(fakeCommandV) withObject:nil afterDelay:0.2];

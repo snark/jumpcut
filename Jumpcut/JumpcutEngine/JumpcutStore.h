@@ -73,7 +73,8 @@
 // Add a clipping
 -(void) addClipping:(NSString *)clipping ofType:(NSString *)type;
 
-// Delete a clipping
+// Delete a clipping -- falsifiable
+-(bool) removeClippingAtPosition:(int)position;
 
 // Delete all list clippings
 -(void) clearList;

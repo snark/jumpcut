@@ -10,6 +10,9 @@ relying on an exact match between the item on the pasteboard and the
 first clip in Jumpcut's stack, which fails to detect items coming from
 Jumpcut *not* at the top of the stack. We now set a marker and ignore
 any items that Jumpcut has pasted, regardless of their stack position.
+### Added
+- Individual clips may now be deleted by pressing the delete key or
+backspace when the clip is displayed in the bezel.
 ## [0.72] - 2020-02-20
 ### Fixed
 - Fixed issue preventing default hotkey (Control-Option-V) from being set
