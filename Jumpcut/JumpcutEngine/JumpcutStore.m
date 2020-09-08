@@ -48,6 +48,15 @@
     return self;
 }
 
+-(bool) removeClippingAtPosition:(int)position
+{
+    if ([jcList count] > position) {
+        [jcList removeObjectAtIndex:position];
+        return YES;
+    }
+    return NO;
+}
+
 // Add a clipping
 -(void) addClipping:(NSString *)clipping ofType:(NSString *)type{
     // Clipping object
