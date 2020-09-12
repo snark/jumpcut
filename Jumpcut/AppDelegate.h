@@ -21,7 +21,7 @@
 -(IBAction) showPreferencePanel:(id)sender;
 
 // Pasteboard and stack
--(void)pollPasteboard:(NSTimer *)timer;
+-(void) pollPasteboard:(NSTimer *)timer;
 -(void) saveEngine;
 
 // Bezel related
@@ -31,11 +31,10 @@
 -(void) metaKeysReleased;
 
 // Other actions
--(IBAction)clearClippingList:(id)sender;
--(IBAction)toggleLaunchAtLogin:(id)sender;
+-(IBAction) clearClippingList:(id)sender;
+-(IBAction) toggleLaunchAtLogin:(id)sender;
 -(IBAction) switchMenuIcon:(id)sender;
 -(void) keyboardInputSourceChanged:(NSNotification *)notification;
-
 
 @end
 
