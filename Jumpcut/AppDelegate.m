@@ -707,7 +707,6 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
             }
             // This is a cheaper test than for #4 on our list, so we'll do it first.
             if ([[self.jcPasteboard stringForType:@"net.sf.jumpcut.internal"] isEqual:@"1"]) {
-                NSLog(@"SBC internal");
                 return;
             }
             if ([self.clippingStore jcListCount] > 0 && [contents isEqualToString:[self.clippingStore clippingContentsAtPosition:0]]) {
