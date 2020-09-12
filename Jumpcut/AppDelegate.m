@@ -693,17 +693,13 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
             if (contents == nil) {
                 return;
             }
-            NSUInteger transientCount = [self.transientPasteboardTypes count];
-            for (NSUInteger i = 0; i < transientCount; i++) {
-                NSString *typeName = [self.transientPasteboardTypes objectAtIndex:i];
+            for (NSString *typeName in self.transientPasteboardTypes) {
                 if ([self.jcPasteboard stringForType:typeName]) {
                     return;
                 }
             }
-            NSUInteger sensitiveCount = [self.sensitivePasteboardTypes count];
             if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"ignoreSensitiveClippingTypes"] ) {
-                for (NSUInteger i = 0; i < sensitiveCount; i++) {
-                    NSString *typeName = [self.sensitivePasteboardTypes objectAtIndex:i];
+                for (NSString *typeName in self.sensitivePasteboardTypes) {
                     if ([self.jcPasteboard stringForType:typeName]) {
                         return;
                     }
