@@ -133,7 +133,7 @@
     self.veeCode = findVeeCode();
 }
 
-CGKeyCode findVeeCode() {
+CGKeyCode findVeeCode(void) {
     // Under ShortcutRecorder 1, there was a programatic method to determine a keyCode for a given character.
     // This no longer exists in the 64-bit-compatible ShortcutRecorder 2, so we need to do a quick check to
     // determine what matches "v"; this is 9 in the default case of English, QWERTY keyboards, which we optimize

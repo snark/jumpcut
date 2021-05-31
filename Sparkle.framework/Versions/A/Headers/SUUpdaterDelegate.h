@@ -36,7 +36,7 @@ SU_EXPORT extern NSString *const SUUpdaterAppcastItemNotificationKey;
 SU_EXPORT extern NSString *const SUUpdaterAppcastNotificationKey;
 
 // -----------------------------------------------------------------------------
-//	SUUpdater Delegate:
+// SUUpdater Delegate:
 // -----------------------------------------------------------------------------
 
 /*!
@@ -140,6 +140,13 @@ SU_EXPORT extern NSString *const SUUpdaterAppcastNotificationKey;
  \param updater The SUUpdater instance.
  */
 - (void)updaterDidNotFindUpdate:(SUUpdater *)updater;
+
+/*!
+ Called when the user clicks the Skip This Version button.
+ 
+ \param updater The SUUpdater instance.
+ */
+- (void)updater:(SUUpdater *)updater userDidSkipThisVersion:(SUAppcastItem *)item;
 
 /*!
  Called immediately before downloading the specified update.
