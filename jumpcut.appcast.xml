@@ -3,6 +3,13 @@
     <channel>
         <title>Jumpcut</title>
         <item>
+            <title>0.74</title>
+            <pubDate>Thu, 03 Jun 2021 22:57:12 -0400</pubDate>
+            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://snark.github.io/jumpcut/Jumpcut-0.74.html</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/snark/jumpcut/releases/download/v0.74/Jumpcut-0.74.tar.bz2" sparkle:version="20210531" sparkle:shortVersionString="0.74" length="2103268" type="application/octet-stream" sparkle:edSignature="m5B/Yplfq2988EbTadcpXI3nfJEwz3QYRCRaSLGodwJ2+VgFioy37CasFTU5BiXW2k0m0L0ScIhnklN3rpn9DQ=="/>
+        </item>
+        <item>
             <title>0.73</title>
             <pubDate>Sat, 10 Oct 2020 11:22:44 -0400</pubDate>
             <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
