@@ -3,6 +3,11 @@
 Jumpcut predates the widespread adoption of semantic versioning; as such,
 pre-1.0 releases are numbered as 0.XX.
 
+## [0.74] - 2021-05-31
+### Added
+- Jumpcut is now a universal binary and will run natively on Intel
+and Apple Silicon Macs.
+
 ## [0.73] - 2020-10-10
 ### Fixed
 - Improved detection of Jumpcut-created clips to prevent re-adding
