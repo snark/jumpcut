@@ -3,6 +3,13 @@
 Jumpcut predates the widespread adoption of semantic versioning; as such,
 pre-1.0 releases are numbered as 0.XX.
 
+## UNRELEASED
+### Fixed
+- Altered the check for transient types (and, optionally, concealed
+types) to use a less brittle method that does not require actually
+loading the pasteboard item. (Thanks to GitHub users acca and
+maybeageek for the bug reports.)
+
 ## [0.74] - 2021-05-31
 ### Added
 - Jumpcut is now a universal binary and will run natively on Intel

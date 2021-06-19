@@ -690,17 +690,23 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
             // 5. The clipping came from Jumpcut but is *not* the first item in the stack. (For instance, it was selected from the menu dropdown and not moved to the top.)
             // TODO: We should also provide a mechanism for excluding selected applications.
             NSString *contents = [self.jcPasteboard stringForType:type];
+            NSPasteboardItem *item = [[self.jcPasteboard pasteboardItems] objectAtIndex:0];
             if (contents == nil) {
                 return;
             }
+            // TODO:
+            // The odds of this being a noticeable bottleneck seem slim,
+            // but a potential improvement would be to cast the lists to sets
+            // on creation, then cast the item types to a set, and finally
+            // check for set intersection.
             for (NSString *typeName in self.transientPasteboardTypes) {
-                if ([self.jcPasteboard stringForType:typeName]) {
+                if ([[item types] containsObject:typeName]) {
                     return;
                 }
             }
             if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"ignoreSensitiveClippingTypes"] ) {
                 for (NSString *typeName in self.sensitivePasteboardTypes) {
-                    if ([self.jcPasteboard stringForType:typeName]) {
+                    if ([[item types] containsObject:typeName]) {
                         return;
                     }
                 }
