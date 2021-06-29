@@ -56,7 +56,7 @@
         // Control-Option-V for new installs.
         [[NSUserDefaults standardUserDefaults] setValue:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]] forKey:@"mainHotkey"];
     }
-    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithFloat:0.72] forKey:@"lastRun"];
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithFloat:0.74] forKey:@"lastRun"];
     [self registerDefaultPreferences];
     self.veeCode = findVeeCode();
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -733,25 +733,37 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
 }
 
 /* Misc. UX */
+-(void)clearClippings {
+    [self.clippingStore clearList];
+    [self updateMenu];
+    if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 1 ) {
+        [self saveEngine];
+    }
+    [self.bezel setText:@""];
+}
+
 -(IBAction)clearClippingList:(id)sender {
     NSUInteger choice;
     [NSApp activateIgnoringOtherApps:YES];
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle:NSLocalizedString(@"Clear", @"Alert panel - clear clippings list - clear")];
-    [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Alert panel - cancel")];
-    [alert setMessageText:NSLocalizedString(@"Clear Clipping List", @"Alert panel - clear clippings list - title")];
-    [alert setInformativeText:NSLocalizedString(@"Do you want to clear all recent clippings?", @"Alert panel - clear clippings list - message")];
-    choice = [alert runModal];
-    // on clear, zap the list and redraw the menu
-    if (choice == NSAlertFirstButtonReturn) {
-        [self.clippingStore clearList];
-        [self updateMenu];
-        if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 1 ) {
-            [self saveEngine];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"askBeforeClearingClippings"]) {
+        [alert addButtonWithTitle:NSLocalizedString(@"Clear", @"Alert panel - clear clippings list - clear")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Alert panel - cancel")];
+        [alert setMessageText:NSLocalizedString(@"Clear Clipping List", @"Alert panel - clear clippings list - title")];
+        [alert setInformativeText:NSLocalizedString(@"Do you want to clear all recent clippings?", @"Alert panel - clear clippings list - message")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Don't Ask Again", @"Alert panel - clear clippings list - don't ask me")];
+        choice = [alert runModal];
+        // on clear, zap the list and redraw the menu
+        if (choice == NSAlertFirstButtonReturn) {
+            [self clearClippings];
+        } else if (choice == NSAlertThirdButtonReturn) {
+            [self clearClippings];
+            [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:NO] forKey:@"askBeforeClearingClippings"];
         }
-        [self.bezel setText:@""];
+        [alert release];
+    } else {
+        [self clearClippings];
     }
-    [alert release];
 }
 
 -(IBAction) showPreferencePanel:(id)sender
@@ -890,6 +902,8 @@ NSString* keyCodeToString(CGKeyCode keyCode) {
                                                              @"menuSelectionMovesToTop",
                                                              [NSNumber numberWithBool:NO],
                                                              @"ignoreSensitiveClippingTypes",
+                                                             [NSNumber numberWithBool:YES],
+                                                             @"askBeforeClearingClippings",
                                                              nil]
      ];
 }

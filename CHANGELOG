@@ -9,6 +9,11 @@ pre-1.0 releases are numbered as 0.XX.
 types) to use a less brittle method that does not require actually
 loading the pasteboard item. (Thanks to GitHub users acca and
 maybeageek for the bug reports.)
+- Target macOS/OS X version has been set back to 10.10 from 10.11.
+### Added
+- The "Clear All" menu item's warning may now be disabled. (Set
+the "askBeforeClearingClippings" preference back to true to
+re-enable it if needed.)
 
 ## [0.74] - 2021-05-31
 ### Added
