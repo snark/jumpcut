@@ -56,7 +56,7 @@
         // Control-Option-V for new installs.
         [[NSUserDefaults standardUserDefaults] setValue:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:9],[NSNumber numberWithInt:786432],nil] forKeys:[NSArray arrayWithObjects:@"keyCode",@"modifierFlags",nil]] forKey:@"mainHotkey"];
     }
-    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithFloat:0.74] forKey:@"lastRun"];
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithFloat:0.75] forKey:@"lastRun"];
     [self registerDefaultPreferences];
     self.veeCode = findVeeCode();
     [[NSNotificationCenter defaultCenter] addObserver:self
