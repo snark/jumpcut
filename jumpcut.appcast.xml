@@ -1,0 +1,47 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Jumpcut</title>
+        <item>
+            <title>0.75</title>
+            <pubDate>Sat, 03 Jul 2021 08:42:32 -0400</pubDate>
+            <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://snark.github.io/jumpcut/Jumpcut-0.75.html</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/snark/jumpcut/releases/download/v0.75/Jumpcut-0.75.tar.bz2" sparkle:version="20210630" sparkle:shortVersionString="0.75" length="2148931" type="application/octet-stream" sparkle:edSignature="t1mNS/6Q8d6XcEI2s65ox1UeGFKracvlwJtQT0fMbtbseHEtH8xzorvLtFSg6Ib7zejOehWQNfe2E2qe8rOxCg=="/>
+        </item>
+        <item>
+            <title>0.74</title>
+            <pubDate>Thu, 03 Jun 2021 22:57:12 -0400</pubDate>
+            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/snark/jumpcut/releases/download/v0.74/Jumpcut-0.74.tar.bz2" sparkle:version="20210531" sparkle:shortVersionString="0.74" length="2103268" type="application/octet-stream" sparkle:edSignature="m5B/Yplfq2988EbTadcpXI3nfJEwz3QYRCRaSLGodwJ2+VgFioy37CasFTU5BiXW2k0m0L0ScIhnklN3rpn9DQ=="/>
+        </item>
+        <item>
+            <title>0.73</title>
+            <pubDate>Sat, 10 Oct 2020 11:22:44 -0400</pubDate>
+            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://snark.github.io/jumpcut/Jumpcut-0.73.html</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/snark/jumpcut/releases/download/v0.73/Jumpcut-0.73.tar.bz2" sparkle:version="20201010" sparkle:shortVersionString="0.73" length="1872114" type="application/octet-stream" sparkle:edSignature="ER657biJ16/KgzvAJMaz7A2KOZOwcno797SRJFLn08QHc5TKLF4M7G14ia4oOEht5ibIJoh9iHIN3i4KhYkeAQ=="/>
+        </item>
+        <item>
+            <title>0.72</title>
+            <pubDate>Thu, 20 Feb 2020 20:31:48 -0500</pubDate>
+            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://snark.github.io/jumpcut/Jumpcut-0.72.html</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/snark/jumpcut/releases/download/v0.72/Jumpcut-0.72.tar.bz2" sparkle:version="20200220" sparkle:shortVersionString="0.72" length="1871553" type="application/octet-stream" sparkle:edSignature="Sn5UCi4Md93AQ1xsRO/X+usFNM1WXEb+Vc1JozzNR2uCJjUfkCYOYzZQI33oya626iG46r0ExNjV/A3/lcM8CQ=="/>
+        </item>
+        <item>
+            <title>0.71</title>
+            <pubDate>Thu, 19 Sep 2019 16:38:58 -0400</pubDate>
+            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://snark.github.io/jumpcut/Jumpcut-0.71.html</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/snark/jumpcut/releases/download/v0.71/Jumpcut-0.71.tar.bz2" sparkle:version="20190919" sparkle:shortVersionString="0.71" length="1811084" type="application/octet-stream" sparkle:edSignature="Llf5v/9XDLcRWNf0Sabl93nUV1uOhHgda8rgfpvoxUNTWITjBjW7nYA8dkdBZ/IguQ6aWE3kQ2kI2i1WEb/oBw=="/>
+        </item>
+        <item>
+            <title>0.70</title>
+            <pubDate>Sat, 31 Aug 2019 21:52:09 -0400</pubDate>
+            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/snark/jumpcut/releases/download/v0.70/Jumpcut-0.70.tar.bz2" sparkle:version="20190901" sparkle:shortVersionString="0.70" length="1799899" type="application/octet-stream" sparkle:edSignature="9/ysZ4o0yCsmN2yDBFdiKuNN6yZ2SYVD2tFmAWgRmNVEbCzNj6a2zNH+g4rs+8PWNCWOlViUuFs1cH37HVLqBw=="/>
+            <sparkle:releaseNotesLink>https://snark.github.io/jumpcut/Jumpcut-0.70.html</sparkle:releaseNotesLink>
+        </item>
+    </channel>
+</rss>
