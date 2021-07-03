@@ -3,10 +3,16 @@
     <channel>
         <title>Jumpcut</title>
         <item>
+            <title>0.75</title>
+            <pubDate>Sat, 03 Jul 2021 08:42:32 -0400</pubDate>
+            <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://snark.github.io/jumpcut/Jumpcut-0.75.html</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/snark/jumpcut/releases/download/v0.75/Jumpcut-0.75.tar.bz2" sparkle:version="20210630" sparkle:shortVersionString="0.75" length="2148931" type="application/octet-stream" sparkle:edSignature="rV/2IT4VhguJ1cj2akZIIXLdZciLXLVs2x9ZMjQEHyvW/rOz9TwKO6WbqbsjjXWFA6Ofz90px3aPHA41YpJXCw=="/>
+        </item>
+        <item>
             <title>0.74</title>
             <pubDate>Thu, 03 Jun 2021 22:57:12 -0400</pubDate>
             <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
-            <sparkle:releaseNotesLink>https://snark.github.io/jumpcut/Jumpcut-0.74.html</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/snark/jumpcut/releases/download/v0.74/Jumpcut-0.74.tar.bz2" sparkle:version="20210531" sparkle:shortVersionString="0.74" length="2103268" type="application/octet-stream" sparkle:edSignature="m5B/Yplfq2988EbTadcpXI3nfJEwz3QYRCRaSLGodwJ2+VgFioy37CasFTU5BiXW2k0m0L0ScIhnklN3rpn9DQ=="/>
         </item>
         <item>

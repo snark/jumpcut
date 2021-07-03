@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Jumpcut 0.73</title>
+    </head>
+    <body>
+        <p>Jumpcut 0.75 improves an edge case where certain transient content, like that from many password managers, was
+        incorrectly being recorded.</p>
+        <ul>
+            <li>Altered the check for transient types (and, optionally, concealed types) to use a less brittle
+                method that does not require actually loading the pasteboard item. (Thanks to GitHub users acca
+                and maybeageek for the bug reports.)</li>
+            <li>Minimum macOS/OS X version has been set back to 10.10 from 10.11.</li>
+            <li>The &quot;Clear All&quot; menu item's warning may now be disabled. (Set the
+                &quot;askBeforeClearingClippings&quot; preference back to true to re-enable it if needed.)</li>
+        </ul>
+    </body>
+</html>
