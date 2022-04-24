@@ -3,6 +3,50 @@
 Jumpcut predates the widespread adoption of semantic versioning; as such,
 pre-1.0 releases are numbered as 0.XX.
 
+## [0.80] - 2022-04-24
+### Rewritten
+- Jumpcut has been rewritten in Swift 5. As my day job is not writing code for
+Macs (or Apple devices of any kind), my ability to work with Jumpcut's aging
+code base was starting to dwindle; when I hit bugs, workarounds in Stack
+Overflow often presumed use of Swift. This change will hopefully preserve
+Jumpcut as an approachable, maintainable code base (for me and others!) for
+years to come.
+### Changed
+- Target macOS/OS X version is now 10.11 (permanently, this time).
+- New icon by John Kenzie. Thanks, Johnny!
+- Switch to mainline (non-forked) version of ShortcutRecord. 
+- Jumpcut now uses Swift Package Manager instead of vendored libraries for
+Sparkle and ShortcutRecorder.
+- We now use the HotKey, Preference, and Sauce Swift libraries.
+### Fixed
+- Improved support for non-QWERTY keyboards and detection of keyboard layout
+changes via the Sauce library.
+- Improved detection of missing Accessibility access, including alerting on
+startup.
+### Added
+- "Headless" mode, with no display of a menu icon. Double-click the application
+icon to open the preference window (and disable headless mode if so desired).
+- "Additional options" in the menu, currently limited to explicit
+copy-to-pasteboard, paste, and delete.
+- "Toggle" behavior in the menu, switching to whichever of copy-to-pasteboard
+or paste is *not* the current preference.
+- "Reset Preferences" button, restoring factory default preferences (and
+removing the necessity of editing settings in the command line to undo "don't
+warn me again choices).
+- Configurable bezel text alignment.
+
+## [0.75] - 2021-06-30
+### Fixed
+- Altered the check for transient types (and, optionally, concealed
+types) to use a less brittle method that does not require actually
+loading the pasteboard item. (Thanks to GitHub users acca and
+maybeageek for the bug reports.)
+- Target macOS/OS X version has been set back to 10.10 from 10.11.
+### Added
+- The "Clear All" menu item's warning may now be disabled. (Set
+the "askBeforeClearingClippings" preference back to true to
+re-enable it if needed.)
+
 ## [0.75] - 2021-06-30
 ### Fixed
 - Altered the check for transient types (and, optionally, concealed

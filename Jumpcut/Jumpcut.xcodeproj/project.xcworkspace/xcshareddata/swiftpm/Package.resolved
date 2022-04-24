@@ -1,0 +1,52 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "HotKey",
+        "repositoryURL": "https://github.com/soffes/HotKey",
+        "state": {
+          "branch": "master",
+          "revision": "c13662730cb5bc28de4a799854bbb018a90649bf",
+          "version": null
+        }
+      },
+      {
+        "package": "Preferences",
+        "repositoryURL": "https://github.com/sindresorhus/Preferences",
+        "state": {
+          "branch": "main",
+          "revision": "ffeaaad1def45d0625720dc1adae3789cd9c167d",
+          "version": null
+        }
+      },
+      {
+        "package": "Sauce",
+        "repositoryURL": "https://github.com/Clipy/Sauce",
+        "state": {
+          "branch": "master",
+          "revision": "cb04052f0f45ed1615543a3693bf3b2f911ce4ba",
+          "version": null
+        }
+      },
+      {
+        "package": "ShortcutRecorder",
+        "repositoryURL": "https://github.com/Kentzo/ShortcutRecorder",
+        "state": {
+          "branch": null,
+          "revision": "07b065085e172d85b7b5a0f3cc05f6ed47ad5af1",
+          "version": "3.3.0"
+        }
+      },
+      {
+        "package": "Sparkle",
+        "repositoryURL": "https://github.com/sparkle-project/Sparkle",
+        "state": {
+          "branch": null,
+          "revision": "286edd1fa22505a9e54d170e9fd07d775ea233f2",
+          "version": "2.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
