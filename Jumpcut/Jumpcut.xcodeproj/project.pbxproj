@@ -1,0 +1,906 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA31159A280A60DD00CBAF91 /* JumpcutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA311599280A60DD00CBAF91 /* JumpcutTests.swift */; };
+		AA3115A4280A60DD00CBAF91 /* JumpcutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115A3280A60DD00CBAF91 /* JumpcutUITests.swift */; };
+		AA3115A6280A60DD00CBAF91 /* JumpcutUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115A5280A60DD00CBAF91 /* JumpcutUITestsLaunchTests.swift */; };
+		AA3115C7280A618900CBAF91 /* Clippings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115B3280A618900CBAF91 /* Clippings.swift */; };
+		AA3115C8280A618900CBAF91 /* HotkeyListeners.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115B4280A618900CBAF91 /* HotkeyListeners.swift */; };
+		AA3115C9280A618900CBAF91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA3115B5280A618900CBAF91 /* Assets.xcassets */; };
+		AA3115CA280A618900CBAF91 /* ClippingsPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115B6280A618900CBAF91 /* ClippingsPreferenceViewController.swift */; };
+		AA3115CB280A618900CBAF91 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115B7280A618900CBAF91 /* Settings.swift */; };
+		AA3115CC280A618900CBAF91 /* PreferenceWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115B8280A618900CBAF91 /* PreferenceWindow.swift */; };
+		AA3115CD280A618900CBAF91 /* StatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115B9280A618900CBAF91 /* StatusItem.swift */; };
+		AA3115CE280A618900CBAF91 /* GeneralPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115BA280A618900CBAF91 /* GeneralPreferenceViewController.swift */; };
+		AA3115CF280A618900CBAF91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115BB280A618900CBAF91 /* AppDelegate.swift */; };
+		AA3115D0280A618900CBAF91 /* HotkeyPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115BC280A618900CBAF91 /* HotkeyPreferenceViewController.swift */; };
+		AA3115D1280A618900CBAF91 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115BD280A618900CBAF91 /* MenuManager.swift */; };
+		AA3115D2280A618900CBAF91 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = AA3115BE280A618900CBAF91 /* Credits.html */; };
+		AA3115D3280A618900CBAF91 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115BF280A618900CBAF91 /* main.swift */; };
+		AA3115D4280A618900CBAF91 /* Bezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115C0280A618900CBAF91 /* Bezel.swift */; };
+		AA3115D5280A618900CBAF91 /* AppearancePreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115C1280A618900CBAF91 /* AppearancePreferenceViewController.swift */; };
+		AA3115D6280A618900CBAF91 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115C2280A618900CBAF91 /* Types.swift */; };
+		AA3115D8280A618900CBAF91 /* Interactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115C4280A618900CBAF91 /* Interactions.swift */; };
+		AA3115D9280A618900CBAF91 /* Pasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115C6280A618900CBAF91 /* Pasteboard.swift */; };
+		AA3115DC280A629900CBAF91 /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = AA3115DB280A629900CBAF91 /* Preferences */; };
+		AA3115DF280A62A900CBAF91 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = AA3115DE280A62A900CBAF91 /* HotKey */; };
+		AA3115E2280A62B900CBAF91 /* ShortcutRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = AA3115E1280A62B900CBAF91 /* ShortcutRecorder */; };
+		AA3115E5280A62CB00CBAF91 /* Sauce in Frameworks */ = {isa = PBXBuildFile; productRef = AA3115E4280A62CB00CBAF91 /* Sauce */; };
+		AAD0C43C280B78EB003482B4 /* JumpcutHelperAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD0C43B280B78EB003482B4 /* JumpcutHelperAppDelegate.swift */; };
+		AAD0C43E280B7AAF003482B4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD0C43D280B7AAF003482B4 /* main.swift */; };
+		AAD0C440280B7BA8003482B4 /* JumpcutHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAD0C42D280B779F003482B4 /* JumpcutHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AAD0C443280B7CB6003482B4 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD0C442280B7CB6003482B4 /* ServiceManagement.framework */; platformFilter = maccatalyst; };
+		AAD0C447280C9ECF003482B4 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = AAD0C446280C9ECF003482B4 /* Sparkle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA311596280A60DD00CBAF91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA31157E280A60DB00CBAF91 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA311585280A60DB00CBAF91;
+			remoteInfo = Jumpcut;
+		};
+		AA3115A0280A60DD00CBAF91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA31157E280A60DB00CBAF91 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA311585280A60DB00CBAF91;
+			remoteInfo = Jumpcut;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AAD0C43F280B7B8A003482B4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				AAD0C440280B7BA8003482B4 /* JumpcutHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AA311586280A60DB00CBAF91 /* Jumpcut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumpcut.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA311595280A60DD00CBAF91 /* JumpcutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JumpcutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA311599280A60DD00CBAF91 /* JumpcutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpcutTests.swift; sourceTree = "<group>"; };
+		AA31159F280A60DD00CBAF91 /* JumpcutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JumpcutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA3115A3280A60DD00CBAF91 /* JumpcutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpcutUITests.swift; sourceTree = "<group>"; };
+		AA3115A5280A60DD00CBAF91 /* JumpcutUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpcutUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AA3115B3280A618900CBAF91 /* Clippings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clippings.swift; sourceTree = "<group>"; };
+		AA3115B4280A618900CBAF91 /* HotkeyListeners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotkeyListeners.swift; sourceTree = "<group>"; };
+		AA3115B5280A618900CBAF91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA3115B6280A618900CBAF91 /* ClippingsPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClippingsPreferenceViewController.swift; sourceTree = "<group>"; };
+		AA3115B7280A618900CBAF91 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		AA3115B8280A618900CBAF91 /* PreferenceWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceWindow.swift; sourceTree = "<group>"; };
+		AA3115B9280A618900CBAF91 /* StatusItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItem.swift; sourceTree = "<group>"; };
+		AA3115BA280A618900CBAF91 /* GeneralPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferenceViewController.swift; sourceTree = "<group>"; };
+		AA3115BB280A618900CBAF91 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AA3115BC280A618900CBAF91 /* HotkeyPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotkeyPreferenceViewController.swift; sourceTree = "<group>"; };
+		AA3115BD280A618900CBAF91 /* MenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
+		AA3115BE280A618900CBAF91 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
+		AA3115BF280A618900CBAF91 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		AA3115C0280A618900CBAF91 /* Bezel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bezel.swift; sourceTree = "<group>"; };
+		AA3115C1280A618900CBAF91 /* AppearancePreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearancePreferenceViewController.swift; sourceTree = "<group>"; };
+		AA3115C2280A618900CBAF91 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		AA3115C3280A618900CBAF91 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA3115C4280A618900CBAF91 /* Interactions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactions.swift; sourceTree = "<group>"; };
+		AA3115C5280A618900CBAF91 /* Jumpcut.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Jumpcut.entitlements; sourceTree = "<group>"; };
+		AA3115C6280A618900CBAF91 /* Pasteboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pasteboard.swift; sourceTree = "<group>"; };
+		AAD0C42D280B779F003482B4 /* JumpcutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpcutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD0C436280B77A1003482B4 /* JumpcutHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JumpcutHelper.entitlements; sourceTree = "<group>"; };
+		AAD0C43A280B785C003482B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AAD0C43B280B78EB003482B4 /* JumpcutHelperAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpcutHelperAppDelegate.swift; sourceTree = "<group>"; };
+		AAD0C43D280B7AAF003482B4 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		AAD0C442280B7CB6003482B4 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA311583280A60DB00CBAF91 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA3115DF280A62A900CBAF91 /* HotKey in Frameworks */,
+				AA3115E2280A62B900CBAF91 /* ShortcutRecorder in Frameworks */,
+				AAD0C443280B7CB6003482B4 /* ServiceManagement.framework in Frameworks */,
+				AAD0C447280C9ECF003482B4 /* Sparkle in Frameworks */,
+				AA3115E5280A62CB00CBAF91 /* Sauce in Frameworks */,
+				AA3115DC280A629900CBAF91 /* Preferences in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA311592280A60DD00CBAF91 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA31159C280A60DD00CBAF91 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAD0C42A280B779E003482B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA31157D280A60DB00CBAF91 = {
+			isa = PBXGroup;
+			children = (
+				AA3115B2280A618900CBAF91 /* Jumpcut */,
+				AA311598280A60DD00CBAF91 /* JumpcutTests */,
+				AA3115A2280A60DD00CBAF91 /* JumpcutUITests */,
+				AAD0C42E280B779F003482B4 /* JumpcutHelper */,
+				AA311587280A60DB00CBAF91 /* Products */,
+				AAD0C441280B7CB6003482B4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AA311587280A60DB00CBAF91 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA311586280A60DB00CBAF91 /* Jumpcut.app */,
+				AA311595280A60DD00CBAF91 /* JumpcutTests.xctest */,
+				AA31159F280A60DD00CBAF91 /* JumpcutUITests.xctest */,
+				AAD0C42D280B779F003482B4 /* JumpcutHelper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA311598280A60DD00CBAF91 /* JumpcutTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA311599280A60DD00CBAF91 /* JumpcutTests.swift */,
+			);
+			path = JumpcutTests;
+			sourceTree = "<group>";
+		};
+		AA3115A2280A60DD00CBAF91 /* JumpcutUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AA3115A3280A60DD00CBAF91 /* JumpcutUITests.swift */,
+				AA3115A5280A60DD00CBAF91 /* JumpcutUITestsLaunchTests.swift */,
+			);
+			path = JumpcutUITests;
+			sourceTree = "<group>";
+		};
+		AA3115B2280A618900CBAF91 /* Jumpcut */ = {
+			isa = PBXGroup;
+			children = (
+				AA3115BF280A618900CBAF91 /* main.swift */,
+				AA3115BE280A618900CBAF91 /* Credits.html */,
+				AA3115BB280A618900CBAF91 /* AppDelegate.swift */,
+				AA3115C0280A618900CBAF91 /* Bezel.swift */,
+				AA3115B3280A618900CBAF91 /* Clippings.swift */,
+				AA3115B4280A618900CBAF91 /* HotkeyListeners.swift */,
+				AA3115C4280A618900CBAF91 /* Interactions.swift */,
+				AA3115BD280A618900CBAF91 /* MenuManager.swift */,
+				AA3115C6280A618900CBAF91 /* Pasteboard.swift */,
+				AA3115B7280A618900CBAF91 /* Settings.swift */,
+				AA3115B9280A618900CBAF91 /* StatusItem.swift */,
+				AA3115C2280A618900CBAF91 /* Types.swift */,
+				AAD0C444280C4DC6003482B4 /* Preferences */,
+				AA3115B5280A618900CBAF91 /* Assets.xcassets */,
+				AA3115C3280A618900CBAF91 /* Info.plist */,
+				AA3115C5280A618900CBAF91 /* Jumpcut.entitlements */,
+			);
+			path = Jumpcut;
+			sourceTree = "<group>";
+		};
+		AAD0C42E280B779F003482B4 /* JumpcutHelper */ = {
+			isa = PBXGroup;
+			children = (
+				AAD0C43D280B7AAF003482B4 /* main.swift */,
+				AAD0C43B280B78EB003482B4 /* JumpcutHelperAppDelegate.swift */,
+				AAD0C43A280B785C003482B4 /* Info.plist */,
+				AAD0C436280B77A1003482B4 /* JumpcutHelper.entitlements */,
+			);
+			path = JumpcutHelper;
+			sourceTree = "<group>";
+		};
+		AAD0C441280B7CB6003482B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AAD0C442280B7CB6003482B4 /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AAD0C444280C4DC6003482B4 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				AA3115B8280A618900CBAF91 /* PreferenceWindow.swift */,
+				AA3115C1280A618900CBAF91 /* AppearancePreferenceViewController.swift */,
+				AA3115B6280A618900CBAF91 /* ClippingsPreferenceViewController.swift */,
+				AA3115BA280A618900CBAF91 /* GeneralPreferenceViewController.swift */,
+				AA3115BC280A618900CBAF91 /* HotkeyPreferenceViewController.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA311585280A60DB00CBAF91 /* Jumpcut */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA3115A9280A60DD00CBAF91 /* Build configuration list for PBXNativeTarget "Jumpcut" */;
+			buildPhases = (
+				AA311582280A60DB00CBAF91 /* Sources */,
+				AA311583280A60DB00CBAF91 /* Frameworks */,
+				AA311584280A60DB00CBAF91 /* Resources */,
+				AAD0C43F280B7B8A003482B4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Jumpcut;
+			packageProductDependencies = (
+				AA3115DB280A629900CBAF91 /* Preferences */,
+				AA3115DE280A62A900CBAF91 /* HotKey */,
+				AA3115E1280A62B900CBAF91 /* ShortcutRecorder */,
+				AA3115E4280A62CB00CBAF91 /* Sauce */,
+				AAD0C446280C9ECF003482B4 /* Sparkle */,
+			);
+			productName = Jumpcut;
+			productReference = AA311586280A60DB00CBAF91 /* Jumpcut.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA311594280A60DD00CBAF91 /* JumpcutTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA3115AC280A60DD00CBAF91 /* Build configuration list for PBXNativeTarget "JumpcutTests" */;
+			buildPhases = (
+				AA311591280A60DD00CBAF91 /* Sources */,
+				AA311592280A60DD00CBAF91 /* Frameworks */,
+				AA311593280A60DD00CBAF91 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA311597280A60DD00CBAF91 /* PBXTargetDependency */,
+			);
+			name = JumpcutTests;
+			productName = JumpcutTests;
+			productReference = AA311595280A60DD00CBAF91 /* JumpcutTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AA31159E280A60DD00CBAF91 /* JumpcutUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA3115AF280A60DD00CBAF91 /* Build configuration list for PBXNativeTarget "JumpcutUITests" */;
+			buildPhases = (
+				AA31159B280A60DD00CBAF91 /* Sources */,
+				AA31159C280A60DD00CBAF91 /* Frameworks */,
+				AA31159D280A60DD00CBAF91 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA3115A1280A60DD00CBAF91 /* PBXTargetDependency */,
+			);
+			name = JumpcutUITests;
+			productName = JumpcutUITests;
+			productReference = AA31159F280A60DD00CBAF91 /* JumpcutUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		AAD0C42C280B779E003482B4 /* JumpcutHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAD0C437280B77A1003482B4 /* Build configuration list for PBXNativeTarget "JumpcutHelper" */;
+			buildPhases = (
+				AAD0C429280B779E003482B4 /* Sources */,
+				AAD0C42A280B779E003482B4 /* Frameworks */,
+				AAD0C42B280B779E003482B4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JumpcutHelper;
+			productName = JumpcutHelper;
+			productReference = AAD0C42D280B779F003482B4 /* JumpcutHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA31157E280A60DB00CBAF91 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					AA311585280A60DB00CBAF91 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					AA311594280A60DD00CBAF91 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = AA311585280A60DB00CBAF91;
+					};
+					AA31159E280A60DD00CBAF91 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = AA311585280A60DB00CBAF91;
+					};
+					AAD0C42C280B779E003482B4 = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
+					};
+				};
+			};
+			buildConfigurationList = AA311581280A60DB00CBAF91 /* Build configuration list for PBXProject "Jumpcut" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA31157D280A60DB00CBAF91;
+			packageReferences = (
+				AA3115DA280A629900CBAF91 /* XCRemoteSwiftPackageReference "Preferences" */,
+				AA3115DD280A62A900CBAF91 /* XCRemoteSwiftPackageReference "HotKey" */,
+				AA3115E0280A62B900CBAF91 /* XCRemoteSwiftPackageReference "ShortcutRecorder" */,
+				AA3115E3280A62CB00CBAF91 /* XCRemoteSwiftPackageReference "Sauce" */,
+				AAD0C445280C9ECF003482B4 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
+			productRefGroup = AA311587280A60DB00CBAF91 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA311585280A60DB00CBAF91 /* Jumpcut */,
+				AA311594280A60DD00CBAF91 /* JumpcutTests */,
+				AA31159E280A60DD00CBAF91 /* JumpcutUITests */,
+				AAD0C42C280B779E003482B4 /* JumpcutHelper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA311584280A60DB00CBAF91 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA3115C9280A618900CBAF91 /* Assets.xcassets in Resources */,
+				AA3115D2280A618900CBAF91 /* Credits.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA311593280A60DD00CBAF91 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA31159D280A60DD00CBAF91 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAD0C42B280B779E003482B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA311582280A60DB00CBAF91 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA3115D9280A618900CBAF91 /* Pasteboard.swift in Sources */,
+				AA3115D4280A618900CBAF91 /* Bezel.swift in Sources */,
+				AA3115D1280A618900CBAF91 /* MenuManager.swift in Sources */,
+				AA3115D5280A618900CBAF91 /* AppearancePreferenceViewController.swift in Sources */,
+				AA3115D6280A618900CBAF91 /* Types.swift in Sources */,
+				AA3115CF280A618900CBAF91 /* AppDelegate.swift in Sources */,
+				AA3115CE280A618900CBAF91 /* GeneralPreferenceViewController.swift in Sources */,
+				AA3115D0280A618900CBAF91 /* HotkeyPreferenceViewController.swift in Sources */,
+				AA3115D8280A618900CBAF91 /* Interactions.swift in Sources */,
+				AA3115CD280A618900CBAF91 /* StatusItem.swift in Sources */,
+				AA3115CA280A618900CBAF91 /* ClippingsPreferenceViewController.swift in Sources */,
+				AA3115CC280A618900CBAF91 /* PreferenceWindow.swift in Sources */,
+				AA3115D3280A618900CBAF91 /* main.swift in Sources */,
+				AA3115C7280A618900CBAF91 /* Clippings.swift in Sources */,
+				AA3115CB280A618900CBAF91 /* Settings.swift in Sources */,
+				AA3115C8280A618900CBAF91 /* HotkeyListeners.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA311591280A60DD00CBAF91 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA31159A280A60DD00CBAF91 /* JumpcutTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA31159B280A60DD00CBAF91 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA3115A4280A60DD00CBAF91 /* JumpcutUITests.swift in Sources */,
+				AA3115A6280A60DD00CBAF91 /* JumpcutUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAD0C429280B779E003482B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD0C43E280B7AAF003482B4 /* main.swift in Sources */,
+				AAD0C43C280B78EB003482B4 /* JumpcutHelperAppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA311597280A60DD00CBAF91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA311585280A60DB00CBAF91 /* Jumpcut */;
+			targetProxy = AA311596280A60DD00CBAF91 /* PBXContainerItemProxy */;
+		};
+		AA3115A1280A60DD00CBAF91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA311585280A60DB00CBAF91 /* Jumpcut */;
+			targetProxy = AA3115A0280A60DD00CBAF91 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AA3115A7280A60DD00CBAF91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA3115A8280A60DD00CBAF91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		AA3115AA280A60DD00CBAF91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Jumpcut/Jumpcut.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 20220424;
+				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Jumpcut/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.80;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA3115AB280A60DD00CBAF91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Jumpcut/Jumpcut.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 20220424;
+				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Jumpcut/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.80;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AA3115AD280A60DD00CBAF91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut.JumpcutTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jumpcut.app/Contents/MacOS/Jumpcut";
+			};
+			name = Debug;
+		};
+		AA3115AE280A60DD00CBAF91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut.JumpcutTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jumpcut.app/Contents/MacOS/Jumpcut";
+			};
+			name = Release;
+		};
+		AA3115B0280A60DD00CBAF91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut.JumpcutUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Jumpcut;
+			};
+			name = Debug;
+		};
+		AA3115B1280A60DD00CBAF91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut.JumpcutUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Jumpcut;
+			};
+			name = Release;
+		};
+		AAD0C438280B77A1003482B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = JumpcutHelper/JumpcutHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JumpcutHelper/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut.JumpcutHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AAD0C439280B77A1003482B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = JumpcutHelper/JumpcutHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JumpcutHelper/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut.JumpcutHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA311581280A60DB00CBAF91 /* Build configuration list for PBXProject "Jumpcut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA3115A7280A60DD00CBAF91 /* Debug */,
+				AA3115A8280A60DD00CBAF91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA3115A9280A60DD00CBAF91 /* Build configuration list for PBXNativeTarget "Jumpcut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA3115AA280A60DD00CBAF91 /* Debug */,
+				AA3115AB280A60DD00CBAF91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA3115AC280A60DD00CBAF91 /* Build configuration list for PBXNativeTarget "JumpcutTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA3115AD280A60DD00CBAF91 /* Debug */,
+				AA3115AE280A60DD00CBAF91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA3115AF280A60DD00CBAF91 /* Build configuration list for PBXNativeTarget "JumpcutUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA3115B0280A60DD00CBAF91 /* Debug */,
+				AA3115B1280A60DD00CBAF91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAD0C437280B77A1003482B4 /* Build configuration list for PBXNativeTarget "JumpcutHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAD0C438280B77A1003482B4 /* Debug */,
+				AAD0C439280B77A1003482B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA3115DA280A629900CBAF91 /* XCRemoteSwiftPackageReference "Preferences" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Preferences";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		AA3115DD280A62A900CBAF91 /* XCRemoteSwiftPackageReference "HotKey" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/HotKey";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		AA3115E0280A62B900CBAF91 /* XCRemoteSwiftPackageReference "ShortcutRecorder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kentzo/ShortcutRecorder";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		AA3115E3280A62CB00CBAF91 /* XCRemoteSwiftPackageReference "Sauce" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Clipy/Sauce";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		AAD0C445280C9ECF003482B4 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA3115DB280A629900CBAF91 /* Preferences */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3115DA280A629900CBAF91 /* XCRemoteSwiftPackageReference "Preferences" */;
+			productName = Preferences;
+		};
+		AA3115DE280A62A900CBAF91 /* HotKey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3115DD280A62A900CBAF91 /* XCRemoteSwiftPackageReference "HotKey" */;
+			productName = HotKey;
+		};
+		AA3115E1280A62B900CBAF91 /* ShortcutRecorder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3115E0280A62B900CBAF91 /* XCRemoteSwiftPackageReference "ShortcutRecorder" */;
+			productName = ShortcutRecorder;
+		};
+		AA3115E4280A62CB00CBAF91 /* Sauce */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3115E3280A62CB00CBAF91 /* XCRemoteSwiftPackageReference "Sauce" */;
+			productName = Sauce;
+		};
+		AAD0C446280C9ECF003482B4 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAD0C445280C9ECF003482B4 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = AA31157E280A60DB00CBAF91 /* Project object */;
+}
