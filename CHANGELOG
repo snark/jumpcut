@@ -3,6 +3,11 @@
 Jumpcut predates the widespread adoption of semantic versioning; as such,
 pre-1.0 releases are numbered as 0.XX.
 
+## Unreleased
+### Fixed
+- Jumpcut no longer crashes when "Clear All" is selected but there are no
+clippings on the stack.
+
 ## [0.80] - 2022-04-24
 ### Rewritten
 - Jumpcut has been rewritten in Swift 5. As my day job is not writing code for

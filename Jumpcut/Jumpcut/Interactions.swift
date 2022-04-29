@@ -160,6 +160,9 @@ public class Interactions: NSObject {
          * of this, because clear all is an uncommon behavior, not in a
          * hot loop.
          */
+        guard !stack.isEmpty() else {
+            return
+        }
         if let topOfPasteboard = pasteboard.topItem() {
             let topOfStack = stack.itemAt(position: 0)
             if topOfPasteboard == topOfStack!.fullText {
