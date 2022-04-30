@@ -7,6 +7,8 @@ pre-1.0 releases are numbered as 0.XX.
 ### Fixed
 - Jumpcut no longer crashes when "Clear All" is selected but there are no
 clippings on the stack.
+- We restore the Jumpcut bezel's ability to appear in any space when using
+Spaces.
 
 ## [0.80] - 2022-04-24
 ### Rewritten

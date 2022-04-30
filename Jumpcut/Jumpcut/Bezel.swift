@@ -193,6 +193,8 @@ public class Bezel {
         //
         //        contentView.addSubview(effectView)
 
+        self.window.collectionBehavior = NSWindow.CollectionBehavior.canJoinAllSpaces
+        self.window.collectionBehavior = NSWindow.CollectionBehavior.moveToActiveSpace
         self.window.contentView = contentView
     }
 
