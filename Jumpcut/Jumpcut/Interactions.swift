@@ -41,7 +41,7 @@ public class Interactions: NSObject {
             // Note that the event.keyCode is locale-independent; it gives us
             // the ANSI-standard keycode, representing the QWERTY layout. To
             // handle things otherwise, we'll do a lookup in Sauce.
-            if let key = Sauce.shared.key(for: Int(event.keyCode)) {
+            if let key = SauceKey.init(QWERTYKeyCode: Int(event.keyCode)) {
                 if key == self.delegate.hotKeyBase {
                     if event.modifierFlags.contains(.shift) {
                         self.stack.up()

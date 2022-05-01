@@ -11,6 +11,10 @@ clippings on the stack.
 Spaces.
 - A regression in the behavior of the stack positioning after deleting a
 clipping (moving the position to the bottom of the stack) has been corrected.
+- We've made additional tweaks to the Sauce key detection; this provides
+keyboard-independent mapping for foreign and non-QWERTY keyboard layouts, but
+was being applied inconsistently, leading to some issues with correct response
+to keydown events when the bezel was displayed.
 
 ## [0.80] - 2022-04-24
 ### Rewritten

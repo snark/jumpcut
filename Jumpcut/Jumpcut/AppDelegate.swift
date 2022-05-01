@@ -195,7 +195,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
         if var dictionary = UserDefaults.standard.value(forKey: SettingsPath.mainHotkey.rawValue)
             as? [AnyHashable: Any] {
             // A null keyCode means we're not using the hotkey. Return!
-            guard let keyCode = dictionary["keyCode"] as? Int else {
+            guard var keyCode = dictionary["keyCode"] as? Int else {
                 clearHotkey()
                 return
             }
@@ -216,6 +216,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
                         print("Updating key code to \(currentKeyCode!)")
                         #endif
                         dictionary["keyCode"] = currentKeyCode!
+                        // Replace the keyCode variable so that we set the
+                        // hotkey base correctly below.
+                        keyCode = Int(currentKeyCode!)
                     }
                 }
             }
@@ -240,6 +243,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
                     self.displayBezelAtPosition(position: self.stack.position)
                 }
             }
+            // Again, this uses the physical keyboard representation, rather than
+            // the actual character. For instance, using Dvorak, "V" is actually
+            // .period.
             hotKeyBase = SauceKey.init(QWERTYKeyCode: keyCode)
         } else {
             clearHotkey()
