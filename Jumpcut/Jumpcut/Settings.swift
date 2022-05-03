@@ -11,7 +11,8 @@ import ShortcutRecorder
 
 /* A set of user interface elements bound to our user defaults. */
 
-// NB: We dropped bezelAlpha, menuIcon, and savePreference in the transition to 0.80.
+// NB: We dropped bezelAlpha, menuIcon, and savePreference in the transition to 0.80;
+// menuIcon was restored in 0.81.
 enum SettingsPath: String {
     case askForAccessibility
     case askBeforeClearingClippings
@@ -68,6 +69,7 @@ private let settingsDefaults: [String: Any] = [
     SettingsPath.menuBehaviorFlags.rawValue: MenuBehaviorFlags.none.rawValue,
     SettingsPath.menuSelectionMovesToTop.rawValue: false, // TODO: still meaningful?
     SettingsPath.menuSelectionPastes.rawValue: true,
+    SettingsPath.menuIcon.rawValue: 0,
     SettingsPath.rememberNum.rawValue: 99,
     SettingsPath.stickyBezel.rawValue: false,
     SettingsPath.wraparoundBezel.rawValue: false

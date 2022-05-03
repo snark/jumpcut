@@ -46,6 +46,13 @@ final class AppearancePreferenceViewController: NSViewController, PreferencePane
         toolbarItemIcon.isTemplate = true
         self.preferredContentSize = CGSize(width: 480, height: 180)
         super.viewDidLoad()
+        let iconOptions = [
+            (title: "Jumpcut icon", value: 0),
+            (title: "White scissors (✄)", value: 1)
+        ]
+        let popupIcon = settings.popup(title: "Status bar icon", key: SettingsPath.menuIcon, options: iconOptions)
+        let popupIconStack = NSStackView(views: [popupIcon])
+
         let hideStatusCheckbox = settings.checkbox(
             title: "Hide menu icon",
             key: SettingsPath.hideStatusItem
@@ -56,15 +63,17 @@ final class AppearancePreferenceViewController: NSViewController, PreferencePane
         let hideStatusStack = NSStackView(views: [hideStatusCheckbox, hideStatusLabel ])
         hideStatusStack.orientation = .vertical
         hideStatusStack.alignment = .leading
-        let options = [
+        let alignOptions = [
             (title: "Center", value: BezelAlignment.center.rawValue),
             (title: "Left", value: BezelAlignment.left.rawValue),
             (title: "Right", value: BezelAlignment.right.rawValue),
             (title: "Single lines center; others left", value: BezelAlignment.smartAlign.rawValue)
         ]
-        let popup = settings.popup(title: "Bezel text alignment", key: SettingsPath.bezelAlignment, options: options)
-        let popupStack = NSStackView(views: [popup])
-        let grid = NSStackView(views: [ hideStatusStack, popupStack ])
+        let popupAlign = settings.popup(
+            title: "Bezel text alignment", key: SettingsPath.bezelAlignment, options: alignOptions
+        )
+        let popupAlignStack = NSStackView(views: [popupAlign])
+        let grid = NSStackView(views: [ popupIconStack, hideStatusStack, popupAlignStack ])
         grid.orientation = .vertical
         grid.alignment = .leading
         self.view.addSubview(grid)

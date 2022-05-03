@@ -41,9 +41,14 @@ class StatusItem {
 
     private func makeItem() {
         let delegate = (NSApplication.shared.delegate as? AppDelegate)!
+        let menuIconPref = UserDefaults.standard.value(forKey: SettingsPath.menuIcon.rawValue) as? Int ?? 0
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem!.button?.image = NSImage(named: NSImage.Name("scissors_bw"))
-        statusItem!.button?.image!.isTemplate = true
+        if menuIconPref == 1 {
+            statusItem!.button?.title = "✄"
+        } else {
+            statusItem!.button?.image = NSImage(named: NSImage.Name("scissors_bw"))
+            statusItem!.button?.image!.isTemplate = true
+        }
         statusItem!.button?.action = #selector(delegate.statusItemClicked(sender:))
         // See https://stackoverflow.com/questions/40062510/swift-nsstatusitem-remains-highlighted-after-right-click
         // for details on why we're using mouseup instead of mousedown.
