@@ -77,7 +77,7 @@ public class ClippingStack: NSObject {
         } else if self.position > 0 && self.position >= position {
             // If we're deleting at or above the stack position,
             // move up.
-            self.position = self.position - 1
+            self.position -= 1
         }
     }
 
