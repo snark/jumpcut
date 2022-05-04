@@ -18,6 +18,7 @@ enum SettingsPath: String {
     case askBeforeClearingClippings
     case bezelAlignment
     case bezelSelectionPastes
+    case bezelToTop
     case checkForUpdates
     case displayNum
     case hideStatusItem
@@ -54,6 +55,7 @@ private let settingsDefaults: [String: Any] = [
     SettingsPath.askBeforeClearingClippings.rawValue: true,
     SettingsPath.bezelAlignment.rawValue: BezelAlignment.center.rawValue,
     SettingsPath.bezelSelectionPastes.rawValue: true,
+    SettingsPath.bezelToTop.rawValue: 1,
     SettingsPath.checkForUpdates.rawValue: false,
     SettingsPath.displayNum.rawValue: 10,
     SettingsPath.hideStatusItem.rawValue: false,

@@ -314,6 +314,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
         if stack.itemAt(position: 0) == nil
             || stack.itemAt(position: 0)!.fullText != pasteboard.lastFound! {
             stack.add(item: pasteboard.lastFound!)
+            if UserDefaults.standard.value(
+                forKey: SettingsPath.bezelToTop.rawValue
+            ) as? Int ?? 1 == 1 {
+                stack.position = 0
+            } else {
+                stack.position += 1
+                // If we've reached the end, we'll bump along at the bottom
+                // for now.
+                if stack.position >= stack.count {
+                    stack.position -= 1
+                }
+            }
             menu.rebuild(stack: stack)
         }
     }

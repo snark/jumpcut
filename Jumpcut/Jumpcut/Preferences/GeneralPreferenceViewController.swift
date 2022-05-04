@@ -56,6 +56,17 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
         return separator
     }
 
+    private func makeBezelToTopRow(settings: Settings) -> NSStackView {
+        let options = [
+            (title: "Bezel position is unchanged", value: 0),
+            (title: "Bezel position returns to top", value: 1)
+        ]
+        let popup = settings.popup(title: "After recording a new clipping…",
+                                   key: SettingsPath.bezelToTop, options: options)
+        let popupStack = NSStackView(views: [popup])
+        return popupStack
+    }
+
     private func makeAdvancedMenuRow(settings: Settings) -> NSStackView {
         let options = [
             (title: "None", value: MenuBehaviorFlags.none.rawValue),
@@ -145,13 +156,14 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
         let advancedMenuRow = makeAdvancedMenuRow(settings: settings)
         let launchOnLogin = makeLaunchOnLogin(settings: settings)
         let sparkleRow = makeSparkleRow(settings: settings)
+        let bezelToTopRow = makeBezelToTopRow(settings: settings)
 
         let resetRow = makeResetRow()
 
         let grid = NSStackView(views: [
-            pasteMenu, pasteBezel, wrapBezel, stickyBezel, advancedMenuRow,
-            makeSeparator(), stepperViews, makeSeparator(), launchOnLogin,
-            sparkleRow, makeSeparator(), resetRow
+            pasteMenu, pasteBezel, bezelToTopRow, wrapBezel, stickyBezel,
+            advancedMenuRow, makeSeparator(), stepperViews, makeSeparator(),
+            launchOnLogin, sparkleRow, makeSeparator(), resetRow
         ])
         grid.orientation = .vertical
         grid.alignment = .leading

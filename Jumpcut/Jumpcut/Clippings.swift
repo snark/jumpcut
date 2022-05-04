@@ -40,10 +40,16 @@ struct JCListItem: Codable {
 public class ClippingStack: NSObject {
     private var store: ClippingStore
     public var position: Int = 0
+    public var count: Int {
+        return store.count
+    }
 
     override init() {
         self.store = ClippingStore()
         super.init()
+        self.store.maxLength = UserDefaults.standard.value(
+            forKey: SettingsPath.rememberNum.rawValue
+        ) as? Int ?? 99
     }
 
     func isEmpty() -> Bool {
@@ -136,7 +142,7 @@ private class ClippingStore: NSObject {
     private var _maxLength = 99
     private let plistPath: String
 
-    var maxLength: Int {
+    fileprivate var maxLength: Int {
         get { return _maxLength }
         set {
             let newValueWithMin = newValue < 10 ? 10 : newValue
