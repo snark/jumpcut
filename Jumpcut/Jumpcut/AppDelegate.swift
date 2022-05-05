@@ -264,8 +264,30 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
         case .downArrow, .rightArrow:
             self.stack.down()
             self.displayBezelAtPosition(position: self.stack.position)
-        case .one, .home:
-            self.stack.position = 0
+        case .pageDown:
+            if self.stack.position + 10 < self.stack.count {
+                self.stack.position += 10
+            } else if self.stack.count > 0 {
+                self.stack.position = self.stack.count - 1
+            }
+            self.displayBezelAtPosition(position: self.stack.position)
+        case .home:
+            handleBezelNumber(numberKey: .one)
+        case .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero,
+                .keypadOne, .keypadTwo, .keypadThree, .keypadFour, .keypadFive,
+                .keypadSix, .keypadSeven, .keypadEight, .keypadNine, .keypadZero:
+            handleBezelNumber(numberKey: key)
+        case .end:
+            if self.stack.count > 0 {
+                self.stack.position = self.stack.count - 1
+                self.displayBezelAtPosition(position: self.stack.position)
+            }
+        case .pageUp:
+            if self.stack.position > 10 {
+                self.stack.position -= 10
+            } else {
+                self.stack.position = 0
+            }
             self.displayBezelAtPosition(position: self.stack.position)
         case .upArrow, .leftArrow:
             self.stack.up()
@@ -283,6 +305,46 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
         default:
             break
         }
+    }
+
+    private func handleBezelNumber(numberKey: SauceKey) {
+        var number: Int?
+        switch numberKey {
+        case .one, .keypadOne:
+            number = 1
+        case .two, .keypadTwo:
+            number = 2
+        case .three, .keypadThree:
+            number = 3
+        case .four, .keypadFour:
+            number = 4
+        case .five, .keypadFive:
+            number = 5
+        case .six, .keypadSix:
+            number = 6
+        case .seven, .keypadSeven:
+            number = 7
+        case .eight, .keypadEight:
+            number = 8
+        case .nine, .keypadNine:
+            number = 9
+        case .zero, .keypadZero:
+            number = 10
+        default:
+            break
+        }
+        guard number != nil else {
+            return
+        }
+        guard self.stack.count > 0 else {
+            return
+        }
+        if self.stack.count >= number! {
+            self.stack.position = number! - 1
+        } else {
+            self.stack.position = self.stack.count - 1
+        }
+        self.displayBezelAtPosition(position: self.stack.position)
     }
 
     func displayBezelAtPosition(position: Int) {

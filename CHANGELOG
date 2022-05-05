@@ -4,7 +4,15 @@ Jumpcut predates the widespread adoption of semantic versioning; as such,
 pre-1.0 releases are numbered as 0.XX.
 
 ## Unreleased
+### Added
+- An option is now exposed allowing a choice between the bezel following the
+last used clipping as new clippings are added or moving to the top.
 ### Fixed
+- The bezel's behavior when entering number keys (displaying the clipping at
+that position, with "0" standing in for 10) is restored for keys other than
+"1".
+- The "remembering" stack size preference is now honored (although only
+checked at startup).
 - Jumpcut no longer crashes when "Clear All" is selected but there are no
 clippings on the stack.
 - We restore the Jumpcut bezel's ability to appear in any space when using
