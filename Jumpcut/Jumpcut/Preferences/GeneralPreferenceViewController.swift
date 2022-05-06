@@ -71,10 +71,10 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
         let options = [
             (title: "None", value: MenuBehaviorFlags.none.rawValue),
             (title: "Right click for additional options", value: MenuBehaviorFlags.rightAlt.rawValue),
-            (title: "…and shift click to switch paste behavior",
+            (title: "…and shift click to toggle paste",
              value: MenuBehaviorFlags.rightAltShiftToggle.rawValue),
             (title: "Shift click for additional options", value: MenuBehaviorFlags.shiftAlt.rawValue),
-            (title: "…and right click to switch paste behavior",
+            (title: "…and right click to toggle-paste",
              value: MenuBehaviorFlags.shiftAltRightToggle.rawValue)
         ]
         let popup = settings.popup(title: "Alternate menu behavior",
