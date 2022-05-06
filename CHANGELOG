@@ -3,7 +3,7 @@
 Jumpcut predates the widespread adoption of semantic versioning; as such,
 pre-1.0 releases are numbered as 0.XX.
 
-## Unreleased
+## [0.81] - 2022-05-05
 ### Added
 - An option is now exposed allowing a choice between the bezel following the
 last used clipping as new clippings are added or moving to the top.
