@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Jumpcut 0.81</title>
+    </head>
+    <body>
+        <p>Jumpcut 0.81 corrects a number of regressions introduced during the 0.80 rewrite:</p>
+        <ul>
+            <li>We restore the Jumpcut bezel's ability to appear in any space when using multiple
+                desktops through Mission Control.</li>
+            <li>Jumpcut no longer crashes when &quot;Clear All&quot; is selected but there are no
+                clippings on the stack.</li>
+            <li>Per multiple users' requests, Jumpcut can again be with in-memory clippings only,
+                with no save file committed to disk. (This feature must be turned on using Apple's
+                <tt>defaults</tt> command-line application.)</li>
+            <li>An option is now exposed allowing a choice between the bezel following the last-used
+                clipping as new clippings are added or moving to the top. This fixes a bug where the
+                bezel neither moved to the top nor followed the last used clip but instead stayed at
+                the same position throughout as clippings changed.</li>
+            <li>After user feedback, we restore jumping to clippings in the bezel using the number
+                keys. Additionally, &quot;Home&quot;, &quot;End&quot;, &quot;Page Up&quot;, and
+                &quot;Page Down&quot; have been restored to the Jumpcut 0.75 behavior.</li>
+            <li>The &quot;remembering&quot; stack size preference is now honored (although only checked
+                at startup).</li>
+            <li>We've made additional tweaks to bezel keydown handling, which was being applied
+                inconsistently for non-QWERTY keyboards. (Thanks to GitHub user Vadorequest!)</li>
+            <li>Finally, per a user request, the &quot;white scissors&quot; emoji is once again an
+                optional status bar icon.</li>
+        </ul>
+        <p>As always, please report any bugs or feature requests on GitHub. Thanks for using Jumpcut!</p>
+    </body>
+</html>
