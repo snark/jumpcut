@@ -12,7 +12,8 @@ import ShortcutRecorder
 /* A set of user interface elements bound to our user defaults. */
 
 // NB: We dropped bezelAlpha, menuIcon, and savePreference in the transition to 0.80;
-// menuIcon was restored in 0.81.
+// menuIcon was restored in 0.81, as was the boolean skipSave (replacing savePreference).
+// Note that skipSave is, as of 0.81, not exposed in the UI.
 enum SettingsPath: String {
     case askForAccessibility
     case askBeforeClearingClippings
@@ -31,6 +32,7 @@ enum SettingsPath: String {
     case menuSelectionMovesToTop
     case menuSelectionPastes
     case rememberNum
+    case skipSave
     case stickyBezel
     case wraparoundBezel
 }
@@ -73,6 +75,7 @@ private let settingsDefaults: [String: Any] = [
     SettingsPath.menuSelectionPastes.rawValue: true,
     SettingsPath.menuIcon.rawValue: 0,
     SettingsPath.rememberNum.rawValue: 99,
+    SettingsPath.skipSave.rawValue: false,
     SettingsPath.stickyBezel.rawValue: false,
     SettingsPath.wraparoundBezel.rawValue: false
 ]

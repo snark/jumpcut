@@ -23,6 +23,11 @@ clipping (moving the position to the bottom of the stack) has been corrected.
 keyboard-independent mapping for foreign and non-QWERTY keyboard layouts, but
 was being applied inconsistently, leading to some issues with correct response
 to keydown events when the bezel was displayed.
+### Restored
+- Per a user request, we've restored the option to run Jumpcut with in-memory
+clippings *only*. Since this is a good way to lose your data and interacts
+poorly with normal workflows, this is currently not exposed in the preferenes
+window but needs to be set via the `defaults` command-line tool.
 - Per a user request, we've restored the option to use the "white scissors"
 emoji as the status bar icon.
 

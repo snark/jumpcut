@@ -141,6 +141,7 @@ private class ClippingStore: NSObject {
     private var clippings: [Clipping] = []
     private var _maxLength = 99
     private let plistPath: String
+    private let skipSave: Bool
 
     fileprivate var maxLength: Int {
         get { return _maxLength }
@@ -154,9 +155,12 @@ private class ClippingStore: NSObject {
     override init() {
         // TK: We will eventually be switching this out to use SQLite3, but for
         // now we'll use a hardcoded path to a property list.
+        skipSave = UserDefaults.standard.value(forKey: SettingsPath.skipSave.rawValue) as? Bool ?? false
         plistPath = NSString(string: "~/Library/Application Support/Jumpcut/JCEngine.save").expandingTildeInPath
         super.init()
-        loadFromPlist(path: plistPath)
+        if !skipSave     {
+            loadFromPlist(path: plistPath)
+        }
     }
 
     func loadFromPlist(path: String) {
@@ -182,6 +186,9 @@ private class ClippingStore: NSObject {
     }
 
     private func writeClippings() {
+        guard !skipSave else {
+            return
+        }
         var items: [JCListItem] = []
         var counter = 0
         for clip in clippings {
