@@ -158,7 +158,7 @@ private class ClippingStore: NSObject {
         skipSave = UserDefaults.standard.value(forKey: SettingsPath.skipSave.rawValue) as? Bool ?? false
         plistPath = NSString(string: "~/Library/Application Support/Jumpcut/JCEngine.save").expandingTildeInPath
         super.init()
-        if !skipSave     {
+        if !skipSave {
             loadFromPlist(path: plistPath)
         }
     }
