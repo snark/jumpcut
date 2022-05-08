@@ -217,6 +217,22 @@ private struct OutletFontConfig {
     let monospaced: Bool
 }
 
+class EscapeView: NSView {
+    // ^-ESC doesn't naturally trigger a keyDown event; it's bound
+    // to cancelOperation by the default NSResponder. We may need
+    // to do something similar someday to avoid the Command-. binding.
+    override func performKeyEquivalent(with event: NSEvent) -> Bool {
+        switch Int(event.keyCode) {
+        // escape
+        case 53:
+            super.keyDown(with: event)
+            return true
+        default:
+            return super.performKeyEquivalent(with: event)
+        }
+    }
+}
+
 private class Outlet {
 
     let embedderView: NSView
@@ -234,7 +250,8 @@ private class Outlet {
         fontColor: NSColor = .white
     ) {
         let embedderRect = NSRect(x: 0, y: 0, width: width, height: height)
-        embedderView = NSView(frame: embedderRect)
+        embedderView = EscapeView(frame: embedderRect)
+
         textView = NSTextView(
             frame: NSRect(
                 x: 2, y: 1, width: embedderRect.size.width - 4, height: embedderRect.size.height - 2
@@ -336,6 +353,10 @@ class KeyCaptureWindow: NSWindow {
         if let keyDown = keyDownHandler {
             keyDown(event)
         }
+    }
+
+    override func cancelOperation(_ sender: Any?) {
+        return
     }
 
     override func flagsChanged(with event: NSEvent) {
