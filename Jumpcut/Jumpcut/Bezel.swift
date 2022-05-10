@@ -29,6 +29,7 @@ public class Bezel {
 
     let window: KeyCaptureWindow
     var shown: Bool = false
+    private var hasBeenOpened = false
 
     fileprivate var mainOutlet: Outlet
     fileprivate var secondaryOutlet: Outlet? // Used for display of stack number
@@ -204,9 +205,30 @@ public class Bezel {
     }
 
     public func show() {
+        // Position the bezel on the screen currently accepting
+        // keyboard input, not "the first screen where it appeared";
+        // if we don't do this every time, changing the display
+        // setup leads to bad behavior.
+        //
+        // Relatedly there's strange behavior the first time we display, if
+        // we're trying to display to a secondary screen, where it just...
+        // doesn't appear. (And AFAICT continues to not appear until you switch
+        // mainScreen to screen 0.) So we'll accept a mild inconvenience (a check
+        // against a boolean, and a possible flash of the bezel) to deal with this.
+        // For tracking down purposes of the bug, it seems to be caused by the
+        // center call occuring before the window has been shown makeKeyAndOrderFront;
+        // commenting out window.center() solves the issue while obviously introducing
+        // its own problems.
+        if let mainScreen = NSScreen.main {
+            if (!hasBeenOpened && mainScreen != NSScreen.screens[0]) {
+                window.makeKeyAndOrderFront(self)
+            }
+            window.setFrameOrigin(mainScreen.visibleFrame.origin)
+        }
         window.center()
         window.makeKeyAndOrderFront(self)
         shown = true
+        hasBeenOpened = true
     }
 
 }
