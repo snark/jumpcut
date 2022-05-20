@@ -7,6 +7,10 @@ pre-1.0 releases are numbered as 0.XX.
 ### Fixed
 - A strange regression where the escape key dismissed the bezel only when the
 control key was not pressed has been resolved.
+- Two issues with displaying the bezel in a multi-monitor setup (one where the
+bezel would continue to display where it was first shown, regardless of user
+focus; the other where the bezel would not display correctly if focus was on
+a second monitor at launch) have been resolved.
 
 ## [0.81] - 2022-05-05
 ### Added
