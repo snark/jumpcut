@@ -52,6 +52,10 @@ public class ClippingStack: NSObject {
         ) as? Int ?? 99
     }
 
+    func setSkipSave(value: Bool) {
+        store.skipSave = value
+    }
+
     func isEmpty() -> Bool {
         return store.count == 0
     }
@@ -141,7 +145,7 @@ private class ClippingStore: NSObject {
     private var clippings: [Clipping] = []
     private var _maxLength = 99
     private let plistPath: String
-    private let skipSave: Bool
+    fileprivate var skipSave: Bool
 
     fileprivate var maxLength: Int {
         get { return _maxLength }

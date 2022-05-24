@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA16DB6E28393DD000F73A2C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA16DB6D28393DD000F73A2C /* Constants.swift */; };
 		AA31159A280A60DD00CBAF91 /* JumpcutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA311599280A60DD00CBAF91 /* JumpcutTests.swift */; };
 		AA3115A4280A60DD00CBAF91 /* JumpcutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115A3280A60DD00CBAF91 /* JumpcutUITests.swift */; };
 		AA3115A6280A60DD00CBAF91 /* JumpcutUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115A5280A60DD00CBAF91 /* JumpcutUITestsLaunchTests.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA16DB6D28393DD000F73A2C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AA311586280A60DB00CBAF91 /* Jumpcut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumpcut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA311595280A60DD00CBAF91 /* JumpcutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JumpcutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA311599280A60DD00CBAF91 /* JumpcutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpcutTests.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				AA3115BB280A618900CBAF91 /* AppDelegate.swift */,
 				AA3115C0280A618900CBAF91 /* Bezel.swift */,
 				AA3115B3280A618900CBAF91 /* Clippings.swift */,
+				AA16DB6D28393DD000F73A2C /* Constants.swift */,
 				AA3115B4280A618900CBAF91 /* HotkeyListeners.swift */,
 				AA3115C4280A618900CBAF91 /* Interactions.swift */,
 				AA3115BD280A618900CBAF91 /* MenuManager.swift */,
@@ -411,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA3115D9280A618900CBAF91 /* Pasteboard.swift in Sources */,
+				AA16DB6E28393DD000F73A2C /* Constants.swift in Sources */,
 				AA3115D4280A618900CBAF91 /* Bezel.swift in Sources */,
 				AA3115D1280A618900CBAF91 /* MenuManager.swift in Sources */,
 				AA3115D5280A618900CBAF91 /* AppearancePreferenceViewController.swift in Sources */,

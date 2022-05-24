@@ -4,6 +4,11 @@ Jumpcut predates the widespread adoption of semantic versioning; as such,
 pre-1.0 releases are numbered as 0.XX.
 
 ## Unreleased
+### Added
+- Fully exposed access to the "skipSave" preference through the clippings
+preference pane (with confirmation message when activating skipSave). Changing
+the preference is not permitted if any clippings are on the stack.
+control key was not pressed has been resolved.
 ### Fixed
 - A strange regression where the escape key dismissed the bezel only when the
 control key was not pressed has been resolved.

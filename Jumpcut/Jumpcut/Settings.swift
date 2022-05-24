@@ -81,6 +81,30 @@ private let settingsDefaults: [String: Any] = [
 ]
 
 /*
+ A switch button that doesn't change when clicked; instead,
+ the action handles all its behavior.
+ */
+class FixedButton: NSButton {
+    override class var cellClass: AnyClass? {
+        get {
+            return Cell.classForCoder()
+        }
+        set(newValue) {
+            super.cellClass = newValue
+        }
+    }
+
+    class Cell: NSButtonCell {
+        override var nextState: Int {
+            // We don't allow clicks to alter the state, nor
+            // do we allow mixed state.
+            let currentState = self.state == .on ? 1 : 0
+            return currentState
+        }
+    }
+}
+
+/*
  We want to entirely encapsulate the ShortcutRecorder behavior
  in our nice setup methods, but in some cases we're going to
  need insight into what's going on. As such, we'll make a
@@ -177,6 +201,26 @@ public class Settings: NSObject {
         }
      }
 
+    private func setAttributedTitle(button: NSButton, title: String) {
+        let font = NSFont.systemFont(ofSize: NSFont.systemFontSize)
+        let attributes = [NSAttributedString.Key.font: font]
+        button.attributedTitle = NSAttributedString(string: title, attributes: attributes)
+    }
+
+    /*
+     A fixed checkbox is not bound to standard defaults; instead, the action is in
+     charge of checking the logic and switching the underlying variable. The caller is
+     currently responsible for setting the initial state.
+     */
+    func fixedCheckbox(title: String, target: AnyObject?, action: Selector?) -> NSButton {
+        let button = FixedButton()
+        button.setButtonType(NSButton.ButtonType.switch)
+        button.action = action
+        button.target = target
+        setAttributedTitle(button: button, title: title)
+        return button
+    }
+
     func checkbox(title: String, key: SettingsPath, target: AnyObject?, action: Selector?) -> NSButton {
         var button: NSButton
         if #available(macOS 10.12, *) {
@@ -186,7 +230,7 @@ public class Settings: NSObject {
             button.setButtonType(NSButton.ButtonType.switch)
             button.action = action
             button.target = target
-            button.title = title
+            setAttributedTitle(button: button, title: title)
         }
         button.bind(.value, to: standardDefaults, withKeyPath: key.rawValue, options: continuous)
         return button
