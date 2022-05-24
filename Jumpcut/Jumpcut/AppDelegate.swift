@@ -129,10 +129,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
     }
 
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        let headless = UserDefaults.standard.value(forKey: SettingsPath.hideStatusItem.rawValue) as? Bool ?? false
-        if headless {
-            self.openPreferencesWindow(sender: self)
-        }
+        // For now we're always going to reopen, regardless of headless status,
+        // to allow people to deal with notch situations.
+        self.openPreferencesWindow(sender: self)
         return true
     }
 
