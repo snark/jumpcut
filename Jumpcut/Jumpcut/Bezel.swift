@@ -220,7 +220,7 @@ public class Bezel {
         // commenting out window.center() solves the issue while obviously introducing
         // its own problems.
         if let mainScreen = NSScreen.main {
-            if (!hasBeenOpened && mainScreen != NSScreen.screens[0]) {
+            if !hasBeenOpened && mainScreen != NSScreen.screens[0] {
                 window.makeKeyAndOrderFront(self)
             }
             window.setFrameOrigin(mainScreen.visibleFrame.origin)
