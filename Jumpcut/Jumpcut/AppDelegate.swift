@@ -106,13 +106,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
     func showAccessibilityWarning() {
         let alert = NSAlert()
         alert.messageText = "Authorize Jumpcut to Paste"
-        alert.informativeText = """
-        Jumpcut needs your permission to paste clippings to other applications. Without this permission \
-        Jumpcut can place items on the pasteboard but cannot paste.
-
-        To give permission, go to System Preferences → Security & Privacy → Privacy → Accessibility, add \
-        Jumpcut, make sure the checkbox is checked, and restart Jumpcut.
-        """
+        alert.informativeText = Constants.Alerts.accessibilityWarning
         alert.alertStyle = .informational
         alert.addButton(withTitle: "Open Accessibility")
         alert.addButton(withTitle: "Continue")
@@ -189,6 +183,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
     func clearHotkey() {
         hotKey = nil
         hotKeyBase = nil
+    }
+
+    func stackEmpty() -> Bool {
+        return stack.isEmpty()
+    }
+
+    func setSkipSave(value: Bool) {
+        stack.setSkipSave(value: value)
     }
 
     func setHotkey() {
