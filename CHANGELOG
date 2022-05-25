@@ -3,7 +3,7 @@
 Jumpcut predates the widespread adoption of semantic versioning; as such,
 pre-1.0 releases are numbered as 0.XX.
 
-## Unreleased
+## [0.82] - 2022-05-25
 ### Added
 - Fully exposed access to the "skipSave" preference through the clippings
 preference pane (with confirmation message when activating skipSave). Changing
