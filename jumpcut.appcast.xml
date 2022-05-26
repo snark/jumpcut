@@ -3,7 +3,7 @@
     <channel>
         <title>Jumpcut</title>
         <item>
-            <title>0.81</title>
+            <title>0.82</title>
             <pubDate>Fri, 06 May 2022 21:44:00 -0400</pubDate>
             <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
             <sparkle:releaseNotesLink>https://snark.github.io/jumpcut/Jumpcut-0.82.html</sparkle:releaseNotesLink>
