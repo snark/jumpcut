@@ -38,10 +38,14 @@ final class ClippingsPreferenceViewController: NSViewController, PreferencePane 
             target: self,
             action: #selector(toggleSkipSave)
         )
+        let btn4 = settings.checkbox(
+            title: "Allow whitespace clippings",
+            key: SettingsPath.allowWhitespaceClippings
+        )
         skipSaveButton!.state = UserDefaults.standard.value(
             forKey: SettingsPath.skipSave.rawValue
         ) as? Bool ?? false ? .on : .off
-        let grid = NSStackView(views: [ btn1, btn2, skipSaveButton! ])
+        let grid = NSStackView(views: [ btn1, btn2, skipSaveButton!, btn4 ])
         grid.orientation = .vertical
         grid.alignment = .leading
         self.view.addSubview(grid)

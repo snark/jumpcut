@@ -15,6 +15,7 @@ import ShortcutRecorder
 // menuIcon was restored in 0.81, as was the boolean skipSave (replacing savePreference).
 // Note that skipSave is, as of 0.81, not exposed in the UI.
 enum SettingsPath: String {
+    case allowWhitespaceClippings
     case askForAccessibility
     case askBeforeClearingClippings
     case bezelAlignment
@@ -53,6 +54,7 @@ public enum MenuBehaviorFlags: String {
 }
 
 private let settingsDefaults: [String: Any] = [
+    SettingsPath.allowWhitespaceClippings.rawValue: false,
     SettingsPath.askForAccessibility.rawValue: true,
     SettingsPath.askBeforeClearingClippings.rawValue: true,
     SettingsPath.bezelAlignment.rawValue: BezelAlignment.center.rawValue,

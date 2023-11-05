@@ -91,9 +91,12 @@ class Pasteboard {
              */
             let ignoreSensitive = UserDefaults.standard.bool(forKey: SettingsPath.ignoreSensitiveClippingTypes.rawValue)
             let ignoreLarge = UserDefaults.standard.bool(forKey: SettingsPath.ignoreLargeClippings.rawValue)
+            let allowWhitespace = UserDefaults.standard.value(
+                forKey: SettingsPath.allowWhitespaceClippings.rawValue
+            ) as? Bool ?? false
             if let itemString = item.string(forType: .string) {
                 if
-                    !itemString.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+                    (allowWhitespace || !itemString.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) &&
                     item.types.filter(transientTypes.contains).count == 0 &&
                     (!ignoreSensitive || item.types.filter(sensitiveTypes.contains).count == 0) &&
                     (!ignoreLarge || itemString.count <= 50000) &&

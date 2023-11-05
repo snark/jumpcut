@@ -171,11 +171,17 @@ private class ClippingStore: NSObject {
         let fullPath = NSString(string: path).expandingTildeInPath
         let url = URL(fileURLWithPath: fullPath)
         var savedValues: JCEngine
+        let allowWhitespace = UserDefaults.standard.value(
+            forKey: SettingsPath.allowWhitespaceClippings.rawValue
+        ) as? Bool ?? false
         if let data = try? Data(contentsOf: url) {
             do {
                 savedValues = try PropertyListDecoder().decode(JCEngine.self, from: data)
                 for clipDict in savedValues.jcList.reversed() {
-                    if !clipDict.Contents.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    let clipIsEmpty = clipDict.Contents.trimmingCharacters(
+                        in: .whitespacesAndNewlines
+                    ).isEmpty
+                    if !clipIsEmpty || allowWhitespace {
                         self.add(item: clipDict.Contents)
                     }
                 }
