@@ -20,24 +20,9 @@ public class MenuManager {
         delegate = (NSApplication.shared.delegate as? AppDelegate)!
     }
 
-    // NB: Refactor this -- DRY with AppDelegate.checkMenuBehavior
     private func checkToggle() -> Bool {
-        let wanted: MenuBehaviorFlags
-        if let trigger = (
-            UserDefaults.standard.value(forKey: SettingsPath.menuBehaviorFlags.rawValue) as? String
-        ) {
-            wanted = MenuBehaviorFlags(rawValue: trigger) ?? MenuBehaviorFlags.none
-        } else {
-            wanted = MenuBehaviorFlags.none
-        }
-        let event = self.triggerEvent
-        if event != nil && wanted == MenuBehaviorFlags.shiftAltRightToggle {
-            return event!.type == NSEvent.EventType.rightMouseUp
-        } else if event != nil && wanted == MenuBehaviorFlags.rightAltShiftToggle {
-            return event!.modifierFlags.contains(.shift)
-        } else {
-            return false
-        }
+        guard let event = self.triggerEvent else { return false }
+        return delegate?.checkMenuBehavior(event) ?? false
     }
 
     public func shouldSelectionPaste() -> Bool {

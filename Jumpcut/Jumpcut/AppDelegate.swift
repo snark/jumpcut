@@ -147,8 +147,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
         menu.rebuild(stack: stack)
     }
 
-    // NB: Refactor this -- DRY with MenuManager.checkToggle
-    private func checkMenuBehavior(_ event: NSEvent) -> Bool {
+    func checkMenuBehavior(_ event: NSEvent) -> Bool {
         let wanted: MenuBehaviorFlags
         if let trigger = (
             UserDefaults.standard.value(forKey: SettingsPath.menuBehaviorFlags.rawValue) as? String
