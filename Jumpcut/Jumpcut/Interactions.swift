@@ -45,13 +45,13 @@ public class Interactions: NSObject {
                 if key == self.delegate.hotKeyBase {
                     if event.modifierFlags.contains(.shift) {
                         self.stack.up()
-                        self.delegate.displayBezelAtPosition(position: self.stack.position)
+                        self.displayBezelAtPosition(position: self.stack.position)
                     } else {
                         self.stack.down()
-                        self.delegate.displayBezelAtPosition(position: self.stack.position)
+                        self.displayBezelAtPosition(position: self.stack.position)
                     }
                 } else {
-                    self.delegate.bezelKeyDownBehavior(key: key)
+                    self.bezelKeyDownBehavior(key: key)
                 }
             }
         })
@@ -100,6 +100,120 @@ public class Interactions: NSObject {
             paste(clipping!)
         } else {
             place(clipping!)
+        }
+    }
+
+    private func handleBezelNumber(numberKey: SauceKey) {
+        var number: Int?
+        switch numberKey {
+        case .one, .keypadOne:
+            number = 1
+        case .two, .keypadTwo:
+            number = 2
+        case .three, .keypadThree:
+            number = 3
+        case .four, .keypadFour:
+            number = 4
+        case .five, .keypadFive:
+            number = 5
+        case .six, .keypadSix:
+            number = 6
+        case .seven, .keypadSeven:
+            number = 7
+        case .eight, .keypadEight:
+            number = 8
+        case .nine, .keypadNine:
+            number = 9
+        case .zero, .keypadZero:
+            number = 10
+        default:
+            break
+        }
+        guard number != nil else {
+            return
+        }
+        guard self.stack.count > 0 else {
+            return
+        }
+        if self.stack.count >= number! {
+            self.stack.position = number! - 1
+        } else {
+            self.stack.position = self.stack.count - 1
+        }
+        displayBezelAtPosition(position: self.stack.position)
+    }
+
+    public func displayBezelAtPosition(position: Int) {
+        guard !stack.isEmpty() else {
+            return
+        }
+        // Note that our display is one-indexed, but the stack itself
+        // is zero-indexed.
+        var displayPos: Int
+        var text: String
+        var item = stack.itemAt(position: position)
+        if item == nil {
+            item = stack.itemAt(position: 0)
+        }
+        text = item!.fullText
+        displayPos = position + 1
+        bezel.setText(text: text)
+        bezel.setSecondaryText(text: String(displayPos))
+        if !bezel.shown {
+            bezel.show()
+        }
+        NSApp.activate(ignoringOtherApps: true)
+    }
+
+    func bezelKeyDownBehavior(key: SauceKey) {
+        // Possible improvement: Use a lookup table instead of a switch statement
+        // to enable adding behavior based on a preference.
+        switch key {
+        case .escape:
+            delegate.hide()
+        case .downArrow, .rightArrow:
+            self.stack.down()
+            displayBezelAtPosition(position: self.stack.position)
+        case .pageDown:
+            if self.stack.position + 10 < self.stack.count {
+                self.stack.position += 10
+            } else if self.stack.count > 0 {
+                self.stack.position = self.stack.count - 1
+            }
+            displayBezelAtPosition(position: self.stack.position)
+        case .home:
+            handleBezelNumber(numberKey: .one)
+        case .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero,
+                .keypadOne, .keypadTwo, .keypadThree, .keypadFour, .keypadFive,
+                .keypadSix, .keypadSeven, .keypadEight, .keypadNine, .keypadZero:
+            handleBezelNumber(numberKey: key)
+        case .end:
+            if self.stack.count > 0 {
+                self.stack.position = self.stack.count - 1
+                displayBezelAtPosition(position: self.stack.position)
+            }
+        case .pageUp:
+            if self.stack.position > 10 {
+                self.stack.position -= 10
+            } else {
+                self.stack.position = 0
+            }
+            displayBezelAtPosition(position: self.stack.position)
+        case .upArrow, .leftArrow:
+            self.stack.up()
+            displayBezelAtPosition(position: self.stack.position)
+        case .return, .keypadEnter:
+            bezelSelection()
+        case .delete, .forwardDelete:
+            self.stack.delete()
+            self.menu.rebuild(stack: stack)
+            if self.stack.isEmpty() {
+                delegate.hide()
+            } else {
+                displayBezelAtPosition(position: self.stack.position)
+            }
+        default:
+            break
         }
     }
 

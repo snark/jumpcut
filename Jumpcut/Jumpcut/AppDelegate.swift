@@ -77,20 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
         }
         #endif
 
-        // We can't use KV observers until we are only targeting 10.15
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(updateStateFromSettings),
-            name: UserDefaults.didChangeNotification,
-            object: nil
-        )
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(updateKeyboardCodes),
-            name: NSNotification.Name.SauceSelectedKeyboardKeyCodesChanged,
-            object: nil
-        )
+        setObservers()
 
         if !AXIsProcessTrusted() &&
             UserDefaults.standard.value(forKey: SettingsPath.askForAccessibility.rawValue) as? Bool ?? true {
@@ -101,6 +88,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
                 showAccessibilityWarning()
                 #endif
         }
+    }
+
+    private func setObservers() {
+        // We can't use KV observers until we are only targeting 10.15
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateStateFromSettings),
+            name: UserDefaults.didChangeNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateKeyboardCodes),
+            name: NSNotification.Name.SauceSelectedKeyboardKeyCodesChanged,
+            object: nil
+        )
     }
 
     func showAccessibilityWarning() {
@@ -237,10 +240,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
                     return
                 }
                 if !self.bezel.shown {
-                    self.displayBezelAtPosition(position: self.stack.position)
+                    self.interactions.displayBezelAtPosition(position: self.stack.position)
                 } else {
                     self.stack.down()
-                    self.displayBezelAtPosition(position: self.stack.position)
+                    self.interactions.displayBezelAtPosition(position: self.stack.position)
                 }
             }
             // Again, this uses the physical keyboard representation, rather than
@@ -250,123 +253,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
         } else {
             clearHotkey()
         }
-    }
-
-    // NB:
-    // When we refactor to pull out the hotkey code into a single class, we
-    // should refactor the bezel code out of AppDelegate as well.
-    func bezelKeyDownBehavior(key: SauceKey) {
-        // Possible improvement: Use a lookup table instead of a switch statement
-        // to enable adding behavior based on a preference.
-        switch key {
-        case .escape:
-            self.hide()
-        case .downArrow, .rightArrow:
-            self.stack.down()
-            self.displayBezelAtPosition(position: self.stack.position)
-        case .pageDown:
-            if self.stack.position + 10 < self.stack.count {
-                self.stack.position += 10
-            } else if self.stack.count > 0 {
-                self.stack.position = self.stack.count - 1
-            }
-            self.displayBezelAtPosition(position: self.stack.position)
-        case .home:
-            handleBezelNumber(numberKey: .one)
-        case .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero,
-                .keypadOne, .keypadTwo, .keypadThree, .keypadFour, .keypadFive,
-                .keypadSix, .keypadSeven, .keypadEight, .keypadNine, .keypadZero:
-            handleBezelNumber(numberKey: key)
-        case .end:
-            if self.stack.count > 0 {
-                self.stack.position = self.stack.count - 1
-                self.displayBezelAtPosition(position: self.stack.position)
-            }
-        case .pageUp:
-            if self.stack.position > 10 {
-                self.stack.position -= 10
-            } else {
-                self.stack.position = 0
-            }
-            self.displayBezelAtPosition(position: self.stack.position)
-        case .upArrow, .leftArrow:
-            self.stack.up()
-            self.displayBezelAtPosition(position: self.stack.position)
-        case .return, .keypadEnter:
-            self.interactions.bezelSelection()
-        case .delete, .forwardDelete:
-            self.stack.delete()
-            self.menu.rebuild(stack: stack)
-            if self.stack.isEmpty() {
-                self.hide()
-            } else {
-                self.displayBezelAtPosition(position: self.stack.position)
-            }
-        default:
-            break
-        }
-    }
-
-    private func handleBezelNumber(numberKey: SauceKey) {
-        var number: Int?
-        switch numberKey {
-        case .one, .keypadOne:
-            number = 1
-        case .two, .keypadTwo:
-            number = 2
-        case .three, .keypadThree:
-            number = 3
-        case .four, .keypadFour:
-            number = 4
-        case .five, .keypadFive:
-            number = 5
-        case .six, .keypadSix:
-            number = 6
-        case .seven, .keypadSeven:
-            number = 7
-        case .eight, .keypadEight:
-            number = 8
-        case .nine, .keypadNine:
-            number = 9
-        case .zero, .keypadZero:
-            number = 10
-        default:
-            break
-        }
-        guard number != nil else {
-            return
-        }
-        guard self.stack.count > 0 else {
-            return
-        }
-        if self.stack.count >= number! {
-            self.stack.position = number! - 1
-        } else {
-            self.stack.position = self.stack.count - 1
-        }
-        self.displayBezelAtPosition(position: self.stack.position)
-    }
-
-    func displayBezelAtPosition(position: Int) {
-        guard !stack.isEmpty() else {
-            return
-        }
-        // Note that our display is one-indexed, but the stack itself
-        // is zero-indexed.
-        var displayPos: Int
-        var text: String
-        var item = stack.itemAt(position: position)
-        if item == nil {
-            item = stack.itemAt(position: 0)
-        }
-        text = item!.fullText
-        displayPos = position + 1
-        bezel.setText(text: text)
-        bezel.setSecondaryText(text: String(displayPos))
-        if !bezel.shown {
-            bezel.show()
-        }
-        NSApp.activate(ignoringOtherApps: true)
     }
 
     func pasteboardChangeClosure() {
