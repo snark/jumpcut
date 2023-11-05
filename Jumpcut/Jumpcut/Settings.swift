@@ -30,8 +30,8 @@ enum SettingsPath: String {
     case mainHotkey
     case menuBehaviorFlags
     case menuIcon
-    case menuSelectionMovesToTop
     case menuSelectionPastes
+    case moveClippingsAfterUse
     case rememberNum
     case skipSave
     case stickyBezel
@@ -73,8 +73,8 @@ private let settingsDefaults: [String: Any] = [
         "modifierFlags": 786432
     ],
     SettingsPath.menuBehaviorFlags.rawValue: MenuBehaviorFlags.none.rawValue,
-    SettingsPath.menuSelectionMovesToTop.rawValue: false, // TODO: still meaningful?
     SettingsPath.menuSelectionPastes.rawValue: true,
+    SettingsPath.moveClippingsAfterUse.rawValue: false,
     SettingsPath.menuIcon.rawValue: 0,
     SettingsPath.rememberNum.rawValue: 99,
     SettingsPath.skipSave.rawValue: false,

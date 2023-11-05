@@ -101,6 +101,14 @@ public class Interactions: NSObject {
         } else {
             place(clipping!)
         }
+        let moveToTop = UserDefaults.standard.value(
+            forKey: SettingsPath.moveClippingsAfterUse.rawValue
+        ) as? Bool ?? false
+        if moveToTop {
+            stack.moveItemToTop(position: stack.position)
+            stack.position = 0
+            menu.rebuild(stack: stack)
+        }
     }
 
     private func handleBezelNumber(numberKey: SauceKey) {
@@ -229,6 +237,18 @@ public class Interactions: NSObject {
             paste(clipping!)
         } else {
             place(clipping!)
+        }
+        let moveToTop = UserDefaults.standard.value(
+            forKey: SettingsPath.moveClippingsAfterUse.rawValue
+        ) as? Bool ?? false
+        if moveToTop {
+            stack.moveItemToTop(position: idx)
+            if idx == stack.position {
+                stack.position = 0
+            } else if idx > stack.position {
+                stack.position += 1
+            }
+            menu.rebuild(stack: stack)
         }
     }
 

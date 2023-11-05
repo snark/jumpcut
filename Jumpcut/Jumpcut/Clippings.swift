@@ -108,6 +108,10 @@ public class ClippingStack: NSObject {
         return store.itemAt(position: position)
     }
 
+    func moveItemToTop(position: Int) {
+        store.moveItemToTop(position: position)
+    }
+
     func up() {
         let newPosition = position - 1
         if newPosition >= 0 {
@@ -234,6 +238,20 @@ private class ClippingStore: NSObject {
     func clear() {
         clippings = []
         // TK: When we have SQLite backing, we'll want to change this.
+        writeClippings()
+    }
+
+    func moveItemToTop(position: Int) {
+        // Don't move from an invalid position; also, position 0
+        // is a null operation, because it's already at the top.
+        guard !clippings.isEmpty,
+            position <= clippings.count,
+            position > 0
+        else {
+            return
+        }
+        let element = clippings.remove(at: position)
+        clippings.insert(element, at: 0)
         writeClippings()
     }
 

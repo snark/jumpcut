@@ -42,10 +42,14 @@ final class ClippingsPreferenceViewController: NSViewController, PreferencePane 
             title: "Allow whitespace clippings",
             key: SettingsPath.allowWhitespaceClippings
         )
+        let btn5 = settings.checkbox(
+            title: "Move clippings to top after use",
+            key: SettingsPath.moveClippingsAfterUse
+        )
         skipSaveButton!.state = UserDefaults.standard.value(
             forKey: SettingsPath.skipSave.rawValue
         ) as? Bool ?? false ? .on : .off
-        let grid = NSStackView(views: [ btn1, btn2, skipSaveButton!, btn4 ])
+        let grid = NSStackView(views: [ btn1, btn2, skipSaveButton!, btn4, btn5 ])
         grid.orientation = .vertical
         grid.alignment = .leading
         self.view.addSubview(grid)
