@@ -7,6 +7,7 @@
 
 import Cocoa
 import HotKey
+import LaunchAtLogin
 import Preferences
 import Sauce
 import ShortcutRecorder
@@ -60,15 +61,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
         // setHotkey is tightly coupled to a number of AppDelegate-specific items
         // (primarily the bezel); more refactoring to turn the AppDelegate into
         // simply a message-passer is required.
-        //
+
         // Observe some UI-type events
         hkListeners.startRecorderListeners()
+
         // Set up hotkey and bezel handlers
         setHotkey()
         interactions.setHotkeyHandlers()
 
+        // If we are coming from an earlier version, let's set the new launch-on-login
+        // preference. (This is safe to do under any circumstance.)
+        LaunchAtLogin.isEnabled = UserDefaults.standard.value(
+            forKey: SettingsPath.launchOnStartup.rawValue) as? Bool ?? false
+
         // Should we show an alert here if we are headless?
         statusItem.setVisibility()
+
         // Hard to double-click an icon in debug mode!
         #if DEBUG
         let headless = UserDefaults.standard.value(forKey: SettingsPath.hideStatusItem.rawValue) as? Bool ?? false

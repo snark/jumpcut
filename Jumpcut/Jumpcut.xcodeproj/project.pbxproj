@@ -33,9 +33,7 @@
 		AA3115DF280A62A900CBAF91 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = AA3115DE280A62A900CBAF91 /* HotKey */; };
 		AA3115E2280A62B900CBAF91 /* ShortcutRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = AA3115E1280A62B900CBAF91 /* ShortcutRecorder */; };
 		AA3115E5280A62CB00CBAF91 /* Sauce in Frameworks */ = {isa = PBXBuildFile; productRef = AA3115E4280A62CB00CBAF91 /* Sauce */; };
-		AAD0C43C280B78EB003482B4 /* JumpcutHelperAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD0C43B280B78EB003482B4 /* JumpcutHelperAppDelegate.swift */; };
-		AAD0C43E280B7AAF003482B4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD0C43D280B7AAF003482B4 /* main.swift */; };
-		AAD0C440280B7BA8003482B4 /* JumpcutHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAD0C42D280B779F003482B4 /* JumpcutHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AA9CB9F52AF719CE00ADA6C1 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = AA9CB9F42AF719CE00ADA6C1 /* LaunchAtLogin */; };
 		AAD0C443280B7CB6003482B4 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD0C442280B7CB6003482B4 /* ServiceManagement.framework */; platformFilter = maccatalyst; };
 		AAD0C447280C9ECF003482B4 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = AAD0C446280C9ECF003482B4 /* Sparkle */; };
 /* End PBXBuildFile section */
@@ -56,19 +54,6 @@
 			remoteInfo = Jumpcut;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		AAD0C43F280B7B8A003482B4 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Library/LoginItems;
-			dstSubfolderSpec = 1;
-			files = (
-				AAD0C440280B7BA8003482B4 /* JumpcutHelper.app in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AA16DB6D28393DD000F73A2C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -99,10 +84,6 @@
 		AA3115C5280A618900CBAF91 /* Jumpcut.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Jumpcut.entitlements; sourceTree = "<group>"; };
 		AA3115C6280A618900CBAF91 /* Pasteboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pasteboard.swift; sourceTree = "<group>"; };
 		AAD0C42D280B779F003482B4 /* JumpcutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpcutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAD0C436280B77A1003482B4 /* JumpcutHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JumpcutHelper.entitlements; sourceTree = "<group>"; };
-		AAD0C43A280B785C003482B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		AAD0C43B280B78EB003482B4 /* JumpcutHelperAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpcutHelperAppDelegate.swift; sourceTree = "<group>"; };
-		AAD0C43D280B7AAF003482B4 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		AAD0C442280B7CB6003482B4 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -113,6 +94,7 @@
 			files = (
 				AA3115DF280A62A900CBAF91 /* HotKey in Frameworks */,
 				AA3115E2280A62B900CBAF91 /* ShortcutRecorder in Frameworks */,
+				AA9CB9F52AF719CE00ADA6C1 /* LaunchAtLogin in Frameworks */,
 				AAD0C443280B7CB6003482B4 /* ServiceManagement.framework in Frameworks */,
 				AAD0C447280C9ECF003482B4 /* Sparkle in Frameworks */,
 				AA3115E5280A62CB00CBAF91 /* Sauce in Frameworks */,
@@ -150,7 +132,6 @@
 				AA3115B2280A618900CBAF91 /* Jumpcut */,
 				AA311598280A60DD00CBAF91 /* JumpcutTests */,
 				AA3115A2280A60DD00CBAF91 /* JumpcutUITests */,
-				AAD0C42E280B779F003482B4 /* JumpcutHelper */,
 				AA311587280A60DB00CBAF91 /* Products */,
 				AAD0C441280B7CB6003482B4 /* Frameworks */,
 			);
@@ -208,17 +189,6 @@
 			path = Jumpcut;
 			sourceTree = "<group>";
 		};
-		AAD0C42E280B779F003482B4 /* JumpcutHelper */ = {
-			isa = PBXGroup;
-			children = (
-				AAD0C43D280B7AAF003482B4 /* main.swift */,
-				AAD0C43B280B78EB003482B4 /* JumpcutHelperAppDelegate.swift */,
-				AAD0C43A280B785C003482B4 /* Info.plist */,
-				AAD0C436280B77A1003482B4 /* JumpcutHelper.entitlements */,
-			);
-			path = JumpcutHelper;
-			sourceTree = "<group>";
-		};
 		AAD0C441280B7CB6003482B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,7 +219,7 @@
 				AA311582280A60DB00CBAF91 /* Sources */,
 				AA311583280A60DB00CBAF91 /* Frameworks */,
 				AA311584280A60DB00CBAF91 /* Resources */,
-				AAD0C43F280B7B8A003482B4 /* CopyFiles */,
+				AA9CB9F62AF7267E00ADA6C1 /* Copy “Launch at Login Helper” */,
 			);
 			buildRules = (
 			);
@@ -262,6 +232,7 @@
 				AA3115E1280A62B900CBAF91 /* ShortcutRecorder */,
 				AA3115E4280A62CB00CBAF91 /* Sauce */,
 				AAD0C446280C9ECF003482B4 /* Sparkle */,
+				AA9CB9F42AF719CE00ADA6C1 /* LaunchAtLogin */,
 			);
 			productName = Jumpcut;
 			productReference = AA311586280A60DB00CBAF91 /* Jumpcut.app */;
@@ -362,6 +333,7 @@
 				AA3115E0280A62B900CBAF91 /* XCRemoteSwiftPackageReference "ShortcutRecorder" */,
 				AA3115E3280A62CB00CBAF91 /* XCRemoteSwiftPackageReference "Sauce" */,
 				AAD0C445280C9ECF003482B4 /* XCRemoteSwiftPackageReference "Sparkle" */,
+				AA9CB9F32AF719CE00ADA6C1 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 			);
 			productRefGroup = AA311587280A60DB00CBAF91 /* Products */;
 			projectDirPath = "";
@@ -407,6 +379,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AA9CB9F62AF7267E00ADA6C1 /* Copy “Launch at Login Helper” */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy “Launch at Login Helper”";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AA311582280A60DB00CBAF91 /* Sources */ = {
@@ -454,8 +447,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAD0C43E280B7AAF003482B4 /* main.swift in Sources */,
-				AAD0C43C280B78EB003482B4 /* JumpcutHelperAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,7 +517,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -581,7 +572,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -604,8 +595,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Jumpcut/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Steve Cook";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -634,8 +626,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Jumpcut/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Steve Cook";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -868,6 +861,14 @@
 				kind = branch;
 			};
 		};
+		AA9CB9F32AF719CE00ADA6C1 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				kind = exactVersion;
+				version = 4.2.0;
+			};
+		};
 		AAD0C445280C9ECF003482B4 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
@@ -898,6 +899,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA3115E3280A62CB00CBAF91 /* XCRemoteSwiftPackageReference "Sauce" */;
 			productName = Sauce;
+		};
+		AA9CB9F42AF719CE00ADA6C1 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA9CB9F32AF719CE00ADA6C1 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
 		};
 		AAD0C446280C9ECF003482B4 /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
