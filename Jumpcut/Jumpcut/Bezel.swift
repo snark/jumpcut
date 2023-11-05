@@ -193,9 +193,9 @@ public class Bezel {
         //        effectView.translatesAutoresizingMaskIntoConstraints = false
         //
         //        contentView.addSubview(effectView)
-
-        self.window.collectionBehavior = NSWindow.CollectionBehavior.canJoinAllSpaces
-        self.window.collectionBehavior = NSWindow.CollectionBehavior.moveToActiveSpace
+        self.window.collectionBehavior.insert(.fullScreenAuxiliary)
+        self.window.collectionBehavior.insert(.ignoresCycle)
+        self.window.collectionBehavior.insert(.moveToActiveSpace)
         self.window.contentView = contentView
     }
 
