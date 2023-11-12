@@ -13,7 +13,7 @@ import Sauce
 import ShortcutRecorder
 import Sparkle
 
-class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegate, SPUUpdaterDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardUserDriverDelegate, SPUUpdaterDelegate {
 
     private var pasteboard: Pasteboard!
     private var stack: ClippingStack!
@@ -165,7 +165,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
             wanted = MenuBehaviorFlags.none
         }
         if wanted == MenuBehaviorFlags.rightAlt || wanted == MenuBehaviorFlags.rightAltShiftToggle {
-            return event.type == NSEvent.EventType.rightMouseUp
+            return event.type == NSEvent.EventType.rightMouseDown
         } else if wanted == MenuBehaviorFlags.shiftAlt || wanted == MenuBehaviorFlags.shiftAltRightToggle {
             return event.modifierFlags.contains(.shift)
         } else {
@@ -182,6 +182,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
             menu.triggerEvent = event
             statusItem.displayMenu(menu.standard)
         }
+    }
+
+    func menuDidClose(_ menu: NSMenu) {
+        // Workaround for a bug which can be demonstrated without this fix by right-clicking the
+        // status bar, then clicking outside Jumpcut, e.g. the Dock.
+        // See: https://stackoverflow.com/questions/40062510/swift-nsstatusitem-remains-highlighted-after-right-click
+        statusItem.setHighlight(state: false)
     }
 
     func hide() {

@@ -50,12 +50,10 @@ class StatusItem {
             statusItem!.button?.image!.isTemplate = true
         }
         statusItem!.button?.action = #selector(delegate.statusItemClicked(sender:))
-        // See https://stackoverflow.com/questions/40062510/swift-nsstatusitem-remains-highlighted-after-right-click
-        // for details on why we're using mouseup instead of mousedown.
         statusItem!.button?.sendAction(on: [
-            NSEvent.EventTypeMask.leftMouseUp,
-            NSEvent.EventTypeMask.rightMouseUp,
-            NSEvent.EventTypeMask.otherMouseUp
+            NSEvent.EventTypeMask.leftMouseDown,
+            NSEvent.EventTypeMask.rightMouseDown,
+            NSEvent.EventTypeMask.otherMouseDown
         ])
         if #available(OSX 10.12, *) {
             statusItem!.behavior = .removalAllowed
@@ -107,4 +105,9 @@ class StatusItem {
             makeItem()
         }
     }
+
+    func setHighlight(state: Bool) {
+        self.statusItem?.button?.highlight(state)
+    }
+
 }

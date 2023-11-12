@@ -18,6 +18,8 @@ public class MenuManager {
         standard = NSMenu()
         alt = NSMenu()
         delegate = (NSApplication.shared.delegate as? AppDelegate)!
+        standard.delegate = delegate
+        alt.delegate = delegate
     }
 
     private func checkToggle() -> Bool {
