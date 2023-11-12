@@ -79,9 +79,12 @@ public class Interactions: NSObject {
         guard sourceRef != nil else {
             return
         }
+        // Disable local hardware keyboard events
+        sourceRef!.setLocalEventsFilterDuringSuppressionState([.permitLocalMouseEvents, .permitSystemDefinedEvents], state: .eventSuppressionStateSuppressionInterval)
         let veeCode = Sauce.shared.keyCode(for: .v)
-        sourceRef!.setLocalEventsFilterDuringSuppressionState([.permitLocalMouseEvents, .permitSystemDefinedEvents],
-                                                           state: .eventSuppressionStateSuppressionInterval)
+        sourceRef!.setLocalEventsFilterDuringSuppressionState(
+            [.permitLocalMouseEvents, .permitSystemDefinedEvents],
+            state: .eventSuppressionStateSuppressionInterval)
         let eventDown = CGEvent(keyboardEventSource: sourceRef, virtualKey: veeCode, keyDown: true)
         eventDown?.flags = .maskCommand
         let eventUp = CGEvent(keyboardEventSource: sourceRef, virtualKey: veeCode, keyDown: false)
