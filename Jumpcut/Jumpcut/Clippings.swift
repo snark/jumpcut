@@ -104,6 +104,20 @@ public class ClippingStack: NSObject {
         }
     }
 
+    func move(steps: Int) {
+        // Differs from up() and down() methods, as we don't allow wrapping around.
+        guard self.count > 0 else {
+            return
+        }
+        if steps > 0 {
+            let comparable: [Int] = [self.position + steps, self.count - 1]
+            self.position = comparable.min()!
+        } else {
+            let comparable: [Int] = [0, self.position + steps]
+            self.position = comparable.max()!
+        }
+    }
+
     func itemAt(position: Int) -> Clipping? {
         return store.itemAt(position: position)
     }

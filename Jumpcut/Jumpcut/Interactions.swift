@@ -178,6 +178,14 @@ public class Interactions: NSObject {
         NSApp.activate(ignoringOtherApps: true)
     }
 
+    private func moveAndDisplay(steps: Int) {
+        guard stack.count > 0 else {
+            return
+        }
+        self.stack.move(steps: steps)
+        displayBezelAtPosition(position: self.stack.position)
+    }
+
     func bezelKeyDownBehavior(key: SauceKey) {
         // Possible improvement: Use a lookup table instead of a switch statement
         // to enable adding behavior based on a preference.
@@ -188,12 +196,7 @@ public class Interactions: NSObject {
             self.stack.down()
             displayBezelAtPosition(position: self.stack.position)
         case .pageDown:
-            if self.stack.position + 10 < self.stack.count {
-                self.stack.position += 10
-            } else if self.stack.count > 0 {
-                self.stack.position = self.stack.count - 1
-            }
-            displayBezelAtPosition(position: self.stack.position)
+            moveAndDisplay(steps: 10)
         case .home:
             handleBezelNumber(numberKey: .one)
         case .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero,
@@ -206,12 +209,7 @@ public class Interactions: NSObject {
                 displayBezelAtPosition(position: self.stack.position)
             }
         case .pageUp:
-            if self.stack.position > 10 {
-                self.stack.position -= 10
-            } else {
-                self.stack.position = 0
-            }
-            displayBezelAtPosition(position: self.stack.position)
+            moveAndDisplay(steps: -10)
         case .upArrow, .leftArrow:
             self.stack.up()
             displayBezelAtPosition(position: self.stack.position)
