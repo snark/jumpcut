@@ -313,14 +313,7 @@ public class Interactions: NSObject {
     @objc public func clearAll(sender: AnyObject?) {
         let ask = UserDefaults.standard.value(forKey: SettingsPath.askBeforeClearingClippings.rawValue) as? Bool ?? true
         if ask {
-            let alert = NSAlert()
-            alert.messageText = "Do you want to clear all clippings?"
-            alert.informativeText = "This action cannot be undone."
-            alert.alertStyle = .warning
-            alert.addButton(withTitle: "OK")
-            alert.addButton(withTitle: "Cancel")
-            alert.showsSuppressionButton = true
-            alert.suppressionButton!.title = "Do not remind me again"
+            let alert = Alerts.clearAllWarning()
             let response = alert.runModal()
             if response == .alertFirstButtonReturn && !stack.isEmpty() {
                 _clearAll()

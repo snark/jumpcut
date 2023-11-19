@@ -49,12 +49,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
         // Which means we can build the menu
         menu.rebuild(stack: stack)
         hkListeners = HotkeyListeners()
+
+        checkForSaveFileWarning()
+
         let checkForUpdates = UserDefaults.standard.value(
             forKey: SettingsPath.checkForUpdates.rawValue
         ) as? Bool ?? false
         if checkForUpdates {
             checkSparkle(background: true)
         }
+
         // NB:
         // hkListeners' methods; interactions.setHotkeyHandlers; and setHotkey
         // should eventually be unified into a single class, but at the moment,
@@ -115,15 +119,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
     }
 
     func showAccessibilityWarning() {
-        let alert = NSAlert()
-        alert.messageText = "Authorize Jumpcut to Paste"
-        alert.informativeText = Constants.Alerts.accessibilityWarning
-        alert.alertStyle = .informational
-        alert.addButton(withTitle: "Open Accessibility")
-        alert.addButton(withTitle: "Continue")
-        alert.showsSuppressionButton = true
-        alert.suppressionButton!.title = "Do not remind me again"
-
+        let alert = Alerts.authorizePaste()
         let response = alert.runModal()
         if response == NSApplication.ModalResponse.alertFirstButtonReturn {
             let axPanel = "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"
@@ -133,6 +129,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
             if supress.state == NSControl.StateValue.on {
                 UserDefaults.standard.set(false, forKey: SettingsPath.askForAccessibility.rawValue)
             }
+        }
+    }
+
+    func checkForSaveFileWarning() {
+        if !stack.skipSave && !stack.checkWriteAccess() {
+            let alert = Alerts.saveFileWarning()
+            _ = alert.runModal()
         }
     }
 
@@ -206,7 +209,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
     }
 
     func setSkipSave(value: Bool) {
-        stack.setSkipSave(value: value)
+        stack.skipSave = value
+        checkForSaveFileWarning()
     }
 
     func setHotkey() {

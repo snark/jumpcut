@@ -43,6 +43,10 @@ public class ClippingStack: NSObject {
     public var count: Int {
         return store.count
     }
+    public var skipSave: Bool {
+        get { return store.skipSave }
+        set { store.skipSave = newValue }
+    }
 
     override init() {
         self.store = ClippingStore()
@@ -52,8 +56,8 @@ public class ClippingStack: NSObject {
         ) as? Int ?? 99
     }
 
-    func setSkipSave(value: Bool) {
-        store.skipSave = value
+    func checkWriteAccess() -> Bool {
+        return store.checkPlistWriteAccess()
     }
 
     func isEmpty() -> Bool {
@@ -162,7 +166,7 @@ private class ClippingStore: NSObject {
     // TK: Back with sqlite3 for persistence
     private var clippings: [Clipping] = []
     private var _maxLength = 99
-    private let plistPath: String
+    private let plistUrl: URL?
     fileprivate var skipSave: Bool
 
     fileprivate var maxLength: Int {
@@ -174,25 +178,54 @@ private class ClippingStore: NSObject {
         }
     }
 
+    private static func getSupportDir() -> URL? {
+        // Adapted from Rectangle's preferences loader
+        let paths = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+        return paths.isEmpty ? nil : paths[0]
+    }
+
     override init() {
         // TK: We will eventually be switching this out to use SQLite3, but for
         // now we'll use a hardcoded path to a property list.
         skipSave = UserDefaults.standard.value(forKey: SettingsPath.skipSave.rawValue) as? Bool ?? false
-        plistPath = NSString(string: "~/Library/Application Support/Jumpcut/JCEngine.save").expandingTildeInPath
+        if let jumpcutSupportDir = ClippingStore.getSupportDir()?
+            .appendingPathComponent("Jumpcut", isDirectory: true) {
+            plistUrl = jumpcutSupportDir.appendingPathComponent("JCEngine.save")
+        } else {
+            plistUrl = nil
+        }
         super.init()
         if !skipSave {
-            loadFromPlist(path: plistPath)
+            loadFromPlist(path: plistUrl)
         }
     }
 
-    func loadFromPlist(path: String) {
-        let fullPath = NSString(string: path).expandingTildeInPath
-        let url = URL(fileURLWithPath: fullPath)
+    func checkPlistWriteAccess() -> Bool {
+        guard plistUrl != nil else {
+            return false
+        }
+        var resourceValues = URLResourceValues()
+        resourceValues.contentModificationDate = Date()
+        let manager = FileManager()
+        let plistPath = plistUrl!.path
+        let result: Bool
+        if !manager.fileExists(atPath: plistPath) {
+            result = manager.createFile(atPath: plistPath, contents: nil, attributes: nil)
+        } else {
+            result = manager.isWritableFile(atPath: plistPath)
+        }
+        return result
+    }
+
+    func loadFromPlist(path: URL?) {
+        guard path != nil else {
+            return
+        }
         var savedValues: JCEngine
         let allowWhitespace = UserDefaults.standard.value(
             forKey: SettingsPath.allowWhitespaceClippings.rawValue
         ) as? Bool ?? false
-        if let data = try? Data(contentsOf: url) {
+        if let data = try? Data(contentsOf: path!) {
             do {
                 savedValues = try PropertyListDecoder().decode(JCEngine.self, from: data)
                 for clipDict in savedValues.jcList.reversed() {
@@ -214,7 +247,7 @@ private class ClippingStore: NSObject {
     }
 
     private func writeClippings() {
-        guard !skipSave else {
+        guard !skipSave, plistUrl != nil else {
             return
         }
         var items: [JCListItem] = []
@@ -233,8 +266,7 @@ private class ClippingStore: NSObject {
         encoder.outputFormat = .xml
         do {
             let newData = try encoder.encode(data)
-            let url = URL(fileURLWithPath: plistPath)
-            try newData.write(to: url)
+            try newData.write(to: plistUrl!)
         } catch {
             print("Unable to write clippings store plist file")
         }

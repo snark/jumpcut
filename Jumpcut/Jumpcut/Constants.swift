@@ -18,6 +18,12 @@ struct Constants {
         restart Jumpcut.
         """
 
+        static let cannotSaveWarning = """
+        In order to save clippings, Jumpcut must have write access to the "Jumpcut" \
+        directory in your Application Support directory (found in your User directory's \
+        Library directory). Without this access Jumpcut cannot save your historys.
+        """
+
         static let skipSave = """
         This means clippings will not be preserved when Jumpcut or your computer \
         is restarted.

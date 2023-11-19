@@ -22,12 +22,7 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
     override var nibName: NSNib.Name? { nil }
 
     @objc func dispatchResetPreferences() {
-        let alert = NSAlert()
-        alert.messageText = "Do you want to reset preferences?"
-        alert.informativeText = "This action cannot be undone."
-        alert.alertStyle = .warning
-        alert.addButton(withTitle: "OK")
-        alert.addButton(withTitle: "Cancel")
+        let alert = Alerts.resetPreferences()
         let response = alert.runModal()
         if response == .alertFirstButtonReturn {
             Settings.reset()

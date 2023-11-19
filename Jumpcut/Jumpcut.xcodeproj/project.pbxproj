@@ -33,6 +33,7 @@
 		AA3115DF280A62A900CBAF91 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = AA3115DE280A62A900CBAF91 /* HotKey */; };
 		AA3115E2280A62B900CBAF91 /* ShortcutRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = AA3115E1280A62B900CBAF91 /* ShortcutRecorder */; };
 		AA3115E5280A62CB00CBAF91 /* Sauce in Frameworks */ = {isa = PBXBuildFile; productRef = AA3115E4280A62CB00CBAF91 /* Sauce */; };
+		AA73BA942B0AB9D900B0EA1A /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73BA932B0AB9D900B0EA1A /* Alerts.swift */; };
 		AA9CB9F52AF719CE00ADA6C1 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = AA9CB9F42AF719CE00ADA6C1 /* LaunchAtLogin */; };
 		AAD0C443280B7CB6003482B4 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD0C442280B7CB6003482B4 /* ServiceManagement.framework */; platformFilter = maccatalyst; };
 		AAD0C447280C9ECF003482B4 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = AAD0C446280C9ECF003482B4 /* Sparkle */; };
@@ -83,6 +84,7 @@
 		AA3115C4280A618900CBAF91 /* Interactions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactions.swift; sourceTree = "<group>"; };
 		AA3115C5280A618900CBAF91 /* Jumpcut.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Jumpcut.entitlements; sourceTree = "<group>"; };
 		AA3115C6280A618900CBAF91 /* Pasteboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pasteboard.swift; sourceTree = "<group>"; };
+		AA73BA932B0AB9D900B0EA1A /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		AAD0C42D280B779F003482B4 /* JumpcutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpcutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD0C442280B7CB6003482B4 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -170,6 +172,7 @@
 			children = (
 				AA3115BF280A618900CBAF91 /* main.swift */,
 				AA3115BE280A618900CBAF91 /* Credits.html */,
+				AA73BA932B0AB9D900B0EA1A /* Alerts.swift */,
 				AA3115BB280A618900CBAF91 /* AppDelegate.swift */,
 				AA3115C0280A618900CBAF91 /* Bezel.swift */,
 				AA3115B3280A618900CBAF91 /* Clippings.swift */,
@@ -422,6 +425,7 @@
 				AA3115D3280A618900CBAF91 /* main.swift in Sources */,
 				AA3115C7280A618900CBAF91 /* Clippings.swift in Sources */,
 				AA3115CB280A618900CBAF91 /* Settings.swift in Sources */,
+				AA73BA942B0AB9D900B0EA1A /* Alerts.swift in Sources */,
 				AA3115C8280A618900CBAF91 /* HotkeyListeners.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
