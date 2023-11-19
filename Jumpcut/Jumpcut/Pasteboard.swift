@@ -6,6 +6,7 @@
 //
 
 import AppKit
+import Sauce
 
 class Pasteboard {
     private let internalPasteboardType = NSPasteboard.PasteboardType(rawValue: "net.sf.jumpcut.internal")
@@ -111,4 +112,26 @@ class Pasteboard {
             self.changeCallback()
         }
     }
+
+    func fakeCommandV() {
+        let sourceRef = CGEventSource(stateID: .combinedSessionState)
+        guard sourceRef != nil else {
+            return
+        }
+        // Disable local hardware keyboard events
+        sourceRef!.setLocalEventsFilterDuringSuppressionState(
+            [.permitLocalMouseEvents, .permitSystemDefinedEvents],
+            state: .eventSuppressionStateSuppressionInterval)
+        let veeCode = Sauce.shared.keyCode(for: .v)
+        sourceRef!.setLocalEventsFilterDuringSuppressionState(
+            [.permitLocalMouseEvents, .permitSystemDefinedEvents],
+            state: .eventSuppressionStateSuppressionInterval)
+        let eventDown = CGEvent(keyboardEventSource: sourceRef, virtualKey: veeCode, keyDown: true)
+        eventDown?.flags = .maskCommand
+        let eventUp = CGEvent(keyboardEventSource: sourceRef, virtualKey: veeCode, keyDown: false)
+        eventUp?.flags = .maskCommand
+        eventDown?.post(tap: .cgAnnotatedSessionEventTap)
+        eventUp?.post(tap: .cgAnnotatedSessionEventTap)
+    }
+
 }
