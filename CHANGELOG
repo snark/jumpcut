@@ -3,6 +3,17 @@
 Jumpcut predates the widespread adoption of semantic versioning; as such,
 pre-1.0 releases are numbered as 0.XX.
 
+## [0.83] - 2023-12-02
+### Rewritten
+- Jumpcut now uses the "LaunchAtLogin" library instead of hand-rolled
+code based on LaunchAtLogin and its predecessors. This should hopefully
+make this feature more reliable across multiple versions of macOS better.
+### Added
+- New options for allowing whitespace-only clippings to be recorded, and to
+push any clippings used to the top of the stack.
+### Fixed
+- The menu bar now activates on mouseDown, rather than mouseUp, events.
+
 ## [0.82] - 2022-05-25
 ### Added
 - Fully exposed access to the "skipSave" preference through the clippings
