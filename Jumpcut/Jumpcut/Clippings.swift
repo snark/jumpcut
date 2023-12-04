@@ -181,15 +181,29 @@ private class ClippingStore: NSObject {
     private static func getSupportDir() -> URL? {
         // Adapted from Rectangle's preferences loader
         let paths = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-        return paths.isEmpty ? nil : paths[0]
+        let supportDir = paths.isEmpty ? nil : paths[0].appendingPathComponent("Jumpcut", isDirectory: true)
+        guard supportDir != nil else {
+            return nil
+        }
+        if !FileManager.default.fileExists(atPath: supportDir!.path) {
+            do {
+                try FileManager.default.createDirectory(
+                    at: supportDir!,
+                    withIntermediateDirectories: false,
+                    attributes: nil
+                )
+            } catch {
+                print("Unable to create support directory", error)
+            }
+        }
+        return supportDir
     }
 
     override init() {
         // TK: We will eventually be switching this out to use SQLite3, but for
         // now we'll use a hardcoded path to a property list.
         skipSave = UserDefaults.standard.value(forKey: SettingsPath.skipSave.rawValue) as? Bool ?? false
-        if let jumpcutSupportDir = ClippingStore.getSupportDir()?
-            .appendingPathComponent("Jumpcut", isDirectory: true) {
+        if let jumpcutSupportDir = ClippingStore.getSupportDir() {
             plistUrl = jumpcutSupportDir.appendingPathComponent("JCEngine.save")
         } else {
             plistUrl = nil
