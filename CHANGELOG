@@ -3,6 +3,11 @@
 Jumpcut predates the widespread adoption of semantic versioning; as such,
 pre-1.0 releases are numbered as 0.XX.
 
+## [0.84] - 2023-12-04
+### Fixed
+- Jumpcut now creates an Application Support directory if one is not
+present on launch, fixing a minor bug introduced in 0.83.
+
 ## [0.83] - 2023-12-02
 ### Rewritten
 - Jumpcut now uses the "LaunchAtLogin" library instead of hand-rolled
