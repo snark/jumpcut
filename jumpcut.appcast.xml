@@ -4,14 +4,14 @@
         <title>Jumpcut</title>
         <item>
             <title>0.84</title>
-            <pubDate>Mon, 04 December 2023 20:05:00 -0500</pubDate>
+            <pubDate>Mon, 04 Dec 2023 20:05:00 -0500</pubDate>
             <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
             <sparkle:releaseNotesLink>https://snark.github.io/jumpcut/Jumpcut-0.84.html</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/snark/jumpcut/releases/download/v0.84/Jumpcut-0.84.tar.bz2" sparkle:version="20231120" sparkle:shortVersionString="0.84" sparkle:edSignature="av0wNsIcNHoToVY9mHXNX5vBE6zxoUzB84QSwYXqQFPuNOIEckCgo+PcwRH3hshdxH0gfmdDvjIbp2w/XNWFDQ==" length="8741839"/>
         </item>
         <item>
             <title>0.83</title>
-            <pubDate>Sun, 03 December 2023 11:25:00 -0500</pubDate>
+            <pubDate>Sun, 03 Dec 2023 11:25:00 -0500</pubDate>
             <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
             <sparkle:releaseNotesLink>https://snark.github.io/jumpcut/Jumpcut-0.83.html</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/snark/jumpcut/releases/download/v0.83/Jumpcut-0.83.tar.bz2" sparkle:version="20231120" sparkle:shortVersionString="0.83" sparkle:edSignature="QRMVfX0AJnr758k2krzhhBIliWKK32JCME75DR/Fr/XNyR4PtXFvI6NhyvO2dFc/MNBDpRGEyEt/mImFa7xWCA==" length="8740819"/>
