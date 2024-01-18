@@ -35,6 +35,7 @@ enum SettingsPath: String {
     case rememberNum
     case skipSave
     case stickyBezel
+    case soundEffect
     case wraparoundBezel
 }
 
@@ -79,6 +80,7 @@ private let settingsDefaults: [String: Any] = [
     SettingsPath.rememberNum.rawValue: 99,
     SettingsPath.skipSave.rawValue: false,
     SettingsPath.stickyBezel.rawValue: false,
+    SettingsPath.soundEffect.rawValue: false,
     SettingsPath.wraparoundBezel.rawValue: false
 ]
 
