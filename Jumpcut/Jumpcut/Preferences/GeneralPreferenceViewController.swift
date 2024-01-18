@@ -133,6 +133,7 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
 
         let (pasteMenu, pasteBezel) = makePasteOptions(settings: settings)
         let wrapBezel = settings.checkbox(title: "Wraparound bezel", key: SettingsPath.wraparoundBezel)
+        let soundEffect = settings.checkbox(title: "Enable sound effect", key: SettingsPath.soundEffect)
         let stickyBezel = settings.checkbox(title: "Sticky bezel", key: SettingsPath.stickyBezel)
         let rememberNumView = settings.rangeStepper(title: "Remembering", minValue: 10, maxValue: 99, key: .rememberNum)
         let displayNumView = settings.rangeStepper(title: "Displaying", minValue: 10, maxValue: 99, key: .displayNum)
@@ -148,7 +149,7 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
         let resetRow = makeResetRow()
 
         let grid = NSStackView(views: [
-            pasteMenu, pasteBezel, bezelToTopRow, wrapBezel, stickyBezel,
+          pasteMenu, pasteBezel, bezelToTopRow, wrapBezel, stickyBezel, soundEffect,
             advancedMenuRow, makeSeparator(), stepperViews, makeSeparator(),
             launchOnLogin, sparkleRow, makeSeparator(), resetRow
         ])

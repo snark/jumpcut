@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52FEE61C2B59A9C900D81962 /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52FEE61B2B59A9C900D81962 /* pop.wav */; };
+		52FEE61D2B59A9C900D81962 /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52FEE61B2B59A9C900D81962 /* pop.wav */; };
+		52FEE61E2B59A9C900D81962 /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52FEE61B2B59A9C900D81962 /* pop.wav */; };
+		52FEE61F2B59A9C900D81962 /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52FEE61B2B59A9C900D81962 /* pop.wav */; };
+		52FEE6222B59AA1A00D81962 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEE6212B59AA1A00D81962 /* AudioManager.swift */; };
+		52FEE6232B59AA1A00D81962 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEE6212B59AA1A00D81962 /* AudioManager.swift */; };
+		52FEE6242B59AA1A00D81962 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEE6212B59AA1A00D81962 /* AudioManager.swift */; };
+		52FEE6252B59AA1A00D81962 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEE6212B59AA1A00D81962 /* AudioManager.swift */; };
+		52FEE6272B59AD3200D81962 /* clear.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52FEE6262B59AD3200D81962 /* clear.wav */; };
+		52FEE6282B59AD3200D81962 /* clear.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52FEE6262B59AD3200D81962 /* clear.wav */; };
+		52FEE6292B59AD3200D81962 /* clear.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52FEE6262B59AD3200D81962 /* clear.wav */; };
+		52FEE62A2B59AD3200D81962 /* clear.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52FEE6262B59AD3200D81962 /* clear.wav */; };
 		AA16DB6E28393DD000F73A2C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA16DB6D28393DD000F73A2C /* Constants.swift */; };
 		AA31159A280A60DD00CBAF91 /* JumpcutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA311599280A60DD00CBAF91 /* JumpcutTests.swift */; };
 		AA3115A4280A60DD00CBAF91 /* JumpcutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3115A3280A60DD00CBAF91 /* JumpcutUITests.swift */; };
@@ -57,6 +69,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		52FEE61B2B59A9C900D81962 /* pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.wav; sourceTree = "<group>"; };
+		52FEE6202B59AA1A00D81962 /* JumpcutHelper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JumpcutHelper-Bridging-Header.h"; sourceTree = "<group>"; };
+		52FEE6212B59AA1A00D81962 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		52FEE6262B59AD3200D81962 /* clear.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clear.wav; sourceTree = "<group>"; };
 		AA16DB6D28393DD000F73A2C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AA311586280A60DB00CBAF91 /* Jumpcut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumpcut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA311595280A60DD00CBAF91 /* JumpcutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JumpcutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,10 +200,14 @@
 				AA3115B7280A618900CBAF91 /* Settings.swift */,
 				AA3115B9280A618900CBAF91 /* StatusItem.swift */,
 				AA3115C2280A618900CBAF91 /* Types.swift */,
+				52FEE6212B59AA1A00D81962 /* AudioManager.swift */,
 				AAD0C444280C4DC6003482B4 /* Preferences */,
 				AA3115B5280A618900CBAF91 /* Assets.xcassets */,
+				52FEE61B2B59A9C900D81962 /* pop.wav */,
+				52FEE6262B59AD3200D81962 /* clear.wav */,
 				AA3115C3280A618900CBAF91 /* Info.plist */,
 				AA3115C5280A618900CBAF91 /* Jumpcut.entitlements */,
+				52FEE6202B59AA1A00D81962 /* JumpcutHelper-Bridging-Header.h */,
 			);
 			path = Jumpcut;
 			sourceTree = "<group>";
@@ -317,7 +337,7 @@
 					};
 					AAD0C42C280B779E003482B4 = {
 						CreatedOnToolsVersion = 13.2.1;
-						LastSwiftMigration = 1320;
+						LastSwiftMigration = 1520;
 					};
 				};
 			};
@@ -355,6 +375,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FEE6272B59AD3200D81962 /* clear.wav in Resources */,
+				52FEE61C2B59A9C900D81962 /* pop.wav in Resources */,
 				AA3115C9280A618900CBAF91 /* Assets.xcassets in Resources */,
 				AA3115D2280A618900CBAF91 /* Credits.html in Resources */,
 			);
@@ -364,6 +386,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FEE6282B59AD3200D81962 /* clear.wav in Resources */,
+				52FEE61D2B59A9C900D81962 /* pop.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +395,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FEE6292B59AD3200D81962 /* clear.wav in Resources */,
+				52FEE61E2B59A9C900D81962 /* pop.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +404,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FEE62A2B59AD3200D81962 /* clear.wav in Resources */,
+				52FEE61F2B59A9C900D81962 /* pop.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +439,7 @@
 			files = (
 				AA3115D9280A618900CBAF91 /* Pasteboard.swift in Sources */,
 				AA16DB6E28393DD000F73A2C /* Constants.swift in Sources */,
+				52FEE6222B59AA1A00D81962 /* AudioManager.swift in Sources */,
 				AA3115D4280A618900CBAF91 /* Bezel.swift in Sources */,
 				AA3115D1280A618900CBAF91 /* MenuManager.swift in Sources */,
 				AA3115D5280A618900CBAF91 /* AppearancePreferenceViewController.swift in Sources */,
@@ -434,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FEE6232B59AA1A00D81962 /* AudioManager.swift in Sources */,
 				AA31159A280A60DD00CBAF91 /* JumpcutTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FEE6242B59AA1A00D81962 /* AudioManager.swift in Sources */,
 				AA3115A4280A60DD00CBAF91 /* JumpcutUITests.swift in Sources */,
 				AA3115A6280A60DD00CBAF91 /* JumpcutUITestsLaunchTests.swift in Sources */,
 			);
@@ -451,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FEE6252B59AA1A00D81962 /* AudioManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,7 +627,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 20231204;
-				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				DEVELOPMENT_TEAM = N5M97QAGGY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Jumpcut/Info.plist;
@@ -608,6 +640,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 0.84;
 				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -626,7 +659,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 20231204;
-				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				DEVELOPMENT_TEAM = N5M97QAGGY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Jumpcut/Info.plist;
@@ -639,6 +672,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 0.84;
 				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -654,9 +688,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				DEVELOPMENT_TEAM = N5M97QAGGY;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut.JumpcutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -673,9 +707,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				DEVELOPMENT_TEAM = N5M97QAGGY;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut.JumpcutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -691,8 +725,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				DEVELOPMENT_TEAM = N5M97QAGGY;
 				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut.JumpcutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -708,8 +743,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				DEVELOPMENT_TEAM = N5M97QAGGY;
 				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut.JumpcutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -727,10 +763,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JumpcutHelper/JumpcutHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				DEVELOPMENT_TEAM = N5M97QAGGY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JumpcutHelper/Info.plist;
@@ -740,12 +777,13 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut.JumpcutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Jumpcut/JumpcutHelper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -759,10 +797,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JumpcutHelper/JumpcutHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4987SK7L6Z;
+				DEVELOPMENT_TEAM = N5M97QAGGY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JumpcutHelper/Info.plist;
@@ -772,12 +811,13 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.sf.Jumpcut.JumpcutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Jumpcut/JumpcutHelper-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

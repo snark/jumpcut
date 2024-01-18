@@ -15,6 +15,7 @@ import Sparkle
 
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardUserDriverDelegate, SPUUpdaterDelegate {
 
+    let sp = AudioManager.shared
     private var pasteboard: Pasteboard!
     private var stack: ClippingStack!
     private var menu: MenuManager!
@@ -202,6 +203,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
     func clearHotkey() {
         hotKey = nil
         hotKeyBase = nil
+
     }
 
     func stackEmpty() -> Bool {
