@@ -74,6 +74,31 @@ public class Interactions: NSObject {
         }
     }
 
+    func pasteAtPosition(position: Int) {
+        // Direct paste from a specific position in the stack (used by quick paste hotkeys)
+        // Unlike paste() which hides the app, this version is for background use
+        guard let clipping = stack.itemAt(position: position) else {
+            return
+        }
+        
+        // Place on pasteboard without hiding the app
+        pasteboard.set(clipping.fullText)
+        
+        // Send Command-V to paste
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.pasteboard.fakeCommandV()
+        }
+        
+        // Optionally move used clipping to top of stack
+        let moveToTop = UserDefaults.standard.value(
+            forKey: SettingsPath.moveClippingsAfterUse.rawValue
+        ) as? Bool ?? false
+        if moveToTop {
+            stack.moveItemToTop(position: position)
+            menu.rebuild(stack: stack)
+        }
+    }
+
     // BEZEL
     public func bezelSelection() {
         let clipping = stack.itemAt(position: stack.position)

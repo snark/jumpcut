@@ -32,10 +32,12 @@ class StatusItem {
         guard statusItem != nil else {
             return
         }
-        statusItem!.highlightMode = true // Highlight bodge: Stop the highlight flicker (see async call below).
-        statusItem!.button?.isHighlighted = true
+        // Highlight bodge: Stop the highlight flicker
+        if let button = statusItem!.button {
+            button.isHighlighted = true
+        }
         statusItem!.menu = activeMenu
-        statusItem!.popUpMenu(activeMenu)
+        statusItem!.button?.performClick(nil)
         statusItem!.menu = nil // Otherwise clicks won't be processed again
     }
 

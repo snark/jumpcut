@@ -32,6 +32,7 @@ enum SettingsPath: String {
     case menuIcon
     case menuSelectionPastes
     case moveClippingsAfterUse
+    case quickPasteEnabled
     case rememberNum
     case skipSave
     case stickyBezel
@@ -76,6 +77,7 @@ private let settingsDefaults: [String: Any] = [
     SettingsPath.menuSelectionPastes.rawValue: true,
     SettingsPath.moveClippingsAfterUse.rawValue: false,
     SettingsPath.menuIcon.rawValue: 0,
+    SettingsPath.quickPasteEnabled.rawValue: false,
     SettingsPath.rememberNum.rawValue: 99,
     SettingsPath.skipSave.rawValue: false,
     SettingsPath.stickyBezel.rawValue: false,
@@ -196,10 +198,25 @@ public class Settings: NSObject {
         }
         registerDefaults()
         let helper = "net.sf.Jumpcut.JumpcutHelper"
-        if !SMLoginItemSetEnabled(helper as CFString, false) {
-            #if DEBUG
-                print("SMLoginItemSetEnabled for \(helper) (false) failed")
-            #endif
+        if #available(macOS 13.0, *) {
+            // Use modern SMAppService API
+            do {
+                let service = SMAppService.loginItem(identifier: helper)
+                if service.status == .enabled {
+                    try service.unregister()
+                }
+            } catch {
+                #if DEBUG
+                    print("SMAppService unregister for \(helper) failed: \(error)")
+                #endif
+            }
+        } else {
+            // Fallback for older macOS versions
+            if !SMLoginItemSetEnabled(helper as CFString, false) {
+                #if DEBUG
+                    print("SMLoginItemSetEnabled for \(helper) (false) failed")
+                #endif
+            }
         }
      }
 

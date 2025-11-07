@@ -25,6 +25,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
     private var hotKey: HotKey?
     public var hotKeyBase: SauceKey?
     public var mainHotkeyIsRecording = false
+    // Quick paste hotkeys (positions 1-5)
+    private var quickPasteHotkeys: [HotKey] = []
     // Sparkle
     public var sparkleUpdater: SPUUpdater!
 
@@ -71,6 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
 
         // Set up hotkey and bezel handlers
         setHotkey()
+        setQuickPasteHotkeys()
         interactions.setHotkeyHandlers()
 
         // If we are coming from an earlier version, let's set the new launch-on-login
@@ -148,6 +151,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
 
     @objc func updateKeyboardCodes(_ notification: Notification) {
         setHotkey()
+        setQuickPasteHotkeys()
     }
 
     @objc func updateStateFromSettings(_ notification: Notification) {
@@ -156,6 +160,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
         // of what has changed.
         statusItem.setVisibility()
         menu.rebuild(stack: stack)
+        setQuickPasteHotkeys()
     }
 
     func checkMenuBehavior(_ event: NSEvent) -> Bool {
@@ -271,6 +276,56 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
             hotKeyBase = SauceKey.init(QWERTYKeyCode: keyCode)
         } else {
             clearHotkey()
+        }
+    }
+
+    func setQuickPasteHotkeys() {
+        // Clear existing quick paste hotkeys
+        quickPasteHotkeys = []
+        
+        // Check if quick paste is enabled
+        guard UserDefaults.standard.bool(forKey: SettingsPath.quickPasteEnabled.rawValue) else {
+            return
+        }
+        
+        // Get the modifiers from the main hotkey
+        guard let dictionary = UserDefaults.standard.value(forKey: SettingsPath.mainHotkey.rawValue)
+            as? [AnyHashable: Any] else {
+            return
+        }
+        
+        // Convert to carbon modifier flags for HotKey library
+        let shortcut = Shortcut.init(dictionary: dictionary)
+        guard shortcut != nil else {
+            return
+        }
+        let carbonModifiers = shortcut!.carbonModifierFlags
+        
+        // Key codes for number keys 1-5 (QWERTY layout)
+        let numberKeyCodes: [UInt32] = [
+            18, // 1
+            19, // 2
+            20, // 3
+            21, // 4
+            23  // 5
+        ]
+        
+        // Register hotkeys for positions 1-5 (array indices 0-4)
+        for (index, keyCode) in numberKeyCodes.enumerated() {
+            let position = index // This gives us positions 0, 1, 2, 3, 4 (for clippings 1, 2, 3, 4, 5)
+            let hotKey = HotKey(
+                carbonKeyCode: keyCode,
+                carbonModifiers: carbonModifiers
+            )
+            hotKey.keyDownHandler = { [weak self] in
+                guard let self = self else { return }
+                guard !self.mainHotkeyIsRecording else {
+                    // We're recording, so don't trigger paste
+                    return
+                }
+                self.interactions.pasteAtPosition(position: position)
+            }
+            quickPasteHotkeys.append(hotKey)
         }
     }
 
