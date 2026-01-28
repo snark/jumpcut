@@ -38,10 +38,10 @@ final class HotkeyPreferenceViewController: NSViewController, PreferencePane {
         if let dictionary = UserDefaults.standard.value(forKey: SettingsPath.mainHotkey.rawValue) as? [AnyHashable: Any],
            let modifierFlags = dictionary["modifierFlags"] as? Int {
             var parts: [String] = []
-            if modifierFlags & 256 != 0 { parts.append("⌘") }  // Command
-            if modifierFlags & 2048 != 0 { parts.append("⌥") } // Option
-            if modifierFlags & 4096 != 0 { parts.append("⌃") } // Control
-            if modifierFlags & 512 != 0 { parts.append("⇧") }  // Shift
+            if modifierFlags & 1048576 != 0 { parts.append("⌘") }  // Command (1 << 20)
+            if modifierFlags & 524288 != 0 { parts.append("⌥") }   // Option (1 << 19)
+            if modifierFlags & 262144 != 0 { parts.append("⌃") }   // Control (1 << 18)
+            if modifierFlags & 131072 != 0 { parts.append("⇧") }   // Shift (1 << 17)
             if !parts.isEmpty {
                 modifierDescription = parts.joined()
             }
