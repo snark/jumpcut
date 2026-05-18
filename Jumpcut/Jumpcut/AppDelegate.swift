@@ -91,7 +91,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
 
         setObservers()
 
-        if !AXIsProcessTrusted() &&
+        if !Settings.pasteAccessibilityTrusted() &&
             UserDefaults.standard.value(forKey: SettingsPath.askForAccessibility.rawValue) as? Bool ?? true {
                 #if DEBUG
                 // Running in debug mode in Xcode doesn't seem to
@@ -155,6 +155,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
         // the menu bar's visibility, rather than a more detailed examination
         // of what has changed.
         statusItem.setVisibility()
+        stack.syncSettings()
         menu.rebuild(stack: stack)
     }
 

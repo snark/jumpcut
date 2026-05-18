@@ -31,11 +31,53 @@ struct JCEngine: Codable {
 // These names are from our original Objective-C implementation.
 // swiftlint:disable identifier_name
 struct JCListItem: Codable {
+    let Bold: Bool?
+    let Color: String?
     let Contents: String
+    let Favorite: Bool?
+    let Italic: Bool?
     let Position: Int
     let `Type`: String
 }
 // swiftlint:enable identifier_name
+
+struct PositionedClipping {
+    let position: Int
+    let clipping: Clipping
+}
+
+enum ClippingLabelColor: String, CaseIterable {
+    case red
+    case orange
+    case yellow
+    case green
+    case blue
+    case purple
+    case gray
+
+    var title: String {
+        return rawValue.capitalized
+    }
+
+    var menuColor: NSColor {
+        switch self {
+        case .red:
+            return NSColor(calibratedRed: 0.82, green: 0.18, blue: 0.18, alpha: 1.0)
+        case .orange:
+            return NSColor(calibratedRed: 0.85, green: 0.38, blue: 0.06, alpha: 1.0)
+        case .yellow:
+            return NSColor(calibratedRed: 0.62, green: 0.48, blue: 0.08, alpha: 1.0)
+        case .green:
+            return NSColor(calibratedRed: 0.12, green: 0.52, blue: 0.22, alpha: 1.0)
+        case .blue:
+            return NSColor(calibratedRed: 0.12, green: 0.34, blue: 0.78, alpha: 1.0)
+        case .purple:
+            return NSColor(calibratedRed: 0.44, green: 0.24, blue: 0.68, alpha: 1.0)
+        case .gray:
+            return NSColor(calibratedWhite: 0.38, alpha: 1.0)
+        }
+    }
+}
 
 public class ClippingStack: NSObject {
     private var store: ClippingStore
@@ -51,9 +93,7 @@ public class ClippingStack: NSObject {
     override init() {
         self.store = ClippingStore()
         super.init()
-        self.store.maxLength = UserDefaults.standard.value(
-            forKey: SettingsPath.rememberNum.rawValue
-        ) as? Int ?? 99
+        syncSettings()
     }
 
     func checkWriteAccess() -> Bool {
@@ -71,6 +111,10 @@ public class ClippingStack: NSObject {
 
     func clear() {
         store.clear()
+    }
+
+    func syncSettings() {
+        store.maxLength = Settings.effectiveRememberNum()
     }
 
     func delete() {
@@ -126,6 +170,30 @@ public class ClippingStack: NSObject {
         return store.itemAt(position: position)
     }
 
+    func allItems() -> [Clipping] {
+        return Array(store.firstItems(n: store.count))
+    }
+
+    func favoriteItems() -> [PositionedClipping] {
+        return store.favoriteItems()
+    }
+
+    func toggleFavorite(position: Int) {
+        store.toggleFavorite(position: position)
+    }
+
+    func toggleBold(position: Int) {
+        store.toggleBold(position: position)
+    }
+
+    func toggleItalic(position: Int) {
+        store.toggleItalic(position: position)
+    }
+
+    func setLabelColor(position: Int, color: ClippingLabelColor?) {
+        store.setLabelColor(position: position, color: color)
+    }
+
     func moveItemToTop(position: Int) {
         store.moveItemToTop(position: position)
     }
@@ -148,10 +216,24 @@ public class Clipping: NSObject {
     public let fullText: String
     public var shortenedText: String
     public var length: Int
+    public var isFavorite: Bool
+    public var isBold: Bool
+    public var isItalic: Bool
+    var labelColor: ClippingLabelColor?
     private let defaultLength = 40
 
-    init(string: String) {
+    init(
+        string: String,
+        isFavorite: Bool = false,
+        isBold: Bool = false,
+        isItalic: Bool = false,
+        labelColor: ClippingLabelColor? = nil
+    ) {
         fullText = string
+        self.isFavorite = isFavorite
+        self.isBold = isBold
+        self.isItalic = isItalic
+        self.labelColor = labelColor
         length = defaultLength
         shortenedText = fullText.trimmingCharacters(in: .whitespacesAndNewlines)
         shortenedText = shortenedText.components(separatedBy: .newlines)[0]
@@ -173,8 +255,12 @@ private class ClippingStore: NSObject {
         get { return _maxLength }
         set {
             let newValueWithMin = newValue < 10 ? 10 : newValue
+            let previousCount = clippings.count
             clippings = Array(self.firstItems(n: newValueWithMin))
             _maxLength = newValueWithMin
+            if clippings.count != previousCount {
+                writeClippings()
+            }
         }
     }
 
@@ -202,6 +288,7 @@ private class ClippingStore: NSObject {
     override init() {
         // TK: We will eventually be switching this out to use SQLite3, but for
         // now we'll use a hardcoded path to a property list.
+        _maxLength = Settings.effectiveRememberNum()
         skipSave = UserDefaults.standard.value(forKey: SettingsPath.skipSave.rawValue) as? Bool ?? false
         if let jumpcutSupportDir = ClippingStore.getSupportDir() {
             plistUrl = jumpcutSupportDir.appendingPathComponent("JCEngine.save")
@@ -247,7 +334,13 @@ private class ClippingStore: NSObject {
                         in: .whitespacesAndNewlines
                     ).isEmpty
                     if !clipIsEmpty || allowWhitespace {
-                        self.add(item: clipDict.Contents)
+                        self.add(
+                            item: clipDict.Contents,
+                            isFavorite: clipDict.Favorite ?? false,
+                            isBold: clipDict.Bold ?? false,
+                            isItalic: clipDict.Italic ?? false,
+                            labelColor: ClippingLabelColor(rawValue: clipDict.Color ?? "")
+                        )
                     }
                 }
             } catch {
@@ -267,13 +360,21 @@ private class ClippingStore: NSObject {
         var items: [JCListItem] = []
         var counter = 0
         for clip in clippings {
-            items.append(JCListItem(Contents: clip.fullText, Position: counter, Type: "NSStringPboardType"))
+            items.append(JCListItem(
+                Bold: clip.isBold ? true : nil,
+                Color: clip.labelColor?.rawValue,
+                Contents: clip.fullText,
+                Favorite: clip.isFavorite ? true : nil,
+                Italic: clip.isItalic ? true : nil,
+                Position: counter,
+                Type: "NSStringPboardType"
+            ))
             counter += 1
         }
         let data = JCEngine(
             displayNum: UserDefaults.standard.value(forKey: SettingsPath.displayNum.rawValue) as? Int ?? 10,
             jcList: items,
-            rememberNum: UserDefaults.standard.value(forKey: SettingsPath.displayNum.rawValue) as? Int ?? 99,
+            rememberNum: Settings.effectiveRememberNum(),
             version: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
         )
         let encoder = PropertyListEncoder()
@@ -286,8 +387,23 @@ private class ClippingStore: NSObject {
         }
     }
 
-    func add(item: String) {
-        clippings.insert(Clipping(string: item), at: 0)
+    func add(
+        item: String,
+        isFavorite: Bool = false,
+        isBold: Bool = false,
+        isItalic: Bool = false,
+        labelColor: ClippingLabelColor? = nil
+    ) {
+        clippings.insert(
+            Clipping(
+                string: item,
+                isFavorite: isFavorite,
+                isBold: isBold,
+                isItalic: isItalic,
+                labelColor: labelColor
+            ),
+            at: 0
+        )
         if clippings.count > maxLength {
             clippings.removeLast()
         }
@@ -305,7 +421,7 @@ private class ClippingStore: NSObject {
         // Don't move from an invalid position; also, position 0
         // is a null operation, because it's already at the top.
         guard !clippings.isEmpty,
-            position <= clippings.count,
+            position < clippings.count,
             position > 0
         else {
             return
@@ -316,18 +432,56 @@ private class ClippingStore: NSObject {
     }
 
     func itemAt(position: Int) -> Clipping? {
-        if clippings.isEmpty || position > clippings.count {
+        if clippings.isEmpty || position >= clippings.count {
             return nil
         }
         return clippings[position]
     }
 
     func removeItem(position: Int) {
-        if clippings.isEmpty || position > clippings.count {
+        if clippings.isEmpty || position >= clippings.count {
             return
         }
         clippings.remove(at: position)
         // TK: When we have SQLite backing, we'll want to change this.
+        writeClippings()
+    }
+
+    func favoriteItems() -> [PositionedClipping] {
+        return clippings.enumerated().compactMap { index, clipping in
+            clipping.isFavorite ? PositionedClipping(position: index, clipping: clipping) : nil
+        }
+    }
+
+    func toggleFavorite(position: Int) {
+        guard let clipping = itemAt(position: position) else {
+            return
+        }
+        clipping.isFavorite = !clipping.isFavorite
+        writeClippings()
+    }
+
+    func toggleBold(position: Int) {
+        guard let clipping = itemAt(position: position) else {
+            return
+        }
+        clipping.isBold = !clipping.isBold
+        writeClippings()
+    }
+
+    func toggleItalic(position: Int) {
+        guard let clipping = itemAt(position: position) else {
+            return
+        }
+        clipping.isItalic = !clipping.isItalic
+        writeClippings()
+    }
+
+    func setLabelColor(position: Int, color: ClippingLabelColor?) {
+        guard let clipping = itemAt(position: position) else {
+            return
+        }
+        clipping.labelColor = color
         writeClippings()
     }
 

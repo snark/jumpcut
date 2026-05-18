@@ -23,6 +23,7 @@ enum SettingsPath: String {
     case bezelToTop
     case checkForUpdates
     case displayNum
+    case extendedFeaturesEnabled
     case hideStatusItem
     case ignoreLargeClippings
     case ignoreSensitiveClippingTypes
@@ -62,6 +63,7 @@ private let settingsDefaults: [String: Any] = [
     SettingsPath.bezelToTop.rawValue: 1,
     SettingsPath.checkForUpdates.rawValue: false,
     SettingsPath.displayNum.rawValue: 10,
+    SettingsPath.extendedFeaturesEnabled.rawValue: false,
     SettingsPath.hideStatusItem.rawValue: false,
     SettingsPath.ignoreLargeClippings.rawValue: true,
     SettingsPath.ignoreSensitiveClippingTypes.rawValue: true,
@@ -182,12 +184,23 @@ public class PreferencePopupButton: NSPopUpButton {
 public class Settings: NSObject {
     let standardDefaults = UserDefaults.standard
     let continuous = [NSBindingOption.continuouslyUpdatesValue: true]
+    private static let standardRememberLimit = 99
+    private static let extendedRememberLimit = 500
 
     class func registerDefaults() {
         let userDefaults = UserDefaults.standard
+        let hadExtendedFeaturesPreference = userDefaults.object(
+            forKey: SettingsPath.extendedFeaturesEnabled.rawValue
+        ) != nil
+        let existingRememberNum = userDefaults.object(forKey: SettingsPath.rememberNum.rawValue) as? Int
         userDefaults.register(
             defaults: settingsDefaults
         )
+        if !hadExtendedFeaturesPreference,
+           let rememberNum = existingRememberNum,
+           rememberNum > standardRememberLimit {
+            userDefaults.set(true, forKey: SettingsPath.extendedFeaturesEnabled.rawValue)
+        }
      }
 
     class func reset() {
@@ -202,6 +215,42 @@ public class Settings: NSObject {
             #endif
         }
      }
+
+    class func extendedFeaturesEnabled() -> Bool {
+        return UserDefaults.standard.value(
+            forKey: SettingsPath.extendedFeaturesEnabled.rawValue
+        ) as? Bool ?? false
+    }
+
+    class func maximumRememberNum() -> Int {
+        return extendedFeaturesEnabled() ? extendedRememberLimit : standardRememberLimit
+    }
+
+    class func defaultRememberNum() -> Int {
+        return standardRememberLimit
+    }
+
+    class func effectiveRememberNum() -> Int {
+        let requested = UserDefaults.standard.value(
+            forKey: SettingsPath.rememberNum.rawValue
+        ) as? Int ?? standardRememberLimit
+        return min(requested, maximumRememberNum())
+    }
+
+    class func menuSelectionPastes() -> Bool {
+        return UserDefaults.standard.object(forKey: SettingsPath.menuSelectionPastes.rawValue) as? Bool ?? true
+    }
+
+    class func pasteAccessibilityTrusted(prompt: Bool = false) -> Bool {
+        let trusted = AXIsProcessTrusted()
+        guard !trusted && prompt else {
+            return trusted
+        }
+        let options = [
+            kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true
+        ] as CFDictionary
+        return AXIsProcessTrustedWithOptions(options)
+    }
 
     private func setAttributedTitle(button: NSButton, title: String) {
         let font = NSFont.systemFont(ofSize: NSFont.systemFontSize)
@@ -293,7 +342,7 @@ public class Settings: NSObject {
         let stpLabel = makeLabel(title: title)
         stpLabel.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
         let stpDisplay = makeLabel(title: "")
-        stpDisplay.preferredMaxLayoutWidth = CGFloat(15.0)
+        stpDisplay.preferredMaxLayoutWidth = CGFloat(34.0)
         stp.bind(.value,
                  to: UserDefaults.standard,
                  withKeyPath: key.rawValue,

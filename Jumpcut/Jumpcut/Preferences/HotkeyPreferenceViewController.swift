@@ -19,13 +19,34 @@ final class HotkeyPreferenceViewController: NSViewController, PreferencePane {
     }
     override var nibName: NSNib.Name? { nil }
 
+    @objc func toggleExtendedFeatures(sender: NSButton) {
+        guard sender.state == .off else {
+            return
+        }
+        let rememberNum = UserDefaults.standard.value(
+            forKey: SettingsPath.rememberNum.rawValue
+        ) as? Int ?? Settings.defaultRememberNum()
+        if rememberNum > Settings.defaultRememberNum() {
+            UserDefaults.standard.set(
+                Settings.defaultRememberNum(),
+                forKey: SettingsPath.rememberNum.rawValue
+            )
+        }
+    }
+
     override func viewDidLoad() {
         let settings = Settings()
         toolbarItemIcon.isTemplate = true
-        self.preferredContentSize = CGSize(width: 480, height: 180)
+        self.preferredContentSize = CGSize(width: 480, height: 220)
         super.viewDidLoad()
         let recorder = settings.shortcutRecorder(title: "Main hotkey", key: .mainHotkey)
-        let grid = NSStackView(views: [ recorder ])
+        let extendedFeatures = settings.checkbox(
+            title: "Enable extended clipping actions and 500-item history",
+            key: .extendedFeaturesEnabled,
+            target: self,
+            action: #selector(self.toggleExtendedFeatures)
+        )
+        let grid = NSStackView(views: [ recorder, extendedFeatures ])
         grid.orientation = .vertical
         grid.alignment = .leading
         self.view.addSubview(grid)

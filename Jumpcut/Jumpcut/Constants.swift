@@ -13,7 +13,7 @@ struct Constants {
         Without this permission Jumpcut can place items on the pasteboard but \
         cannot paste.
 
-        To give permission, go to System Preferences → Security & Privacy → Privacy \
+        To give permission, go to System Settings → Privacy & Security \
         → Accessibility, add Jumpcut, make sure the checkbox is checked, and \
         restart Jumpcut.
         """

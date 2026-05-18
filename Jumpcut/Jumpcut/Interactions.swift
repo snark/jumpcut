@@ -19,6 +19,7 @@ public class Interactions: NSObject {
     weak private var menu: MenuManager!
     weak private var bezel: Bezel!
     weak private var delegate: AppDelegate!
+    private var warnedAboutPasteAccessibility = false
 
     init(bezel: Bezel, menu: MenuManager, pasteboard: Pasteboard, stack: ClippingStack) {
         self.pasteboard = pasteboard
@@ -68,7 +69,16 @@ public class Interactions: NSObject {
     func paste(_ clipping: Clipping) {
         // Place the clipping on the top of the pasteboard, and 0.2 seconds
         // later, emit a Command-V event to paste.
-        place(clipping)
+        pasteboard.set(clipping.fullText)
+        guard Settings.pasteAccessibilityTrusted(prompt: true) else {
+            if !warnedAboutPasteAccessibility {
+                warnedAboutPasteAccessibility = true
+                delegate.showAccessibilityWarning()
+            }
+            delegate.hide()
+            return
+        }
+        delegate.hide()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.pasteboard.fakeCommandV()
         }
@@ -253,10 +263,119 @@ public class Interactions: NSObject {
         menu.rebuild(stack: stack)
     }
 
+    @objc public func menuToggleFavorite(sender: NSMenuItem!) {
+        guard Settings.extendedFeaturesEnabled() else {
+            return
+        }
+        let idx = extractIndex(menuItem: sender)
+        stack.toggleFavorite(position: idx)
+        menu.rebuild(stack: stack)
+    }
+
+    @objc public func menuToggleBold(sender: NSMenuItem!) {
+        guard Settings.extendedFeaturesEnabled() else {
+            return
+        }
+        let idx = extractIndex(menuItem: sender)
+        stack.toggleBold(position: idx)
+        menu.rebuild(stack: stack)
+    }
+
+    @objc public func menuToggleItalic(sender: NSMenuItem!) {
+        guard Settings.extendedFeaturesEnabled() else {
+            return
+        }
+        let idx = extractIndex(menuItem: sender)
+        stack.toggleItalic(position: idx)
+        menu.rebuild(stack: stack)
+    }
+
+    @objc public func menuSetLabelColor(sender: NSMenuItem!) {
+        guard Settings.extendedFeaturesEnabled() else {
+            return
+        }
+        let idx = extractIndex(menuItem: sender)
+        let rawValue = sender.representedObject as? String
+        let color = rawValue == "none" ? nil : ClippingLabelColor(rawValue: rawValue ?? "")
+        stack.setLabelColor(position: idx, color: color)
+        menu.rebuild(stack: stack)
+    }
+
+    @objc public func menuSaveItemToFile(sender: NSMenuItem!) {
+        guard Settings.extendedFeaturesEnabled() else {
+            return
+        }
+        let idx = extractIndex(menuItem: sender)
+        guard let clipping = stack.itemAt(position: idx) else {
+            return
+        }
+        let panel = configuredSavePanel(name: defaultFilename(for: clipping, position: idx))
+        panel.begin { response in
+            guard response == .OK, let url = panel.url else {
+                return
+            }
+            self.write(clipping.fullText, to: url)
+        }
+    }
+
+    @objc public func saveAllToFile(sender: AnyObject?) {
+        guard Settings.extendedFeaturesEnabled() else {
+            return
+        }
+        let clippings = stack.allItems()
+        guard !clippings.isEmpty else {
+            return
+        }
+        let panel = configuredSavePanel(name: "Jumpcut Clippings.txt")
+        panel.begin { response in
+            guard response == .OK, let url = panel.url else {
+                return
+            }
+            let output = clippings.enumerated().map { index, clipping in
+                "----- Clipping \(index + 1) -----\n\(clipping.fullText)"
+            }.joined(separator: "\n\n")
+            self.write(output, to: url)
+        }
+    }
+
+    @objc public func saveAllAsFiles(sender: AnyObject?) {
+        guard Settings.extendedFeaturesEnabled() else {
+            return
+        }
+        let clippings = stack.allItems()
+        guard !clippings.isEmpty else {
+            return
+        }
+        let panel = NSOpenPanel()
+        panel.title = "Save All Clippings"
+        panel.prompt = "Save"
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.canCreateDirectories = true
+        panel.allowsMultipleSelection = false
+        panel.begin { response in
+            guard response == .OK, let directory = panel.url else {
+                return
+            }
+            for (index, clipping) in clippings.enumerated() {
+                let filename = self.defaultFilename(for: clipping, position: index)
+                let url = self.uniqueURL(for: filename, in: directory)
+                self.write(clipping.fullText, to: url)
+            }
+        }
+    }
+
     private func extractIndex(menuItem: NSMenuItem!) -> Int {
         // Utility function to abstract over calling our menu-driven behaviors
         // for individual clippings from either the standard or the alternative
         // menu.
+        if let index = menuItem.representedObject as? Int {
+            return index
+        }
+        if let parent = menuItem.parent,
+           let index = parent.representedObject as? Int {
+            return index
+        }
         var topLevel: NSMenu
         var item: NSMenuItem
         if menuItem.parent != nil {
@@ -267,6 +386,53 @@ public class Interactions: NSObject {
             item = menuItem
         }
         return topLevel.index(of: item)
+    }
+
+    private func configuredSavePanel(name: String) -> NSSavePanel {
+        let panel = NSSavePanel()
+        panel.nameFieldStringValue = name
+        panel.allowedFileTypes = ["txt"]
+        return panel
+    }
+
+    private func defaultFilename(for clipping: Clipping, position: Int) -> String {
+        let base = sanitizedFilename(clipping.shortenedText)
+        let label = base.isEmpty ? "clipping" : base
+        return String(format: "%03d-%@.txt", position + 1, label)
+    }
+
+    private func sanitizedFilename(_ value: String) -> String {
+        let illegal = CharacterSet(charactersIn: "/\\?%*|\"<>:\n\r\t")
+        let pieces = value.components(separatedBy: illegal)
+        let compacted = pieces.joined(separator: " ")
+            .split(separator: " ")
+            .joined(separator: " ")
+        return String(compacted.prefix(40))
+    }
+
+    private func uniqueURL(for filename: String, in directory: URL) -> URL {
+        let manager = FileManager.default
+        let ext = (filename as NSString).pathExtension
+        let base = (filename as NSString).deletingPathExtension
+        var candidate = directory.appendingPathComponent(filename)
+        var counter = 2
+        while manager.fileExists(atPath: candidate.path) {
+            candidate = directory.appendingPathComponent("\(base)-\(counter).\(ext)")
+            counter += 1
+        }
+        return candidate
+    }
+
+    private func write(_ text: String, to url: URL) {
+        do {
+            try text.write(to: url, atomically: true, encoding: .utf8)
+        } catch {
+            let alert = NSAlert()
+            alert.alertStyle = .warning
+            alert.messageText = "Unable to save clipping"
+            alert.informativeText = error.localizedDescription
+            _ = alert.runModal()
+        }
     }
 
     private func _clearAll() {

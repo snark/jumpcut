@@ -134,7 +134,12 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
         let (pasteMenu, pasteBezel) = makePasteOptions(settings: settings)
         let wrapBezel = settings.checkbox(title: "Wraparound bezel", key: SettingsPath.wraparoundBezel)
         let stickyBezel = settings.checkbox(title: "Sticky bezel", key: SettingsPath.stickyBezel)
-        let rememberNumView = settings.rangeStepper(title: "Remembering", minValue: 10, maxValue: 99, key: .rememberNum)
+        let rememberNumView = settings.rangeStepper(
+            title: "Remembering",
+            minValue: 10,
+            maxValue: Settings.maximumRememberNum(),
+            key: .rememberNum
+        )
         let displayNumView = settings.rangeStepper(title: "Displaying", minValue: 10, maxValue: 99, key: .displayNum)
         let stepperViews = NSStackView(views: [rememberNumView, displayNumView])
         NSLayoutConstraint.activate([
