@@ -25,6 +25,23 @@ public class HotkeyListeners {
                                                selector: #selector(mainHotkeyEndedRecording),
                                                name: NSNotification.Name("recorderEndedRecording.mainHotkey"),
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(multiPasteHotkeyBeganRecording),
+                                               name: NSNotification.Name("recorderBeganRecording.multiPasteHotkey"),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(multiPasteHotkeyEndedRecording),
+                                               name: NSNotification.Name("recorderEndedRecording.multiPasteHotkey"),
+                                               object: nil)
+    }
+
+    @objc func multiPasteHotkeyBeganRecording() {
+        delegate.multiPasteHotkeyIsRecording = true
+    }
+
+    @objc func multiPasteHotkeyEndedRecording() {
+        delegate.multiPasteHotkeyIsRecording = false
+        delegate.setHotkey()
     }
 
     @objc func mainHotkeyBeganRecording() {

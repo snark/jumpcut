@@ -20,6 +20,11 @@ public class Interactions: NSObject {
     weak private var bezel: Bezel!
     weak private var delegate: AppDelegate!
 
+    // Multi-paste mode: the bezel previews the N most recent clippings joined
+    // together, and selecting pastes them all at once.
+    private var multiMode = false
+    private var multiCount = 2
+
     init(bezel: Bezel, menu: MenuManager, pasteboard: Pasteboard, stack: ClippingStack) {
         self.pasteboard = pasteboard
         self.stack = stack
@@ -33,7 +38,11 @@ public class Interactions: NSObject {
         bezel.setMetaKeyReleaseHandler(handler: {
             if let sticky = UserDefaults.standard.value(forKey: SettingsPath.stickyBezel.rawValue) as? Bool {
                 if !sticky {
-                    self.bezelSelection()
+                    if self.multiMode {
+                        self.multiSelection()
+                    } else {
+                        self.bezelSelection()
+                    }
                 }
             }
         })
@@ -42,7 +51,9 @@ public class Interactions: NSObject {
             // the ANSI-standard keycode, representing the QWERTY layout. To
             // handle things otherwise, we'll do a lookup in Sauce.
             if let key = SauceKey.init(QWERTYKeyCode: Int(event.keyCode)) {
-                if key == self.delegate.hotKeyBase {
+                if self.multiMode {
+                    self.multiKeyDownBehavior(key: key, shift: event.modifierFlags.contains(.shift))
+                } else if key == self.delegate.hotKeyBase {
                     if event.modifierFlags.contains(.shift) {
                         self.stack.up()
                         self.displayBezelAtPosition(position: self.stack.position)
@@ -59,18 +70,128 @@ public class Interactions: NSObject {
 
     // PASTEBOARD
     func place(_ clipping: Clipping) {
-        // Place the clipping on the top of the pasteboard, then resign from
+        place(text: clipping.fullText)
+    }
+
+    func place(text: String) {
+        // Place the text on the top of the pasteboard, then resign from
         // front.
-        pasteboard.set(clipping.fullText)
+        pasteboard.set(text)
         delegate.hide()
     }
 
     func paste(_ clipping: Clipping) {
-        // Place the clipping on the top of the pasteboard, and 0.2 seconds
+        paste(text: clipping.fullText)
+    }
+
+    func paste(text: String) {
+        // Place the text on the top of the pasteboard, and 0.2 seconds
         // later, emit a Command-V event to paste.
-        place(clipping)
+        place(text: text)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.pasteboard.fakeCommandV()
+        }
+    }
+
+    // MULTI-PASTE
+    func multiPasteText(count: Int) -> String {
+        // The stack is newest-first; by default we paste oldest-first so the
+        // text reads in the order it was copied.
+        var clippings = stack.firstItems(n: count).map { $0.fullText }
+        let order = MultiPasteOrder(
+            rawValue: UserDefaults.standard.string(forKey: SettingsPath.multiPasteOrder.rawValue) ?? ""
+        ) ?? .oldestFirst
+        if order == .oldestFirst {
+            clippings.reverse()
+        }
+        let separator = MultiPasteSeparator(
+            rawValue: UserDefaults.standard.string(forKey: SettingsPath.multiPasteSeparator.rawValue) ?? ""
+        ) ?? .newline
+        return clippings.joined(separator: separator.text)
+    }
+
+    func multiPasteHotkeyPressed() {
+        guard !stack.isEmpty() else {
+            return
+        }
+        if bezel.shown && multiMode {
+            // Pressing the hotkey again adds one more clipping, wrapping around.
+            displayMultiBezel(count: multiCount >= stack.count ? 1 : multiCount + 1)
+        } else {
+            displayMultiBezel(count: multiCount)
+        }
+    }
+
+    public func displayMultiBezel(count: Int) {
+        guard !stack.isEmpty() else {
+            return
+        }
+        multiMode = true
+        multiCount = max(1, min(count, stack.count))
+        bezel.setText(text: multiPasteText(count: multiCount))
+        bezel.setSecondaryText(text: "×\(multiCount)")
+        if !bezel.shown {
+            bezel.show()
+        }
+        NSApp.activate(ignoringOtherApps: true)
+    }
+
+    func multiSelection() {
+        guard multiMode, !stack.isEmpty() else {
+            return
+        }
+        let text = multiPasteText(count: multiCount)
+        multiMode = false
+        if bezel.shouldSelectionPaste() {
+            paste(text: text)
+        } else {
+            place(text: text)
+        }
+    }
+
+    private func multiNumber(for key: SauceKey) -> Int? {
+        switch key {
+        case .one, .keypadOne: return 1
+        case .two, .keypadTwo: return 2
+        case .three, .keypadThree: return 3
+        case .four, .keypadFour: return 4
+        case .five, .keypadFive: return 5
+        case .six, .keypadSix: return 6
+        case .seven, .keypadSeven: return 7
+        case .eight, .keypadEight: return 8
+        case .nine, .keypadNine: return 9
+        case .zero, .keypadZero: return 10
+        default: return nil
+        }
+    }
+
+    func multiKeyDownBehavior(key: SauceKey, shift: Bool) {
+        if key == delegate.multiPasteHotkeyBase {
+            displayMultiBezel(count: shift ? multiCount - 1 : multiCount + 1)
+        } else if let number = multiNumber(for: key) {
+            displayMultiBezel(count: number)
+        } else {
+            switch key {
+            case .escape:
+                multiMode = false
+                delegate.hide()
+            case .upArrow, .rightArrow:
+                displayMultiBezel(count: multiCount + 1)
+            case .downArrow, .leftArrow:
+                displayMultiBezel(count: multiCount - 1)
+            case .pageUp:
+                displayMultiBezel(count: multiCount + 10)
+            case .pageDown:
+                displayMultiBezel(count: multiCount - 10)
+            case .home:
+                displayMultiBezel(count: 1)
+            case .end:
+                displayMultiBezel(count: stack.count)
+            case .return, .keypadEnter:
+                multiSelection()
+            default:
+                break
+            }
         }
     }
 
@@ -139,6 +260,7 @@ public class Interactions: NSObject {
         guard !stack.isEmpty() else {
             return
         }
+        multiMode = false
         // Note that our display is one-indexed, but the stack itself
         // is zero-indexed.
         var displayPos: Int

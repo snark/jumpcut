@@ -32,6 +32,9 @@ enum SettingsPath: String {
     case menuIcon
     case menuSelectionPastes
     case moveClippingsAfterUse
+    case multiPasteHotkey
+    case multiPasteOrder
+    case multiPasteSeparator
     case rememberNum
     case skipSave
     case stickyBezel
@@ -43,6 +46,28 @@ enum BezelAlignment: String {
     case left
     case right
     case smartAlign
+}
+
+// Order in which multiple clippings are joined when pasting several at once.
+enum MultiPasteOrder: String {
+    case oldestFirst
+    case newestFirst
+}
+
+enum MultiPasteSeparator: String {
+    case newline
+    case blankLine
+    case space
+    case comma
+
+    var text: String {
+        switch self {
+        case .newline: return "\n"
+        case .blankLine: return "\n\n"
+        case .space: return " "
+        case .comma: return ", "
+        }
+    }
 }
 
 public enum MenuBehaviorFlags: String {
@@ -73,6 +98,14 @@ private let settingsDefaults: [String: Any] = [
         "modifierFlags": 786432
     ],
     SettingsPath.menuBehaviorFlags.rawValue: MenuBehaviorFlags.none.rawValue,
+    // Shift-Control-Option-Command-V
+    SettingsPath.multiPasteHotkey.rawValue: [
+        "charactersIgnoringModifiers": "v",
+        "keyCode": 9,
+        "modifierFlags": 1966080
+    ],
+    SettingsPath.multiPasteOrder.rawValue: MultiPasteOrder.oldestFirst.rawValue,
+    SettingsPath.multiPasteSeparator.rawValue: MultiPasteSeparator.newline.rawValue,
     SettingsPath.menuSelectionPastes.rawValue: true,
     SettingsPath.moveClippingsAfterUse.rawValue: false,
     SettingsPath.menuIcon.rawValue: 0,
