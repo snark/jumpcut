@@ -25,6 +25,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
     private var hotKey: HotKey?
     public var hotKeyBase: SauceKey?
     public var mainHotkeyIsRecording = false
+    // Hotkey for pasting several clippings at once
+    private var multiPasteHotKey: HotKey?
+    public var multiPasteHotkeyBase: SauceKey?
+    public var multiPasteHotkeyIsRecording = false
     // Sparkle
     public var sparkleUpdater: SPUUpdater!
 
@@ -204,6 +208,43 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
         hotKeyBase = nil
     }
 
+    func clearMultiPasteHotkey() {
+        multiPasteHotKey = nil
+        multiPasteHotkeyBase = nil
+    }
+
+    func setMultiPasteHotkey() {
+        // Same QWERTY-to-current-layout mapping as setHotkey, but an unset or
+        // unmappable shortcut simply leaves multi-paste without a hotkey.
+        guard var dictionary = UserDefaults.standard.value(forKey: SettingsPath.multiPasteHotkey.rawValue)
+            as? [AnyHashable: Any], var keyCode = dictionary["keyCode"] as? Int else {
+            clearMultiPasteHotkey()
+            return
+        }
+        if let ignoringModifier = dictionary["charactersIgnoringModifiers"] as? String,
+           let character = SauceKey.init(character: ignoringModifier, virtualKeyCode: nil),
+           let currentKeyCode = Sauce.shared.currentKeyCode(for: character) {
+            dictionary["keyCode"] = currentKeyCode
+            keyCode = Int(currentKeyCode)
+        }
+        guard let shortcut = Shortcut.init(dictionary: dictionary) else {
+            clearMultiPasteHotkey()
+            return
+        }
+        clearMultiPasteHotkey()
+        multiPasteHotKey = HotKey.init(
+            carbonKeyCode: shortcut.carbonKeyCode,
+            carbonModifiers: shortcut.carbonModifierFlags
+        )
+        multiPasteHotKey!.keyDownHandler = {
+            guard !self.multiPasteHotkeyIsRecording else {
+                return
+            }
+            self.interactions.multiPasteHotkeyPressed()
+        }
+        multiPasteHotkeyBase = SauceKey.init(QWERTYKeyCode: keyCode)
+    }
+
     func stackEmpty() -> Bool {
         return stack.isEmpty()
     }
@@ -214,6 +255,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, SPUStandardU
     }
 
     func setHotkey() {
+        setMultiPasteHotkey()
         if var dictionary = UserDefaults.standard.value(forKey: SettingsPath.mainHotkey.rawValue)
             as? [AnyHashable: Any] {
             // A null keyCode means we're not using the hotkey. Return!

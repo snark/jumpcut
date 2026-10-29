@@ -42,7 +42,7 @@ public class Bezel {
     static let defaultAppearance = BezelAppearance(
         bezelSize: CGSize(width: 325, height: 325),
         outletSize: CGSize(width: 300, height: 200),
-        secondaryOutletSize: CGSize(width: 36, height: 30),
+        secondaryOutletSize: CGSize(width: 52, height: 30),
         windowAlpha: 0.8,
         windowAttributes: AppearanceAttributes(
             backgroundColor: NSColor.init(calibratedWhite: 0.1, alpha: 0.6),
@@ -357,6 +357,13 @@ private class Outlet {
         ]
         let attrString = NSAttributedString(string: text, attributes: attributes)
         textView.textStorage?.setAttributedString(attrString)
+        if align != nil {
+            // An explicit alignment means the small counter box, whose single
+            // line of text we also center vertically.
+            let lineHeight = font.ascender - font.descender + font.leading
+            let inset = max(1, (embedderView.frame.height - 2 - lineHeight) / 2)
+            textView.textContainerInset = NSSize(width: 1, height: inset)
+        }
     }
 }
 
